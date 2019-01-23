@@ -10,9 +10,9 @@ public class RobotState {
         return instance;
     }
 
-    IntakeState intakeState;
-    DriveState driveState;
-    ArmState armState;
+    public IntakeState intakeState;
+    public DriveState driveState;
+    public ArmState armState;
 }
 
 enum IntakeState {
