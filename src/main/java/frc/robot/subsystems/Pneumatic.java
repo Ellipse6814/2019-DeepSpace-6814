@@ -9,7 +9,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.Robot;
 import frc.robot.RobotState;
 
 /**
@@ -30,7 +29,6 @@ public class Pneumatic extends Subsystem {
 
     private Pneumatic() {
         compressor = new Compressor();
-        // compressor.setClosedLoopControl(true);
         compressor.start();
     }
 
