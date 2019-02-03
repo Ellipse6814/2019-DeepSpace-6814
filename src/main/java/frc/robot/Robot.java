@@ -7,26 +7,31 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.RobotState;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.BallIntake;
+import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.HatchIntake;
+import frc.robot.subsystems.Pneumatic;
 
 public class Robot extends TimedRobot {
-    public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-    public static OI m_oi;
+    public static OI oi = OI.getInstance();
+    public static Drive drive = Drive.getInstance();
+    public static BallIntake ballIntake = BallIntake.getInstance();
+    public static HatchIntake hatchIntake = HatchIntake.getInstance();
+    public static Pneumatic pneumatic = Pneumatic.getInstance();
+    public static Arm arm = Arm.getInstance();
 
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
 
     @Override
     public void robotInit() {
-        m_oi = new OI();
-        m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+        // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
         // chooser.addOption("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", m_chooser);
     }
@@ -70,10 +75,6 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopInit() {
-        // This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
         if (m_autonomousCommand != null) {
             m_autonomousCommand.cancel();
         }

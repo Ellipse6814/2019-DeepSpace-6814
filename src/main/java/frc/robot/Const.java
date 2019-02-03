@@ -13,7 +13,23 @@ package frc.robot;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-public class Constants {
+public class Const {
+
+    // intake
+
+    // pneumatic
     public static final int kIntakeSolenoidPort1 = 0;
     public static final int kIntakeSolenoidPort2 = 1;
+
+    // hall effect sensors
+    public static final int kJawHallEffectSensorPort = -25535; // TODO: this will throw an error
+    public static final int kArmHallEffectFrontSensorPort = -25535; // TODO: this will throw an error
+    public static final int kArmHallEffectBackSensorPort = -25535; // TODO: this will throw an error
+
+    // motors
+    public static final int kJawAngleMotorPort = -25535; // TODO: this will throw an error
+    public static final int kIntakeRollerMotorPort = -25535; // TODO: this will throw an error
+    public static final int kArmMotorPort = -25535; // TODO: this will throw an error
+    public static final int kArmMotorSlavePort = -25535; // TODO: this will throw an error
+
 }

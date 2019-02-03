@@ -7,22 +7,52 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.JoystickBase;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    //// CREATING BUTTONS
-    // One type of button is a joystick button which is any button on a
-    //// joystick.
-    // You create one by telling it which joystick it's on and which button
-    // number it is.
-    // Joystick stick = new Joystick(port);
-    // Button button = new JoystickButton(stick, buttonNumber);
 
-    // There are a few additional built in buttons you can use. Additionally,
-    // by subclassing Button you can create custom triggers and bind those to
-    // commands the same as any other Button.
+    private static OI instance;
+
+    public static OI getInstance() {
+        if (instance == null)
+            instance = new OI();
+        return instance;
+    }
+
+    private Joystick doubleJoystick1 = new Joystick(0);
+    private Joystick doubleJoystick2 = new Joystick(1);
+    private Joystick singleJoystick1 = new Joystick(2);
+    private Joystick singleJoystick2 = new Joystick(3);
+
+    // private JoystickButton hatchOpenBtn = new JoystickButton(joystick, buttonNumber);
+
+    private OI() {
+
+    }
+
+    public Joystick getDoubleJoystick1() {
+        return doubleJoystick1;
+    }
+
+    public Joystick getDoubleJoystick2() {
+        return doubleJoystick2;
+    }
+
+    public Joystick getSingleJoystick1() {
+        return singleJoystick1;
+    }
+
+    public Joystick getSingleJoystick2() {
+        return singleJoystick2;
+    }
+
 
     //// TRIGGERING COMMANDS WITH BUTTONS
     // Once you have a button, it's trivial to bind it to a button in one of
