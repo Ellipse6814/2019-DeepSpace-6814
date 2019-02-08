@@ -30,6 +30,9 @@ public class ArmSetAngle extends Command {
     }
 
     private void calcAngle() {
+        if (state == ArmState.Custom)
+            return;
+
         if (state == ArmState.FrontBallIn)
             angle = Const.kArmSetpointDegFrontBallIn;
         else if (state == ArmState.FrontBallOut)

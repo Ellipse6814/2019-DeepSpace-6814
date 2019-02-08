@@ -55,6 +55,8 @@ public class Arm extends Subsystem {
         armMotorSlave.follow(armMotor);
         armMotorSlave.setInverted(InvertType.FollowMaster);
         armMotorSlave.enableVoltageCompensation(true);
+
+        // TODO: configure PID
     }
 
     public void setAngle(double angle) {

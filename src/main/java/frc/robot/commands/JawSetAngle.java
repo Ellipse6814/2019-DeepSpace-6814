@@ -31,6 +31,9 @@ public class JawSetAngle extends Command {
     }
 
     private void calcAngle() {
+        if (state == JawState.Custom)
+            return;
+
         if (state == JawState.Back)
             angle = Const.kJawSetpointDegBack;
         else if (state == JawState.Front)

@@ -1,31 +1,30 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Const;
 import frc.robot.Robot;
-import frc.robot.Enums.JawState;
+import frc.robot.Enums.MotorDirection;
 import frc.robot.subsystems.BallIntake;
-import frc.robot.subsystems.Jaw;
 
-@Deprecated
-public class JawBack extends Command {
+public class BallIntakeSet extends Command {
 
-    private Jaw jaw = Robot.jaw;
+    private BallIntake ballIntake = Robot.ballIntake;
 
-    public JawBack() {
-        requires(jaw);
+    private int amp;
+
+    public BallIntakeSet(int amp) {
+        requires(ballIntake);
+        this.amp = amp;
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        jaw.state = JawState.Back;
-        jaw.setAngle(Const.kJawSetpointDegBack);
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+        ballIntake.setMotor(MotorDirection.Forward, amp);
     }
 
     // Make this return true when this Command no longer needs to run execute()

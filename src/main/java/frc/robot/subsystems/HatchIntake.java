@@ -35,11 +35,11 @@ public class HatchIntake extends Subsystem {
     }
 
     public void openHatchIntake() {
-        doubleSolenoid.set(Value.kReverse);
+        doubleSolenoid.set(Const.kHatchIntakeOpenPos);
     }
 
     public void closeHatchIntake() {
-        doubleSolenoid.set(Value.kForward);
+        doubleSolenoid.set(Const.kHatchIntakeClosePos);
     }
 
     @Override

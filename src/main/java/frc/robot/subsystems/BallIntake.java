@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -14,6 +15,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
+import frc.robot.Enums.MotorDirection;
 
 public class BallIntake extends Subsystem {
 
@@ -36,25 +38,43 @@ public class BallIntake extends Subsystem {
         rollerMotor = new TalonSRX(Const.kIntakeRollerMotorPort);
         rollerMotor.setInverted(false);
         rollerMotor.enableVoltageCompensation(true);
-        rollerMotor.configContinuousCurrentLimit(5, 100);
-        rollerMotor.configPeakCurrentLimit(0);
+
+        // rollerMotor.configPeakCurrentDuration(100, 10); // 100ms /
+        rollerMotor.configPeakCurrentDuration(0, Const.kTalonCommTimeout); // don't allow peak
+        rollerMotor.configContinuousCurrentLimit(5, Const.kTalonCommTimeout); // 30A /
+        rollerMotor.enableCurrentLimit(true); // turn it on
     }
 
-    public void setRollerIn() {
-        // TODO:
+    public void setMaxAmp(int maxAmp) {
+        rollerMotor.configContinuousCurrentLimit(5, Const.kTalonCommTimeout); // 30A /
     }
 
-    public void setRollerOut() {
-        // TODO:
+    /**
+     * ALWAYS CALL {@link setMaxAmp}
+     * 
+     * @param direction
+     */
+    public void setMotor(MotorDirection direction, double amps) {
+        if (amps < 0.001)
+            rollerMotor.set(ControlMode.PercentOutput, 0);
+        rollerMotor.set(ControlMode.Current, amps);
     }
 
-    public void setRollerHold() {
-        // TODO:
-    }
+    // public void setRollerIn() {
+    // // TODO:
+    // }
 
-    public void setRollerStop() {
-        // TODO:
-    }
+    // public void setRollerOut() {
+    // // TODO:
+    // }
+
+    // public void setRollerHold() {
+    // // TODO:
+    // }
+
+    // public void setRollerStop() {
+    // // TODO:
+    // }
 
     @Override
     public void initDefaultCommand() {
