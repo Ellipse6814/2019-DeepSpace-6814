@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FollowerType;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -17,10 +18,17 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
+import frc.robot.Enums.ArmState;
+import frc.robot.Enums.JawState;
 
 public class Arm extends Subsystem {
 
     private static Arm instance;
+    private ArmState armState;
+
+    public ArmState getArmState() {
+        return armState;
+    }
 
     public static Arm getInstance() {
         if (instance == null) {
@@ -61,41 +69,58 @@ public class Arm extends Subsystem {
         armMotorSlave.enableVoltageCompensation(true);
     }
 
-    public void setJawAngle(double angle) {
-        // TODO: set talon pid value
+    // DO NOT USE UNLESS YOU KNOW WHAT YOU ARE DOING!!
+    private void setJawAngle(double angle) {
+        // 4096 TalonUnits per rotation
+        double targetPositionRotations = Const.getTalon4096Units(angle);
+        armMotor.set(ControlMode.Position, targetPositionRotations);
     }
 
     public void setJawFront() {
-        setJawAngle(-25535); // TODO:
+        setJawAngle(Const.kJawSetpointDegFront);
     }
 
     public void setJawBack() {
-        setJawAngle(-25535); // TODO:
+        setJawAngle(Const.kJawSetpointDegBack);
     }
 
     public void setJawMiddle() {
-        setJawAngle(-25535); // TODO:
+        setJawAngle(Const.kJawSetpointDegMiddle);
     }
 
-    public void setArmAngle(double angle) {
-        // TODO: set talon pid value
+    /**
+     * 
+     * @param angle angle in degrees
+     */
+    public void setJawCustom(double angle) {
+        setJawAngle(angle);
+    }
+
+    // DO NOT USE UNLESS YOU KNOW WHAT YOU ARE DOING!!
+    private void setArmAngle(double angle) {
+        // 4096 TalonUnits per rotation
+        double targetPositionRotations = Const.getTalon4096Units(angle);
+        armMotor.set(ControlMode.Position, targetPositionRotations);
     }
 
     public void setArmFront() {
-        setArmAngle(-25535); // TODO:
+        setArmAngle(Const.kArmSetpointDegFront);
     }
 
     public void setArmBack() {
-        setArmAngle(-25535); // TODO:
+        setArmAngle(Const.kArmSetpointDegBack);
     }
 
     public void setArmMiddle() {
-        setArmAngle(-25535); // TODO:
+        setArmAngle(Const.kArmSetpointDegMiddle);
+    }
+
+    public void setArmCustom(double angle) {
+        setArmAngle(angle);
     }
 
     @Override
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        // setDefaultCommand(new MySpecialCommand());
+
     }
 }

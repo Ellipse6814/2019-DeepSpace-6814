@@ -14,6 +14,19 @@ package frc.robot;
  * floating around.
  */
 public class Const {
+    // Talon Consts
+    public static final double getTalon4096Units(double angle) {
+        return angle / 360 * 4096;
+    }
+
+    // Arm Setpoints
+    public static final double kArmSetpointDegFront = 0;
+    public static final double kArmSetpointDegBack = 0;
+    public static final double kArmSetpointDegMiddle = 0;
+    // Jaw Setpoints
+    public static final double kJawSetpointDegFront = 0;
+    public static final double kJawSetpointDegBack = 0;
+    public static final double kJawSetpointDegMiddle = 0;
 
     // intake
 
