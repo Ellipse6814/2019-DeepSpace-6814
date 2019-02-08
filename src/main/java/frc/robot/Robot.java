@@ -16,6 +16,7 @@ import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.BallIntake;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.HatchIntake;
+import frc.robot.subsystems.Jaw;
 import frc.robot.subsystems.Pneumatic;
 
 public class Robot extends TimedRobot {
@@ -25,6 +26,7 @@ public class Robot extends TimedRobot {
     public static HatchIntake hatchIntake = HatchIntake.getInstance();
     public static Pneumatic pneumatic = Pneumatic.getInstance();
     public static Arm arm = Arm.getInstance();
+    public static Jaw jaw = Jaw.getInstance();
 
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();

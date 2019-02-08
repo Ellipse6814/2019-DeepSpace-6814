@@ -18,85 +18,73 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
-import frc.robot.Enums.ArmState;
 import frc.robot.Enums.JawState;
 import frc.robot.Enums.MotorDirection;
 
-public class Arm extends Subsystem {
+public class Jaw extends Subsystem {
 
-    private static Arm instance;
-    public ArmState state;
+    private static Jaw instance;
+    public JawState state;
 
-    public static Arm getInstance() {
+    public static Jaw getInstance() {
         if (instance == null) {
-            instance = new Arm();
+            instance = new Jaw();
         }
         return instance;
     }
 
-    private DigitalInput armHallEffectFront = new DigitalInput(Const.kArmHallEffectFrontSensorPort);
-    private DigitalInput armHallEffectBack = new DigitalInput(Const.kArmHallEffectBackSensorPort);
+    private TalonSRX jawAngleMotor;
 
-    private TalonSRX armMotor;
-    private VictorSPX armMotorSlave;
+    private DigitalInput jawHallEffect = new DigitalInput(Const.kJawHallEffectSensorPort);
 
-    private Arm() {
+    private Jaw() {
         initTalons();
     }
 
     private void initTalons() {
-        armMotor = new TalonSRX(Const.kArmMotorPort);
-        armMotor.setInverted(false);
-        armMotor.enableVoltageCompensation(true);
-        armMotor.configContinuousCurrentLimit(30, 100);
-        armMotor.configPeakCurrentLimit(0);
-
-        armMotorSlave = new VictorSPX(Const.kArmMotorSlavePort);
-        armMotorSlave.follow(armMotor);
-        armMotorSlave.setInverted(InvertType.FollowMaster);
-        armMotorSlave.enableVoltageCompensation(true);
+        jawAngleMotor = new TalonSRX(Const.kJawAngleMotorPort);
+        jawAngleMotor.setInverted(false);
+        jawAngleMotor.enableVoltageCompensation(true);
+        jawAngleMotor.configContinuousCurrentLimit(30, 100);
+        jawAngleMotor.configPeakCurrentLimit(0);
     }
 
     public void setAngle(double angle) {
         // 4096 TalonUnits per rotation
         double targetPositionRotations = Const.getTalon4096Units(angle);
-        armMotor.set(ControlMode.Position, targetPositionRotations);
+        jawAngleMotor.set(ControlMode.Position, targetPositionRotations);
     }
 
     public void setOpenLoop(double speed, MotorDirection direction) {
         if (direction == MotorDirection.Forward) {
-            armMotor.set(ControlMode.PercentOutput, speed);
+            jawAngleMotor.set(ControlMode.PercentOutput, speed);
         } else {
-            armMotor.set(ControlMode.PercentOutput, -speed);
+            jawAngleMotor.set(ControlMode.PercentOutput, -speed);
         }
     }
 
-    public boolean getFrontHallEffect() {
-        return armHallEffectFront.get();
-    }
-
-    public boolean getBackHallEffect() {
-        return armHallEffectBack.get();
+    public boolean getHallEffect() {
+        return jawHallEffect.get();
     }
 
     public void resetEncoder() {
         // TODO:
     }
 
-    // public void setArmFront() {
-    // setArmAngle(Const.kArmSetpointDegFront);
+    // public void setJawFront() {
+    // setAngle(Const.kJawSetpointDegFront);
     // }
 
-    // public void setArmBack() {
-    // setArmAngle(Const.kArmSetpointDegBack);
+    // public void setJawBack() {
+    // setAngle(Const.kJawSetpointDegBack);
     // }
 
-    // public void setArmMiddle() {
-    // setArmAngle(Const.kArmSetpointDegMiddle);
+    // public void setJawMiddle() {
+    // setAngle(Const.kJawSetpointDegMiddle);
     // }
 
-    // public void setArmCustom(double angle) {
-    // setArmAngle(angle);
+    // public void setJawCustom(double angle) {
+    // setAngle(angle);
     // }
 
     @Override

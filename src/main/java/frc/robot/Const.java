@@ -20,13 +20,16 @@ public class Const {
     }
 
     // Arm Setpoints
-    public static final double kArmSetpointDegFront = 0;
-    public static final double kArmSetpointDegBack = 0;
+    public static final double kArmSetpointDegFrontBallOut = 0;
+    public static final double kArmSetpointDegFrontBallIn = 0;
+    public static final double kArmSetpointDegFrontHatchInOut = 0;
+    public static final double kArmSetpointDegBackHatchInOut = 0;
+    public static final double kArmSetpointDegBackBallOut = 0;
     public static final double kArmSetpointDegMiddle = 0;
     // Jaw Setpoints
     public static final double kJawSetpointDegFront = 0;
     public static final double kJawSetpointDegBack = 0;
-    public static final double kJawSetpointDegMiddle = 0;
+    public static final double kJawSetpointDegIdle = 0;
 
     // intake
 
