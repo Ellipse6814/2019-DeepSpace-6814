@@ -1,24 +1,15 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
 public class Const {
     // Talon Consts
-    public static final double getTalon4096Units(double angle) {
-        return angle / 360 * 4096;
+    public static final double deg2Talon4096Unit(double angle) {
+        return angle / 360.0 * 4096.0;
+    }
+
+    public static final double talon4096Unit2Deg(double angle) {
+        return angle * 360.0 / 4096.0;
     }
 
     public static final int kTalonCommTimeout = 10; // ms
@@ -30,6 +21,8 @@ public class Const {
     public static final double kArmSetpointDegBackHatchInOut = 0;
     public static final double kArmSetpointDegBackBallOut = 0;
     public static final double kArmSetpointDegMiddle = 0;
+
+    public static final double kArmPIDTolerance = 5;// degs
     // Jaw Setpoints
     public static final double kJawSetpointDegFront = 0;
     public static final double kJawSetpointDegBack = 0;
@@ -37,8 +30,10 @@ public class Const {
 
     // ball intake
     public static final int kBallIntakeInAmp = 10;
-    public static final int kBallIntakeOutAmp = 10;
     public static final int kBallIntakeHoldAmp = 3;
+
+    public static final double kBallIntakeOutSpdSlow = 0.5;
+    public static final double kBallIntakeOutSpd = 1;
 
     // pneumatic
     public static final int kIntakeSolenoidPort1 = 0;
@@ -57,5 +52,9 @@ public class Const {
     public static final int kIntakeRollerMotorPort = -25535; // TODO: this will throw an error
     public static final int kArmMotorPort = -25535; // TODO: this will throw an error
     public static final int kArmMotorSlavePort = -25535; // TODO: this will throw an error
+
+    // Drive
+
+    public static final int kDriveMotorMaxAmp = 50; // 50A
 
 }

@@ -1,4 +1,4 @@
-package frc.path;
+package frc.robot.path;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

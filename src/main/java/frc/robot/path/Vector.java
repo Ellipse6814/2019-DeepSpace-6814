@@ -1,4 +1,4 @@
-package frc.path;
+package frc.robot.path;
 
 /** This Class defines a vector. */
 

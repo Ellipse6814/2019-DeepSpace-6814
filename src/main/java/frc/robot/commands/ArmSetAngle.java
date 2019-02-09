@@ -24,6 +24,8 @@ public class ArmSetAngle extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        if (arm.state == state)
+            return;
         arm.state = state;
         calcAngle();
         arm.setAngle(angle);

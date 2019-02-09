@@ -1,32 +1,34 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-import frc.robot.subsystems.HatchIntake;
+import frc.robot.Enums.Evaluate;
 
-public class HatchIntakeOpen extends Command {
+public class WaitUntil extends Command {
 
-    private HatchIntake hatchIntake = Robot.hatchIntake;
+    private Evaluate condition;
+    private boolean isFinished = false;
 
-    public HatchIntakeOpen() {
-        requires(hatchIntake);
+    public WaitUntil(Evaluate evaluate) {
+        this.condition = evaluate;
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        hatchIntake.openHatchIntake();
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+        if (condition.evaluate())
+            isFinished = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return false;
+        return isFinished;
     }
 
     // Called once after isFinished returns true

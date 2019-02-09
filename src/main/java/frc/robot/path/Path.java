@@ -1,4 +1,4 @@
-package frc.path;
+package frc.robot.path;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class Path {
 
 	//
 	public int[] injectionSteps;
-	double numFinalPoints = 0;// Don't touch this, it's in 1712's code algorithm
+	public double numFinalPoints = 0;// Don't touch this, it's in 1712's code algorithm
 
 	@Deprecated
 	public Path(List<Waypoint> waypoints, double spacing) {

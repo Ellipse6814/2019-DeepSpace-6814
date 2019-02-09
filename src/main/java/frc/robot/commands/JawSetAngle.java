@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Const;
 import frc.robot.Robot;
 import frc.robot.Enums.JawState;
-import frc.robot.subsystems.BallIntake;
 import frc.robot.subsystems.Jaw;
 
 public class JawSetAngle extends Command {
@@ -25,6 +24,8 @@ public class JawSetAngle extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        if (jaw.state==state)
+            return;
         jaw.state = state;
         calcAngle();
         jaw.setAngle(angle);

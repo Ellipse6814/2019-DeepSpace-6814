@@ -1,4 +1,6 @@
-package frc.path;
+package frc.robot.path;
+
+import frc.robot.path.Point;
 
 /**
  * This is the magical class that estimates the robot's coordinate on an

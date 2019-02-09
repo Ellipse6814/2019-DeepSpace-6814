@@ -1,4 +1,4 @@
-package frc.log;
+package frc.robot.log;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

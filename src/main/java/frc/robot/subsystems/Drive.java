@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
@@ -10,11 +11,12 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.path.Odometer;
+import frc.robot.Const;
+import frc.robot.path.Odometer;
 
 public class Drive extends Subsystem {
-    private TalonSRX leftMaster, rightMaster;
-    private VictorSPX leftSlave, rightSlave;
+    public TalonSRX leftMaster, rightMaster;
+    public VictorSPX leftSlave, rightSlave;
 
     private Encoder leftEncoder, rightEncoder;
 
@@ -70,10 +72,12 @@ public class Drive extends Subsystem {
 
         rightSlave = new VictorSPX(3);
         leftSlave = new VictorSPX(4);
-        rightMaster.setInverted(true);
-        rightSlave.setInverted(true);
+
         rightSlave.follow(rightMaster);
         leftSlave.follow(leftMaster);
+
+        rightMaster.setInverted(true);
+        rightSlave.setInverted(InvertType.FollowMaster);
 
         leftMaster.setNeutralMode(NeutralMode.Brake);
         rightMaster.setNeutralMode(NeutralMode.Brake);
@@ -84,6 +88,15 @@ public class Drive extends Subsystem {
         rightMaster.configNeutralDeadband(0.04);
         leftSlave.configNeutralDeadband(0.04);
         rightSlave.configNeutralDeadband(0.04);
+
+        // limit current to under 50A
+        rightMaster.configPeakCurrentDuration(0, 10); // 200ms /
+        rightMaster.configContinuousCurrentLimit(Const.kDriveMotorMaxAmp, 10); // 30A /
+        rightMaster.enableCurrentLimit(true); // turn it on
+
+        leftMaster.configPeakCurrentDuration(0, 10); // 200ms /
+        leftMaster.configContinuousCurrentLimit(Const.kDriveMotorMaxAmp, 10); // 30A /
+        leftMaster.enableCurrentLimit(true); // turn it on
 
         // rightSlave = TalonSRXFactory.createPermanentSlaveTalon(4, 3);
     }

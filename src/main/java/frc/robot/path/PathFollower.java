@@ -1,10 +1,10 @@
-package frc.path;
+package frc.robot.path;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import frc.log.ExecTimer;
-import frc.log.LogBase;
+import frc.robot.log.ExecTimer;
+import frc.robot.log.LogBase;
 
 public class PathFollower extends LogBase {
 	private Path path;

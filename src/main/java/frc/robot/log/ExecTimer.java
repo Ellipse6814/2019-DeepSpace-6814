@@ -1,4 +1,4 @@
-package frc.log;
+package frc.robot.log;
 
 /**
  * The purpose of this class is to get the elapsed time for some code, NICELY.

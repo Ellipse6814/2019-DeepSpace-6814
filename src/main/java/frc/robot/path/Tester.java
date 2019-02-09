@@ -1,4 +1,4 @@
-package frc.path;
+package frc.robot.path;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

@@ -1,21 +1,9 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FollowerType;
-import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
 import frc.robot.Enums.JawState;
@@ -51,7 +39,7 @@ public class Jaw extends Subsystem {
 
     public void setAngle(double angle) {
         // 4096 TalonUnits per rotation
-        double targetPositionRotations = Const.getTalon4096Units(angle);
+        double targetPositionRotations = Const.deg2Talon4096Unit(angle);
         jawAngleMotor.set(ControlMode.Position, targetPositionRotations);
     }
 
@@ -68,7 +56,11 @@ public class Jaw extends Subsystem {
     }
 
     public void resetEncoder() {
-        // TODO:
+        jawAngleMotor.setSelectedSensorPosition(0);
+    }
+
+    public boolean onTarget() {
+        return false; // TODO: stub
     }
 
     // public void setJawFront() {

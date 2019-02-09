@@ -1,4 +1,4 @@
-package frc.path;
+package frc.robot.path;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -18,7 +18,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import frc.log.ExecTimer;
+import frc.robot.log.ExecTimer;
 
 /**
  * This class is a runnable GUI that displays what the robot did in

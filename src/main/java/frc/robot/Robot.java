@@ -1,10 +1,3 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -12,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.auto.DoNothing;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.BallIntake;
 import frc.robot.subsystems.Drive;
@@ -28,14 +22,14 @@ public class Robot extends TimedRobot {
     public static Arm arm = Arm.getInstance();
     public static Jaw jaw = Jaw.getInstance();
 
-    Command m_autonomousCommand;
-    SendableChooser<Command> m_chooser = new SendableChooser<>();
+    Command autoCommand;
+    SendableChooser<Command> autoChooser = new SendableChooser<>();
 
     @Override
     public void robotInit() {
-        // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+        autoChooser.setDefaultOption("Do Nothing", new DoNothing());
         // chooser.addOption("My Auto", new MyAutoCommand());
-        SmartDashboard.putData("Auto mode", m_chooser);
+        SmartDashboard.putData("Auto Mode Chooser", autoChooser);
     }
 
     @Override
@@ -55,18 +49,10 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
-        m_autonomousCommand = m_chooser.getSelected();
+        autoCommand = autoChooser.getSelected();
 
-        /*
-         * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-         * switch(autoSelected) { case "My Auto": autonomousCommand = new
-         * MyAutoCommand(); break; case "Default Auto": default: autonomousCommand = new
-         * ExampleCommand(); break; }
-         */
-
-        // schedule the autonomous command (example)
-        if (m_autonomousCommand != null) {
-            m_autonomousCommand.start();
+        if (autoCommand != null) {
+            autoCommand.start();
         }
     }
 
@@ -77,11 +63,9 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopInit() {
-        if (m_autonomousCommand != null) {
-            m_autonomousCommand.cancel();
+        if (autoCommand != null) {
+            autoCommand.cancel();
         }
-
-        System.gc();
     }
 
     @Override

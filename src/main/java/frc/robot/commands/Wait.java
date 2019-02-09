@@ -1,22 +1,19 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 
-/**
- * An example command. You can replace me with your own command.
- */
-public class Drive2Joy extends Command {
+public class Wait extends Command {
 
-    public Drive2Joy() {
-        // Use requires() here to declare subsystem dependencies
-        requires(Robot.drive);
+    private double timeout; // in seconds
+
+    public Wait(double timeout) {
+        this.timeout = timeout;
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        System.out.println("Driving with 2 joysticks!");
+        setTimeout(timeout);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -27,7 +24,7 @@ public class Drive2Joy extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
@@ -39,5 +36,6 @@ public class Drive2Joy extends Command {
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+        end();
     }
 }

@@ -1,14 +1,10 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Const;
 import frc.robot.Robot;
 import frc.robot.Enums.ArmState;
-import frc.robot.Enums.JawState;
 import frc.robot.Enums.MotorDirection;
 import frc.robot.subsystems.Arm;
-import frc.robot.subsystems.BallIntake;
-import frc.robot.subsystems.Jaw;
 
 public class ArmReset extends Command {
 

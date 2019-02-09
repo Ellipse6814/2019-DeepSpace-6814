@@ -2,21 +2,32 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.Enums.HatchState;
+import frc.robot.subsystems.HatchIntake;
 
-/**
- * An example command. You can replace me with your own command.
- */
-public class Drive2Joy extends Command {
+public class HatchIntakeSet extends Command {
 
-    public Drive2Joy() {
-        // Use requires() here to declare subsystem dependencies
-        requires(Robot.drive);
+    private HatchIntake hatchIntake = Robot.hatchIntake;
+
+    private HatchState state;
+
+    public HatchIntakeSet(HatchState state) {
+        requires(hatchIntake);
+        this.state = state;
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        System.out.println("Driving with 2 joysticks!");
+        if (hatchIntake.state == state)
+            return;
+
+        if (state == HatchState.Open) {
+            hatchIntake.openHatchIntake();
+            // hatchIntake.state//TODO: ???
+        } else {
+            hatchIntake.closeHatchIntake();
+        }
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -39,5 +50,6 @@ public class Drive2Joy extends Command {
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+        end();
     }
 }

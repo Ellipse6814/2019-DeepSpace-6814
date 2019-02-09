@@ -1,6 +1,4 @@
-package frc.log;
-
-import edu.wpi.first.wpilibj.command.Command;
+package frc.robot.log;
 
 /**
  * Summary: This class is designed to make logging easier in systems. It avoids
@@ -12,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * sender param
  */
 
-public abstract class CommandBase extends Command {
+public abstract class LogBase {
     private String systemName = "Default";
     private Logger logger = Logger.getInstance();
 

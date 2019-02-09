@@ -1,11 +1,11 @@
-package frc.path;
+package frc.robot.path;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import frc.log.ExecTimer;
-import frc.log.LogBase;
+import frc.robot.log.ExecTimer;
+import frc.robot.log.LogBase;
 
 public class PathGenerator extends LogBase {
 

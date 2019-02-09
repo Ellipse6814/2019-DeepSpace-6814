@@ -1,25 +1,16 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FollowerType;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.InvertType;
+import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
 import frc.robot.Enums.ArmState;
-import frc.robot.Enums.JawState;
 import frc.robot.Enums.MotorDirection;
 
 public class Arm extends Subsystem {
@@ -50,18 +41,26 @@ public class Arm extends Subsystem {
         armMotor.enableVoltageCompensation(true);
         armMotor.configContinuousCurrentLimit(30, 100);
         armMotor.configPeakCurrentLimit(0);
+        armMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 10, 10);
 
         armMotorSlave = new VictorSPX(Const.kArmMotorSlavePort);
         armMotorSlave.follow(armMotor);
         armMotorSlave.setInverted(InvertType.FollowMaster);
         armMotorSlave.enableVoltageCompensation(true);
 
+        // Config encoder
+        armMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+        armMotor.setSensorPhase(true);
+
+        // Output Encoder Values
+        System.out.println("Left Encoder Position" + armMotor.getSelectedSensorPosition(0));
+
         // TODO: configure PID
     }
 
     public void setAngle(double angle) {
         // 4096 TalonUnits per rotation
-        double targetPositionRotations = Const.getTalon4096Units(angle);
+        double targetPositionRotations = Const.deg2Talon4096Unit(angle);
         armMotor.set(ControlMode.Position, targetPositionRotations);
     }
 
@@ -81,8 +80,20 @@ public class Arm extends Subsystem {
         return armHallEffectBack.get();
     }
 
+    public double getEncoderPosition() {
+        return Const.talon4096Unit2Deg(armMotor.getSelectedSensorPosition(0));
+    }
+
+    public double getPIDError() {
+        return armMotor.getClosedLoopError(0);
+    }
+
     public void resetEncoder() {
-        // TODO:
+        armMotor.setSelectedSensorPosition(0);
+    }
+
+    public boolean onTarget() {
+        return false; // TODO: stub
     }
 
     // public void setArmFront() {
