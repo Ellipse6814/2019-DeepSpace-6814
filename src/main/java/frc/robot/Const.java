@@ -29,11 +29,11 @@ public class Const {
     public static final double kJawSetpointDegIdle = 0;
 
     // ball intake
-    public static final int kBallIntakeInAmp = 10;
-    public static final int kBallIntakeHoldAmp = 3;
+    public static final int kBallIntakeNormalAmp = 10;
+    public static final int kBallIntakeStallAmp = 3;
 
-    public static final double kBallIntakeOutSpdSlow = 0.5;
-    public static final double kBallIntakeOutSpd = 1;
+    public static final double kBallIntakeSpdSlow = 0.5;
+    public static final double kBallIntakeSpd = 1;
 
     // pneumatic
     public static final int kIntakeSolenoidPort1 = 0;

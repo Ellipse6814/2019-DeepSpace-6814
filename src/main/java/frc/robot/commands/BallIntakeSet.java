@@ -16,7 +16,6 @@ public class BallIntakeSet extends Command {
 
     private int amp = 0;
     private double speed = 0;
-    private boolean ifCustomUseAmp = false;
     private boolean intake = false;
 
     public BallIntakeSet(BallState state) {
@@ -27,19 +26,12 @@ public class BallIntakeSet extends Command {
         this.state = state;
     }
 
-    public BallIntakeSet(boolean intake, int amp) {
+    public BallIntakeSet(boolean intake, double speed, int amp) {
         requires(ballIntake);
         this.amp = amp;
         this.state = BallState.Custom;
-        this.ifCustomUseAmp = true;
-        this.intake = intake;
-    }
-
-    public BallIntakeSet(boolean intake, double speed) {
-        requires(ballIntake);
         this.speed = speed;
-        this.state = BallState.Custom;
-        this.ifCustomUseAmp = false;
+        this.amp = amp;
         this.intake = intake;
     }
 
@@ -52,23 +44,19 @@ public class BallIntakeSet extends Command {
     @Override
     protected void execute() {
         if (state == BallState.In) {
-            ballIntake.setCurrentPID(MotorDirection.Backward, Const.kBallIntakeInAmp);
+            ballIntake.setMotor(MotorDirection.Backward, Const.kBallIntakeSpd, Const.kBallIntakeStallAmp);
         } else if (state == BallState.Out) {
-            ballIntake.setMotor(MotorDirection.Forward, Const.kBallIntakeOutSpd);
+            ballIntake.setMotor(MotorDirection.Forward, Const.kBallIntakeSpd, Const.kBallIntakeNormalAmp);
         } else if (state == BallState.OutSlow) {
-            ballIntake.setMotor(MotorDirection.Forward, Const.kBallIntakeOutSpdSlow);
+            ballIntake.setMotor(MotorDirection.Forward, Const.kBallIntakeSpdSlow, Const.kBallIntakeNormalAmp);
         } else if (state == BallState.Hold) {
-            if (Timer.getFPGATimestamp() % 1000 < 500)
-                ballIntake.setCurrentPID(MotorDirection.Backward, Const.kBallIntakeInAmp);
+            if (Timer.getFPGATimestamp() % 1000 < 400)
+                ballIntake.setMotor(MotorDirection.Backward, Const.kBallIntakeSpdSlow, Const.kBallIntakeStallAmp);
         } else if (state == BallState.Custom) {
             MotorDirection md = intake ? MotorDirection.Backward : MotorDirection.Forward;
-            if (ifCustomUseAmp) {
-                ballIntake.setCurrentPID(md, amp);
-            } else {
-                ballIntake.setMotor(md, speed);
-            }
+            ballIntake.setMotor(md, speed, amp);
         } else { // if (state == BallState.Stop) {
-            ballIntake.setMotor(MotorDirection.Forward, 0);
+            ballIntake.setMotor(MotorDirection.Forward, 0, 10);
         }
     }
 

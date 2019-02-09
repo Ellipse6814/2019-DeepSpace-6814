@@ -90,21 +90,19 @@ public class Drive extends Subsystem {
         rightSlave.configNeutralDeadband(0.04);
 
         // limit current to under 50A
-        rightMaster.configPeakCurrentDuration(0, 10); // 200ms /
-        rightMaster.configContinuousCurrentLimit(Const.kDriveMotorMaxAmp, 10); // 30A /
-        rightMaster.enableCurrentLimit(true); // turn it on
+        rightMaster.configPeakCurrentDuration(0, 10);
+        rightMaster.configContinuousCurrentLimit(Const.kDriveMotorMaxAmp, 10);
+        rightMaster.enableCurrentLimit(true);
 
-        leftMaster.configPeakCurrentDuration(0, 10); // 200ms /
-        leftMaster.configContinuousCurrentLimit(Const.kDriveMotorMaxAmp, 10); // 30A /
-        leftMaster.enableCurrentLimit(true); // turn it on
-
-        // rightSlave = TalonSRXFactory.createPermanentSlaveTalon(4, 3);
+        leftMaster.configPeakCurrentDuration(0, 10);
+        leftMaster.configContinuousCurrentLimit(Const.kDriveMotorMaxAmp, 10);
+        leftMaster.enableCurrentLimit(true);
     }
 
     private void initGyro() {
         try {
             // gyro = new AHRS(SPI.Port.kMXP);
-            gyro = new AHRS(SPI.Port.kMXP, (byte) 200); // TODO: do we really need it to update at 200Hz?
+            gyro = new AHRS(SPI.Port.kMXP);
             // gyro = new AHRS(SerialPort.Port.kUSB);
             zeroGyro();
         } catch (RuntimeException ex) {

@@ -49,13 +49,19 @@ public class Arm extends Subsystem {
         armMotorSlave.enableVoltageCompensation(true);
 
         // Config encoder
-        armMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+        // armMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,
+        // 0, 10);
+        armMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
         armMotor.setSensorPhase(true);
+
+        // Config PID
+        armMotor.config_kP(0, 2, 10);
+        armMotor.config_kI(0, 0, 10);
+        armMotor.config_kD(0, 0, 10);
+        armMotor.config_kF(0, 1, 10);
 
         // Output Encoder Values
         System.out.println("Left Encoder Position" + armMotor.getSelectedSensorPosition(0));
-
-        // TODO: configure PID
     }
 
     public void setAngle(double angle) {

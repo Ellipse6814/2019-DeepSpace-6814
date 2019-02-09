@@ -19,6 +19,7 @@ public class BallIntake extends Subsystem {
     }
 
     private TalonSRX rollerMotor;
+    private int maxAmp = 10;
 
     private BallIntake() {
         initTalons();
@@ -31,7 +32,7 @@ public class BallIntake extends Subsystem {
 
         // rollerMotor.configPeakCurrentDuration(100, 10); // 100ms /
         rollerMotor.configPeakCurrentDuration(0, Const.kTalonCommTimeout); // don't allow peak
-        rollerMotor.configContinuousCurrentLimit(10, Const.kTalonCommTimeout); // 30A /
+        rollerMotor.configContinuousCurrentLimit(10, Const.kTalonCommTimeout);
         rollerMotor.enableCurrentLimit(true); // turn it on
 
         // config current PID
@@ -44,9 +45,10 @@ public class BallIntake extends Subsystem {
     }
 
     public void setMaxAmp(int maxAmp) {
-        rollerMotor.configContinuousCurrentLimit(maxAmp, Const.kTalonCommTimeout); // 30A /
+        rollerMotor.configContinuousCurrentLimit(maxAmp, Const.kTalonCommTimeout);
     }
 
+    @Deprecated
     public void setCurrentPID(MotorDirection direction, int amps) {
         if (amps < 0.001)
             rollerMotor.set(ControlMode.PercentOutput, 0);
@@ -55,7 +57,9 @@ public class BallIntake extends Subsystem {
         rollerMotor.set(ControlMode.Current, amps);
     }
 
-    public void setMotor(MotorDirection direction, double speed) {
+    public void setMotor(MotorDirection direction, double speed, int amp) {
+        if (maxAmp != amp)
+            setMaxAmp(amp);
         if (direction == MotorDirection.Backward)
             speed *= -1;
         rollerMotor.set(ControlMode.PercentOutput, speed);
