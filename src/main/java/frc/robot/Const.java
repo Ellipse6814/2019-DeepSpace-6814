@@ -1,5 +1,8 @@
 package frc.robot;
 
+import java.util.Arrays;
+import java.util.List;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 public class Const {
@@ -56,5 +59,10 @@ public class Const {
     // Drive
 
     public static final int kDriveMotorMaxAmp = 50; // 50A
+    public static final double kDriveJoystickDeadband = 0.05;
 
+    public static final double[] kDrivePowerGears = { 0.3333, 0.6666, 1 };
+    public static final double[] kDriveTurnGears = { 0.3333, 0.6666, 1 };
+
+    public static final double maxAccelMSS = 100;
 }

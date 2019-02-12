@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
+import frc.robot.path.DriveMotorState;
 import frc.robot.path.Odometer;
 
 public class Drive extends Subsystem {
@@ -22,6 +23,10 @@ public class Drive extends Subsystem {
 
     private AHRS gyro;
     private double gyroZero = 0;
+
+    private int gear = 2;
+
+    private DriveCalculator driveCalculator = new DriveCalculator();
 
     private static Drive instance;
 
@@ -35,6 +40,7 @@ public class Drive extends Subsystem {
         initGyro();
         initEncoders(); // TODO: we are going to use new encoders!!!
         initTalons();
+        checkGearError();
     }
 
     @Override
@@ -48,22 +54,14 @@ public class Drive extends Subsystem {
     }
 
     public void driveJoystick(double power, double turn) {
-        power = applyDeadband(power);
+        DriveMotorState state = driveCalculator.calculate(power, turn, gear);
+        drive(state.leftVel, state.rightVel);
+    }
 
-        turn = applyDeadband(turn);
-
-        double right = power * 0.55 + turn * 0.7 * 0.55;
-        double left = power * 0.55 - turn * 0.7 * 0.55;
-
-        // ramp
-        right = ramp(right, prevRightMotor);
-        left = ramp(left, prevLeftMotor);
-        prevRightMotor = right;
-        prevLeftMotor = left;
-        // ramp end
-
-        rightMaster.set(ControlMode.PercentOutput, left);
-        leftMaster.set(ControlMode.PercentOutput, right);
+    private void checkGearError() {
+        if (Const.kDrivePowerGears.length != Const.kDriveTurnGears.length) {
+            System.out.println("!!!!!!!!!!!! Gear Array Bounds Non-match !!!!!!!!!!!!!!");
+        }
     }
 
     private void initTalons() {
@@ -167,24 +165,15 @@ public class Drive extends Subsystem {
         return rightEncoder.getDistance();
     }
 
-    private double applyDeadband(double value) {
-        if (value > 0.04) {
-            return value;
-        } else if (value < -0.04) {
-            return value;
-        }
-        return 0;
+    public void gearUp() {
+        if (gear < Const.kDrivePowerGears.length - 1)
+            gear++;
+        System.out.println("Gear+ " + gear);
     }
 
-    private double prevLeftMotor = 0, prevRightMotor = 0;
-    private double maxAcceleration = 0.05; // 1/50;
-
-    private double ramp(double value, double prevValue) {
-        if (value - prevValue > maxAcceleration) {
-            value = prevValue + maxAcceleration;
-        } else if (value - prevValue < -maxAcceleration) {
-            value = prevValue - maxAcceleration;
-        }
-        return value;
+    public void gearDown() {
+        if (gear > 0)
+            gear--;
+        System.out.println("Gear- " + gear);
     }
 }
