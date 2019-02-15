@@ -2,11 +2,11 @@ package frc.robot.commandGroups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
-import frc.robot.Enums.ArmState;
-import frc.robot.Enums.BallState;
-import frc.robot.Enums.EvalEqual;
-import frc.robot.Enums.Evaluate;
-import frc.robot.Enums.JawState;
+import frc.robot.Util.ArmState;
+import frc.robot.Util.BallState;
+import frc.robot.Util.EvalEqual;
+import frc.robot.Util.Evaluate;
+import frc.robot.Util.JawState;
 import frc.robot.commands.ArmSetAngle;
 import frc.robot.commands.BallIntakeSet;
 import frc.robot.commands.JawSetAngle;

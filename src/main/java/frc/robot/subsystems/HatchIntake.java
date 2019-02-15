@@ -3,7 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
-import frc.robot.Enums.HatchState;
+import frc.robot.Util.HatchState;
 import frc.robot.commands.HatchIntakeSet;
 
 public class HatchIntake extends Subsystem {

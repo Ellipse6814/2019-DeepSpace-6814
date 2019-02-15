@@ -1,4 +1,4 @@
-package frc.robot.Enums;
+package frc.robot.Util;
 
 public class EvalEqual implements Evaluate {
     private boolean bool;

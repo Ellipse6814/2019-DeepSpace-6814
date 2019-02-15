@@ -2,8 +2,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.Enums.JawState;
-import frc.robot.Enums.MotorDirection;
+import frc.robot.Util.JawState;
+import frc.robot.Util.MotorDirection;
 import frc.robot.subsystems.Jaw;
 
 public class JawReset extends Command {

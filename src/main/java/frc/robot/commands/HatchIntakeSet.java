@@ -2,7 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.Enums.HatchState;
+import frc.robot.Util.HatchState;
 import frc.robot.subsystems.HatchIntake;
 
 public class HatchIntakeSet extends Command {

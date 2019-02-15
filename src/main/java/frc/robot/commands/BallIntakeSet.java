@@ -4,8 +4,8 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Const;
 import frc.robot.Robot;
-import frc.robot.Enums.BallState;
-import frc.robot.Enums.MotorDirection;
+import frc.robot.Util.BallState;
+import frc.robot.Util.MotorDirection;
 import frc.robot.subsystems.BallIntake;
 
 public class BallIntakeSet extends Command {

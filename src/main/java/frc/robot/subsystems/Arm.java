@@ -10,8 +10,8 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
-import frc.robot.Enums.ArmState;
-import frc.robot.Enums.MotorDirection;
+import frc.robot.Util.ArmState;
+import frc.robot.Util.MotorDirection;
 
 public class Arm extends Subsystem {
 

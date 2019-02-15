@@ -2,8 +2,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.Enums.ArmState;
-import frc.robot.Enums.MotorDirection;
+import frc.robot.Util.ArmState;
+import frc.robot.Util.MotorDirection;
 import frc.robot.subsystems.Arm;
 
 public class ArmReset extends Command {

@@ -1,8 +1,7 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Enums.Evaluate;
+import frc.robot.Util.Evaluate;
 
 public class WaitUntil extends Command {
 

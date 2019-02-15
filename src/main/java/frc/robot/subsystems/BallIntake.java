@@ -5,7 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
-import frc.robot.Enums.MotorDirection;
+import frc.robot.Util.MotorDirection;
 
 public class BallIntake extends Subsystem {
 

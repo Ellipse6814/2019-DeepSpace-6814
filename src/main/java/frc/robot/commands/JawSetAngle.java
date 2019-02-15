@@ -3,7 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Const;
 import frc.robot.Robot;
-import frc.robot.Enums.JawState;
+import frc.robot.Util.JawState;
 import frc.robot.subsystems.Jaw;
 
 public class JawSetAngle extends Command {
