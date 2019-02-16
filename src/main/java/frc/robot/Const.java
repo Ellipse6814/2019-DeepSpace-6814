@@ -71,4 +71,8 @@ public class Const {
     public static final double[] kDriveTurnGears = { 0.3333, 0.6666, 1 };
 
     public static final double maxAccelMSS = 100;
+
+    // LEDs:
+
+    public static final int kLEDPort = 0;
 }
