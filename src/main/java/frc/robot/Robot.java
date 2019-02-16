@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.auto.AutoDoNothing;
+import frc.robot.log.Logger;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.BallIntake;
 import frc.robot.subsystems.Drive;
@@ -23,6 +24,7 @@ public class Robot extends TimedRobot {
     public static Arm arm = Arm.getInstance();
     public static Jaw jaw = Jaw.getInstance();
     public static LED led = LED.getInstance();
+    public static Logger logger = Logger.getInstance();
 
     Command autoCommand;
     SendableChooser<Command> autoChooser = new SendableChooser<>();

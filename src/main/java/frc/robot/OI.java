@@ -41,21 +41,10 @@ public class OI {
     }
 
     public boolean getExecButton() {
-        return true; // TODO:
+        return singleJoystick1.getRawButton(1);
     }
-    //// TRIGGERING COMMANDS WITH BUTTONS
-    // Once you have a button, it's trivial to bind it to a button in one of
-    // three ways:
 
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
+    private void initSmartDashboardControlButtons() {
 
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-
-    // Start the command when the button is released and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
+    }
 }

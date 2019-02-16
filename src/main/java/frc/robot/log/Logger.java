@@ -3,6 +3,7 @@ package frc.robot.log;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 
 /**
@@ -32,11 +33,10 @@ public class Logger {
 
 	private Logger() {
 		try {
-			// String name = DriverStation.getInstance().getEventName() +
-			// DriverStation.getInstance().getMatchType()
-			// + "Match" + DriverStation.getInstance().getMatchNumber() + ".txt";
-			// writer = new PrintWriter("/home/lvuser/" + name + ".csv");
-			writer = new PrintWriter("/home/lvuser/Log.csv");
+			String name = DriverStation.getInstance().getEventName() + DriverStation.getInstance().getMatchType()
+					+ "Match" + DriverStation.getInstance().getMatchNumber();
+			writer = new PrintWriter("/home/lvuser/" + name + ".csv");
+			// writer = new PrintWriter("/home/lvuser/Log.csv");
 			valid = true;
 			writer.println("-----,-----------,-----------,--------------");
 			writer.println("MessageLevel, Title, Timestamp, Message");

@@ -16,6 +16,7 @@ public class Arm extends Subsystem {
 
     private static Arm instance;
     public ArmState state;
+    // private Logger logger = Robot.logger;
 
     public static Arm getInstance() {
         if (instance == null) {
