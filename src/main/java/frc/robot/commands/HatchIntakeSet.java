@@ -22,7 +22,7 @@ public class HatchIntakeSet extends Command {
         if (hatchIntake.state == state)
             return;
 
-        if (state == HatchState.Open) {
+        if (state == HatchState.Grab) {
             hatchIntake.openHatchIntake();
             // hatchIntake.state//TODO: ???
         } else {

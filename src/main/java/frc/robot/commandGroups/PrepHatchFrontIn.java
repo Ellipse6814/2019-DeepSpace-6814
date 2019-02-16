@@ -8,13 +8,11 @@ import frc.robot.commands.ArmSetAngle;
 import frc.robot.commands.HatchIntakeSet;
 import frc.robot.commands.JawSetAngle;
 
-public class IntakeHatchFrontOpen extends CommandGroup {
-    /**
-     * Add your docs here.
-     */
-    public IntakeHatchFrontOpen() {
+public class PrepHatchFrontIn extends CommandGroup {
+
+    public PrepHatchFrontIn() {
         addParallel(new ArmSetAngle(ArmState.FrontHatchInOut));
         addParallel(new JawSetAngle(JawState.Front));
-        addParallel(new HatchIntakeSet(HatchState.Open));
+        addParallel(new HatchIntakeSet(HatchState.Release));
     }
 }

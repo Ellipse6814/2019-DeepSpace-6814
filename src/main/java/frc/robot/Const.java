@@ -15,11 +15,13 @@ public class Const {
     public static final int kTalonCommTimeout = 10; // ms
 
     // Arm Setpoints
-    public static final double kArmSetpointDegFrontBallOut = 0;
+    public static final double kArmSetpointDegFrontBallRocket = 0;
+    public static final double kArmSetpointDegFrontBallCargo = 0;
     public static final double kArmSetpointDegFrontBallIn = 0;
     public static final double kArmSetpointDegFrontHatchInOut = 0;
     public static final double kArmSetpointDegBackHatchInOut = 0;
-    public static final double kArmSetpointDegBackBallOut = 0;
+    public static final double kArmSetpointDegBackBallRocket = 0;
+    public static final double kArmSetpointDegBackBallCargo = 0;
     public static final double kArmSetpointDegMiddle = 0;
 
     public static final double kArmPIDTolerance = 5;// degs

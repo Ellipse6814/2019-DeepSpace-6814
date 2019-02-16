@@ -40,6 +40,9 @@ public class OI {
         return singleJoystick2;
     }
 
+    public boolean getExecButton() {
+        return true; // TODO:
+    }
     //// TRIGGERING COMMANDS WITH BUTTONS
     // Once you have a button, it's trivial to bind it to a button in one of
     // three ways:

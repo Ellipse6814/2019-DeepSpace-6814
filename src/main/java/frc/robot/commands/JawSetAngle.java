@@ -24,7 +24,7 @@ public class JawSetAngle extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        if (jaw.state==state)
+        if (jaw.state == state)
             return;
         jaw.state = state;
         calcAngle();
@@ -39,7 +39,7 @@ public class JawSetAngle extends Command {
             angle = Const.kJawSetpointDegBack;
         else if (state == JawState.Front)
             angle = Const.kJawSetpointDegFront;
-        else if (state == JawState.Idle)
+        else if (state == JawState.Ball)
             angle = Const.kJawSetpointDegIdle;
     }
 

@@ -17,7 +17,7 @@ public class HatchIntake extends Subsystem {
         return instance;
     }
 
-    public HatchState state = HatchState.Open;
+    public HatchState state = HatchState.Grab;
     private DoubleSolenoid doubleSolenoid;
 
     private HatchIntake() {
@@ -34,6 +34,6 @@ public class HatchIntake extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-        setDefaultCommand(new HatchIntakeSet(HatchState.Open));
+        setDefaultCommand(new HatchIntakeSet(HatchState.Grab));
     }
 }

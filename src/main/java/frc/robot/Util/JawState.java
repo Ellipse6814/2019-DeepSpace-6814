@@ -1,5 +1,5 @@
 package frc.robot.Util;
 
 public enum JawState {
-    Front, Back, Idle, Reset, Custom
+    Front, Back, Ball, Reset, Custom
 }

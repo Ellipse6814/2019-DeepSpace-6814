@@ -14,14 +14,15 @@ import frc.robot.commands.WaitUntil;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Jaw;
 
-public class IntakeBallFrontOut extends CommandGroup {
+@Deprecated
+public class AutonIntakeBallFrontOut extends CommandGroup {
 
     private Arm arm = Robot.arm;
     private Jaw jaw = Robot.jaw;
 
-    public IntakeBallFrontOut(boolean reqSlow, Evaluate senderReady) {
-        addParallel(new ArmSetAngle(ArmState.FrontBallOut));
-        addParallel(new JawSetAngle(JawState.Idle));
+    public AutonIntakeBallFrontOut(boolean reqSlow, Evaluate senderReady) {
+        addParallel(new ArmSetAngle(ArmState.FrontBallCargo));
+        addParallel(new JawSetAngle(JawState.Ball));
 
         addSequential(new WaitUntil(new Evaluate() {
             public boolean evaluate() {
@@ -38,16 +39,7 @@ public class IntakeBallFrontOut extends CommandGroup {
 
     }
 
-    public IntakeBallFrontOut() {
+    public AutonIntakeBallFrontOut() {
         this(false, new EvalEqual(true));
     }
 }
-
-
-
-
-
-
-
-
-
