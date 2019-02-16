@@ -7,12 +7,12 @@ import frc.robot.Util.HatchState;
 import frc.robot.Util.JawState;
 import frc.robot.commands.SetRobot;
 
-public class FrontBallIn extends Mode {
+public class FrontBallFloorIn extends Mode {
 
     private Command prepCmd;
     private Command execCmd;
 
-    public FrontBallIn() {
+    public FrontBallFloorIn() {
     }
 
     @Override

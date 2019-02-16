@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
 import frc.robot.Util.TalonHelper;
+import frc.robot.commands.Drive2Joy;
 import frc.robot.path.DriveMotorState;
 import frc.robot.path.Odometer;
 
@@ -38,11 +39,6 @@ public class Drive extends Subsystem {
         initGyro();
         initTalons();
         checkGearError();
-    }
-
-    @Override
-    protected void initDefaultCommand() {
-
     }
 
     public void drive(double left, double right) {
@@ -133,5 +129,10 @@ public class Drive extends Subsystem {
         if (gear > 0)
             gear--;
         System.out.println("Gear- " + gear);
+    }
+
+    @Override
+    protected void initDefaultCommand() {
+        setDefaultCommand(new Drive2Joy());
     }
 }

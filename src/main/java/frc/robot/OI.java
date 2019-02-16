@@ -1,6 +1,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.modes.*;
 
 public class OI {
 
@@ -21,7 +23,7 @@ public class OI {
     // buttonNumber);
 
     private OI() {
-
+        initSmartDashboardControlButtons();
     }
 
     public Joystick getDoubleJoystick1() {
@@ -45,6 +47,20 @@ public class OI {
     }
 
     private void initSmartDashboardControlButtons() {
+        SmartDashboard.putData("Front Ball Floor In", new FrontBallFloorIn());
+        SmartDashboard.putData("Front Ball Human In", new FrontBallHumanIn());
+        SmartDashboard.putData("Front Ball Cargo Out", new FrontBallCargo());
+        SmartDashboard.putData("Front Ball Rocket Out", new FrontBallRocket());
+        SmartDashboard.putData("Front Hatch In", new FrontHatchIn());
+        SmartDashboard.putData("Front Hatch Out", new FrontHatchOut());
+
+        SmartDashboard.putData("Back Ball Human In", new BackBallHumanIn());
+        SmartDashboard.putData("Back Ball Cargo Out", new BackBallCargo());
+        SmartDashboard.putData("Back Ball Rocket Out", new BackBallRocket());
+        SmartDashboard.putData("Back Hatch In", new BackHatchIn());
+        SmartDashboard.putData("Back Hatch Out", new BackHatchOut());
+
+        SmartDashboard.putData("Middle Idle", new MiddleIdle());
 
     }
 }
