@@ -1,5 +1,7 @@
 package frc.robot.commands;
 
+import java.util.List;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -7,6 +9,12 @@ public class DoNothing extends Command {
 
     public DoNothing(Subsystem subsystem) {
         requires(subsystem);
+    }
+
+    public DoNothing(List<Subsystem> subsystems) {
+        subsystems.forEach((subsystem) -> {
+            requires(subsystem);
+        });
     }
 
     // Called just before this Command runs the first time

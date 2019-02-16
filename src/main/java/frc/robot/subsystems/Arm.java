@@ -60,6 +60,14 @@ public class Arm extends Subsystem {
         armMotor.set(ControlMode.Position, targetPositionRotations);
     }
 
+    public void set(ArmState wantedState) {
+        if (state == wantedState)
+            return;
+
+        state = wantedState;
+        setAngle(Const.calcArmAngle(wantedState));
+    }
+
     public void setOpenLoop(double speed, MotorDirection direction) {
         if (direction == MotorDirection.Forward) {
             armMotor.set(ControlMode.PercentOutput, speed);
@@ -81,7 +89,7 @@ public class Arm extends Subsystem {
     }
 
     public double getPIDError() {
-        return armMotor.getClosedLoopError(0);
+        return Const.talon4096Unit2Deg(armMotor.getClosedLoopError(0));
     }
 
     public void resetEncoder() {
@@ -91,22 +99,6 @@ public class Arm extends Subsystem {
     public boolean onTarget() {
         return false; // TODO: stub
     }
-
-    // public void setArmFront() {
-    // setArmAngle(Const.kArmSetpointDegFront);
-    // }
-
-    // public void setArmBack() {
-    // setArmAngle(Const.kArmSetpointDegBack);
-    // }
-
-    // public void setArmMiddle() {
-    // setArmAngle(Const.kArmSetpointDegMiddle);
-    // }
-
-    // public void setArmCustom(double angle) {
-    // setArmAngle(angle);
-    // }
 
     @Override
     public void initDefaultCommand() {

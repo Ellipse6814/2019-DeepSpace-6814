@@ -2,9 +2,9 @@ package frc.robot.auto;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DoNothing extends Command {
+public class AutoDoNothing extends Command {
 
-    public DoNothing() {
+    public AutoDoNothing() {
         // requires nothing
     }
 

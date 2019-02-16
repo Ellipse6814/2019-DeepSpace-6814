@@ -18,16 +18,23 @@ public class LED extends Subsystem {
     }
 
     private SpeedController led = new Spark(Const.kLEDPort);
+    public LEDState state = LEDState.White;
+    private double speed;
 
     private LED() {
     }
 
     public void setLEDRaw(double config) {
-        led.set(config);
+        speed = config;
     }
 
-    public void setLED(LEDState state) {
-        // TODO: replace the values here with the speed values, then call @{Link setLEDRaw()}
+    public void set(LEDState state) {
+        speed = Const.calcLEDSpd(state);
+    }
+
+    @Override
+    public void periodic() {
+        led.set(speed);
     }
 
     @Override

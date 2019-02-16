@@ -38,26 +38,18 @@ public class BallIntakeSet extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        if (state == BallState.Custom) {
+            MotorDirection md = intake ? MotorDirection.Forward : MotorDirection.Backward;
+            ballIntake.setMotor(md, speed, amp);
+        } else {
+            ballIntake.set(state);
+        }
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        if (state == BallState.In) {
-            ballIntake.setMotor(MotorDirection.Backward, Const.kBallIntakeSpd, Const.kBallIntakeStallAmp);
-        } else if (state == BallState.Out) {
-            ballIntake.setMotor(MotorDirection.Forward, Const.kBallIntakeSpd, Const.kBallIntakeNormalAmp);
-        } else if (state == BallState.OutSlow) {
-            ballIntake.setMotor(MotorDirection.Forward, Const.kBallIntakeSpdSlow, Const.kBallIntakeNormalAmp);
-        } else if (state == BallState.Hold) {
-            if (Timer.getFPGATimestamp() % 1000 < 400)
-                ballIntake.setMotor(MotorDirection.Backward, Const.kBallIntakeSpdSlow, Const.kBallIntakeStallAmp);
-        } else if (state == BallState.Custom) {
-            MotorDirection md = intake ? MotorDirection.Backward : MotorDirection.Forward;
-            ballIntake.setMotor(md, speed, amp);
-        } else { // if (state == BallState.Stop) {
-            ballIntake.setMotor(MotorDirection.Forward, 0, 10);
-        }
+
     }
 
     // Make this return true when this Command no longer needs to run execute()

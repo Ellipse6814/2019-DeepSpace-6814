@@ -33,13 +33,20 @@ public class Jaw extends Subsystem {
     private void initTalons() {
         jawAngleMotor = TalonHelper.createTalon(Const.kJawAngleMotorPort, false);
         TalonHelper.configCurrentLimit(jawAngleMotor, 30);
-        TalonHelper.configMagEncoder(jawAngleMotor, true);// TODO: 
+        TalonHelper.configMagEncoder(jawAngleMotor, true);// TODO:
     }
 
     public void setAngle(double angle) {
         // 4096 TalonUnits per rotation
         double targetPositionRotations = Const.deg2Talon4096Unit(angle);
         jawAngleMotor.set(ControlMode.Position, targetPositionRotations);
+    }
+
+    public void set(JawState wantedState) {
+        if (state == wantedState)
+            return;
+        state = wantedState;
+        setAngle(Const.calcJawAngle(wantedState));
     }
 
     public void setOpenLoop(double speed, MotorDirection direction) {

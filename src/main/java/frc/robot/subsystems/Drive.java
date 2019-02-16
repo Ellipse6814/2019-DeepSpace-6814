@@ -22,8 +22,6 @@ public class Drive extends Subsystem {
     public TalonSRX leftMaster, rightMaster;
     public VictorSPX leftSlave, rightSlave;
 
-    private Encoder leftEncoder, rightEncoder;
-
     private AHRS gyro;
     private double gyroZero = 0;
 
@@ -97,35 +95,8 @@ public class Drive extends Subsystem {
         }
     }
 
-    @Deprecated
-    private void initEncoders() {
-        final double kDriveWheelDiameter = 0.152; // meters
-        final double kDriveGearboxRatio = 1 / 1.0;
-        final double kDriveRotation2Distance = (kDriveGearboxRatio) * (Math.PI * kDriveWheelDiameter);
-        // final double kDriveRotation2Distance = (kDriveGearboxRatio) * (0.4616);
-        final double kDrivePulse2Distance = kDriveRotation2Distance / 128;
-
-        leftEncoder = new Encoder(2, 3, false, EncodingType.k4X);
-        leftEncoder.setMaxPeriod(1); // regard motor as stopped if no movement for 0.2 seconds
-        leftEncoder.setMinRate(0); // regard motor as stopped if distance per second < 10
-        leftEncoder.setDistancePerPulse(kDrivePulse2Distance); // the scaling constant that converts pulses
-        // into distance
-        leftEncoder.setSamplesToAverage(5); // used to reduce noise in period
-        leftEncoder.reset();
-
-        // ---------------------------------------------------
-
-        rightEncoder = new Encoder(1, 0, false, EncodingType.k4X);
-        rightEncoder.setMaxPeriod(1); // regard motor as stopped if no movement for 0.2 seconds
-        rightEncoder.setMinRate(0); // regard motor as stopped if distance per second < 10
-        rightEncoder.setDistancePerPulse(kDrivePulse2Distance); // the scaling constant that converts pulses
-        // into distance
-        rightEncoder.setSamplesToAverage(5); // used to reduce noise in period
-        rightEncoder.reset();
-    }
-
     public double getEncoders() {
-        return (leftEncoder.get() + rightEncoder.get()) / 2;
+        return (getLeftEncoder() + getRightEncoder()) / 2;
     }
 
     public double getGyro() {
@@ -133,8 +104,8 @@ public class Drive extends Subsystem {
     }
 
     public void zeroEncoder() {
-        leftEncoder.reset();
-        rightEncoder.reset();
+        leftMaster.setSelectedSensorPosition(0);
+        rightMaster.setSelectedSensorPosition(0);
         Odometer.getInstance().reset();
     }
 
@@ -148,11 +119,11 @@ public class Drive extends Subsystem {
     }
 
     public double getLeftEncoder() {
-        return leftEncoder.getDistance();
+        return Const.talon4096Unit2Deg(leftMaster.getSelectedSensorPosition(0));
     }
 
     public double getRightEncoder() {
-        return rightEncoder.getDistance();
+        return Const.talon4096Unit2Deg(rightMaster.getSelectedSensorPosition(0));
     }
 
     public void gearUp() {

@@ -1,34 +1,25 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Const;
 import frc.robot.Robot;
-import frc.robot.Util.ArmState;
-import frc.robot.subsystems.Arm;
+import frc.robot.Util.LEDState;
+import frc.robot.subsystems.LED;
 
-public class ArmSetAngle extends Command {
+public class LEDSet extends Command {
 
-    private Arm arm = Robot.arm;
-    private double angle;
-    private ArmState state;
+    private LED led = Robot.led;
 
-    public ArmSetAngle(ArmState state) {
-        this(state, 0);
-    }
+    private LEDState state;
 
-    public ArmSetAngle(ArmState state, double angle) {
-        requires(arm);
-        this.angle = angle;
+    public LEDSet(LEDState state) {
+        requires(led);
+        this.state = state;
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        if (state == ArmState.Custom) {
-            arm.setAngle(angle);
-        } else {
-            arm.set(state);
-        }
+        led.set(state);
     }
 
     // Called repeatedly when this Command is scheduled to run

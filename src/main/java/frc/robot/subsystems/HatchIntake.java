@@ -24,6 +24,19 @@ public class HatchIntake extends Subsystem {
         doubleSolenoid = new DoubleSolenoid(Const.kIntakeSolenoidPort1, Const.kIntakeSolenoidPort2);
     }
 
+    public void set(HatchState wantedState) {
+        if (state == wantedState)
+            return;
+
+        state = wantedState;
+        
+        if (state == HatchState.Grab) {
+            openHatchIntake();
+        } else {
+            closeHatchIntake();
+        }
+    }
+
     public void openHatchIntake() {
         doubleSolenoid.set(Const.kHatchIntakeOpenPos);
     }

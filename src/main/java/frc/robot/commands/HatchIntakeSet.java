@@ -19,15 +19,7 @@ public class HatchIntakeSet extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        if (hatchIntake.state == state)
-            return;
-
-        if (state == HatchState.Grab) {
-            hatchIntake.openHatchIntake();
-            // hatchIntake.state//TODO: ???
-        } else {
-            hatchIntake.closeHatchIntake();
-        }
+        hatchIntake.set(state);
     }
 
     // Called repeatedly when this Command is scheduled to run
