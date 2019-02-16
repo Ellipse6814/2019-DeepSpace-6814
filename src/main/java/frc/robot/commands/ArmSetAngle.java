@@ -1,7 +1,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Const;
 import frc.robot.Robot;
 import frc.robot.Util.ArmState;
 import frc.robot.subsystems.Arm;
@@ -14,6 +13,10 @@ public class ArmSetAngle extends Command {
 
     public ArmSetAngle(ArmState state) {
         this(state, 0);
+
+        if (state == ArmState.Custom) {
+            System.out.println("Unspecified custom arm command.");
+        }
     }
 
     public ArmSetAngle(ArmState state, double angle) {
@@ -39,7 +42,8 @@ public class ArmSetAngle extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return false;
+        return false; // Don't finish: to hold up the subsystem's attention so other commands don't
+                      // rush on and take over
     }
 
     // Called once after isFinished returns true

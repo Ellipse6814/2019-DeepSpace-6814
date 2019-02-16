@@ -5,9 +5,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.subsystems.Drive;
 
-/**
- * An example command. You can replace me with your own command.
- */
 public class Drive2Joy extends Command {
 
     private Joystick joy1 = Robot.oi.getDoubleJoystick1();
@@ -15,7 +12,7 @@ public class Drive2Joy extends Command {
 
     public Drive2Joy() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.drive);
+        requires(drive);
     }
 
     // Called just before this Command runs the first time

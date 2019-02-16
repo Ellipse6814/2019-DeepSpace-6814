@@ -14,6 +14,10 @@ public class JawSetAngle extends Command {
 
     public JawSetAngle(JawState state) {
         this(state, 0);
+
+        if (state == JawState.Custom) {
+            System.out.println("Unspecified custom jaw command.");
+        }
     }
 
     public JawSetAngle(JawState state, double angle) {
