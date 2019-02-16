@@ -17,7 +17,9 @@ public class Const {
     // Arm Setpoints
     public static final double kArmSetpointDegFrontBallRocket = 0;
     public static final double kArmSetpointDegFrontBallCargo = 0;
-    public static final double kArmSetpointDegFrontBallIn = 0;
+    public static final double kArmSetpointDegFrontBallFloorIn = 0;
+    public static final double kArmSetpointDegFrontBallHumanIn = 0; // TODO: these all still needs to be done
+    public static final double kArmSetpointDegBackBallHumanIn = 0;
     public static final double kArmSetpointDegFrontHatchInOut = 0;
     public static final double kArmSetpointDegBackHatchInOut = 0;
     public static final double kArmSetpointDegBackBallRocket = 0;

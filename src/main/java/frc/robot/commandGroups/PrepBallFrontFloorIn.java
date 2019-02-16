@@ -8,10 +8,11 @@ import frc.robot.commands.ArmSetAngle;
 import frc.robot.commands.BallIntakeSet;
 import frc.robot.commands.JawSetAngle;
 
+@Deprecated
 public class PrepBallFrontFloorIn extends CommandGroup {
 
     public PrepBallFrontFloorIn() {
-        addParallel(new ArmSetAngle(ArmState.FrontBallIn));
+        addParallel(new ArmSetAngle(ArmState.FrontBallFloorIn));
         addParallel(new JawSetAngle(JawState.Ball));
         addParallel(new BallIntakeSet(BallState.In));
     }

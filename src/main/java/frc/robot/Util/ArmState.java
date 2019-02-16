@@ -1,6 +1,6 @@
 package frc.robot.Util;
 
 public enum ArmState {
-    FrontBallIn, FrontBallCargo, FrontBallRocket, FrontHatchInOut, BackHatchInOut, BackBallCargo, BackBallRocket,
-    Middle, Reset, Custom
+    FrontBallFloorIn, FrontBallHumanIn, FrontBallCargo, FrontBallRocket, FrontHatchInOut, BackHatchInOut,
+    BackBallHumanIn, BackBallCargo, BackBallRocket, Middle, Reset, Custom
 }

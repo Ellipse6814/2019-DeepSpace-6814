@@ -1,8 +1,11 @@
 package frc.robot.modes;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.commandGroups.ExecHatchFrontOut;
-import frc.robot.commandGroups.PrepHatchFrontOut;
+import frc.robot.Util.ArmState;
+import frc.robot.Util.BallState;
+import frc.robot.Util.HatchState;
+import frc.robot.Util.JawState;
+import frc.robot.commands.SetRobot;
 
 public class FrontHatchOut extends Mode {
 
@@ -14,7 +17,7 @@ public class FrontHatchOut extends Mode {
 
     @Override
     protected void prepInit() {
-        prepCmd = new PrepHatchFrontOut();
+        prepCmd = new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop, HatchState.Grab);
         prepCmd.start();
     }
 
@@ -24,7 +27,7 @@ public class FrontHatchOut extends Mode {
 
     @Override
     protected void execInit() {
-        execCmd = new ExecHatchFrontOut();
+        execCmd = new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop, HatchState.Release);
         execCmd.start();
     }
 

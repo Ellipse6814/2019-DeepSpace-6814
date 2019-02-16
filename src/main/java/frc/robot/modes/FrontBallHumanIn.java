@@ -7,17 +7,17 @@ import frc.robot.Util.HatchState;
 import frc.robot.Util.JawState;
 import frc.robot.commands.SetRobot;
 
-public class FrontBallIn extends Mode {
+public class FrontBallHumanIn extends Mode {
 
     private Command prepCmd;
     private Command execCmd;
 
-    public FrontBallIn() {
+    public FrontBallHumanIn() {
     }
 
     @Override
     protected void prepInit() {
-        prepCmd = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball, BallState.In, HatchState.Release);
+        prepCmd = new SetRobot(ArmState.FrontBallHumanIn, JawState.Ball, BallState.In, HatchState.Release);
         prepCmd.start();
     }
 
@@ -27,7 +27,7 @@ public class FrontBallIn extends Mode {
 
     @Override
     protected void execInit() {
-        execCmd = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball, BallState.Hold, HatchState.Release);
+        execCmd = new SetRobot(ArmState.FrontBallHumanIn, JawState.Ball, BallState.Hold, HatchState.Release);
         execCmd.start();
     }
 

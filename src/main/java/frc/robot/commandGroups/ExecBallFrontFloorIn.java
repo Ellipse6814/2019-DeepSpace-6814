@@ -8,6 +8,7 @@ import frc.robot.commands.ArmSetAngle;
 import frc.robot.commands.BallIntakeSet;
 import frc.robot.commands.JawSetAngle;
 
+@Deprecated
 public class ExecBallFrontFloorIn extends CommandGroup {
 
     public ExecBallFrontFloorIn() {

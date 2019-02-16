@@ -1,7 +1,6 @@
 package frc.robot.modes;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
 import frc.robot.Robot;
 
 public abstract class Mode extends Command {

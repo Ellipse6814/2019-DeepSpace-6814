@@ -35,12 +35,16 @@ public class ArmSetAngle extends Command {
         if (state == ArmState.Custom)
             return;
 
-        if (state == ArmState.FrontBallIn)
-            angle = Const.kArmSetpointDegFrontBallIn;
+        if (state == ArmState.FrontBallFloorIn)
+            angle = Const.kArmSetpointDegFrontBallFloorIn;
+        else if (state == ArmState.FrontBallHumanIn)
+            angle = Const.kArmSetpointDegFrontBallHumanIn;
         else if (state == ArmState.FrontBallCargo)
             angle = Const.kArmSetpointDegFrontBallCargo;
         else if (state == ArmState.FrontBallRocket)
             angle = Const.kArmSetpointDegFrontBallRocket;
+        else if (state == ArmState.BackBallHumanIn)
+            angle = Const.kArmSetpointDegBackBallHumanIn;
         else if (state == ArmState.BackBallCargo)
             angle = Const.kArmSetpointDegBackBallCargo;
         else if (state == ArmState.BackBallRocket)

@@ -8,6 +8,7 @@ import frc.robot.commands.ArmSetAngle;
 import frc.robot.commands.HatchIntakeSet;
 import frc.robot.commands.JawSetAngle;
 
+@Deprecated
 public class PrepHatchFrontOut extends CommandGroup {
 
     public PrepHatchFrontOut() {
