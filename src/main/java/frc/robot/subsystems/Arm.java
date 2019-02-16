@@ -8,10 +8,12 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
 import frc.robot.Util.ArmState;
 import frc.robot.Util.MotorDirection;
+import frc.robot.Util.TalonHelper;
 
 public class Arm extends Subsystem {
 
@@ -36,29 +38,17 @@ public class Arm extends Subsystem {
     }
 
     private void initTalons() {
-        armMotor = new TalonSRX(Const.kArmMotorPort);
-        armMotor.setInverted(false);
-        armMotor.enableVoltageCompensation(true);
-        armMotor.configContinuousCurrentLimit(30, 100);
-        armMotor.configPeakCurrentLimit(0);
-        armMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 10, 10);
+        armMotor = TalonHelper.createTalon(Const.kArmMotorPort, false); // TODO:
 
-        armMotorSlave = new VictorSPX(Const.kArmMotorSlavePort);
-        armMotorSlave.follow(armMotor);
-        armMotorSlave.setInverted(InvertType.FollowMaster);
-        armMotorSlave.enableVoltageCompensation(true);
+        TalonHelper.configCurrentLimit(armMotor, 30);
+        armMotorSlave = TalonHelper.createSlaveVictor(Const.kArmMotorSlavePort, armMotor);
 
-        // Config encoder
-        // armMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,
-        // 0, 10);
-        armMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
-        armMotor.setSensorPhase(true);
+        TalonHelper.configQuadEncoder(armMotor, false); // TODO:
 
-        // Config PID
-        armMotor.config_kP(0, 2, 10);
-        armMotor.config_kI(0, 0, 10);
-        armMotor.config_kD(0, 0, 10);
-        armMotor.config_kF(0, 1, 10);
+        TalonHelper.configPID(armMotor, 0, 3, 0, 0, 0);
+
+        // armMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 10,
+        // 10);
 
         // Output Encoder Values
         System.out.println("Left Encoder Position" + armMotor.getSelectedSensorPosition(0));

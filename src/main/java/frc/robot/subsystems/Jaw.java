@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
 import frc.robot.Util.JawState;
 import frc.robot.Util.MotorDirection;
+import frc.robot.Util.TalonHelper;
 
 public class Jaw extends Subsystem {
 
@@ -30,11 +31,9 @@ public class Jaw extends Subsystem {
     }
 
     private void initTalons() {
-        jawAngleMotor = new TalonSRX(Const.kJawAngleMotorPort);
-        jawAngleMotor.setInverted(false);
-        jawAngleMotor.enableVoltageCompensation(true);
-        jawAngleMotor.configContinuousCurrentLimit(30, 100);
-        jawAngleMotor.configPeakCurrentLimit(0);
+        jawAngleMotor = TalonHelper.createTalon(Const.kJawAngleMotorPort, false);
+        TalonHelper.configCurrentLimit(jawAngleMotor, 30);
+        TalonHelper.configMagEncoder(jawAngleMotor, true);// TODO: 
     }
 
     public void setAngle(double angle) {

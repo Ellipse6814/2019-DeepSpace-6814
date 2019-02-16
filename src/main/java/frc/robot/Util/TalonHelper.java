@@ -1,5 +1,7 @@
 package frc.robot.Util;
 
+import java.util.List;
+
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -55,8 +57,40 @@ public class TalonHelper {
         talon.setNeutralMode(mode);
     }
 
+    public static void configNeutralMode(VictorSPX victor, NeutralMode mode) {
+        victor.setNeutralMode(mode);
+    }
+
+    public static void configNeutralMode(List<Object> motors, NeutralMode mode) {
+        motors.forEach((motor) -> {
+            if (motor instanceof TalonSRX) {
+                configNeutralMode((TalonSRX) motor, mode);
+            } else if (motor instanceof VictorSPX) {
+                configNeutralMode((VictorSPX) motor, mode);
+            } else {
+                System.out.println("ERROR: config neutral mode received non-motor objects");
+            }
+        });
+    }
+
     public static void configDeadband(TalonSRX talon, double percent) {
         talon.configNeutralDeadband(percent);
+    }
+
+    public static void configDeadband(VictorSPX victor, double percent) {
+        victor.configNeutralDeadband(percent);
+    }
+
+    public static void configDeadband(List<Object> motors, double percent) {
+        motors.forEach((motor) -> {
+            if (motor instanceof TalonSRX) {
+                configDeadband((TalonSRX) motor, percent);
+            } else if (motor instanceof VictorSPX) {
+                configDeadband((VictorSPX) motor, percent);
+            } else {
+                System.out.println("ERROR: config deadband received non-motor objects");
+            }
+        });
     }
 
     public static void configPID(TalonSRX talon, int slot, double p, double i, double d, double f) {

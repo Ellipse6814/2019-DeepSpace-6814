@@ -59,6 +59,11 @@ public class Const {
 
     // Drive
 
+    public static final int kDriveLeftMasterMotorPort = 0;
+    public static final int kDriveRightMasterMotorPort = 0;
+    public static final int kDriveLeftSlaveMotorPort = 0;
+    public static final int kDriveRightSlaveMotorPort = 0;
+
     public static final int kDriveMotorMaxAmp = 50; // 50A
     public static final double kDriveJoystickDeadband = 0.05;
 

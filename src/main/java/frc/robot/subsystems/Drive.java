@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import java.util.Arrays;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -12,6 +14,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
+import frc.robot.Util.TalonHelper;
 import frc.robot.path.DriveMotorState;
 import frc.robot.path.Odometer;
 
@@ -38,7 +41,7 @@ public class Drive extends Subsystem {
 
     private Drive() {
         initGyro();
-        initEncoders(); // TODO: we are going to use new encoders!!!
+        // initEncoders(); // TODO: we are going to use new encoders!!!
         initTalons();
         checkGearError();
     }
@@ -65,36 +68,22 @@ public class Drive extends Subsystem {
     }
 
     private void initTalons() {
-        rightMaster = new TalonSRX(1);
-        leftMaster = new TalonSRX(2);
 
-        rightSlave = new VictorSPX(3);
-        leftSlave = new VictorSPX(4);
+        rightMaster = TalonHelper.createTalon(Const.kDriveRightMasterMotorPort, false); // TODO:
+        leftMaster = TalonHelper.createTalon(Const.kDriveLeftMasterMotorPort, true);
 
-        rightSlave.follow(rightMaster);
-        leftSlave.follow(leftMaster);
+        rightSlave = TalonHelper.createSlaveVictor(Const.kDriveRightSlaveMotorPort, rightMaster);
+        leftSlave = TalonHelper.createSlaveVictor(Const.kDriveLeftSlaveMotorPort, leftMaster);
 
-        rightMaster.setInverted(true);
-        rightSlave.setInverted(InvertType.FollowMaster);
+        TalonHelper.configCurrentLimit(rightMaster, 50);
+        TalonHelper.configCurrentLimit(leftMaster, 50);
 
-        leftMaster.setNeutralMode(NeutralMode.Brake);
-        rightMaster.setNeutralMode(NeutralMode.Brake);
-        leftSlave.setNeutralMode(NeutralMode.Brake);
-        rightSlave.setNeutralMode(NeutralMode.Brake);
+        TalonHelper.configNeutralMode(Arrays.asList(rightMaster, leftMaster, rightSlave, leftSlave), NeutralMode.Brake);
 
-        leftMaster.configNeutralDeadband(0.04);
-        rightMaster.configNeutralDeadband(0.04);
-        leftSlave.configNeutralDeadband(0.04);
-        rightSlave.configNeutralDeadband(0.04);
+        TalonHelper.configDeadband(Arrays.asList(rightMaster, leftMaster, rightSlave, leftSlave), 0.04);
 
-        // limit current to under 50A
-        rightMaster.configPeakCurrentDuration(0, 10);
-        rightMaster.configContinuousCurrentLimit(Const.kDriveMotorMaxAmp, 10);
-        rightMaster.enableCurrentLimit(true);
-
-        leftMaster.configPeakCurrentDuration(0, 10);
-        leftMaster.configContinuousCurrentLimit(Const.kDriveMotorMaxAmp, 10);
-        leftMaster.enableCurrentLimit(true);
+        TalonHelper.configMagEncoder(rightMaster, true);// TODO:
+        TalonHelper.configMagEncoder(leftMaster, true);// TODO:
     }
 
     private void initGyro() {
@@ -108,6 +97,7 @@ public class Drive extends Subsystem {
         }
     }
 
+    @Deprecated
     private void initEncoders() {
         final double kDriveWheelDiameter = 0.152; // meters
         final double kDriveGearboxRatio = 1 / 1.0;

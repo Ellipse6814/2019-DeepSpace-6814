@@ -3,9 +3,11 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
 import frc.robot.Util.MotorDirection;
+import frc.robot.Util.TalonHelper;
 
 public class BallIntake extends Subsystem {
 
@@ -19,6 +21,7 @@ public class BallIntake extends Subsystem {
     }
 
     private TalonSRX rollerMotor;
+
     private int maxAmp = 10;
 
     private BallIntake() {
@@ -26,22 +29,8 @@ public class BallIntake extends Subsystem {
     }
 
     private void initTalons() {
-        rollerMotor = new TalonSRX(Const.kIntakeRollerMotorPort);
-        rollerMotor.setInverted(false);
-        rollerMotor.enableVoltageCompensation(true);
-
-        // rollerMotor.configPeakCurrentDuration(100, 10); // 100ms /
-        rollerMotor.configPeakCurrentDuration(0, Const.kTalonCommTimeout); // don't allow peak
-        rollerMotor.configContinuousCurrentLimit(10, Const.kTalonCommTimeout);
-        rollerMotor.enableCurrentLimit(true); // turn it on
-
-        // config current PID
-        rollerMotor.configAllowableClosedloopError(0, 0, 10);
-
-        rollerMotor.config_kP(0, 2, 10);
-        rollerMotor.config_kI(0, 0, 10);
-        rollerMotor.config_kD(0, 0, 10);
-        rollerMotor.config_kF(0, 1, 10);
+        rollerMotor = TalonHelper.createTalon(Const.kIntakeRollerMotorPort, false);
+        TalonHelper.configCurrentLimit(rollerMotor, 10);
     }
 
     public void setMaxAmp(int maxAmp) {
