@@ -9,6 +9,7 @@ import frc.robot.Const;
 import frc.robot.Util.BallState;
 import frc.robot.Util.MotorDirection;
 import frc.robot.Util.TalonHelper;
+import frc.robot.commands.DoNothing;
 
 public class BallIntake extends Subsystem {
 
@@ -30,11 +31,12 @@ public class BallIntake extends Subsystem {
     }
 
     private void initTalons() {
-        rollerMotor = TalonHelper.createTalon(Const.kIntakeRollerMotorPort, false);
-        TalonHelper.configCurrentLimit(rollerMotor, 10);
+        rollerMotor = TalonHelper.createTalon(Const.kIntakeRollerMotorPort, Const.kIntakeRollerMotorInverted);
+        TalonHelper.configCurrentLimit(rollerMotor, 10); // this subsystem is special on currents
     }
 
     public void setMaxAmp(int maxAmp) {
+        this.maxAmp = maxAmp;
         rollerMotor.configContinuousCurrentLimit(maxAmp, Const.kTalonCommTimeout);
     }
 
@@ -85,7 +87,6 @@ public class BallIntake extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        // setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new DoNothing(this)); // Do nothing with this subsystem, but still require it
     }
 }

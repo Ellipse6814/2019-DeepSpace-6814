@@ -1,19 +1,16 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.InvertType;
-import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
 import frc.robot.Util.ArmState;
 import frc.robot.Util.MotorDirection;
 import frc.robot.Util.TalonHelper;
+import frc.robot.commands.DoNothing;
 
 public class Arm extends Subsystem {
 
@@ -38,12 +35,12 @@ public class Arm extends Subsystem {
     }
 
     private void initTalons() {
-        armMotor = TalonHelper.createTalon(Const.kArmMotorPort, false); // TODO:
+        armMotor = TalonHelper.createTalon(Const.kArmMotorPort, Const.kArmMotorInverted);
 
         TalonHelper.configCurrentLimit(armMotor, 30);
         armMotorSlave = TalonHelper.createSlaveVictor(Const.kArmMotorSlavePort, armMotor);
 
-        TalonHelper.configQuadEncoder(armMotor, false); // TODO:
+        TalonHelper.configQuadEncoder(armMotor, Const.kArmEncoderInverted);
 
         TalonHelper.configPID(armMotor, 0, 3, 0, 0, 0);
 
@@ -97,11 +94,11 @@ public class Arm extends Subsystem {
     }
 
     public boolean onTarget() {
-        return false; // TODO: stub
+        return Math.abs(Const.calcArmAngle(state) - getEncoderPosition()) < Const.kArmPIDTolerance;
     }
 
     @Override
     public void initDefaultCommand() {
-
+        setDefaultCommand(new DoNothing(this)); // Do nothing with this subsystem, but still require it
     }
 }

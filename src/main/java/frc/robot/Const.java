@@ -21,42 +21,49 @@ public class Const {
 
     // ============================= WIRING: ===============================
 
-    // pneumatic
+    // Pneumatic
     public static final int kIntakeSolenoidPort1 = 0;
     public static final int kIntakeSolenoidPort2 = 1;
 
     public static final Value kHatchIntakeOpenPos = Value.kForward;
     public static final Value kHatchIntakeClosePos = Value.kReverse;
 
-    // hall effect sensors
-    public static final int kJawHallEffectSensorPort = -25535; // TODO: this will throw an error
-    public static final int kArmHallEffectFrontSensorPort = -25535; // TODO: this will throw an error
-    public static final int kArmHallEffectBackSensorPort = -25535; // TODO: this will throw an error
+    // Hall Effect sensors
+    public static final int kJawHallEffectSensorPort = 0;
+    public static final int kArmHallEffectFrontSensorPort = 0;
+    public static final int kArmHallEffectBackSensorPort = 0;
 
-    // motors
-    public static final int kJawAngleMotorPort = -25535; // TODO: this will throw an error
-    public static final int kIntakeRollerMotorPort = -25535; // TODO: this will throw an error
-    public static final int kArmMotorPort = -25535; // TODO: this will throw an error
-    public static final int kArmMotorSlavePort = -25535; // TODO: this will throw an error
+    // motors (inverts)
+    public static final int kJawAngleMotorPort = 0;
+    public static final boolean kJawAngleMotorInverted = false;
 
-    // Drive
+    public static final int kIntakeRollerMotorPort = 0;
+    public static final boolean kIntakeRollerMotorInverted = false;
+
+    public static final int kArmMotorPort = 0;
+    public static final boolean kArmMotorInverted = false;
+    public static final int kArmMotorSlavePort = 0;
 
     public static final int kDriveLeftMasterMotorPort = 0;
+    public static final boolean kDriveLeftMasterMotorInverted = false;
     public static final int kDriveRightMasterMotorPort = 0;
+    public static final boolean kDriveRightMasterMotorInverted = false;
     public static final int kDriveLeftSlaveMotorPort = 0;
     public static final int kDriveRightSlaveMotorPort = 0;
 
-    public static final int kDriveMotorMaxAmp = 50; // 50A
-    public static final double kDriveJoystickDeadband = 0.05;
-
-    public static final double[] kDrivePowerGears = { 0.3333, 0.6666, 1 };
-    public static final double[] kDriveTurnGears = { 0.3333, 0.6666, 1 };
-
-    public static final double maxAccelMSS = 100;
-
-    // LEDs:
-
     public static final int kLEDPort = 0;
+
+    // Encoder inverts
+    public static final boolean kArmEncoderInverted = false;
+    public static final boolean kJawEncoderInverted = false;
+    public static final boolean kDriveLeftEncoderInverted = false;
+    public static final boolean kDriveRightEncoderInverted = false;
+
+    // Current Limits
+
+    public static final int kDriveMotorMaxAmp = 50; // 50A
+    public static final int kArmMotorMaxAmp = 50;
+    public static final int kJawMotorMaxAmp = 30;
 
     // ======================== ENCODER PRESET POSITIONS: ==========================
 
@@ -90,7 +97,9 @@ public class Const {
         }
         return angle;
     }
+
     // --------------------- JAW -------------------------
+    public static final double kJawPIDTolerance = 5;// degs
 
     public static double calcJawAngle(JawState state) {
         double angle;
@@ -123,9 +132,19 @@ public class Const {
         return spd;
     }
 
+    // --------------------- BALL INTAKE -------------------------
     public static final int kBallIntakeNormalAmp = 10;
     public static final int kBallIntakeStallAmp = 3;
 
     public static final double kBallIntakeSpdSlow = 0.5;
     public static final double kBallIntakeSpd = 1;
+
+    // --------------------- DRIVE -------------------------
+    public static final double kDriveJoystickDeadband = 0.05;
+
+    public static final double[] kDrivePowerGears = { 0.3333, 0.6666, 1 };
+    public static final double[] kDriveTurnGears = { 0.3333, 0.6666, 1 };
+
+    public static final double maxAccelMSS = 100;
+
 }

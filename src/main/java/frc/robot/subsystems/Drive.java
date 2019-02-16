@@ -3,14 +3,11 @@ package frc.robot.subsystems;
 import java.util.Arrays;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
@@ -39,7 +36,6 @@ public class Drive extends Subsystem {
 
     private Drive() {
         initGyro();
-        // initEncoders(); // TODO: we are going to use new encoders!!!
         initTalons();
         checkGearError();
     }
@@ -67,21 +63,22 @@ public class Drive extends Subsystem {
 
     private void initTalons() {
 
-        rightMaster = TalonHelper.createTalon(Const.kDriveRightMasterMotorPort, false); // TODO:
-        leftMaster = TalonHelper.createTalon(Const.kDriveLeftMasterMotorPort, true);
+        rightMaster = TalonHelper.createTalon(Const.kDriveRightMasterMotorPort, Const.kDriveRightMasterMotorInverted);
+        leftMaster = TalonHelper.createTalon(Const.kDriveLeftMasterMotorPort, Const.kDriveLeftMasterMotorInverted);
 
         rightSlave = TalonHelper.createSlaveVictor(Const.kDriveRightSlaveMotorPort, rightMaster);
         leftSlave = TalonHelper.createSlaveVictor(Const.kDriveLeftSlaveMotorPort, leftMaster);
 
-        TalonHelper.configCurrentLimit(rightMaster, 50);
-        TalonHelper.configCurrentLimit(leftMaster, 50);
+        TalonHelper.configCurrentLimit(rightMaster, Const.kDriveMotorMaxAmp);
+        TalonHelper.configCurrentLimit(leftMaster, Const.kDriveMotorMaxAmp);
 
         TalonHelper.configNeutralMode(Arrays.asList(rightMaster, leftMaster, rightSlave, leftSlave), NeutralMode.Brake);
 
-        TalonHelper.configDeadband(Arrays.asList(rightMaster, leftMaster, rightSlave, leftSlave), 0.04);
+        TalonHelper.configDeadband(Arrays.asList(rightMaster, leftMaster, rightSlave, leftSlave),
+                Const.kDriveJoystickDeadband);
 
-        TalonHelper.configMagEncoder(rightMaster, true);// TODO:
-        TalonHelper.configMagEncoder(leftMaster, true);// TODO:
+        TalonHelper.configMagEncoder(rightMaster, Const.kDriveRightEncoderInverted);
+        TalonHelper.configMagEncoder(leftMaster, Const.kDriveLeftEncoderInverted);
     }
 
     private void initGyro() {

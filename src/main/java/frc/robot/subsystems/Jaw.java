@@ -9,6 +9,7 @@ import frc.robot.Const;
 import frc.robot.Util.JawState;
 import frc.robot.Util.MotorDirection;
 import frc.robot.Util.TalonHelper;
+import frc.robot.commands.DoNothing;
 
 public class Jaw extends Subsystem {
 
@@ -31,9 +32,9 @@ public class Jaw extends Subsystem {
     }
 
     private void initTalons() {
-        jawAngleMotor = TalonHelper.createTalon(Const.kJawAngleMotorPort, false);
-        TalonHelper.configCurrentLimit(jawAngleMotor, 30);
-        TalonHelper.configMagEncoder(jawAngleMotor, true);// TODO:
+        jawAngleMotor = TalonHelper.createTalon(Const.kJawAngleMotorPort, Const.kJawAngleMotorInverted);
+        TalonHelper.configCurrentLimit(jawAngleMotor, Const.kJawMotorMaxAmp);
+        TalonHelper.configMagEncoder(jawAngleMotor, Const.kJawEncoderInverted);
     }
 
     public void setAngle(double angle) {
@@ -65,28 +66,20 @@ public class Jaw extends Subsystem {
         jawAngleMotor.setSelectedSensorPosition(0);
     }
 
-    public boolean onTarget() {
-        return false; // TODO: stub
+    public double getEncoderPosition() {
+        return Const.talon4096Unit2Deg(jawAngleMotor.getSelectedSensorPosition(0));
     }
 
-    // public void setJawFront() {
-    // setAngle(Const.kJawSetpointDegFront);
-    // }
+    public double getPIDError() {
+        return Const.talon4096Unit2Deg(jawAngleMotor.getClosedLoopError(0));
+    }
 
-    // public void setJawBack() {
-    // setAngle(Const.kJawSetpointDegBack);
-    // }
-
-    // public void setJawMiddle() {
-    // setAngle(Const.kJawSetpointDegMiddle);
-    // }
-
-    // public void setJawCustom(double angle) {
-    // setAngle(angle);
-    // }
+    public boolean onTarget() {
+        return Math.abs(Const.calcJawAngle(state) - getEncoderPosition()) < Const.kJawPIDTolerance;
+    }
 
     @Override
     public void initDefaultCommand() {
-
+        setDefaultCommand(new DoNothing(this)); // Do nothing with this subsystem, but still require it
     }
 }
