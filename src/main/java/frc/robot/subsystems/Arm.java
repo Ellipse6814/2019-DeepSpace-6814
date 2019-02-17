@@ -38,7 +38,7 @@ public class Arm extends Subsystem {
     private void initTalons() {
         armMotor = TalonHelper.createTalon(Const.kArmMotorPort, Const.kArmMotorInverted);
 
-        TalonHelper.configCurrentLimit(armMotor, 30);
+        TalonHelper.configCurrentLimit(armMotor, Const.kArmMotorMaxAmp);
         armMotorSlave = TalonHelper.createSlaveVictor(Const.kArmMotorSlavePort, armMotor);
 
         TalonHelper.configQuadEncoder(armMotor, Const.kArmEncoderInverted);
