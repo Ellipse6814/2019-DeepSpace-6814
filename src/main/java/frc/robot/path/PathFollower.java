@@ -21,6 +21,7 @@ public class PathFollower extends LogBase {
 	public int searchLimit;
 	public boolean onPath = true;
 	double prevDist2Target = Double.MAX_VALUE;
+	public Point prevRobotPos = new Point();
 
 	double prevGeneralVel = 0;
 	boolean reversed;
@@ -64,6 +65,8 @@ public class PathFollower extends LogBase {
 	 */
 	public DriveMotorState update(Point robotPos, double gyro, double dt) {
 		ExecTimer execTimer = new ExecTimer();
+
+		prevRobotPos = robotPos;
 
 		if (reversed) {
 			gyro += 180; // make it look like the robot is headed forwards, so the curvature calculation
@@ -152,7 +155,7 @@ public class PathFollower extends LogBase {
 
 	private void calculateFinishedPath(Point robotPos) {
 		int currentPathIndex = getClosestWaypointIndex(robotPos);
-		if ((currentPathIndex + 0.0) / (path.waypoints.size() + 0.0) < 0.5) {
+		if ((currentPathIndex + 0.0) / (path.waypoints.size() + 0.0) < 0.5) { // The same as getting progress
 			// not even half done, haven't finished path
 			// done = false;
 			return;
@@ -172,6 +175,17 @@ public class PathFollower extends LogBase {
 			}
 			prevDist2Target = distance;
 		}
+	}
+
+	/**
+	 * 
+	 * @return the progress of current path following. Returns a double between 0
+	 *         and 1, 0 meaning 0% done with the path, 1 meaning 10 % done with the
+	 *         path.
+	 */
+	public double getProgress() {
+		int currentPathIndex = getClosestWaypointIndex(prevRobotPos);
+		return (currentPathIndex + 0.0) / (path.waypoints.size() + 0.0);
 	}
 
 	/**
