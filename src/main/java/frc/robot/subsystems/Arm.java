@@ -43,7 +43,7 @@ public class Arm extends Subsystem {
 
         TalonHelper.configQuadEncoder(armMotor, Const.kArmEncoderInverted);
 
-        TalonHelper.configPID(armMotor, 0, 3, 0, 0, 0);
+        TalonHelper.configPID(armMotor, 0, Const.kArmkP, Const.kArmkI, Const.kArmkD, Const.kArmkF);
 
         // armMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 10,
         // 10);

@@ -71,6 +71,11 @@ public class Const {
 
     public static final double kArmPIDTolerance = 5;// degs
 
+    public static final double kArmkP = 0;
+    public static final double kArmkI = 0;
+    public static final double kArmkD = 0;
+    public static final double kArmkF = 0;
+
     public static double calcArmAngle(ArmState state) {
         double angle;
         if (state == ArmState.FrontBallFloorIn)
@@ -100,6 +105,11 @@ public class Const {
 
     // --------------------- JAW -------------------------
     public static final double kJawPIDTolerance = 5;// degs
+
+    public static final double kJawkP = 0;
+    public static final double kJawkI = 0;
+    public static final double kJawkD = 0;
+    public static final double kJawkF = 0;
 
     public static double calcJawAngle(JawState state) {
         double angle;

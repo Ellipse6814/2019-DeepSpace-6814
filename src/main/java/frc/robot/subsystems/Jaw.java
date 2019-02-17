@@ -35,6 +35,7 @@ public class Jaw extends Subsystem {
         jawAngleMotor = TalonHelper.createTalon(Const.kJawAngleMotorPort, Const.kJawAngleMotorInverted);
         TalonHelper.configCurrentLimit(jawAngleMotor, Const.kJawMotorMaxAmp);
         TalonHelper.configMagEncoder(jawAngleMotor, Const.kJawEncoderInverted);
+        TalonHelper.configPID(jawAngleMotor, 0, Const.kJawkP, Const.kJawkI, Const.kJawkD, Const.kJawkF);
     }
 
     public void setAngle(double angle) {
