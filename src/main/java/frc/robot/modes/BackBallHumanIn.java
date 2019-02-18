@@ -17,7 +17,7 @@ public class BackBallHumanIn extends Mode {
 
     @Override
     protected void prepInit() {
-        prepCmd = new SetRobot(ArmState.BackBallHumanIn, JawState.Ball, BallState.In, HatchState.Release);
+        prepCmd = new SetRobot(ArmState.BackBallHumanIn, JawState.BallHuman, BallState.In, HatchState.Release);
         prepCmd.start();
     }
 
@@ -27,7 +27,7 @@ public class BackBallHumanIn extends Mode {
 
     @Override
     protected void execInit() {
-        execCmd = new SetRobot(ArmState.BackBallHumanIn, JawState.Ball, BallState.Hold, HatchState.Release);
+        execCmd = new SetRobot(ArmState.BackBallHumanIn, JawState.BallHuman, BallState.Hold, HatchState.Release);
         execCmd.start();
     }
 

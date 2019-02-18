@@ -64,7 +64,7 @@ public class Const {
     // ======================== ENCODER PRESET POSITIONS: ==========================
 
     // ------------------- ARM --------------------------
-    public static final double kArmGearRatioEncoder2Arm = 1; // to use, multiple var with this const //TODO
+    public static final double kArmGearRatioEncoder2Arm = 26 / 42 * 18 / 60; // to use, multiple var with this const
     public static final double kArmGearRatioArm2Encoder = 1 / kArmGearRatioEncoder2Arm;
 
     public static final double kArmPIDTolerance = 5;// degs//TODO
@@ -77,23 +77,23 @@ public class Const {
     public static double calcArmAngle(ArmState state) {
         double angle;
         if (state == ArmState.FrontBallFloorIn)
-            angle = 0; // TODO
+            angle = 0;
         else if (state == ArmState.FrontBallHumanIn)
-            angle = 0; // TODO
+            angle = 75;
         else if (state == ArmState.FrontBallCargo)
-            angle = 0; // TODO
+            angle = 70;
         else if (state == ArmState.FrontBallRocket)
-            angle = 0; // TODO
+            angle = 70;
         else if (state == ArmState.BackBallHumanIn)
-            angle = 0; // TODO
+            angle = 145;
         else if (state == ArmState.BackBallCargo)
-            angle = 0; // TODO
+            angle = 140;
         else if (state == ArmState.BackBallRocket)
-            angle = 0; // TODO
+            angle = 140;
         else if (state == ArmState.FrontHatchInOut)
-            angle = 0; // TODO
+            angle = 8;
         else if (state == ArmState.BackHatchInOut)
-            angle = 0; // TODO
+            angle = 145;
         else {
             System.out.println("ARM THIS IS NOT HOW TO USE CUSTOM SETPOINT, hopefully 0 did not break anything");
             angle = 0; // hopefully that doesn't break anything
@@ -102,6 +102,7 @@ public class Const {
     }
 
     // --------------------- JAW -------------------------
+
     public static final double kJawGearRatioEncoder2Jaw = 1;// TODO
     public static final double kJawGearRatioJaw2Encoder = 1 / kJawGearRatioEncoder2Jaw;
 
@@ -115,17 +116,20 @@ public class Const {
     public static double calcJawAngle(JawState state) {
         double angle;
         if (state == JawState.Back)
-            angle = 0;// TODO
+            angle = 65;
         else if (state == JawState.Front)
-            angle = 0;// TODO
+            angle = 5;
         else if (state == JawState.Ball)
-            angle = 0;// TODO
+            angle = 88;
+        else if (state == JawState.BallHuman)
+            angle = 52;
         else {
             System.out.println("JAW THIS IS NOT HOW TO USE CUSTOM SETPOINT, hopefully 0 did not break anything");
             angle = 0;
         }
         return angle;
     }
+
     // --------------------- LED -------------------------
 
     public static double calcLEDSpd(LEDState state) {
