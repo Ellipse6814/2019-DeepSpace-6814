@@ -7,13 +7,8 @@ import frc.robot.Util.LEDState;
 
 public class Const {
     // ======================== UNIT CONVERSIONS: ==========================
-    public static final double deg2Talon4096Unit(double angle) {
-        return angle / 360.0 * 4096.0;
-    }
-
-    public static final double talon4096Unit2Deg(double angle) {
-        return angle * 360.0 / 4096.0;
-    }
+    public static final double deg2Talon4096Unit = 1 / 360.0 * 4096.0;
+    public static final double talon4096Unit2Deg = 1 * 360.0 / 4096.0;
 
     // ============================= GENERAL: ==============================
 
@@ -68,6 +63,7 @@ public class Const {
     // ======================== ENCODER PRESET POSITIONS: ==========================
 
     // ------------------- ARM -------------------------- //TODO:
+    public static final double kArmGearRatio = 0;
 
     public static final double kArmPIDTolerance = 5;// degs
 
@@ -104,6 +100,8 @@ public class Const {
     }
 
     // --------------------- JAW -------------------------
+    public static final double kJawGearRatio = 0;
+
     public static final double kJawPIDTolerance = 5;// degs
 
     public static final double kJawkP = 0;

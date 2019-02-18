@@ -40,7 +40,7 @@ public class Jaw extends Subsystem {
 
     public void setAngle(double angle) {
         // 4096 TalonUnits per rotation
-        double targetPositionRotations = Const.deg2Talon4096Unit(angle);
+        double targetPositionRotations = angle * Const.deg2Talon4096Unit * Const.kJawGearRatio;
         jawAngleMotor.set(ControlMode.Position, targetPositionRotations);
     }
 
@@ -68,11 +68,11 @@ public class Jaw extends Subsystem {
     }
 
     public double getEncoderPosition() {
-        return Const.talon4096Unit2Deg(jawAngleMotor.getSelectedSensorPosition(0));
+        return jawAngleMotor.getSelectedSensorPosition(0) * Const.talon4096Unit2Deg / Const.kJawGearRatio;
     }
 
     public double getPIDError() {
-        return Const.talon4096Unit2Deg(jawAngleMotor.getClosedLoopError(0));
+        return jawAngleMotor.getClosedLoopError(0) * Const.talon4096Unit2Deg / Const.kJawGearRatio;
     }
 
     public boolean onTarget() {

@@ -54,7 +54,7 @@ public class Arm extends Subsystem {
 
     public void setAngle(double angle) {
         // 4096 TalonUnits per rotation
-        double targetPositionRotations = Const.deg2Talon4096Unit(angle);
+        double targetPositionRotations = angle * Const.deg2Talon4096Unit * Const.kArmGearRatio;
         armMotor.set(ControlMode.Position, targetPositionRotations);
     }
 
@@ -83,11 +83,11 @@ public class Arm extends Subsystem {
     }
 
     public double getEncoderPosition() {
-        return Const.talon4096Unit2Deg(armMotor.getSelectedSensorPosition(0));
+        return armMotor.getSelectedSensorPosition(0) * Const.talon4096Unit2Deg / Const.kArmGearRatio;
     }
 
     public double getPIDError() {
-        return Const.talon4096Unit2Deg(armMotor.getClosedLoopError(0));
+        return armMotor.getClosedLoopError(0) * Const.talon4096Unit2Deg / Const.kArmGearRatio;
     }
 
     public void resetEncoder() {

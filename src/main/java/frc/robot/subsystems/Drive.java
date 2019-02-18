@@ -112,11 +112,11 @@ public class Drive extends Subsystem {
     }
 
     public double getLeftEncoder() {
-        return Const.talon4096Unit2Deg(leftMaster.getSelectedSensorPosition(0));
+        return leftMaster.getSelectedSensorPosition(0) * Const.talon4096Unit2Deg;
     }
 
     public double getRightEncoder() {
-        return Const.talon4096Unit2Deg(rightMaster.getSelectedSensorPosition(0));
+        return rightMaster.getSelectedSensorPosition(0) * Const.talon4096Unit2Deg;
     }
 
     public void gearUp() {
