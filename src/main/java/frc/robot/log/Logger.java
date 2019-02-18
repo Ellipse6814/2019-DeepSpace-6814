@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.Timer;
 
 /**
@@ -21,7 +20,11 @@ import edu.wpi.first.wpilibj.Timer;
 public class Logger {
 
 	private static Logger instance;
-	private static Notifier notifier;
+	// private Notifier notifier;
+	private Thread writeThread;
+	private boolean write = true;
+
+	private int count = 0;
 
 	PrintWriter writer = null;
 	boolean valid = false;
@@ -35,7 +38,7 @@ public class Logger {
 	private Logger() {
 		try {
 			String name = DriverStation.getInstance().getEventName() + DriverStation.getInstance().getMatchType()
-					+ "Match" + DriverStation.getInstance().getMatchNumber();
+					+ "Match" + DriverStation.getInstance().getMatchNumber() + ".txt";
 			writer = new PrintWriter("/home/lvuser/" + name + ".csv");
 			// writer = new PrintWriter("/home/lvuser/Log.csv");
 			valid = true;
@@ -47,11 +50,37 @@ public class Logger {
 		}
 		System.out.println("Log inited");
 
-		notifier = new Notifier(() -> {
-			flush();
-			System.out.println("DELETEME because LOGGER IS WORKING: flushed.");
+		// notifier = new Notifier(() -> {
+		// flush();
+		// System.out.println("flushed");
+		// });
+
+		// notifier.startPeriodic(500);
+
+		writeThread = new Thread(() -> {
+			while (write) {
+				flush();
+				System.out.println("flushed " + count++);
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					System.out.println("interrupted");
+
+					e.printStackTrace();
+				}
+			}
 		});
-		notifier.startPeriodic(500);
+		start();
+	}
+
+	public void stop() {
+		write = false;
+	}
+
+	public void start() {
+		write = true;
+		if (!writeThread.isAlive())
+			writeThread.start();
 	}
 
 	public void log(Object message) {
