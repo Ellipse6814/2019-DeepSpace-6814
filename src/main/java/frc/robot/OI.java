@@ -63,4 +63,15 @@ public class OI {
         SmartDashboard.putData("Middle Idle", new MiddleIdle());
 
     }
+
+    private void initPIDTuner() {
+        SmartDashboard.putNumber("Arm P", Const.kArmkP);
+        SmartDashboard.putNumber("Arm I", Const.kArmkI);
+        SmartDashboard.putNumber("Arm D", Const.kArmkD);
+        SmartDashboard.putNumber("Arm F", Const.kArmkF);
+        SmartDashboard.putNumber("Jaw P", Const.kJawkP);
+        SmartDashboard.putNumber("Jaw I", Const.kJawkI);
+        SmartDashboard.putNumber("Jaw D", Const.kJawkD);
+        SmartDashboard.putNumber("Jaw F", Const.kJawkF);
+    }
 }

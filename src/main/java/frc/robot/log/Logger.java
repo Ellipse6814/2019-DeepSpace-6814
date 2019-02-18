@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.Timer;
 
 /**
@@ -20,7 +21,7 @@ import edu.wpi.first.wpilibj.Timer;
 public class Logger {
 
 	private static Logger instance;
-	// private static Notifier notifier;
+	private static Notifier notifier;
 
 	PrintWriter writer = null;
 	boolean valid = false;
@@ -46,11 +47,11 @@ public class Logger {
 		}
 		System.out.println("Log inited");
 
-		// notifier = new Notifier(() -> {
-		// flush();
-		// System.out.println("flushed");
-		// });
-		// notifier.startPeriodic(500);
+		notifier = new Notifier(() -> {
+			flush();
+			System.out.println("DELETEME because LOGGER IS WORKING: flushed.");
+		});
+		notifier.startPeriodic(500);
 	}
 
 	public void log(Object message) {
@@ -73,7 +74,7 @@ public class Logger {
 	private void logData(String data) {
 		if (valid) {
 			writer.println(data);
-			flush();
+			// flush();
 		} else
 			System.out.println(data);
 

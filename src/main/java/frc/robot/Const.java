@@ -34,22 +34,22 @@ public class Const {
     public static final int kArmHallEffectBackSensorPort = 0;
 
     // motors (inverts)
-    public static final int kJawAngleMotorPort = 0;
+    public static final int kJawAngleMotorPort = 3;
     public static final boolean kJawAngleMotorInverted = false;
 
-    public static final int kIntakeRollerMotorPort = 0;
+    public static final int kIntakeRollerMotorPort = 4;
     public static final boolean kIntakeRollerMotorInverted = false;
 
-    public static final int kArmMotorPort = 0;
+    public static final int kArmMotorPort = 3;
     public static final boolean kArmMotorInverted = false;
-    public static final int kArmMotorSlavePort = 0;
+    public static final int kArmMotorSlavePort = 3;
 
-    public static final int kDriveLeftMasterMotorPort = 0;
+    public static final int kDriveLeftMasterMotorPort = 1;
     public static final boolean kDriveLeftMasterMotorInverted = false;
-    public static final int kDriveRightMasterMotorPort = 0;
+    public static final int kDriveRightMasterMotorPort = 2;
     public static final boolean kDriveRightMasterMotorInverted = false;
-    public static final int kDriveLeftSlaveMotorPort = 0;
-    public static final int kDriveRightSlaveMotorPort = 0;
+    public static final int kDriveLeftSlaveMotorPort = 1;
+    public static final int kDriveRightSlaveMotorPort = 2;
 
     public static final int kLEDPort = 0;
 
