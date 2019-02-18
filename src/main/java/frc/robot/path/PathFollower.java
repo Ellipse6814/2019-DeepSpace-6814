@@ -153,6 +153,14 @@ public class PathFollower extends LogBase {
 		return new DriveMotorState(leftVel, rightVel);
 	}
 
+	/**
+	 * This function checks if robot done with the path. If it is, it will set
+	 * "done" to TRUE. It does this nicely so it doesn't stop right when it touches
+	 * the tolerance circle. It tests to see if we can get any closer to the target
+	 * center; if not, then finish path.
+	 * 
+	 * @param robotPos current coordinate of robot
+	 */
 	private void calculateFinishedPath(Point robotPos) {
 		int currentPathIndex = getClosestWaypointIndex(robotPos);
 		if ((currentPathIndex + 0.0) / (path.waypoints.size() + 0.0) < 0.5) { // The same as getting progress
@@ -174,10 +182,20 @@ public class PathFollower extends LogBase {
 				log("Ok, we are going to drive a tiny bit further to see if we can still get closer.");
 			}
 			prevDist2Target = distance;
+		} else {
+			if (prevDist2Target != Double.MAX_VALUE) {
+				log("Ok, we are starting to get further away from the target, in fact, we've got out of the tolerance zone, let's stop now.");
+				done = true;
+				log("FINISHED PATH!!!!!!!!!!!!");
+			}
 		}
 	}
 
 	/**
+	 * This function is designed to be called by functions outside of this class
+	 * when they want to know the status of the path follow. A typical reason to
+	 * want to know is because an action needs to be triggered when path following
+	 * is at a certain progress
 	 * 
 	 * @return the progress of current path following. Returns a double between 0
 	 *         and 1, 0 meaning 0% done with the path, 1 meaning 10 % done with the
