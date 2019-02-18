@@ -26,8 +26,8 @@ public class Const {
 
     // Hall Effect sensors
     public static final int kJawHallEffectSensorPort = 0;// TODO
-    public static final int kArmHallEffectFrontSensorPort = 0;// TODO
-    public static final int kArmHallEffectBackSensorPort = 0;// TODO
+    public static final int kArmHallEffectFrontSensorPort = 1;// TODO
+    public static final int kArmHallEffectBackSensorPort = 2;// TODO
 
     // motors (inverts)
     public static final int kJawAngleMotorPort = 3;
@@ -43,7 +43,7 @@ public class Const {
     public static final int kDriveLeftMasterMotorPort = 1;
     public static final boolean kDriveLeftMasterMotorInverted = false;// TODO
     public static final int kDriveRightMasterMotorPort = 2;
-    public static final boolean kDriveRightMasterMotorInverted = false;// TODO
+    public static final boolean kDriveRightMasterMotorInverted = true;// TODO
     public static final int kDriveLeftSlaveMotorPort = 1;
     public static final int kDriveRightSlaveMotorPort = 2;
 
@@ -53,7 +53,7 @@ public class Const {
     public static final boolean kArmEncoderInverted = false;// TODO
     public static final boolean kJawEncoderInverted = false;// TODO
     public static final boolean kDriveLeftEncoderInverted = false;// TODO
-    public static final boolean kDriveRightEncoderInverted = false;// TODO
+    public static final boolean kDriveRightEncoderInverted = true;// TODO
 
     // Current Limits
 
@@ -69,10 +69,10 @@ public class Const {
 
     public static final double kArmPIDTolerance = 5;// degs//TODO
 
-    public static final double kArmkP = 0;// TODO
-    public static final double kArmkI = 0;// TODO
-    public static final double kArmkD = 0;// TODO
-    public static final double kArmkF = 0;// TODO
+    public static double kArmkP = 0.0001;// TODO
+    public static double kArmkI = 0;// TODO
+    public static double kArmkD = 0;// TODO
+    public static double kArmkF = 0;// TODO
 
     public static double calcArmAngle(ArmState state) {
         double angle;
@@ -107,10 +107,10 @@ public class Const {
 
     public static final double kJawPIDTolerance = 5;// degs
 
-    public static final double kJawkP = 0;// TODO
-    public static final double kJawkI = 0;// TODO
-    public static final double kJawkD = 0;// TODO
-    public static final double kJawkF = 0;// TODO
+    public static double kJawkP = 0.0001;// TODO
+    public static double kJawkI = 0;// TODO
+    public static double kJawkD = 0;// TODO
+    public static double kJawkF = 0;// TODO
 
     public static double calcJawAngle(JawState state) {
         double angle;
