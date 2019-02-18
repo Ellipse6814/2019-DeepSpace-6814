@@ -7,8 +7,9 @@ import frc.robot.Util.LEDState;
 
 public class Const {
     // ======================== UNIT CONVERSIONS: ==========================
+    /** To use: multiply variable with the constant below */
     public static final double deg2Talon4096Unit = 1 / 360.0 * 4096.0;
-    public static final double talon4096Unit2Deg = 1 * 360.0 / 4096.0;
+    public static final double talon4096Unit2Deg = 1 / deg2Talon4096Unit;
 
     // ============================= GENERAL: ==============================
 
@@ -20,39 +21,39 @@ public class Const {
     public static final int kIntakeSolenoidPort1 = 0;
     public static final int kIntakeSolenoidPort2 = 1;
 
-    public static final Value kHatchIntakeOpenPos = Value.kForward;
-    public static final Value kHatchIntakeClosePos = Value.kReverse;
+    public static final Value kHatchIntakeOpenPos = Value.kForward; // TODO
+    public static final Value kHatchIntakeClosePos = Value.kReverse;// TODO
 
     // Hall Effect sensors
-    public static final int kJawHallEffectSensorPort = 0;
-    public static final int kArmHallEffectFrontSensorPort = 0;
-    public static final int kArmHallEffectBackSensorPort = 0;
+    public static final int kJawHallEffectSensorPort = 0;// TODO
+    public static final int kArmHallEffectFrontSensorPort = 0;// TODO
+    public static final int kArmHallEffectBackSensorPort = 0;// TODO
 
     // motors (inverts)
     public static final int kJawAngleMotorPort = 3;
-    public static final boolean kJawAngleMotorInverted = false;
+    public static final boolean kJawAngleMotorInverted = false;// TODO
 
     public static final int kIntakeRollerMotorPort = 4;
-    public static final boolean kIntakeRollerMotorInverted = false;
+    public static final boolean kIntakeRollerMotorInverted = false;// TODO
 
     public static final int kArmMotorPort = 3;
-    public static final boolean kArmMotorInverted = false;
+    public static final boolean kArmMotorInverted = false;// TODO
     public static final int kArmMotorSlavePort = 3;
 
     public static final int kDriveLeftMasterMotorPort = 1;
-    public static final boolean kDriveLeftMasterMotorInverted = false;
+    public static final boolean kDriveLeftMasterMotorInverted = false;// TODO
     public static final int kDriveRightMasterMotorPort = 2;
-    public static final boolean kDriveRightMasterMotorInverted = false;
+    public static final boolean kDriveRightMasterMotorInverted = false;// TODO
     public static final int kDriveLeftSlaveMotorPort = 1;
     public static final int kDriveRightSlaveMotorPort = 2;
 
     public static final int kLEDPort = 0;
 
     // Encoder inverts
-    public static final boolean kArmEncoderInverted = false;
-    public static final boolean kJawEncoderInverted = false;
-    public static final boolean kDriveLeftEncoderInverted = false;
-    public static final boolean kDriveRightEncoderInverted = false;
+    public static final boolean kArmEncoderInverted = false;// TODO
+    public static final boolean kJawEncoderInverted = false;// TODO
+    public static final boolean kDriveLeftEncoderInverted = false;// TODO
+    public static final boolean kDriveRightEncoderInverted = false;// TODO
 
     // Current Limits
 
@@ -62,36 +63,37 @@ public class Const {
 
     // ======================== ENCODER PRESET POSITIONS: ==========================
 
-    // ------------------- ARM -------------------------- //TODO:
-    public static final double kArmGearRatio = 0;
+    // ------------------- ARM --------------------------
+    public static final double kArmGearRatioEncoder2Arm = 1; // to use, multiple var with this const //TODO
+    public static final double kArmGearRatioArm2Encoder = 1 / kArmGearRatioEncoder2Arm;
 
-    public static final double kArmPIDTolerance = 5;// degs
+    public static final double kArmPIDTolerance = 5;// degs//TODO
 
-    public static final double kArmkP = 0;
-    public static final double kArmkI = 0;
-    public static final double kArmkD = 0;
-    public static final double kArmkF = 0;
+    public static final double kArmkP = 0;// TODO
+    public static final double kArmkI = 0;// TODO
+    public static final double kArmkD = 0;// TODO
+    public static final double kArmkF = 0;// TODO
 
     public static double calcArmAngle(ArmState state) {
         double angle;
         if (state == ArmState.FrontBallFloorIn)
-            angle = 0;
+            angle = 0; // TODO
         else if (state == ArmState.FrontBallHumanIn)
-            angle = 0;
+            angle = 0; // TODO
         else if (state == ArmState.FrontBallCargo)
-            angle = 0;
+            angle = 0; // TODO
         else if (state == ArmState.FrontBallRocket)
-            angle = 0;
+            angle = 0; // TODO
         else if (state == ArmState.BackBallHumanIn)
-            angle = 0;
+            angle = 0; // TODO
         else if (state == ArmState.BackBallCargo)
-            angle = 0;
+            angle = 0; // TODO
         else if (state == ArmState.BackBallRocket)
-            angle = 0;
+            angle = 0; // TODO
         else if (state == ArmState.FrontHatchInOut)
-            angle = 0;
+            angle = 0; // TODO
         else if (state == ArmState.BackHatchInOut)
-            angle = 0;
+            angle = 0; // TODO
         else {
             System.out.println("ARM THIS IS NOT HOW TO USE CUSTOM SETPOINT, hopefully 0 did not break anything");
             angle = 0; // hopefully that doesn't break anything
@@ -100,23 +102,24 @@ public class Const {
     }
 
     // --------------------- JAW -------------------------
-    public static final double kJawGearRatio = 0;
+    public static final double kJawGearRatioEncoder2Jaw = 1;// TODO
+    public static final double kJawGearRatioJaw2Encoder = 1 / kJawGearRatioEncoder2Jaw;
 
     public static final double kJawPIDTolerance = 5;// degs
 
-    public static final double kJawkP = 0;
-    public static final double kJawkI = 0;
-    public static final double kJawkD = 0;
-    public static final double kJawkF = 0;
+    public static final double kJawkP = 0;// TODO
+    public static final double kJawkI = 0;// TODO
+    public static final double kJawkD = 0;// TODO
+    public static final double kJawkF = 0;// TODO
 
     public static double calcJawAngle(JawState state) {
         double angle;
         if (state == JawState.Back)
-            angle = 0;
+            angle = 0;// TODO
         else if (state == JawState.Front)
-            angle = 0;
+            angle = 0;// TODO
         else if (state == JawState.Ball)
-            angle = 0;
+            angle = 0;// TODO
         else {
             System.out.println("JAW THIS IS NOT HOW TO USE CUSTOM SETPOINT, hopefully 0 did not break anything");
             angle = 0;
@@ -141,11 +144,11 @@ public class Const {
     }
 
     // --------------------- BALL INTAKE -------------------------
-    public static final int kBallIntakeNormalAmp = 10;
-    public static final int kBallIntakeStallAmp = 3;
+    public static final int kBallIntakeNormalAmp = 10;// TODO
+    public static final int kBallIntakeStallAmp = 3;// TODO
 
-    public static final double kBallIntakeSpdSlow = 0.5;
-    public static final double kBallIntakeSpd = 1;
+    public static final double kBallIntakeSpdSlow = 0.5;// TODO
+    public static final double kBallIntakeSpd = 1;// TODO
 
     // --------------------- DRIVE -------------------------
     public static final double kDriveJoystickDeadband = 0.05;
