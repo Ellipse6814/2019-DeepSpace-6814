@@ -20,6 +20,7 @@ public class JawReset extends Command {
     @Override
     protected void initialize() {
         jaw.state = JawState.Reset;
+        System.out.println("Starting ARM RESET");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,6 +31,7 @@ public class JawReset extends Command {
             jaw.setOpenLoop(0, MotorDirection.Forward);
             jaw.resetEncoder();
             isFinished = true;
+            System.out.println("ARM RESET hit hall effect sensor: DONE");
         }
     }
 

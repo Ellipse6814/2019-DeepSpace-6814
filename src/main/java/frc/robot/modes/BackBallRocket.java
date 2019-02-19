@@ -17,6 +17,7 @@ public class BackBallRocket extends Mode {
 
     @Override
     protected void prepInit() {
+        System.out.println("PREP: BackBallRocket");
         prepCmd = new SetRobot(ArmState.BackBallRocket, JawState.Ball, BallState.Hold, HatchState.Release);
         prepCmd.start();
     }
@@ -27,6 +28,7 @@ public class BackBallRocket extends Mode {
 
     @Override
     protected void execInit() {
+        System.out.println("EXEC: BackBallRocket");
         execCmd = new SetRobot(ArmState.BackBallRocket, JawState.Ball, BallState.Out, HatchState.Release);
         execCmd.start();
     }

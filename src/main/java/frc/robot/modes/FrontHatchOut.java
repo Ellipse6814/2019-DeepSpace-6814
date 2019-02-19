@@ -17,6 +17,7 @@ public class FrontHatchOut extends Mode {
 
     @Override
     protected void prepInit() {
+        System.out.println("PREP: FrontHatchOut");
         prepCmd = new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop, HatchState.Grab);
         prepCmd.start();
     }
@@ -27,6 +28,7 @@ public class FrontHatchOut extends Mode {
 
     @Override
     protected void execInit() {
+        System.out.println("EXEC: FrontHatchOut");
         execCmd = new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop, HatchState.Release);
         execCmd.start();
     }

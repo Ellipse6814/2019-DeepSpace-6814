@@ -17,6 +17,7 @@ public class FrontBallFloorIn extends Mode {
 
     @Override
     protected void prepInit() {
+        System.out.println("PREP: FrontBallFloorIn");
         prepCmd = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball, BallState.In, HatchState.Release);
         prepCmd.start();
     }
@@ -27,6 +28,7 @@ public class FrontBallFloorIn extends Mode {
 
     @Override
     protected void execInit() {
+        System.out.println("EXEC: FrontBallFloorIn");
         execCmd = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball, BallState.Hold, HatchState.Release);
         execCmd.start();
     }

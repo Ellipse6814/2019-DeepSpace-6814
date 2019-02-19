@@ -100,12 +100,12 @@ public class TalonHelper {
         talon.config_kF(slot, f, kCommTimeout);
     }
 
-    public static void configFwdSoftLimit(TalonSRX talon, int limit) {
+    public static void configUpperSoftLimit(TalonSRX talon, int limit) {
         talon.configForwardSoftLimitThreshold(limit, kCommTimeout);
         talon.configForwardSoftLimitEnable(true, kCommTimeout);
     }
 
-    public static void configRevSoftLimit(TalonSRX talon, int limit) {
+    public static void configLowerSoftLimit(TalonSRX talon, int limit) {
         talon.configReverseSoftLimitThreshold(limit, kCommTimeout);
         talon.configReverseSoftLimitEnable(true, kCommTimeout);
     }

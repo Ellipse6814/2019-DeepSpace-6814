@@ -48,7 +48,9 @@ public class Arm extends Subsystem {
         // armMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 10,
         // 10);
 
-        TalonHelper.configFwdSoftLimit(armMotor, (int) (0 * Const.kArmGearRatioArm2Encoder * Const.kDeg2Talon4096Unit));
+        TalonHelper.configLowerSoftLimit(armMotor,
+                (int) (0 * Const.kArmGearRatioArm2Encoder * Const.kDeg2Talon4096Unit));
+        // TODO: also setup the upper soft limit
 
         armMotor.configForwardSoftLimitEnable(true, 10);
 

@@ -17,6 +17,7 @@ public class FrontBallCargo extends Mode {
 
     @Override
     protected void prepInit() {
+        System.out.println("PREP: FrontBallCargo");
         prepCmd = new SetRobot(ArmState.FrontBallCargo, JawState.Ball, BallState.Hold, HatchState.Release);
         prepCmd.start();
     }
@@ -27,6 +28,7 @@ public class FrontBallCargo extends Mode {
 
     @Override
     protected void execInit() {
+        System.out.println("EXEC: FrontBallCargo");
         execCmd = new SetRobot(ArmState.FrontBallCargo, JawState.Ball, BallState.Out, HatchState.Release);
         execCmd.start();
     }

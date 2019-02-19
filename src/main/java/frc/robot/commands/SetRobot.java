@@ -9,6 +9,8 @@ import frc.robot.Util.JawState;
 public class SetRobot extends CommandGroup {
 
     public SetRobot(ArmState arm, JawState jaw, BallState ball, HatchState hatch) {
+        System.out.println("SETROBOT: ARM[" + arm + "]; JAW[" + jaw + "]; " + "BALLINTAKE[" + ball + "]; HATCHINTAKE["
+                + hatch + "]");
         addParallel(new ArmSetAngle(arm));
         addParallel(new JawSetAngle(jaw));
         addParallel(new BallIntakeSet(ball));

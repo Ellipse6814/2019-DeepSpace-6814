@@ -20,6 +20,7 @@ public class ArmReset extends Command {
     @Override
     protected void initialize() {
         arm.state = ArmState.Reset;
+        System.out.println("Starting ARM RESET");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,6 +31,7 @@ public class ArmReset extends Command {
             arm.setOpenLoop(0, MotorDirection.Forward);
             arm.resetEncoder();
             isFinished = true;
+            System.out.println("ARM RESET hit hall effect sensor: DONE");
         }
     }
 

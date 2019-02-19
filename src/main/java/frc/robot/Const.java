@@ -37,20 +37,20 @@ public class Const {
     public static final boolean kIntakeRollerMotorInverted = false;// TODO
 
     public static final int kArmMotorPort = 5;
-    public static final boolean kArmMotorInverted = false;// TODO
+    public static final boolean kArmMotorInverted = true; // front 123; back 456; front lowest pt: 0
     public static final int kArmMotorSlavePort = 3;
 
     public static final int kDriveLeftMasterMotorPort = 3;
-    public static final boolean kDriveLeftMasterMotorInverted = false;// TODO
+    public static final boolean kDriveLeftMasterMotorInverted = false;
     public static final int kDriveRightMasterMotorPort = 1;
-    public static final boolean kDriveRightMasterMotorInverted = true;// TODO
+    public static final boolean kDriveRightMasterMotorInverted = true;
     public static final int kDriveLeftSlaveMotorPort = 1;
     public static final int kDriveRightSlaveMotorPort = 2;
 
     public static final int kLEDPort = 0;
 
     // Encoder inverts
-    public static final boolean kArmEncoderInverted = false;// TODO
+    public static final boolean kArmEncoderInverted = true;// TODO
     public static final boolean kJawEncoderInverted = false;// TODO
     public static final boolean kDriveLeftEncoderInverted = false;// TODO
     public static final boolean kDriveRightEncoderInverted = true;// TODO
@@ -68,9 +68,9 @@ public class Const {
                                                                                      // const
     public static final double kArmGearRatioArm2Encoder = 1.0 / kArmGearRatioEncoder2Arm;
 
-    public static final double kArmPIDTolerance = 5;// degs//TODO
+    public static final double kArmPIDTolerance = 5;// degs //TODO
 
-    public static double kArmkP = 0.0001;// TODO
+    public static double kArmkP = 0;// TODO
     public static double kArmkI = 0;// TODO
     public static double kArmkD = 0;// TODO
     public static double kArmkF = 0;// TODO
@@ -109,7 +109,7 @@ public class Const {
 
     public static final double kJawPIDTolerance = 5;// degs
 
-    public static double kJawkP = 0.0001;// TODO
+    public static double kJawkP = 0;// TODO
     public static double kJawkI = 0;// TODO
     public static double kJawkD = 0;// TODO
     public static double kJawkF = 0;// TODO

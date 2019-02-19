@@ -17,6 +17,7 @@ public class FrontHatchIn extends Mode {
 
     @Override
     protected void prepInit() {
+        System.out.println("PREP: FrontHatchIn");
         prepCmd = new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop, HatchState.Release);
         prepCmd.start();
     }
@@ -27,6 +28,7 @@ public class FrontHatchIn extends Mode {
 
     @Override
     protected void execInit() {
+        System.out.println("EXEC: FrontHatchIn");
         execCmd = new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop, HatchState.Grab);
         execCmd.start();
     }

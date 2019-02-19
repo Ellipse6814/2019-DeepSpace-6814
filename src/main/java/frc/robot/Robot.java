@@ -94,11 +94,11 @@ public class Robot extends TimedRobot {
         // drive.drive(joy1.getRawAxis(1), joy1.getRawAxis(5));
 
         // arm
-        double armSpd = joy1.getRawAxis(3) - joy1.getRawAxis(2);
+        double armSpd = joy1.getRawAxis(1);// = joy1.getRawAxis(3) - joy1.getRawAxis(2);
         MotorDirection md = MotorDirection.Forward;
         if (armSpd < 0)
-            md = MotorDirection.Forward;
+            md = MotorDirection.Backward;
         SmartDashboard.putBoolean("ArmDirection", (md == MotorDirection.Forward) ? true : false);
-        arm.setOpenLoop(armSpd, md);
+        arm.setOpenLoop(Math.abs(armSpd), md);
     }
 }
