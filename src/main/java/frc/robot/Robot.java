@@ -1,10 +1,12 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Util.MotorDirection;
 import frc.robot.auto.AutoDoNothing;
 import frc.robot.log.Logger;
 import frc.robot.subsystems.Arm;
@@ -25,6 +27,7 @@ public class Robot extends TimedRobot {
     public static Jaw jaw = Jaw.getInstance();
     public static LED led = LED.getInstance();
     public static Logger logger = Logger.getInstance();
+    public static Telemetry telemetry = Telemetry.getInstance();
 
     Command autoCommand;
     SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -38,7 +41,8 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotPeriodic() {
-
+        telemetry.updateEncoders();
+        telemetry.updateGyro();
     }
 
     @Override
@@ -84,6 +88,17 @@ public class Robot extends TimedRobot {
 
     @Override
     public void testPeriodic() {
-        Scheduler.getInstance().run();
+
+        // drive
+        Joystick joy1 = oi.getDoubleJoystick1();
+        // drive.drive(joy1.getRawAxis(1), joy1.getRawAxis(5));
+
+        // arm
+        double armSpd = joy1.getRawAxis(3) - joy1.getRawAxis(2);
+        MotorDirection md = MotorDirection.Forward;
+        if (armSpd < 0)
+            md = MotorDirection.Forward;
+        SmartDashboard.putBoolean("ArmDirection", (md == MotorDirection.Forward) ? true : false);
+        arm.setOpenLoop(armSpd, md);
     }
 }

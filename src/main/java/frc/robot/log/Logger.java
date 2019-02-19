@@ -60,7 +60,7 @@ public class Logger {
 		writeThread = new Thread(() -> {
 			while (write) {
 				flush();
-				System.out.println("flushed " + count++);
+				// System.out.println("flushed " + count++);
 				try {
 					Thread.sleep(500);
 				} catch (InterruptedException e) {

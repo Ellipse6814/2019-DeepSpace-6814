@@ -48,13 +48,17 @@ public class Arm extends Subsystem {
         // armMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 10,
         // 10);
 
+        TalonHelper.configFwdSoftLimit(armMotor, (int) (0 * Const.kArmGearRatioArm2Encoder * Const.kDeg2Talon4096Unit));
+
+        armMotor.configForwardSoftLimitEnable(true, 10);
+
         // Output Encoder Values
         System.out.println("Left Encoder Position" + armMotor.getSelectedSensorPosition(0));
     }
 
     public void setAngle(double angle) {
         // 4096 TalonUnits per rotation
-        double targetPositionRotations = angle * Const.deg2Talon4096Unit * Const.kArmGearRatioArm2Encoder;
+        double targetPositionRotations = angle * Const.kDeg2Talon4096Unit * Const.kArmGearRatioArm2Encoder;
         armMotor.set(ControlMode.Position, targetPositionRotations);
     }
 
@@ -83,11 +87,11 @@ public class Arm extends Subsystem {
     }
 
     public double getEncoderPosition() {
-        return armMotor.getSelectedSensorPosition(0) * Const.talon4096Unit2Deg / Const.kArmGearRatioEncoder2Arm;
+        return armMotor.getSelectedSensorPosition(0) * Const.kTalon4096Unit2Deg / Const.kArmGearRatioEncoder2Arm;
     }
 
     public double getPIDError() {
-        return armMotor.getClosedLoopError(0) * Const.talon4096Unit2Deg / Const.kArmGearRatioEncoder2Arm;
+        return armMotor.getClosedLoopError(0) * Const.kTalon4096Unit2Deg / Const.kArmGearRatioEncoder2Arm;
     }
 
     public void resetEncoder() {

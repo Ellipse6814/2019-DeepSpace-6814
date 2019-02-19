@@ -23,7 +23,7 @@ public class OI {
     // buttonNumber);
 
     private OI() {
-        initSmartDashboardControlButtons();
+
     }
 
     public Joystick getDoubleJoystick1() {
@@ -46,32 +46,4 @@ public class OI {
         return singleJoystick1.getRawButton(1);
     }
 
-    private void initSmartDashboardControlButtons() {
-        SmartDashboard.putData("Front Ball Floor In", new FrontBallFloorIn());
-        SmartDashboard.putData("Front Ball Human In", new FrontBallHumanIn());
-        SmartDashboard.putData("Front Ball Cargo Out", new FrontBallCargo());
-        SmartDashboard.putData("Front Ball Rocket Out", new FrontBallRocket());
-        SmartDashboard.putData("Front Hatch In", new FrontHatchIn());
-        SmartDashboard.putData("Front Hatch Out", new FrontHatchOut());
-
-        SmartDashboard.putData("Back Ball Human In", new BackBallHumanIn());
-        SmartDashboard.putData("Back Ball Cargo Out", new BackBallCargo());
-        SmartDashboard.putData("Back Ball Rocket Out", new BackBallRocket());
-        SmartDashboard.putData("Back Hatch In", new BackHatchIn());
-        SmartDashboard.putData("Back Hatch Out", new BackHatchOut());
-
-        SmartDashboard.putData("Middle Idle", new MiddleIdle());
-
-    }
-
-    private void initPIDTuner() {
-        SmartDashboard.putNumber("Arm P", Const.kArmkP);
-        SmartDashboard.putNumber("Arm I", Const.kArmkI);
-        SmartDashboard.putNumber("Arm D", Const.kArmkD);
-        SmartDashboard.putNumber("Arm F", Const.kArmkF);
-        SmartDashboard.putNumber("Jaw P", Const.kJawkP);
-        SmartDashboard.putNumber("Jaw I", Const.kJawkI);
-        SmartDashboard.putNumber("Jaw D", Const.kJawkD);
-        SmartDashboard.putNumber("Jaw F", Const.kJawkF);
-    }
 }
