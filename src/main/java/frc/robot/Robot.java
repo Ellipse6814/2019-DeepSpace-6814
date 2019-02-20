@@ -1,5 +1,9 @@
 package frc.robot;
 
+import javax.lang.model.util.ElementScanner6;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -43,6 +47,7 @@ public class Robot extends TimedRobot {
     public void robotPeriodic() {
         telemetry.updateEncoders();
         telemetry.updateGyro();
+        telemetry.displayPIDError();
     }
 
     @Override
@@ -83,22 +88,41 @@ public class Robot extends TimedRobot {
 
     @Override
     public void testInit() {
-
+        pneumatic.startCompressor();
     }
 
     @Override
     public void testPeriodic() {
 
-        // drive
+        // // drive
         Joystick joy1 = oi.getDoubleJoystick1();
         // drive.drive(joy1.getRawAxis(1), joy1.getRawAxis(5));
 
-        // arm
-        double armSpd = joy1.getRawAxis(1);// = joy1.getRawAxis(3) - joy1.getRawAxis(2);
+        // // arm
+        double armSpd = joy1.getRawAxis(3) - joy1.getRawAxis(2);
+        armSpd *= 0.4;
+        SmartDashboard.putNumber("Arm Spd", armSpd);
         MotorDirection md = MotorDirection.Forward;
         if (armSpd < 0)
             md = MotorDirection.Backward;
         SmartDashboard.putBoolean("ArmDirection", (md == MotorDirection.Forward) ? true : false);
-        arm.setOpenLoop(Math.abs(armSpd), md);
+        SmartDashboard.putNumber("ArmTalonOuput", arm.armMotor.getMotorOutputPercent());
+        // arm.armMotor.set(ControlMode.PercentOutput, armSpd);
+        if (joy1.getRawButton(1))
+            hatchIntake.openHatchIntake();
+        else
+            hatchIntake.closeHatchIntake();
+
+        if (joy1.getRawButton(2))
+            arm.setAngle(5);
+        else if (joy1.getRawButton(3))
+            arm.setAngle(80);
+        else if (joy1.getRawButton(4))
+            arm.setAngle(145);
+        // else
+        // arm.setOpenLoop(Math.abs(armSpd), md);
+
+        if (joy1.getRawButton(6))
+            arm.resetEncoder();
     }
 }

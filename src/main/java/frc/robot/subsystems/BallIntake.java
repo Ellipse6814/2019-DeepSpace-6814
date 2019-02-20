@@ -74,7 +74,7 @@ public class BallIntake extends Subsystem {
             setMotor(MotorDirection.Forward, Const.kBallIntakeSpdSlow, Const.kBallIntakeNormalAmp);
         } else if (state == BallState.Hold) {
             if (Timer.getFPGATimestamp() % 1000 < 400)
-                setMotor(MotorDirection.Backward, Const.kBallIntakeSpdSlow, Const.kBallIntakeStallAmp);
+                setMotor(MotorDirection.Backward, Const.kBallIntakeHoldSpd, Const.kBallIntakeStallAmp);
         } else if (state == BallState.Custom) {
             // MotorDirection md = intake ? MotorDirection.Backward :
             // MotorDirection.Forward;

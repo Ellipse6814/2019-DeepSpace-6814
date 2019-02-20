@@ -22,11 +22,13 @@ public class ArmSetAngle extends Command {
     public ArmSetAngle(ArmState state, double angle) {
         requires(arm);
         this.angle = angle;
+        this.state = state;
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        System.out.println("CMD: set ARM state: " + state);
         if (state == ArmState.Custom) {
             arm.setAngle(angle);
         } else {

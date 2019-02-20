@@ -22,6 +22,7 @@ public class JawSetAngle extends Command {
     public JawSetAngle(JawState state, double angle) {
         requires(jaw);
         this.angle = angle;
+        this.state = state;
     }
 
     // Called just before this Command runs the first time

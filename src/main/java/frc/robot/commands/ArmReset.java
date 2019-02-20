@@ -26,9 +26,9 @@ public class ArmReset extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        arm.setOpenLoop(0.3, MotorDirection.Forward);
-        if (arm.getFrontHallEffect()) {
-            arm.setOpenLoop(0, MotorDirection.Forward);
+        arm.setOpenLoop(0.3, MotorDirection.Backward);
+        if (!arm.getFrontHallEffect()) {
+            arm.setOpenLoop(0, MotorDirection.Backward);
             arm.resetEncoder();
             isFinished = true;
             System.out.println("ARM RESET hit hall effect sensor: DONE");

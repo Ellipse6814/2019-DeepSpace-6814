@@ -16,6 +16,8 @@ public class TalonHelper {
         TalonSRX talon = new TalonSRX(port);
         talon.setInverted(inverted);
         talon.enableVoltageCompensation(true);
+        talon.configForwardSoftLimitEnable(false, 10);
+        talon.configReverseSoftLimitEnable(false, 10);
         System.out.println("A TalonSRX is created on port [" + port + "], with inverted [" + inverted + "]");
         return talon;
     }

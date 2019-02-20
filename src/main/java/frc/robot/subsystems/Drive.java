@@ -10,6 +10,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Const;
 import frc.robot.Util.TalonHelper;
 import frc.robot.commands.Drive2Joy;
@@ -93,6 +94,8 @@ public class Drive extends Subsystem {
     }
 
     public double getGyro() {
+        // double yaw = gyro.getYaw();
+        // SmartDashboard.putNumber("Yaw", yaw);
         return gyro.getAngle() - gyroZero;
     }
 

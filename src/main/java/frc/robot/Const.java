@@ -10,6 +10,8 @@ public class Const {
     /** To use: multiply variable with the constant below */
     public static final double kDeg2Talon4096Unit = 1 / 360.0 * 4096.0;
     public static final double kTalon4096Unit2Deg = 1 / kDeg2Talon4096Unit;
+    public static final double kArmDeg2Talon4096Unit = 1 / 360.0 * 512.0;
+    public static final double kArmTalon4096Unit2Deg = 1 / kArmDeg2Talon4096Unit;
 
     // ============================= GENERAL: ==============================
 
@@ -37,7 +39,7 @@ public class Const {
     public static final boolean kIntakeRollerMotorInverted = false;// TODO
 
     public static final int kArmMotorPort = 5;
-    public static final boolean kArmMotorInverted = true; // front 123; back 456; front lowest pt: 0
+    public static final boolean kArmMotorInverted = false; // front 123; back 456; front lowest pt: 0
     public static final int kArmMotorSlavePort = 3;
 
     public static final int kDriveLeftMasterMotorPort = 3;
@@ -50,10 +52,10 @@ public class Const {
     public static final int kLEDPort = 0;
 
     // Encoder inverts
-    public static final boolean kArmEncoderInverted = true;// TODO
+    public static final boolean kArmEncoderInverted = true;
     public static final boolean kJawEncoderInverted = false;// TODO
-    public static final boolean kDriveLeftEncoderInverted = false;// TODO
-    public static final boolean kDriveRightEncoderInverted = true;// TODO
+    public static final boolean kDriveLeftEncoderInverted = true;
+    public static final boolean kDriveRightEncoderInverted = true;
 
     // Current Limits
 
@@ -64,15 +66,20 @@ public class Const {
     // ======================== ENCODER PRESET POSITIONS: ==========================
 
     // ------------------- ARM --------------------------
-    public static final double kArmGearRatioEncoder2Arm = 26.0 / 42.0 * 18.0 / 60.0; // to use, multiple var with this
-                                                                                     // const
+    public static final double kArmGearRatioEncoder2Arm = 26.0 / 42.0 * 18.0 / 60.0 * 18.0 / 84.0; // to use, multiple
+                                                                                                   // var
+    // with this
+    // const
     public static final double kArmGearRatioArm2Encoder = 1.0 / kArmGearRatioEncoder2Arm;
 
     public static final double kArmPIDTolerance = 5;// degs //TODO
 
-    public static double kArmkP = 0;// TODO
+    public static final int kArmLowerSoftLimit = 0;
+    public static final int kArmUpperSoftLimit = 175;
+
+    public static double kArmkP = 0.6;// TODO
     public static double kArmkI = 0;// TODO
-    public static double kArmkD = 0;// TODO
+    public static double kArmkD = 0.006;// TODO
     public static double kArmkF = 0;// TODO
 
     public static double calcArmAngle(ArmState state) {
@@ -95,6 +102,8 @@ public class Const {
             angle = 8;
         else if (state == ArmState.BackHatchInOut)
             angle = 145;
+        else if (state == ArmState.Middle)
+            angle = 90;
         else {
             System.out.println("ARM THIS IS NOT HOW TO USE CUSTOM SETPOINT, hopefully 0 did not break anything");
             angle = 0; // hopefully that doesn't break anything
@@ -104,7 +113,7 @@ public class Const {
 
     // --------------------- JAW -------------------------
 
-    public static final double kJawGearRatioEncoder2Jaw = 1;// TODO
+    public static final double kJawGearRatioEncoder2Jaw = 18.0 / 32.0;
     public static final double kJawGearRatioJaw2Encoder = 1 / kJawGearRatioEncoder2Jaw;
 
     public static final double kJawPIDTolerance = 5;// degs
@@ -153,13 +162,14 @@ public class Const {
     public static final int kBallIntakeStallAmp = 3;// TODO
 
     public static final double kBallIntakeSpdSlow = 0.5;// TODO
+    public static final double kBallIntakeHoldSpd = 0.1;// TODO
     public static final double kBallIntakeSpd = 1;// TODO
 
     // --------------------- DRIVE -------------------------
     public static final double kDriveJoystickDeadband = 0.05;
 
     public static final double[] kDrivePowerGears = { 0.3333, 0.6666, 1 };
-    public static final double[] kDriveTurnGears = { 0.3333, 0.6666, 1 };
+    public static final double[] kDriveTurnGears = { 0.2, 0.6666, 1 };
 
     public static final double maxAccelMSS = 100;
 

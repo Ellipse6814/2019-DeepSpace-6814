@@ -68,11 +68,11 @@ public class Jaw extends Subsystem {
     }
 
     public double getEncoderPosition() {
-        return jawAngleMotor.getSelectedSensorPosition(0) * Const.kTalon4096Unit2Deg / Const.kJawGearRatioEncoder2Jaw;
+        return jawAngleMotor.getSelectedSensorPosition(0) * Const.kTalon4096Unit2Deg * Const.kJawGearRatioEncoder2Jaw;
     }
 
     public double getPIDError() {
-        return jawAngleMotor.getClosedLoopError(0) * Const.kTalon4096Unit2Deg / Const.kJawGearRatioEncoder2Jaw;
+        return jawAngleMotor.getClosedLoopError(0) * Const.kTalon4096Unit2Deg * Const.kJawGearRatioEncoder2Jaw;
     }
 
     public boolean onTarget() {

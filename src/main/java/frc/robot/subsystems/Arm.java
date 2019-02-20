@@ -5,7 +5,9 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Const;
 import frc.robot.Util.ArmState;
 import frc.robot.Util.MotorDirection;
@@ -28,7 +30,7 @@ public class Arm extends Subsystem {
     private DigitalInput armHallEffectFront = new DigitalInput(Const.kArmHallEffectFrontSensorPort);
     private DigitalInput armHallEffectBack = new DigitalInput(Const.kArmHallEffectBackSensorPort);
 
-    private TalonSRX armMotor;
+    public TalonSRX armMotor;
     private VictorSPX armMotorSlave;
 
     private Arm() {
@@ -43,16 +45,17 @@ public class Arm extends Subsystem {
 
         TalonHelper.configQuadEncoder(armMotor, Const.kArmEncoderInverted);
 
+        // armm
+
         TalonHelper.configPID(armMotor, 0, Const.kArmkP, Const.kArmkI, Const.kArmkD, Const.kArmkF);
 
         // armMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 10,
         // 10);
 
         TalonHelper.configLowerSoftLimit(armMotor,
-                (int) (0 * Const.kArmGearRatioArm2Encoder * Const.kDeg2Talon4096Unit));
-        // TODO: also setup the upper soft limit
-
-        armMotor.configForwardSoftLimitEnable(true, 10);
+                (int) (Const.kArmLowerSoftLimit * Const.kArmGearRatioArm2Encoder * Const.kArmDeg2Talon4096Unit));
+        TalonHelper.configUpperSoftLimit(armMotor,
+                (int) (Const.kArmUpperSoftLimit * Const.kArmGearRatioArm2Encoder * Const.kArmDeg2Talon4096Unit));
 
         // Output Encoder Values
         System.out.println("Left Encoder Position" + armMotor.getSelectedSensorPosition(0));
@@ -60,7 +63,9 @@ public class Arm extends Subsystem {
 
     public void setAngle(double angle) {
         // 4096 TalonUnits per rotation
-        double targetPositionRotations = angle * Const.kDeg2Talon4096Unit * Const.kArmGearRatioArm2Encoder;
+        TalonHelper.configPID(armMotor, 0, Const.kArmkP, Const.kArmkI, Const.kArmkD, Const.kArmkF);
+        double targetPositionRotations = angle * Const.kArmDeg2Talon4096Unit * Const.kArmGearRatioArm2Encoder;
+        System.out.println("setting PID setpoint " + targetPositionRotations);
         armMotor.set(ControlMode.Position, targetPositionRotations);
     }
 
@@ -73,6 +78,7 @@ public class Arm extends Subsystem {
     }
 
     public void setOpenLoop(double speed, MotorDirection direction) {
+        SmartDashboard.putNumber("raw spd", speed);
         if (direction == MotorDirection.Forward) {
             armMotor.set(ControlMode.PercentOutput, speed);
         } else {
@@ -89,11 +95,14 @@ public class Arm extends Subsystem {
     }
 
     public double getEncoderPosition() {
-        return armMotor.getSelectedSensorPosition(0) * Const.kTalon4096Unit2Deg / Const.kArmGearRatioEncoder2Arm;
+        // return armMotor.getSelectedSensorPosition(0) * Const.kTalon4096Unit2Deg *
+        // Const.kArmGearRatioEncoder2Arm;
+        SmartDashboard.putNumber("Raw Encoder Value", armMotor.getSelectedSensorPosition(0));
+        return armMotor.getSelectedSensorPosition(0) * Const.kArmTalon4096Unit2Deg * Const.kArmGearRatioEncoder2Arm;
     }
 
     public double getPIDError() {
-        return armMotor.getClosedLoopError(0) * Const.kTalon4096Unit2Deg / Const.kArmGearRatioEncoder2Arm;
+        return armMotor.getClosedLoopError(0);// * Const.kArmTalon4096Unit2Deg * Const.kArmGearRatioEncoder2Arm;
     }
 
     public void resetEncoder() {

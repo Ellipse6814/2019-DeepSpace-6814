@@ -1,6 +1,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Util.Evaluate;
+import frc.robot.commands.ArmReset;
+import frc.robot.commands.WaitUntil;
 import frc.robot.modes.*;
 
 public class Telemetry {
@@ -11,6 +14,17 @@ public class Telemetry {
         if (instance == null)
             instance = new Telemetry();
         return instance;
+    }
+
+    private Telemetry() {
+        initSmartDashboardControlButtons();
+        initRawResetSensors();
+        initPIDTest();
+        initPIDTuner();
+    }
+
+    public void displayPIDError() {
+        SmartDashboard.putNumber("PID Error Value", Robot.arm.getPIDError());
     }
 
     public void updateGyro() {
@@ -39,6 +53,29 @@ public class Telemetry {
 
         SmartDashboard.putData("Middle Idle", new MiddleIdle());
 
+        SmartDashboard.putData("Reset Arm CMD", new ArmReset());
+
+    }
+
+    public void initPIDTest() {
+        SmartDashboard.putData("Arm PID Setpoint 30", new WaitUntil(new Evaluate() {
+            public boolean evaluate() {
+                Robot.arm.setAngle(30);
+                return true;
+            }
+        }));
+        SmartDashboard.putData("Arm PID Setpoint 80", new WaitUntil(new Evaluate() {
+            public boolean evaluate() {
+                Robot.arm.setAngle(80);
+                return true;
+            }
+        }));
+        SmartDashboard.putData("Arm PID Setpoint 130", new WaitUntil(new Evaluate() {
+            public boolean evaluate() {
+                Robot.arm.setAngle(130);
+                return true;
+            }
+        }));
     }
 
     public void initPIDTuner() {
@@ -50,5 +87,20 @@ public class Telemetry {
         SmartDashboard.putNumber("Jaw I", Const.kJawkI);
         SmartDashboard.putNumber("Jaw D", Const.kJawkD);
         SmartDashboard.putNumber("Jaw F", Const.kJawkF);
+    }
+
+    public void initRawResetSensors() {
+        SmartDashboard.putData("Zero Arm Encoder", new WaitUntil(new Evaluate() {
+            public boolean evaluate() {
+                Robot.arm.resetEncoder();
+                return true;
+            }
+        }));
+        SmartDashboard.putData("Zero Drive Encoders", new WaitUntil(new Evaluate() {
+            public boolean evaluate() {
+                Robot.drive.zeroEncoder();
+                return true;
+            }
+        }));
     }
 }

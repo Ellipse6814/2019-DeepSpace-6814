@@ -1,7 +1,10 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.JoystickBase;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.DriveSetGear;
 import frc.robot.modes.*;
 
 public class OI {
@@ -23,7 +26,15 @@ public class OI {
     // buttonNumber);
 
     private OI() {
+        initGearButtons();
+    }
 
+    private void initGearButtons() {
+        JoystickButton gearUpBtn = new JoystickButton(doubleJoystick1, 6);
+        JoystickButton gearDownBtn = new JoystickButton(doubleJoystick1, 4);
+
+        gearUpBtn.whenPressed(new DriveSetGear(true));
+        gearDownBtn.whenPressed(new DriveSetGear(false));
     }
 
     public Joystick getDoubleJoystick1() {
@@ -43,7 +54,7 @@ public class OI {
     }
 
     public boolean getExecButton() {
-        return singleJoystick1.getRawButton(1);
+        return doubleJoystick1.getRawButton(1);
     }
 
 }
