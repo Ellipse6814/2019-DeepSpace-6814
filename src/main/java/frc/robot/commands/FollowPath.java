@@ -37,6 +37,10 @@ public class FollowPath extends CommandBase {
         if (requestReset) {
             log("requested reset, requested");
             drive.resetSensors();
+            if (requestReset && reversed) {
+                drive.zeroGyro(180);
+                log("Starting in reversed, resetting gyro to 180degs");
+            }
             Point pos = path.waypoints.get(0).p;
             odometer.setX(pos.x);
             odometer.setY(pos.y);

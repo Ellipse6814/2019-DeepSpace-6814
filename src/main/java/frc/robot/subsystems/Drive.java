@@ -111,7 +111,11 @@ public class Drive extends Subsystem {
     }
 
     public void zeroGyro() {
-        gyroZero = gyro.getAngle();
+        zeroGyro(0);
+    }
+
+    public void zeroGyro(double setCurrentAngleTo) {
+        gyroZero = gyro.getAngle() + setCurrentAngleTo;
     }
 
     public double getLeftEncoder() {
