@@ -3,12 +3,14 @@ package frc.robot.modes;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public abstract class Mode extends Command {
+public abstract class Mode1 extends Command {
 
-    public boolean lastStage = true; // exec for true, false for prep. init true to trigger prep init
+    public boolean firstTimeExec = true;
     private boolean isFinished = false;
 
-    public Mode() {
+    public boolean execStage = false;
+
+    public Mode1() {
         super();
     }
 
@@ -18,7 +20,7 @@ public abstract class Mode extends Command {
 
     abstract protected void execInit();
 
-    abstract protected void execLoop();
+    abstract protected boolean execLoop(); // return true to finish()
 
     @Override
     protected void initialize() {
@@ -27,17 +29,16 @@ public abstract class Mode extends Command {
 
     @Override
     protected void execute() {
-        if (getExecButton()) {
-            if (!lastStage) {
-                lastStage = true;
+        execStage = (execStage || getExecButton());
+
+        if (execStage) {
+            if (firstTimeExec) {
+                firstTimeExec = false;
                 execInit();
             }
-            execLoop();
+            if (execLoop())
+                finish();
         } else {
-            if (lastStage) {
-                lastStage = false;
-                prepInit();
-            }
             prepLoop();
         }
     }

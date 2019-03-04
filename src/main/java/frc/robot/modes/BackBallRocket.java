@@ -18,7 +18,7 @@ public class BackBallRocket extends Mode {
     @Override
     protected void prepInit() {
         System.out.println("PREP: BackBallRocket");
-        prepCmd = new SetRobot(ArmState.BackBallRocket, JawState.Ball, BallState.Hold, HatchState.Release);
+        prepCmd = new SetRobot(ArmState.BackBallRocket, JawState.BallOut, BallState.Hold, HatchState.Release);
         prepCmd.start();
     }
 
@@ -29,23 +29,12 @@ public class BackBallRocket extends Mode {
     @Override
     protected void execInit() {
         System.out.println("EXEC: BackBallRocket");
-        execCmd = new SetRobot(ArmState.BackBallRocket, JawState.Ball, BallState.Out, HatchState.Release);
+        execCmd = new SetRobot(ArmState.BackBallRocket, JawState.BallOut, BallState.Out, HatchState.Release);
         execCmd.start();
     }
 
     @Override
-    protected boolean execLoop() {
-        return !getExecButton();
+    protected void execLoop() {
     }
 
 }
-
-/*
- * this is how you create a in line command group
- * 
- * @Override protected void execInit() { execCmd = new CommandGroup() { {
- * addParallel(new ArmSetAngle(ArmState.FrontBallCargo)); addParallel(new
- * JawSetAngle(JawState.Ball)); addParallel(new BallIntakeSet(BallState.Out)); }
- * }; execCmd.start(); }
- *
- */

@@ -34,18 +34,7 @@ public class MiddleIdle extends Mode {
     }
 
     @Override
-    protected boolean execLoop() {
-        return !getExecButton();
+    protected void execLoop() {
     }
 
 }
-
-/*
- * this is how you create a in line command group
- * 
- * @Override protected void execInit() { execCmd = new CommandGroup() { {
- * addParallel(new ArmSetAngle(ArmState.FrontBallCargo)); addParallel(new
- * JawSetAngle(JawState.Ball)); addParallel(new BallIntakeSet(BallState.Out)); }
- * }; execCmd.start(); }
- *
- */

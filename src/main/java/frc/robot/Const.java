@@ -89,24 +89,24 @@ public class Const {
         else if (state == ArmState.FrontBallHumanIn)
             angle = 75;
         else if (state == ArmState.FrontBallCargo)
-            angle = 70;
+            angle = 65;
         else if (state == ArmState.FrontBallRocket)
-            angle = 70;
+            angle = 65;
         else if (state == ArmState.BackBallHumanIn)
             angle = 145;
         else if (state == ArmState.BackBallCargo)
-            angle = 140;
+            angle = 150;
         else if (state == ArmState.BackBallRocket)
-            angle = 140;
+            angle = 150;
         else if (state == ArmState.FrontHatchInOut)
-            angle = 8;
+            angle = 0;
         else if (state == ArmState.BackHatchInOut)
-            angle = 145;
+            angle = 153;
         else if (state == ArmState.Middle)
             angle = 90;
         else {
-            System.out.println("ARM THIS IS NOT HOW TO USE CUSTOM SETPOINT, hopefully 0 did not break anything");
-            angle = 0; // hopefully that doesn't break anything
+            System.out.println("ARM FATAL ERROR: THIS IS NOT HOW TO USE CUSTOM SETPOINT");
+            angle = 0; 
         }
         return angle;
     }
@@ -126,15 +126,17 @@ public class Const {
     public static double calcJawAngle(JawState state) {
         double angle;
         if (state == JawState.Back)
-            angle = 65;
+            angle = 22;
         else if (state == JawState.Front)
-            angle = 5;
+            angle = 0;
         else if (state == JawState.Ball)
-            angle = 88;
+            angle = 0;
+        else if (state == JawState.BallOut)
+            angle = 190;
         else if (state == JawState.BallHuman)
-            angle = 52;
+            angle = 190;
         else {
-            System.out.println("JAW THIS IS NOT HOW TO USE CUSTOM SETPOINT, hopefully 0 did not break anything");
+            System.out.println("JAW FATAL ERROR: THIS IS NOT HOW TO USE CUSTOM SETPOINT");
             angle = 0;
         }
         return angle;

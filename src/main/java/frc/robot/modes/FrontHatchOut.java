@@ -34,8 +34,7 @@ public class FrontHatchOut extends Mode {
     }
 
     @Override
-    protected boolean execLoop() {
-        return !getExecButton();
+    protected void execLoop() {
     }
 
 }
