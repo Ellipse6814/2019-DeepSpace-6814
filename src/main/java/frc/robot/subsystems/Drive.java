@@ -27,6 +27,7 @@ public class Drive extends Subsystem {
     private int gear = 2;
 
     private DriveCalculator driveCalculator = new DriveCalculator();
+    private Odometer odometer = Odometer.getInstance();
 
     private static Drive instance;
 
@@ -102,7 +103,7 @@ public class Drive extends Subsystem {
     public void zeroEncoder() {
         leftMaster.setSelectedSensorPosition(0);
         rightMaster.setSelectedSensorPosition(0);
-        Odometer.getInstance().reset();
+        odometer.reset();
     }
 
     public void resetSensors() {
@@ -141,5 +142,15 @@ public class Drive extends Subsystem {
     @Override
     protected void initDefaultCommand() {
         setDefaultCommand(new Drive2Joy());
+    }
+
+    @Override
+    public void periodic() {
+        super.periodic();
+        updateOdometer();
+    }
+
+    public void updateOdometer() {
+        odometer.update(getLeftEncoder(), getRightEncoder(), getGyro());
     }
 }
