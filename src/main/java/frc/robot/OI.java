@@ -11,6 +11,7 @@ import frc.robot.commands.DoNothing;
 import frc.robot.commands.DriveSetGear;
 import frc.robot.commands.JawReset;
 import frc.robot.modes.*;
+import frc.robot.subsystems.NetworkTables;
 
 public class OI {
 
@@ -21,6 +22,8 @@ public class OI {
             instance = new OI();
         return instance;
     }
+
+    private NetworkTables networkTables = NetworkTables.getInstance();
 
     private Joystick doubleJoystick1 = new Joystick(0);
     private Joystick controlBoard = new Joystick(1);
@@ -90,7 +93,7 @@ public class OI {
     }
 
     private void initVirtualControlBoard() {
-        Robot.networkTables.listen("Table1", "mode", new Listener() {
+        networkTables.listen("Table1", "mode", new Listener() {
             @Override
             public void valueChanged(Object value) {
                 String data = (String) value;
@@ -118,7 +121,7 @@ public class OI {
                 cmd.start();
             }
         });
-        Robot.networkTables.listen("Table1", "execBtn", new Listener() {
+        networkTables.listen("Table1", "execBtn", new Listener() {
             @Override
             public void valueChanged(Object value) {
                 String data = (String) value;

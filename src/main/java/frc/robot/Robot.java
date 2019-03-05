@@ -1,7 +1,5 @@
 package frc.robot;
 
-import javax.lang.model.util.ElementScanner6;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -23,6 +21,7 @@ import frc.robot.subsystems.NetworkTables;
 import frc.robot.subsystems.Pneumatic;
 
 public class Robot extends TimedRobot {
+    public static NetworkTables networkTables = NetworkTables.getInstance();
     public static OI oi = OI.getInstance();
     public static Pneumatic pneumatic = Pneumatic.getInstance();
     public static Drive drive = Drive.getInstance();
@@ -33,7 +32,6 @@ public class Robot extends TimedRobot {
     public static LED led = LED.getInstance();
     public static Logger logger = Logger.getInstance();
     public static Telemetry telemetry = Telemetry.getInstance();
-    public static NetworkTables networkTables = NetworkTables.getInstance();
 
     Command autoCommand;
     SendableChooser<Command> autoChooser = new SendableChooser<>();

@@ -16,12 +16,13 @@ import frc.robot.Util.ArmState;
 import frc.robot.Util.MotorDirection;
 import frc.robot.Util.TalonHelper;
 import frc.robot.commands.DoNothing;
+import frc.robot.log.Logger;
 
 public class Arm extends Subsystem {
 
     private static Arm instance;
     public ArmState state;
-    // private Logger logger = Robot.logger;
+    // private Logger logger = Logger.getInstance()
 
     public static Arm getInstance() {
         if (instance == null) {
