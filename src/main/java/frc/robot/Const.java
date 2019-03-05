@@ -106,7 +106,7 @@ public class Const {
             angle = 90;
         else {
             System.out.println("ARM FATAL ERROR: THIS IS NOT HOW TO USE CUSTOM SETPOINT");
-            angle = 0; 
+            angle = 0;
         }
         return angle;
     }
@@ -132,9 +132,9 @@ public class Const {
         else if (state == JawState.Ball)
             angle = 0;
         else if (state == JawState.BallOut)
-            angle = 190;
+            angle = 147;
         else if (state == JawState.BallHuman)
-            angle = 190;
+            angle = 147;
         else {
             System.out.println("JAW FATAL ERROR: THIS IS NOT HOW TO USE CUSTOM SETPOINT");
             angle = 0;

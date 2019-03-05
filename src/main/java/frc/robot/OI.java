@@ -26,10 +26,13 @@ public class OI {
     private Joystick controlBoard = new Joystick(1);
     private Joystick singleJoystick1 = new Joystick(3);
 
+    private boolean networkTablesExecButtonDown = false;
+
     private OI() {
         initGearButtons();
         initControlBoard();
         initVirtualControlBoard();
+        initJoystickControlBoard();
     }
 
     private void initGearButtons() {
@@ -38,6 +41,29 @@ public class OI {
 
         gearUpBtn.whenPressed(new DriveSetGear(true));
         gearDownBtn.whenPressed(new DriveSetGear(false));
+    }
+
+    private void initJoystickControlBoard() {
+        JoystickButton frontBallFloorIn = new JoystickButton(singleJoystick1, 0);
+        JoystickButton frontBallOut = new JoystickButton(singleJoystick1, 0);
+        JoystickButton frontHatchIn = new JoystickButton(singleJoystick1, 0);
+        JoystickButton frontHatchOut = new JoystickButton(singleJoystick1, 0);
+        JoystickButton backBallOut = new JoystickButton(singleJoystick1, 0);
+        JoystickButton backHatchOut = new JoystickButton(singleJoystick1, 0);
+        JoystickButton backHatchIn = new JoystickButton(singleJoystick1, 0);
+        JoystickButton armReset = new JoystickButton(singleJoystick1, 0);
+        JoystickButton jawReset = new JoystickButton(singleJoystick1, 0);
+        JoystickButton disableRobot = new JoystickButton(singleJoystick1, 0);
+
+        frontBallFloorIn.whenPressed(new FrontBallFloorIn());
+        frontBallOut.whenPressed(new FrontBallCargo());
+        frontHatchIn.whenPressed(new FrontHatchIn());
+        frontHatchOut.whenPressed(new FrontHatchOut());
+        backBallOut.whenPressed(new BackBallCargo());
+        backHatchOut.whenPressed(new BackHatchOut());
+        backHatchIn.whenPressed(new BackHatchIn());
+        armReset.whenPressed(new ArmReset());
+        jawReset.whenPressed(new JawReset());
     }
 
     private void initControlBoard() {
@@ -92,10 +118,22 @@ public class OI {
                 cmd.start();
             }
         });
+        Robot.networkTables.listen("Table1", "execBtn", new Listener() {
+            @Override
+            public void valueChanged(Object value) {
+                String data = (String) value;
+                if (data == "down") {
+                    networkTablesExecButtonDown = true;
+                } else if (data == "up") {
+                    networkTablesExecButtonDown = false;
+                }
+                System.out.println("Received Controlboard ExecBtn: [" + data + "]");
+            }
+        });
     }
 
     public boolean getExecButton() {
-        return doubleJoystick1.getRawButton(1);
+        return doubleJoystick1.getRawButton(1) || networkTablesExecButtonDown;
     }
 
     public double getDrivePower() {
