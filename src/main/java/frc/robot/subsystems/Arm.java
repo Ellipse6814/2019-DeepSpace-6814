@@ -1,6 +1,9 @@
 package frc.robot.subsystems;
 
+import java.util.Arrays;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -111,6 +114,14 @@ public class Arm extends Subsystem {
 
     public boolean onTarget() {
         return Math.abs(Const.calcArmAngle(state) - getEncoderPosition()) < Const.kArmPIDTolerance;
+    }
+
+    public void disable() {
+        TalonHelper.configNeutralMode(Arrays.asList(armMotor, armMotorSlave), NeutralMode.Coast);
+    }
+
+    public void enable() {
+        TalonHelper.configNeutralMode(Arrays.asList(armMotor, armMotorSlave), NeutralMode.Brake);
     }
 
     @Override

@@ -7,6 +7,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DoNothing extends Command {
 
+    public DoNothing() {
+    }
+
     public DoNothing(Subsystem subsystem) {
         requires(subsystem);
     }

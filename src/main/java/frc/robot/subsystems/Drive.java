@@ -70,7 +70,8 @@ public class Drive extends Subsystem {
         TalonHelper.configCurrentLimit(rightMaster, Const.kDriveMotorMaxAmp);
         TalonHelper.configCurrentLimit(leftMaster, Const.kDriveMotorMaxAmp);
 
-        TalonHelper.configNeutralMode(Arrays.asList(rightMaster, leftMaster, rightSlave, leftSlave), NeutralMode.Brake);
+        // TalonHelper.configNeutralMode(Arrays.asList(rightMaster, leftMaster,
+        // rightSlave, leftSlave), NeutralMode.Brake);
 
         TalonHelper.configDeadband(Arrays.asList(rightMaster, leftMaster, rightSlave, leftSlave),
                 Const.kDriveJoystickDeadband);
@@ -152,5 +153,13 @@ public class Drive extends Subsystem {
 
     public void updateOdometer() {
         odometer.update(getLeftEncoder(), getRightEncoder(), getGyro());
+    }
+
+    public void disable() {
+        TalonHelper.configNeutralMode(Arrays.asList(leftMaster, leftSlave, rightMaster, rightSlave), NeutralMode.Coast);
+    }
+
+    public void enable() {
+        TalonHelper.configNeutralMode(Arrays.asList(leftMaster, leftSlave, rightMaster, rightSlave), NeutralMode.Brake);
     }
 }

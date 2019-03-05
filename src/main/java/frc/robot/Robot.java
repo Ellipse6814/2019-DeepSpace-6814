@@ -19,6 +19,7 @@ import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.HatchIntake;
 import frc.robot.subsystems.Jaw;
 import frc.robot.subsystems.LED;
+import frc.robot.subsystems.NetworkTables;
 import frc.robot.subsystems.Pneumatic;
 
 public class Robot extends TimedRobot {
@@ -32,12 +33,14 @@ public class Robot extends TimedRobot {
     public static LED led = LED.getInstance();
     public static Logger logger = Logger.getInstance();
     public static Telemetry telemetry = Telemetry.getInstance();
+    public static NetworkTables networkTables = NetworkTables.getInstance();
 
     Command autoCommand;
     SendableChooser<Command> autoChooser = new SendableChooser<>();
 
     @Override
     public void robotInit() {
+        turnOffMotors();
         autoChooser.setDefaultOption("Do Nothing", new AutoDoNothing());
         // chooser.addOption("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto Mode Chooser", autoChooser);
@@ -52,6 +55,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void disabledInit() {
+        turnOffMotors();
     }
 
     @Override
@@ -61,6 +65,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
+        turnOnMotors();
         autoCommand = autoChooser.getSelected();
 
         if (autoCommand != null) {
@@ -75,6 +80,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopInit() {
+        turnOnMotors();
         if (autoCommand != null) {
             autoCommand.cancel();
         }
@@ -88,6 +94,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void testInit() {
+        turnOnMotors();
         pneumatic.startCompressor();
     }
 
@@ -124,5 +131,17 @@ public class Robot extends TimedRobot {
 
         if (joy1.getRawButton(6))
             arm.resetEncoder();
+    }
+
+    public void turnOffMotors() {
+        drive.disable();
+        jaw.disable();
+        arm.disable();
+    }
+
+    public void turnOnMotors() {
+        drive.enable();
+        jaw.enable();
+        arm.enable();
     }
 }

@@ -1,14 +1,14 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.subsystems.Drive;
 
 public class Drive2Joy extends Command {
 
-    private Joystick joy1 = Robot.oi.getDoubleJoystick1();
     private Drive drive = Robot.drive;
+    private OI oi = Robot.oi;
 
     public Drive2Joy() {
         // Use requires() here to declare subsystem dependencies
@@ -24,8 +24,8 @@ public class Drive2Joy extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double power = joy1.getRawAxis(1);
-        double turn = joy1.getRawAxis(4);
+        double power = oi.getDrivePower();
+        double turn = oi.getDriveTurn();
         drive.driveJoystick(power, turn);
     }
 

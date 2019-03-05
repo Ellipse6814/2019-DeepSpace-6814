@@ -1,6 +1,9 @@
 package frc.robot.subsystems;
 
+import java.util.Arrays;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -82,5 +85,13 @@ public class Jaw extends Subsystem {
     @Override
     public void initDefaultCommand() {
         setDefaultCommand(new DoNothing(this)); // Do nothing with this subsystem, but still require it
+    }
+
+    public void disable() {
+        TalonHelper.configNeutralMode(Arrays.asList(jawAngleMotor), NeutralMode.Coast);
+    }
+
+    public void enable() {
+        TalonHelper.configNeutralMode(Arrays.asList(jawAngleMotor), NeutralMode.Brake);
     }
 }
