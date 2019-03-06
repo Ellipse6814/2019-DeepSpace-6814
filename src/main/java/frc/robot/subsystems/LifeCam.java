@@ -29,6 +29,10 @@ public class LifeCam extends Subsystem {
         cameraServer.setSource(camera);
     }
 
+    private void startSimpleCamera() {
+        CameraServer.getInstance().startAutomaticCapture();
+    }
+
     @Override
     public void initDefaultCommand() {
     }
