@@ -44,9 +44,9 @@ public class LED {
         LEDColor wantedColor = LEDColor.Off;
 
         if (state == LEDState.Disconnected)
-            wantedColor = (Timer.getFPGATimestamp() > 0.5) ? LEDColor.Off : LEDColor.Yellow;
+            wantedColor = (Timer.getFPGATimestamp() % 1 > 0.5) ? LEDColor.Off : LEDColor.Yellow;
         else if (state == LEDState.Normal)
-            wantedColor = (Timer.getFPGATimestamp() > 0.5) ? LEDColor.Off : LEDColor.Green;
+            wantedColor = (Timer.getFPGATimestamp() % 1 > 0.5) ? LEDColor.Off : LEDColor.Green;
         else if (state == LEDState.PrepOut)
             wantedColor = LEDColor.Yellow;
         else if (state == LEDState.DoneOut)
