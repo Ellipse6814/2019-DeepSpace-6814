@@ -25,16 +25,12 @@ public class LED {
 
     private SpeedController led = new Spark(Const.kLEDPort);
     public LEDState state;
-    private double speed;
 
     private LED() {
         set(LEDState.Disconnected);
     }
 
-    public void setLEDRaw(double config) {
-        speed = config;
-    }
-
+    @Deprecated
     public void set(LEDState state) {
         this.state = state;
     }
