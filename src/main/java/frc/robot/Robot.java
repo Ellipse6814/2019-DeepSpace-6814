@@ -97,11 +97,12 @@ public class Robot extends TimedRobot {
         pneumatic.startCompressor();
     }
 
+    Joystick joy1 = oi.getDoubleJoystick1();
+
     @Override
     public void testPeriodic() {
 
         // // drive
-        Joystick joy1 = oi.getDoubleJoystick1();
         // drive.drive(joy1.getRawAxis(1), joy1.getRawAxis(5));
 
         // // arm

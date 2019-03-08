@@ -3,7 +3,6 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Const;
 import frc.robot.Robot;
 import frc.robot.Util.ArmState;
