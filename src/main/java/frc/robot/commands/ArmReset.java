@@ -21,7 +21,6 @@ public class ArmReset extends Command {
     @Override
     protected void initialize() {
         arm.state = ArmState.Reset;
-        Robot.led.set(LEDState.Reset);
         System.out.println("Starting ARM RESET");
     }
 

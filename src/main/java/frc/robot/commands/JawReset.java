@@ -20,7 +20,7 @@ public class JawReset extends Command {
     @Override
     protected void initialize() {
         jaw.state = JawState.Reset;
-        System.out.println("Starting ARM RESET");
+        System.out.println("Starting JAW RESET");
     }
 
     // Called repeatedly when this Command is scheduled to run
