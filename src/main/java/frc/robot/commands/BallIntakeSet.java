@@ -3,6 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.Util.BallState;
+import frc.robot.Util.LEDState;
 import frc.robot.Util.MotorDirection;
 import frc.robot.subsystems.BallIntake;
 
@@ -39,8 +40,13 @@ public class BallIntakeSet extends Command {
         if (state == BallState.Custom) {
             MotorDirection md = intake ? MotorDirection.Forward : MotorDirection.Backward;
             ballIntake.setMotor(md, speed, amp);
+            // Robot.led.set(LEDState.PrepOut);
         } else {
             ballIntake.set(state);
+            // if (state == BallState.In)
+            // Robot.led.set(LEDState.PrepOut);
+            // else if (state == BallState.Out)
+            // Robot.led.set(LEDState.DoneOut);
         }
     }
 

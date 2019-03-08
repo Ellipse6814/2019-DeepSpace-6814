@@ -49,6 +49,7 @@ public class Robot extends TimedRobot {
         telemetry.updateEncoders();
         telemetry.updateGyro();
         telemetry.displayPIDError();
+        led.update();
     }
 
     @Override

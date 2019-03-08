@@ -142,23 +142,6 @@ public class Const {
         return angle;
     }
 
-    // --------------------- LED -------------------------
-
-    public static double calcLEDSpd(LEDState state) {
-        double spd;
-        if (state == LEDState.Green)
-            spd = 0;
-        else if (state == LEDState.White)
-            spd = 0;
-        else if (state == LEDState.Yellow)
-            spd = 0;
-        else {
-            System.out.println("LED THIS IS NOT HOW TO USE CUSTOM SETPOINT, hopefully 0 did not break anything");
-            spd = 0;
-        }
-        return spd;
-    }
-
     // --------------------- BALL INTAKE -------------------------
     public static final int kBallIntakeNormalAmp = 10;// TODO
     public static final int kBallIntakeStallAmp = 3;// TODO

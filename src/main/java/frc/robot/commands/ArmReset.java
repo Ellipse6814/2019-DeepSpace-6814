@@ -3,6 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.Util.ArmState;
+import frc.robot.Util.LEDState;
 import frc.robot.Util.MotorDirection;
 import frc.robot.subsystems.Arm;
 
@@ -20,6 +21,7 @@ public class ArmReset extends Command {
     @Override
     protected void initialize() {
         arm.state = ArmState.Reset;
+        Robot.led.set(LEDState.Reset);
         System.out.println("Starting ARM RESET");
     }
 
