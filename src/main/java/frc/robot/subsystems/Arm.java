@@ -37,6 +37,8 @@ public class Arm extends Subsystem {
     public TalonSRX armMotor;
     private VictorSPX armMotorSlave;
 
+    private boolean isReset = false;
+
     private Arm() {
         initTalons();
     }
@@ -67,7 +69,12 @@ public class Arm extends Subsystem {
 
     public void setAngle(double angle) {
         // 4096 TalonUnits per rotation
-        TalonHelper.configPID(armMotor, 0, Const.kArmkP, Const.kArmkI, Const.kArmkD, Const.kArmkF);
+        // TalonHelper.configPID(armMotor, 0, Const.kArmkP, Const.kArmkI, Const.kArmkD, Const.kArmkF);
+        if (!isReset) {
+            System.out.println("ARM NOT RESETTED. ROBOT WILL NOT MOVE ARM AS PID WILL DESTROY IT.");
+            armMotor.set(ControlMode.PercentOutput, 0);
+            return;
+        }
         double targetPositionRotations = angle * Const.kArmDeg2Talon4096Unit * Const.kArmGearRatioArm2Encoder;
         System.out.println("setting PID setpoint " + targetPositionRotations);
         armMotor.set(ControlMode.Position, targetPositionRotations);
@@ -117,12 +124,31 @@ public class Arm extends Subsystem {
         return Math.abs(Const.calcArmAngle(state) - getEncoderPosition()) < Const.kArmPIDTolerance;
     }
 
+    /**
+     * Disables Backwards EMF on all arm motors. This will cause all motors to
+     * coast. This is used in disabled mode when humans try to move the arm
+     */
     public void disable() {
         TalonHelper.configNeutralMode(Arrays.asList(armMotor, armMotorSlave), NeutralMode.Coast);
     }
 
+    /**
+     * Enables Backwards EMF on all arm motors. This will cause all motors to brake.
+     * This is used during competition
+     */
     public void enable() {
         TalonHelper.configNeutralMode(Arrays.asList(armMotor, armMotorSlave), NeutralMode.Brake);
+    }
+
+    public void resetPeriodic() {
+        if (!getFrontHallEffect()) {
+            resetEncoder();
+            isReset = true;
+        }
+    }
+
+    public boolean isReset() {
+        return isReset;
     }
 
     @Override

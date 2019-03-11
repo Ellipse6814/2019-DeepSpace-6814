@@ -23,6 +23,12 @@ public class Telemetry {
         initPIDTuner();
     }
 
+    public void update() {
+        updateEncoders();
+        updateGyro();
+        displayPIDError();
+    }
+
     public void displayPIDError() {
         SmartDashboard.putNumber("PID Error Value", Robot.arm.getPIDError());
     }

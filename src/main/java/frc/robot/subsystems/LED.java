@@ -1,5 +1,8 @@
 package frc.robot.subsystems;
 
+import javax.lang.model.util.ElementScanner6;
+
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Timer;
@@ -21,6 +24,8 @@ public class LED {
         }
         return instance;
     }
+
+    private DriverStation driverStation = DriverStation.getInstance();
 
     private SpeedController led = new Spark(Const.kLEDPort);
     public LEDState state;
@@ -52,18 +57,18 @@ public class LED {
             wantedColor = LEDColor.Aqua;
         else if (state == LEDState.Danger)
             wantedColor = LEDColor.Red;
+        else if (state == LEDState.WaitingReset)
+            wantedColor = (Timer.getFPGATimestamp() % 1 > 0.5) ? LEDColor.Off : LEDColor.Red;
 
         led.set(calcLEDSpd(wantedColor));
     }
 
     private void updateState() {
-        if (Robot.arm.state == ArmState.Reset)
+        if (!Robot.arm.isReset() || !Robot.jaw.isReset())
+            state = LEDState.WaitingReset;
+        else if (Robot.arm.state == ArmState.Reset || Robot.jaw.state == JawState.Reset)
             state = LEDState.Danger;
-        else if (Robot.jaw.state == JawState.Reset)
-            state = LEDState.Danger;
-        else if (Robot.arm.state == ArmState.Custom)
-            state = LEDState.Danger;
-        else if (Robot.jaw.state == JawState.Custom)
+        else if (Robot.arm.state == ArmState.Custom || Robot.jaw.state == JawState.Custom)
             state = LEDState.Danger;
         else if (Robot.ballIntake.state == BallState.In)
             state = LEDState.PrepOut;
@@ -71,8 +76,12 @@ public class LED {
             state = LEDState.DoneOut;
         else if (Robot.hatchIntake.state == HatchState.Release)
             state = LEDState.PrepOut;
-        else
+        else if (driverStation.isEnabled())
             state = LEDState.Normal;
+        else if (!driverStation.isEnabled())
+            state = LEDState.Disconnected;
+        else
+            state = LEDState.Disconnected;
 
     }
 

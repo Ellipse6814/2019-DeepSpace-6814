@@ -30,6 +30,8 @@ public class Jaw extends Subsystem {
 
     private DigitalInput jawHallEffect = new DigitalInput(Const.kJawHallEffectSensorPort);
 
+    private boolean isReset = false;
+
     private Jaw() {
         initTalons();
     }
@@ -43,6 +45,11 @@ public class Jaw extends Subsystem {
 
     public void setAngle(double angle) {
         // 4096 TalonUnits per rotation
+        if (!isReset) {
+            System.out.println("JAW NOT RESETTED. ROBOT WILL NOT MOVE JAW AS PID WILL DESTROY IT.");
+            jawAngleMotor.set(ControlMode.PercentOutput, 0);
+            return;
+        }
         double targetPositionRotations = angle * Const.kDeg2Talon4096Unit * Const.kJawGearRatioJaw2Encoder;
         jawAngleMotor.set(ControlMode.Position, targetPositionRotations);
     }
@@ -94,4 +101,16 @@ public class Jaw extends Subsystem {
     public void enable() {
         TalonHelper.configNeutralMode(Arrays.asList(jawAngleMotor), NeutralMode.Brake);
     }
+
+    public void resetPeriodic() {
+        if (!getHallEffect()) {
+            resetEncoder();
+            isReset = true;
+        }
+    }
+
+    public boolean isReset() {
+        return isReset;
+    }
+
 }

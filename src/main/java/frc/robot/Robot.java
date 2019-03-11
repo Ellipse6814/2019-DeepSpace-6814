@@ -2,6 +2,7 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -46,9 +47,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotPeriodic() {
-        telemetry.updateEncoders();
-        telemetry.updateGyro();
-        telemetry.displayPIDError();
+        telemetry.update();
         led.update();
     }
 
@@ -59,7 +58,8 @@ public class Robot extends TimedRobot {
 
     @Override
     public void disabledPeriodic() {
-        Scheduler.getInstance().run();
+        tryToResetSensors();
+        // Scheduler.getInstance().run();
     }
 
     @Override
@@ -131,6 +131,11 @@ public class Robot extends TimedRobot {
 
         if (joy1.getRawButton(6))
             arm.resetEncoder();
+    }
+
+    public void tryToResetSensors() {
+        arm.resetPeriodic();
+        jaw.resetPeriodic();
     }
 
     public void turnOffMotors() {
