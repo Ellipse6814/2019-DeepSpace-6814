@@ -23,6 +23,11 @@ public class Waypoint {
 		this.v = v;
 	}
 
+	public Waypoint(Point p) {
+		this.p = p;
+		this.v = 0;
+	}
+
 	public Waypoint(double x, double y) {
 		this.p = new Point(x, y);
 		this.v = 0;

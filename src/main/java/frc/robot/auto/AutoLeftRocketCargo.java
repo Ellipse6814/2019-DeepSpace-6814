@@ -17,9 +17,9 @@ import frc.robot.path.Field;
 import frc.robot.path.RobotPathConfig;
 import frc.robot.path.Waypoint;
 
-public class AutoLeftCargoCargo extends CommandGroup {
+public class AutoLeftRocketCargo extends CommandGroup {
 
-        public AutoLeftCargoCargo() {
+        public AutoLeftRocketCargo() {
 
                 // ============================ Pure Pursuit Config ==========================
                 boolean reset;
@@ -36,8 +36,8 @@ public class AutoLeftCargoCargo extends CommandGroup {
                 waypoints = Arrays.asList( //
                                 new Waypoint(Field.kStartingLowLeft), //
                                 new Waypoint(Field.kvStartingLowLeft), //
-                                new Waypoint(Field.kvCargoLeftFront), //
-                                new Waypoint(Field.kCargoLeftFront) //
+                                new Waypoint(Field.kvRocketLeftFront), //
+                                new Waypoint(Field.kRocketLeftFront) //
                 );
 
                 Command path1 = new FollowPath(reverse, reset, config, waypoints);
@@ -50,8 +50,8 @@ public class AutoLeftCargoCargo extends CommandGroup {
                 // config.maxAngVel = 3;
 
                 waypoints = Arrays.asList( //
-                                new Waypoint(Field.kCargoLeftFront), //
-                                new Waypoint(Field.kvCargoLeftFront), //
+                                new Waypoint(Field.kRocketLeftFront), //
+                                new Waypoint(Field.kvRocketLeftFront), //
                                 new Waypoint(Field.kvCargoSupplyLeft), //
                                 new Waypoint(Field.kCargoSupplyLeft) //
                 );

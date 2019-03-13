@@ -5,25 +5,31 @@ import java.util.List;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.Robot;
 import frc.robot.Util.ArmState;
 import frc.robot.Util.BallState;
+import frc.robot.Util.Evaluate;
 import frc.robot.Util.HatchState;
 import frc.robot.Util.JawState;
 import frc.robot.commands.FollowPath;
 import frc.robot.commands.Run;
 import frc.robot.commands.SetRobot;
+import frc.robot.commands.SetStage;
 import frc.robot.commands.Wait;
-import frc.robot.path.Field;
+import frc.robot.commands.WaitUntil;
+import frc.robot.commands.WaitUntilPathProgress;
+import frc.robot.commands.WaitUntilStage;
 import frc.robot.path.RobotPathConfig;
+import frc.robot.path.Units;
 import frc.robot.path.Waypoint;
 
-public class AutoLeftCargoCargo extends CommandGroup {
+@Deprecated
+public class OLDAutoLeftCargoCargo extends CommandGroup {
 
-        public AutoLeftCargoCargo() {
+        public OLDAutoLeftCargoCargo() {
 
                 // ============================ Pure Pursuit Config ==========================
-                boolean reset;
-                boolean reverse;
+                boolean reset, reverse;
                 List<Waypoint> waypoints;
                 RobotPathConfig config;
 
@@ -33,12 +39,10 @@ public class AutoLeftCargoCargo extends CommandGroup {
                 reverse = false;
                 config = RobotPathConfig.getRobotConfig();
 
-                waypoints = Arrays.asList( //
-                                new Waypoint(Field.kStartingLowLeft), //
-                                new Waypoint(Field.kvStartingLowLeft), //
-                                new Waypoint(Field.kvCargoLeftFront), //
-                                new Waypoint(Field.kCargoLeftFront) //
-                );
+                waypoints = Arrays.asList(new Waypoint(Units.in2m(116.75), Units.in2m(66)),
+                                new Waypoint(Units.in2m(116.75), Units.in2m(66) + 0.5),
+                                new Waypoint(Units.in2m(150.12), Units.in2m(227.75) - 2),
+                                new Waypoint(Units.in2m(150.12), Units.in2m(227.75)));
 
                 Command path1 = new FollowPath(reverse, reset, config, waypoints);
 
@@ -49,12 +53,10 @@ public class AutoLeftCargoCargo extends CommandGroup {
                 config = RobotPathConfig.getRobotConfig();
                 // config.maxAngVel = 3;
 
-                waypoints = Arrays.asList( //
-                                new Waypoint(Field.kCargoLeftFront), //
-                                new Waypoint(Field.kvCargoLeftFront), //
-                                new Waypoint(Field.kvCargoSupplyLeft), //
-                                new Waypoint(Field.kCargoSupplyLeft) //
-                );
+                waypoints = Arrays.asList(new Waypoint(Units.in2m(150.12), Units.in2m(227.75)),
+                                new Waypoint(Units.in2m(150.12), Units.in2m(227.75) - 2),
+                                new Waypoint(Units.in2m(25.94), Units.in2m(0) + 2),
+                                new Waypoint(Units.in2m(25.94), Units.in2m(0)));
 
                 Command path2 = new FollowPath(reverse, reset, config, waypoints);
 
@@ -64,12 +66,11 @@ public class AutoLeftCargoCargo extends CommandGroup {
                 reverse = false;
                 config = RobotPathConfig.getRobotConfig();
 
-                waypoints = Arrays.asList( //
-                                new Waypoint(Field.kCargoSupplyLeft), //
-                                new Waypoint(Field.kvCargoSupplyLeft), //
-                                new Waypoint(Field.kvCargoLeft2), //
-                                new Waypoint(Field.kCargoLeft2) //
-                );
+                waypoints = Arrays.asList(new Waypoint(Units.in2m(25.94), Units.in2m(0)),
+                                new Waypoint(Units.in2m(25.94), Units.in2m(0) + 1),
+                                // new Waypoint(Units.in2m(74), Units.in2m(250)),
+                                new Waypoint(Units.in2m(138) - 2, Units.in2m(260.75)),
+                                new Waypoint(Units.in2m(138), Units.in2m(260.75)));
 
                 Command path3 = new FollowPath(reverse, reset, config, waypoints);
 
@@ -83,35 +84,22 @@ public class AutoLeftCargoCargo extends CommandGroup {
                                 HatchState.Release);
                 Command backRelease = new SetRobot(ArmState.BackHatchInOut, JawState.Back, BallState.Stop,
                                 HatchState.Release);
-                Command frontIn = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball, BallState.In,
-                                HatchState.Release);
-                Command frontOut = new SetRobot(ArmState.FrontBallCargo, JawState.Ball, BallState.Out,
-                                HatchState.Release);
-                Command backOut = new SetRobot(ArmState.BackBallCargo, JawState.Ball, BallState.Out,
-                                HatchState.Release);
-                Command inHold = new SetRobot(ArmState.FrontBallCargo, JawState.Ball, BallState.Hold,
-                                HatchState.Release);
-                Command frontHold = new SetRobot(ArmState.FrontBallCargo, JawState.Ball, BallState.Hold,
-                                HatchState.Release);
-                Command backHold = new SetRobot(ArmState.BackBallCargo, JawState.Ball, BallState.Hold,
-                                HatchState.Release);
                 /// =========================================================
 
                 // Path 1
-                addParallel(new Run(new Wait(1), backGrab)); // parallel: don't wait for this one to finish
+                addParallel(new Run(new Wait(1), frontGrab)); // parallel: don't wait for this one to finish
                 addSequential(path1);
-                addParallel(backRelease);
+                addParallel(frontRelease);
                 addSequential(new Wait(0.3));
                 // Path 2
-                addParallel(new Run(new Wait(1), frontIn));
+                addParallel(new Run(new Wait(1), backRelease));
                 addSequential(path2);
                 addParallel(backGrab);
                 addSequential(new Wait(0.3));
-                addParallel(inHold);
                 // Path 2
-                addParallel(new Run(new Wait(1), backHold));
+                addParallel(new Run(new Wait(1), frontGrab));
                 addSequential(path3);
-                addSequential(backOut);
+                addSequential(frontRelease);
         }
 
 }
