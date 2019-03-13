@@ -1,6 +1,8 @@
 package frc.robot.path;
 
 public class Field {
+    private static final double kVisionTargetLength = 18.5; // inches
+    private static final double rampDx = 11.59;//
 
     // the corner of the targets
     public static final Point kCargoLeftFront = in2m(new Point(219.13, 171.985));
@@ -19,12 +21,12 @@ public class Field {
     public static final Point kRocketRightBack = in2m(new Point(248.99, 19.72));
     public static final Point kHatchSupplyLeft = in2m(new Point(0, 296.5));
     public static final Point kHatchSupplyRight = in2m(new Point(0, 25.72));
-    public static final Point kCargoSupplyLeft = in2m(new Point(0, 0));
-    public static final Point kCargoSupplyRight = in2m(new Point(0, 0));
+    public static final Point kCargoSupplyLeft = in2m(new Point(48, 251.94));
+    public static final Point kCargoSupplyRight = in2m(new Point(48, 70.28));
     // starting positions
-    public static final Point kStartingLowLeft = in2m(new Point(47, 225.94));
-    public static final Point kStartingLowMiddle = in2m(new Point(47, 161.11));
-    public static final Point kStartingLowRight = in2m(new Point(47, 96.28));
+    public static final Point kStartingLowLeft = in2m(new Point(48 - rampDx, 225.94));
+    public static final Point kStartingLowMiddle = in2m(new Point(48 - rampDx, 161.11));
+    public static final Point kStartingLowRight = in2m(new Point(48 - rampDx, 96.28));
     public static final Point kStartingHighLeft = in2m(new Point(0, 255.94));
     public static final Point kStartingHighMiddle = in2m(new Point(0, 161.11));
     public static final Point kStartingHighRight = in2m(new Point(0, 96.28));
@@ -33,7 +35,6 @@ public class Field {
     //
     // vision target location: all 18.5 inches behind target
 
-    private static final double kVisionTargetLength = 18.5; // inches
     public static final Point kvCargoLeftFront = in2m(new Point(201.13, 171.985));
     public static final Point kvCargoRightFront = in2m(new Point(201.13, 150.235));
     public static final Point kvCargoLeft1 = in2m(new Point(259.8, 207.24));
@@ -51,16 +52,16 @@ public class Field {
     public static final Point kvHatchSupplyLeft = in2m(new Point(23.38, 296.5));
     public static final Point kvHatchSupplyRight = in2m(new Point(23.38, 25.72));
     public static final Point kvCargoSupplyLeft = in2m(
-            new Point(0 + Math.cos(Math.toRadians(30)) * Field.kVisionTargetLength, //
-                    0 + Math.sin(Math.toRadians(30)) * Field.kVisionTargetLength));
+            new Point(48 + Math.cos(Math.toRadians(30)) * Field.kVisionTargetLength, //
+                    251.94 + Math.sin(Math.toRadians(30)) * Field.kVisionTargetLength));
     public static final Point kvCargoSupplyRight = in2m(
-            new Point(0 - Math.cos(Math.toRadians(30)) * Field.kVisionTargetLength, //
-                    0 - Math.sin(Math.toRadians(30)) * Field.kVisionTargetLength));
+            new Point(48 - Math.cos(Math.toRadians(30)) * Field.kVisionTargetLength, //
+                    70.28 - Math.sin(Math.toRadians(30)) * Field.kVisionTargetLength));
 
     // starting positions
-    public static final Point kvStartingLowLeft = in2m(new Point(47 + Field.kVisionTargetLength, 225.94));
-    public static final Point kvStartingLowMiddle = in2m(new Point(47 + Field.kVisionTargetLength, 161.11));
-    public static final Point kvStartingLowRight = in2m(new Point(47 + Field.kVisionTargetLength, 96.28));
+    public static final Point kvStartingLowLeft = in2m(new Point(48 - rampDx + Field.kVisionTargetLength, 225.94));
+    public static final Point kvStartingLowMiddle = in2m(new Point(48 - rampDx + Field.kVisionTargetLength, 161.11));
+    public static final Point kvStartingLowRight = in2m(new Point(48 - rampDx + Field.kVisionTargetLength, 96.28));
     public static final Point kvStartingHighLeft = in2m(new Point(0 + Field.kVisionTargetLength, 255.94));
     public static final Point kvStartingHighMiddle = in2m(new Point(0 + Field.kVisionTargetLength, 161.11));
     public static final Point kvStartingHighRight = in2m(new Point(0 + Field.kVisionTargetLength, 96.28));
