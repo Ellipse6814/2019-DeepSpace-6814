@@ -2,7 +2,7 @@ package frc.robot.path;
 
 public class Field {
     private static final double kVisionTargetLength = 18.5; // inches
-    private static final double rampDx = 11.59;//
+    private static final double rampDx = 0.395; // the incline adds this much distance
 
     // the corner of the targets
     public static final Point kCargoLeftFront = in2m(new Point(219.13, 171.985));
