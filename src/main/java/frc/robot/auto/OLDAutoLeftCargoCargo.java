@@ -5,20 +5,14 @@ import java.util.List;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
 import frc.robot.Util.ArmState;
 import frc.robot.Util.BallState;
-import frc.robot.Util.Evaluate;
 import frc.robot.Util.HatchState;
 import frc.robot.Util.JawState;
 import frc.robot.commands.FollowPath;
 import frc.robot.commands.Run;
 import frc.robot.commands.SetRobot;
-import frc.robot.commands.SetStage;
 import frc.robot.commands.Wait;
-import frc.robot.commands.WaitUntil;
-import frc.robot.commands.WaitUntilPathProgress;
-import frc.robot.commands.WaitUntilStage;
 import frc.robot.path.RobotPathConfig;
 import frc.robot.path.Units;
 import frc.robot.path.Waypoint;
@@ -30,6 +24,7 @@ public class OLDAutoLeftCargoCargo extends CommandGroup {
 
                 // ============================ Pure Pursuit Config ==========================
                 boolean reset, reverse;
+                double startingAngle = 0;
                 List<Waypoint> waypoints;
                 RobotPathConfig config;
 
@@ -44,7 +39,7 @@ public class OLDAutoLeftCargoCargo extends CommandGroup {
                                 new Waypoint(Units.in2m(150.12), Units.in2m(227.75) - 2),
                                 new Waypoint(Units.in2m(150.12), Units.in2m(227.75)));
 
-                Command path1 = new FollowPath(reverse, reset, config, waypoints);
+                Command path1 = new FollowPath(reverse, reset, startingAngle, config, waypoints);
 
                 // ___________ Path 2____________
 
@@ -58,7 +53,7 @@ public class OLDAutoLeftCargoCargo extends CommandGroup {
                                 new Waypoint(Units.in2m(25.94), Units.in2m(0) + 2),
                                 new Waypoint(Units.in2m(25.94), Units.in2m(0)));
 
-                Command path2 = new FollowPath(reverse, reset, config, waypoints);
+                Command path2 = new FollowPath(reverse, reset, startingAngle, config, waypoints);
 
                 // ___________ Path 3____________
 
@@ -72,7 +67,7 @@ public class OLDAutoLeftCargoCargo extends CommandGroup {
                                 new Waypoint(Units.in2m(138) - 2, Units.in2m(260.75)),
                                 new Waypoint(Units.in2m(138), Units.in2m(260.75)));
 
-                Command path3 = new FollowPath(reverse, reset, config, waypoints);
+                Command path3 = new FollowPath(reverse, reset, startingAngle, config, waypoints);
 
                 ///
 

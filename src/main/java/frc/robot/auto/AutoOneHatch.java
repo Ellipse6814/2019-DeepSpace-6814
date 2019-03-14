@@ -19,57 +19,65 @@ import frc.robot.path.RobotPathConfig;
 import frc.robot.path.Units;
 import frc.robot.path.Waypoint;
 
+@Deprecated
 public class AutoOneHatch extends CommandGroup {
 
-        private String stage = "not started";
+        // private String stage = "not started";
 
-        public AutoOneHatch() {
+        // public AutoOneHatch() {
 
-                // ============================ Pure Pursuit Config ==========================
-                boolean reset, reverse;
-                List<Waypoint> waypoints;
-                RobotPathConfig config;
+        // // ============================ Pure Pursuit Config
+        // ==========================
+        // boolean reset, reverse;
+        // double startingAngle;
+        // List<Waypoint> waypoints;
+        // RobotPathConfig config;
 
-                // ___________ Path 1____________
+        // // ___________ Path 1____________
 
-                reset = true;
-                reverse = false;
-                config = RobotPathConfig.getRobotConfig();
+        // reset = true;
+        // reverse = false;
+        // config = RobotPathConfig.getRobotConfig();
 
-                waypoints = Arrays.asList(new Waypoint(Units.in2m(116.75), Units.in2m(66)), //
-                                new Waypoint(Units.in2m(116.75), Units.in2m(66) + 0.5), //
-                                new Waypoint(Units.in2m(150.12), Units.in2m(227.75) - 2), //
-                                new Waypoint(Units.in2m(150.12), Units.in2m(227.75)));
+        // waypoints = Arrays.asList(new Waypoint(Units.in2m(116.75), Units.in2m(66)),
+        // //
+        // new Waypoint(Units.in2m(116.75), Units.in2m(66) + 0.5), //
+        // new Waypoint(Units.in2m(150.12), Units.in2m(227.75) - 2), //
+        // new Waypoint(Units.in2m(150.12), Units.in2m(227.75)));
 
-                Command path1 = new FollowPath(reverse, reset, config, waypoints);
+        // Command path1 = new FollowPath(reverse, reset, config, waypoints);
 
-                // ___________ Path 2____________
+        // // ___________ Path 2____________
 
-                reset = false;
-                reverse = true;
-                config = RobotPathConfig.getRobotConfig();
+        // reset = false;
+        // reverse = true;
+        // config = RobotPathConfig.getRobotConfig();
 
-                waypoints = Arrays.asList(new Waypoint(Units.in2m(150.12), Units.in2m(227.75)), //
-                                new Waypoint(Units.in2m(150.12), Units.in2m(200)));
+        // waypoints = Arrays.asList(new Waypoint(Units.in2m(150.12),
+        // Units.in2m(227.75)), //
+        // new Waypoint(Units.in2m(150.12), Units.in2m(200)));
 
-                Command path2 = new FollowPath(reverse, reset, config, waypoints);
+        // Command path2 = new FollowPath(reverse, reset, config, waypoints);
 
-                // ============================ Auto Driving ==============================
-                addParallel(new Run(Arrays.asList(new SetStage(stage, "diving first path"), //
-                                path1, //
-                                new SetStage(stage, "arrived at first place"), //
-                                new WaitUntilStage(stage, "finished placing first piece"), //
-                                new SetStage(stage, "diving second path"), path2)));
+        // // ============================ Auto Driving ==============================
+        // addParallel(new Run(Arrays.asList(new SetStage(stage, "diving first path"),
+        // //
+        // path1, //
+        // new SetStage(stage, "arrived at first place"), //
+        // new WaitUntilStage(stage, "finished placing first piece"), //
+        // new SetStage(stage, "diving second path"), path2)));
 
-                // ============================ Mechanisms ==============================
-                addParallel(new Run(Arrays.asList(new WaitUntilPathProgress(path1, 0.25), //
-                                new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop, HatchState.Grab), //
-                                new WaitUntilStage(stage, "arrived at first place"), //
-                                new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop,
-                                                HatchState.Release), //
-                                new SetStage(stage, "finished placing first piece"), //
-                                new WaitUntilStage(stage, "diving second path"), //
-                                new SetRobot(ArmState.Middle, JawState.Front, BallState.Stop, HatchState.Release))));
-        }
+        // // ============================ Mechanisms ==============================
+        // addParallel(new Run(Arrays.asList(new WaitUntilPathProgress(path1, 0.25), //
+        // new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop,
+        // HatchState.Grab), //
+        // new WaitUntilStage(stage, "arrived at first place"), //
+        // new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop,
+        // HatchState.Release), //
+        // new SetStage(stage, "finished placing first piece"), //
+        // new WaitUntilStage(stage, "diving second path"), //
+        // new SetRobot(ArmState.Middle, JawState.Front, BallState.Stop,
+        // HatchState.Release))));
+        // }
 
 }

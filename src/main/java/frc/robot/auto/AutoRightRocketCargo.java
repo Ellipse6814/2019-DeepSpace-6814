@@ -14,18 +14,17 @@ import frc.robot.commands.Run;
 import frc.robot.commands.SetRobot;
 import frc.robot.commands.Wait;
 import frc.robot.path.Field;
-import frc.robot.path.Point;
 import frc.robot.path.RobotPathConfig;
 import frc.robot.path.Waypoint;
 
-public class AutoLeftCargoCargo extends CommandGroup {
+public class AutoRightRocketCargo extends CommandGroup {
 
-        public AutoLeftCargoCargo(Point robotStartingPosition, double robotStartingAngle) {
+        public AutoRightRocketCargo() {
 
                 // ============================ Pure Pursuit Config ==========================
                 boolean reset;
                 boolean reverse;
-                double startingAngle = 180; // only take affect if reset = true
+                double startingAngle = 180;
                 List<Waypoint> waypoints;
                 RobotPathConfig config;
 
@@ -36,14 +35,13 @@ public class AutoLeftCargoCargo extends CommandGroup {
                 config = RobotPathConfig.getRobotConfig();
 
                 waypoints = Arrays.asList( //
-                                new Waypoint(Field.kStartingLowLeft), //
-                                new Waypoint(Field.kvStartingLowLeft), //
-                                new Waypoint(Field.kvCargoLeftFront), //
-                                new Waypoint(Field.kCargoLeftFront) //
+                                new Waypoint(Field.kStartingLowRight), //
+                                new Waypoint(Field.kvStartingLowRight), //
+                                new Waypoint(Field.kvRocketRightFront), //
+                                new Waypoint(Field.kRocketRightFront) //
                 );
 
                 Command path1 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
-                // startingAngle - 90 because the field map is sideways
 
                 // ___________ Path 2____________
 
@@ -53,10 +51,10 @@ public class AutoLeftCargoCargo extends CommandGroup {
                 // config.maxAngVel = 3;
 
                 waypoints = Arrays.asList( //
-                                new Waypoint(Field.kCargoLeftFront), //
-                                new Waypoint(Field.kvCargoLeftFront), //
-                                new Waypoint(Field.kvCargoSupplyLeft), //
-                                new Waypoint(Field.kCargoSupplyLeft) //
+                                new Waypoint(Field.kRocketRightFront), //
+                                new Waypoint(Field.kvRocketRightFront), //
+                                new Waypoint(Field.kvCargoSupplyRight), //
+                                new Waypoint(Field.kCargoSupplyRight) //
                 );
 
                 Command path2 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
@@ -68,10 +66,10 @@ public class AutoLeftCargoCargo extends CommandGroup {
                 config = RobotPathConfig.getRobotConfig();
 
                 waypoints = Arrays.asList( //
-                                new Waypoint(Field.kCargoSupplyLeft), //
-                                new Waypoint(Field.kvCargoSupplyLeft), //
-                                new Waypoint(Field.kvCargoLeft2), //
-                                new Waypoint(Field.kCargoLeft2) //
+                                new Waypoint(Field.kCargoSupplyRight), //
+                                new Waypoint(Field.kvCargoSupplyRight), //
+                                new Waypoint(Field.kvCargoRight2), //
+                                new Waypoint(Field.kCargoRight2) //
                 );
 
                 Command path3 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);

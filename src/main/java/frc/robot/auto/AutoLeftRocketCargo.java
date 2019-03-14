@@ -24,6 +24,7 @@ public class AutoLeftRocketCargo extends CommandGroup {
                 // ============================ Pure Pursuit Config ==========================
                 boolean reset;
                 boolean reverse;
+                double startingAngle = 180;
                 List<Waypoint> waypoints;
                 RobotPathConfig config;
 
@@ -40,7 +41,7 @@ public class AutoLeftRocketCargo extends CommandGroup {
                                 new Waypoint(Field.kRocketLeftFront) //
                 );
 
-                Command path1 = new FollowPath(reverse, reset, config, waypoints);
+                Command path1 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
 
                 // ___________ Path 2____________
 
@@ -56,7 +57,7 @@ public class AutoLeftRocketCargo extends CommandGroup {
                                 new Waypoint(Field.kCargoSupplyLeft) //
                 );
 
-                Command path2 = new FollowPath(reverse, reset, config, waypoints);
+                Command path2 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
 
                 // ___________ Path 3____________
 
@@ -71,7 +72,7 @@ public class AutoLeftRocketCargo extends CommandGroup {
                                 new Waypoint(Field.kCargoLeft2) //
                 );
 
-                Command path3 = new FollowPath(reverse, reset, config, waypoints);
+                Command path3 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
 
                 ///
 

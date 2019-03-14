@@ -11,6 +11,7 @@ public class LeftPath extends CommandGroup {
 
         public LeftPath() {
                 boolean reset, reverse;
+                double startingAngle = 0;
                 List<Waypoint> waypoints;
                 RobotPathConfig config;
 
@@ -23,7 +24,7 @@ public class LeftPath extends CommandGroup {
                                 new Waypoint(Units.in2m(150.12), Units.in2m(227.75) - 2),
                                 new Waypoint(Units.in2m(150.12), Units.in2m(227.75)));
 
-                addSequential(new FollowPath(reverse, reset, config, waypoints));
+                addSequential(new FollowPath(reverse, reset, startingAngle, config, waypoints));
 
                 reset = false;
                 reverse = true;
@@ -35,7 +36,7 @@ public class LeftPath extends CommandGroup {
                                 new Waypoint(Units.in2m(25.94), Units.in2m(0) + 2),
                                 new Waypoint(Units.in2m(25.94), Units.in2m(0)));
 
-                addSequential(new FollowPath(reverse, reset, config, waypoints));
+                addSequential(new FollowPath(reverse, reset, startingAngle, config, waypoints));
 
                 reset = false;
                 reverse = false;
@@ -47,7 +48,7 @@ public class LeftPath extends CommandGroup {
                                 new Waypoint(Units.in2m(138) - 2, Units.in2m(260.75)),
                                 new Waypoint(Units.in2m(138), Units.in2m(260.75)));
 
-                addSequential(new FollowPath(reverse, reset, config, waypoints));
+                addSequential(new FollowPath(reverse, reset, startingAngle, config, waypoints));
 
         }
 }
