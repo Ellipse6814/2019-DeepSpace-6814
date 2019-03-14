@@ -20,7 +20,7 @@ import frc.robot.path.Waypoint;
 
 public class AutoRightCargoCargo extends CommandGroup { // todo
 
-        public AutoRightCargoCargo(Point robotStartingPosition, double robotStartingAngle) {
+        public AutoRightCargoCargo() {
 
                 // ============================ Pure Pursuit Config ==========================
                 boolean reset;
