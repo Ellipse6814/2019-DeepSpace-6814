@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.util.List;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import frc.robot.log.CommandBase;
 import frc.robot.path.*;
 import frc.robot.subsystems.Drive;
@@ -23,29 +24,33 @@ public class FollowPath extends CommandBase {
 
     boolean reversed;
     boolean requestReset;
+    double reset2Angle;
 
-    public FollowPath(boolean reversed, boolean reset, RobotPathConfig robotConfig, List<Waypoint> waypoints) {
+    public FollowPath(boolean reversed, boolean reset, double reset2Angle, RobotPathConfig robotConfig,
+            List<Waypoint> waypoints) {
         requires(Drive.getInstance());
         requestReset = reset;
         this.reversed = reversed;
         this.config = robotConfig;
+        this.reset2Angle = reset2Angle;
         initPath(waypoints);
     }
 
     protected void initialize() {
         log("Starting path");
-        if (requestReset) {
-            log("requested reset, requested");
-            drive.resetSensors();
-            if (requestReset && reversed) {
-                drive.zeroGyro(180);
-                log("Starting in reversed, resetting gyro to 180degs");
-            }
-            Point pos = path.waypoints.get(0).p;
-            odometer.setX(pos.x);
-            odometer.setY(pos.y);
-        }
+        resetRobotForPrep(reset2Angle);
         prevTimestamp = Timer.getFPGATimestamp();
+    }
+
+    private void resetRobotForPrep(double reset2Angle) {
+        if (!requestReset)
+            return;
+        log("requested reset, requested");
+        drive.resetSensors(); // this sets encoder, gyro, and odometer to 0
+        // make more customized config:
+        Point pos = path.waypoints.get(0).p;
+        odometer.reset(pos);
+        drive.zeroGyro(reset2Angle);
     }
 
     private void initPath(List<Waypoint> waypoints) {

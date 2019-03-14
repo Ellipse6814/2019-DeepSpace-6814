@@ -62,6 +62,14 @@ public class Odometer {
 		// log("reset");
 	}
 
+	/** Reset the odometer to Point (x, y) */
+	public void reset(Point pt) {
+		accumulativeDistance = 0;
+		x = pt.x;
+		y = pt.y;
+		prevLeftEncoderValue = prevRightEncoderValue = 0;
+	}
+
 	/**
 	 * Gets the total distance the robot has gone (forwards + backwards)
 	 * 
@@ -95,6 +103,7 @@ public class Odometer {
 	 * 
 	 * @param x the desired x coordinate the odometer will correct to
 	 */
+	@Deprecated
 	public void setX(double x) {
 		this.x = x;
 	}
@@ -105,6 +114,7 @@ public class Odometer {
 	 * 
 	 * @param y the desired y coordinate the odometer will correct to
 	 */
+	@Deprecated
 	public void setY(double y) {
 		this.y = y;
 	}
