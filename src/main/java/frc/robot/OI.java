@@ -47,28 +47,28 @@ public class OI {
         gearDownBtn.whenPressed(new DriveSetGear(false));
     }
 
-    private void initJoystickControlBoard() {
-        JoystickButton frontBallFloorIn = new JoystickButton(singleJoystick1, 1);
-        JoystickButton frontBallOut = new JoystickButton(singleJoystick1, 1);
-        JoystickButton frontHatchIn = new JoystickButton(singleJoystick1, 1);
-        JoystickButton frontHatchOut = new JoystickButton(singleJoystick1, 1);
-        JoystickButton backBallOut = new JoystickButton(singleJoystick1, 1);
-        JoystickButton backHatchOut = new JoystickButton(singleJoystick1, 1);
-        JoystickButton backHatchIn = new JoystickButton(singleJoystick1, 1);
-        JoystickButton armReset = new JoystickButton(singleJoystick1, 1);
-        JoystickButton jawReset = new JoystickButton(singleJoystick1, 1);
-        JoystickButton disableRobot = new JoystickButton(singleJoystick1, 1);
+    // private void initJoystickControlBoard() {
+    //     JoystickButton frontBallFloorIn = new JoystickButton(singleJoystick1, 1);
+    //     JoystickButton frontBallOut = new JoystickButton(singleJoystick1, 1);
+    //     JoystickButton frontHatchIn = new JoystickButton(singleJoystick1, 1);
+    //     JoystickButton frontHatchOut = new JoystickButton(singleJoystick1, 1);
+    //     JoystickButton backBallOut = new JoystickButton(singleJoystick1, 1);
+    //     JoystickButton backHatchOut = new JoystickButton(singleJoystick1, 1);
+    //     JoystickButton backHatchIn = new JoystickButton(singleJoystick1, 1);
+    //     JoystickButton armReset = new JoystickButton(singleJoystick1, 1);
+    //     JoystickButton jawReset = new JoystickButton(singleJoystick1, 1);
+    //     JoystickButton disableRobot = new JoystickButton(singleJoystick1, 1);
 
-        frontBallFloorIn.whenPressed(new FrontBallFloorIn());
-        frontBallOut.whenPressed(new FrontBallCargo());
-        frontHatchIn.whenPressed(new FrontHatchIn());
-        frontHatchOut.whenPressed(new FrontHatchOut());
-        backBallOut.whenPressed(new BackBallCargo());
-        backHatchOut.whenPressed(new BackHatchOut());
-        backHatchIn.whenPressed(new BackHatchIn());
-        armReset.whenPressed(new ArmReset());
-        jawReset.whenPressed(new JawReset());
-    }
+    //     frontBallFloorIn.whenPressed(new FrontBallFloorIn());
+    //     frontBallOut.whenPressed(new FrontBallCargo());
+    //     frontHatchIn.whenPressed(new FrontHatchIn());
+    //     frontHatchOut.whenPressed(new FrontHatchOut());
+    //     backBallOut.whenPressed(new BackBallCargo());
+    //     backHatchOut.whenPressed(new BackHatchOut());
+    //     backHatchIn.whenPressed(new BackHatchIn());
+    //     armReset.whenPressed(new ArmReset());
+    //     jawReset.whenPressed(new JawReset());
+    // }
 
     private void initControlBoard() {
         JoystickButton frontBallFloorIn = new JoystickButton(controlBoard1, 10);

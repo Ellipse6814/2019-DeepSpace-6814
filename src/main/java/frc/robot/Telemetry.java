@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -32,6 +33,38 @@ public class Telemetry {
         updateGyro();
         displayPIDError();
         displaySensorResetStatus();
+        displayButton();
+    }
+
+    Joystick joy2 = new Joystick(2);
+
+    public void displayButton() {
+        String output = "";
+        if (joy2.getRawButton(1))
+            output += "1 ";
+        if (joy2.getRawButton(2))
+            output += "2 ";
+        if (joy2.getRawButton(3))
+            output += "3 ";
+        if (joy2.getRawButton(4))
+            output += "4 ";
+        if (joy2.getRawButton(5))
+            output += "5 ";
+        if (joy2.getRawButton(6))
+            output += "6 ";
+        if (joy2.getRawButton(7))
+            output += "7 ";
+        if (joy2.getRawButton(8))
+            output += "8 ";
+        if (joy2.getRawButton(9))
+            output += "9 ";
+        if (joy2.getRawButton(10))
+            output += "10 ";
+        if (joy2.getRawButton(11))
+            output += "11 ";
+        if (joy2.getRawButton(12))
+            output += "12 ";
+
     }
 
     public void displayPIDError() {
