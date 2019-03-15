@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -18,7 +19,6 @@ public class Telemetry {
         return instance;
     }
 
-
     private Telemetry() {
         initSmartDashboardControlButtons();
         initRawResetSensors();
@@ -26,15 +26,22 @@ public class Telemetry {
         initPIDTuner();
     }
 
-
     public void update() {
+        SmartDashboard.putNumber("Timestamp", Timer.getFPGATimestamp());
         updateEncoders();
         updateGyro();
         displayPIDError();
+        displaySensorResetStatus();
     }
 
     public void displayPIDError() {
         SmartDashboard.putNumber("PID Error Value", Robot.arm.getPIDError());
+    }
+
+    public void displaySensorResetStatus() {
+        SmartDashboard.putBoolean("Sensors Reset", Robot.arm.isReset() && Robot.jaw.isReset());
+        SmartDashboard.putBoolean("Arm Reset", Robot.arm.isReset());
+        SmartDashboard.putBoolean("Jaw Reset", Robot.jaw.isReset());
     }
 
     public void updateGyro() {

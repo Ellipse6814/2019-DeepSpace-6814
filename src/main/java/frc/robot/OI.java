@@ -148,6 +148,10 @@ public class OI {
         return doubleJoystick1.getRawAxis(4);
     }
 
+    public double getPOV() {
+        return doubleJoystick1.getPOV();
+    }
+
     @Deprecated
     public Joystick getDoubleJoystick1() {
         return doubleJoystick1;
