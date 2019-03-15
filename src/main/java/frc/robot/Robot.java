@@ -61,6 +61,7 @@ public class Robot extends TimedRobot {
     public void robotPeriodic() {
         telemetry.update();
         led.update();
+        oi.update();
     }
 
     @Override

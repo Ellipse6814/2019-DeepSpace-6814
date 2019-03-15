@@ -48,9 +48,39 @@ public class OI {
 
     private OI() {
         initGearButtons();
-        initControlBoard();
+        // initControlBoard();
         initVirtualControlBoard();
         // initJoystickControlBoard();
+    }
+
+    public void update() {
+        Command cmd = new DoNothing();
+        if (controlBoard1.getRawButton(1))
+            cmd = new DoNothing();
+        if (controlBoard1.getRawButton(2))
+            cmd = new DoNothing();
+        if (controlBoard1.getRawButton(3))
+            cmd = new DoNothing();
+        if (controlBoard1.getRawButton(4))
+            cmd = new DoNothing();
+        if (controlBoard1.getRawButton(5))
+            cmd = new FrontHatchOut();
+        if (controlBoard1.getRawButton(6))
+            cmd = new FrontHatchIn();
+        if (controlBoard1.getRawButton(7))
+            cmd = new BackHatchIn();
+        if (controlBoard1.getRawButton(8))
+            cmd = new BackHatchOut();
+        if (controlBoard1.getRawButton(9))
+            cmd = new FrontBallCargo();
+        if (controlBoard1.getRawButton(10))
+            cmd = new FrontBallFloorIn();
+        if (controlBoard1.getRawButton(11))
+            cmd = new BackBallCargo();
+        if (controlBoard1.getRawButton(12))
+            cmd = new DoNothing();
+
+        cmd.start();
     }
 
     private void initGearButtons() {
