@@ -9,9 +9,13 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Const;
+import frc.robot.OI;
+import frc.robot.Robot;
+import frc.robot.Util.DriveState;
 import frc.robot.Util.TalonHelper;
 import frc.robot.commands.Drive2Joy;
 import frc.robot.path.DriveMotorState;
@@ -26,8 +30,11 @@ public class Drive extends Subsystem {
 
     private int gear = 2;
 
+    public DriveState state = DriveState.Disabled;
+
     private DriveCalculator driveCalculator = new DriveCalculator();
     private Odometer odometer = Odometer.getInstance();
+    private OI oi = Robot.oi;
 
     private static Drive instance;
 
@@ -149,6 +156,10 @@ public class Drive extends Subsystem {
     public void periodic() {
         super.periodic();
         updateOdometer();
+        if (state == DriveState.Disabled && (Math.abs(oi.getDrivePower()) >= 0.5 || Math.abs(oi.getDriveTurn()) >= 0.5)) {
+            Command driveCommand = new Drive2Joy();
+            driveCommand.start();
+        }
     }
 
     public void updateOdometer() {

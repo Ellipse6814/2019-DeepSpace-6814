@@ -4,6 +4,8 @@ import java.util.List;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
+import frc.robot.Util.DriveState;
 
 public class DoNothing extends Command {
 
@@ -17,6 +19,9 @@ public class DoNothing extends Command {
     public DoNothing(List<Subsystem> subsystems) {
         subsystems.forEach((subsystem) -> {
             requires(subsystem);
+            if (subsystem == Robot.drive) {
+                Robot.drive.state = DriveState.Disabled;
+            }
         });
     }
 
