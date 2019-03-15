@@ -31,7 +31,7 @@ public class AutoLeftRocketCargo extends CommandGroup {
                 // ___________ Path 1____________
 
                 reset = true;
-                reverse = false;
+                reverse = true;
                 config = RobotPathConfig.getRobotConfig();
 
                 waypoints = Arrays.asList( //
@@ -46,7 +46,7 @@ public class AutoLeftRocketCargo extends CommandGroup {
                 // ___________ Path 2____________
 
                 reset = false;
-                reverse = true;
+                reverse = false;
                 config = RobotPathConfig.getRobotConfig();
                 // config.maxAngVel = 3;
 
@@ -62,7 +62,7 @@ public class AutoLeftRocketCargo extends CommandGroup {
                 // ___________ Path 3____________
 
                 reset = false;
-                reverse = false;
+                reverse = true;
                 config = RobotPathConfig.getRobotConfig();
 
                 waypoints = Arrays.asList( //

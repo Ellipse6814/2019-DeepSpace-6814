@@ -20,11 +20,11 @@ import frc.robot.path.Units;
 import frc.robot.path.Waypoint;
 
 @Deprecated
-public class AutoOneHatch extends CommandGroup {
+public class OLDAutoOneHatch extends CommandGroup {
 
         private String stage = "not started";
 
-        public AutoOneHatch() {
+        public OLDAutoOneHatch() {
 
                 // ============================ Pure Pursuit Config==========================
                 boolean reset, reverse;
