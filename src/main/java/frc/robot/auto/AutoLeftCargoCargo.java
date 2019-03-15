@@ -42,8 +42,8 @@ public class AutoLeftCargoCargo extends CommandGroup {
                                 new Waypoint(Field.kCargoLeftFront) //
                 );
 
-                Command path1 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
-                // startingAngle - 90 because the field map is sideways
+                Command path1 = new FollowPath(reverse, reset, startingAngle + 90, config, waypoints);
+                // startingAngle + 90 because the field map is sideways
 
                 // ___________ Path 2____________
 
@@ -59,7 +59,7 @@ public class AutoLeftCargoCargo extends CommandGroup {
                                 new Waypoint(Field.kCargoSupplyLeft) //
                 );
 
-                Command path2 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
+                Command path2 = new FollowPath(reverse, reset, startingAngle + 90, config, waypoints);
 
                 // ___________ Path 3____________
 
@@ -74,7 +74,7 @@ public class AutoLeftCargoCargo extends CommandGroup {
                                 new Waypoint(Field.kCargoLeft1) //
                 );
 
-                Command path3 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
+                Command path3 = new FollowPath(reverse, reset, startingAngle + 90, config, waypoints);
 
                 ///
 

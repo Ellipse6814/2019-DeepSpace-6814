@@ -42,7 +42,7 @@ public class AutoRightCargoCargo extends CommandGroup { // todo
                                 new Waypoint(Field.kCargoRightFront) //
                 );
 
-                Command path1 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
+                Command path1 = new FollowPath(reverse, reset, startingAngle + 90, config, waypoints);
 
                 // ___________ Path 2____________
 
@@ -58,7 +58,7 @@ public class AutoRightCargoCargo extends CommandGroup { // todo
                                 new Waypoint(Field.kCargoSupplyRight) //
                 );
 
-                Command path2 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
+                Command path2 = new FollowPath(reverse, reset, startingAngle + 90, config, waypoints);
 
                 // ___________ Path 3____________
 
@@ -73,7 +73,7 @@ public class AutoRightCargoCargo extends CommandGroup { // todo
                                 new Waypoint(Field.kCargoRight1) //
                 );
 
-                Command path3 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
+                Command path3 = new FollowPath(reverse, reset, startingAngle + 90, config, waypoints);
 
                 ///
 
