@@ -26,7 +26,8 @@ public class OI {
     private NetworkTables networkTables = NetworkTables.getInstance();
 
     private Joystick doubleJoystick1 = new Joystick(0);
-    private Joystick controlBoard = new Joystick(1);
+    private Joystick controlBoard1 = new Joystick(1);
+    private Joystick controlBoard2 = new Joystick(2);
     private Joystick singleJoystick1 = new Joystick(3);
 
     private boolean networkTablesExecButtonDown = false;
@@ -70,16 +71,16 @@ public class OI {
     }
 
     private void initControlBoard() {
-        JoystickButton frontBallFloorIn = new JoystickButton(controlBoard, 0);
-        JoystickButton frontBallOut = new JoystickButton(controlBoard, 0);
-        JoystickButton frontHatchIn = new JoystickButton(controlBoard, 0);
-        JoystickButton frontHatchOut = new JoystickButton(controlBoard, 0);
-        JoystickButton backBallOut = new JoystickButton(controlBoard, 0);
-        JoystickButton backHatchOut = new JoystickButton(controlBoard, 0);
-        JoystickButton backHatchIn = new JoystickButton(controlBoard, 0);
-        JoystickButton armReset = new JoystickButton(controlBoard, 0);
-        JoystickButton jawReset = new JoystickButton(controlBoard, 0);
-        JoystickButton disableRobot = new JoystickButton(controlBoard, 0);
+        JoystickButton frontBallFloorIn = new JoystickButton(controlBoard1, 0);
+        JoystickButton frontBallOut = new JoystickButton(controlBoard1, 0);
+        JoystickButton frontHatchIn = new JoystickButton(controlBoard1, 0);
+        JoystickButton frontHatchOut = new JoystickButton(controlBoard1, 0);
+        JoystickButton backBallOut = new JoystickButton(controlBoard1, 0);
+        JoystickButton backHatchOut = new JoystickButton(controlBoard1, 0);
+        JoystickButton backHatchIn = new JoystickButton(controlBoard1, 0);
+        JoystickButton armReset = new JoystickButton(controlBoard1, 0);
+        JoystickButton jawReset = new JoystickButton(controlBoard1, 0);
+        JoystickButton disableRobot = new JoystickButton(controlBoard1, 0);
 
         frontBallFloorIn.whenPressed(new FrontBallFloorIn());
         frontBallOut.whenPressed(new FrontBallCargo());
@@ -136,7 +137,7 @@ public class OI {
     }
 
     public boolean getExecButton() {
-        return doubleJoystick1.getRawButton(1) || networkTablesExecButtonDown;
+        return controlBoard2.getRawButton(0) || networkTablesExecButtonDown;
     }
 
     public double getDrivePower() {

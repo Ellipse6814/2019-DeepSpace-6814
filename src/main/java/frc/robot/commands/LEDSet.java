@@ -5,6 +5,7 @@ import frc.robot.Robot;
 import frc.robot.Util.LEDState;
 import frc.robot.subsystems.LED;
 
+@Deprecated
 public class LEDSet extends Command {
 
     private LED led = Robot.led;
