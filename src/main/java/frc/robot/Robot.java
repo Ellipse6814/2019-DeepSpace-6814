@@ -31,10 +31,10 @@ public class Robot extends TimedRobot {
     public static Arm arm = Arm.getInstance();
     public static Jaw jaw = Jaw.getInstance();
     // public static LifeCam msLifeCam = LifeCam.getInstance();
-    public static LED led = LED.getInstance();
     public static Logger logger = Logger.getInstance();
     public static Telemetry telemetry = Telemetry.getInstance();
     public static OI oi = OI.getInstance();
+    public static LED led = LED.getInstance(); // this needs to be inited last
 
     Command autoCommand;
     SendableChooser<Command> autoChooser = new SendableChooser<>();
