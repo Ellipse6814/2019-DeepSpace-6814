@@ -27,9 +27,9 @@ public class Const {
     public static final Value kHatchIntakeClosePos = Value.kReverse;// TODO
 
     // Hall Effect sensors
-    public static final int kJawHallEffectSensorPort = 1;// TODO
+    public static final int kJawHallEffectSensorPort = 1;
     public static final int kArmHallEffectFrontSensorPort = 0;
-    public static final int kArmHallEffectBackSensorPort = 2;// TODO
+    public static final int kArmHallEffectBackSensorPort = 2;// NOT USING!
 
     // motors (inverts)
     public static final int kJawAngleMotorPort = 2;
@@ -49,7 +49,7 @@ public class Const {
     public static final int kDriveLeftSlaveMotorPort = 1;
     public static final int kDriveRightSlaveMotorPort = 2;
 
-    public static final int kLEDPort = 0;
+    public static final int kLEDPort = 4;
 
     // Encoder inverts
     public static final boolean kArmEncoderInverted = true;
