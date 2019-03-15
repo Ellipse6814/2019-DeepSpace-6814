@@ -68,8 +68,8 @@ public class AutoLeftRocketCargo extends CommandGroup {
                 waypoints = Arrays.asList( //
                                 new Waypoint(Field.kCargoSupplyLeft), //
                                 new Waypoint(Field.kvCargoSupplyLeft), //
-                                new Waypoint(Field.kvCargoLeft2), //
-                                new Waypoint(Field.kCargoLeft2) //
+                                new Waypoint(Field.kvCargoLeft1), //
+                                new Waypoint(Field.kCargoLeft1) //
                 );
 
                 Command path3 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);

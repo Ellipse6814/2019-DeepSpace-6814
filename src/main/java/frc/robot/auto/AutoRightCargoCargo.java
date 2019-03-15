@@ -69,8 +69,8 @@ public class AutoRightCargoCargo extends CommandGroup { // todo
                 waypoints = Arrays.asList( //
                                 new Waypoint(Field.kCargoSupplyRight), //
                                 new Waypoint(Field.kvCargoSupplyRight), //
-                                new Waypoint(Field.kvCargoRight2), //
-                                new Waypoint(Field.kCargoRight2) //
+                                new Waypoint(Field.kvCargoRight1), //
+                                new Waypoint(Field.kCargoRight1) //
                 );
 
                 Command path3 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);

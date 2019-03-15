@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - Robot",
+      "request": "launch",
+      "mainClass": "frc.robot.path.Robot",
+      "projectName": "2019-DeepSpace-6814"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Tester",
+      "request": "launch",
+      "mainClass": "frc.robot.path.Tester",
+      "projectName": "2019-DeepSpace-6814"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - LogVisualizer",
       "request": "launch",
       "mainClass": "frc.robot.path.LogVisualizer",

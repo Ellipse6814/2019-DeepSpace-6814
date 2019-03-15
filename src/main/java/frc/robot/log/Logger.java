@@ -3,8 +3,8 @@ package frc.robot.log;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Timer;
+// import edu.wpi.first.wpilibj.DriverStation;
+// import edu.wpi.first.wpilibj.Timer;
 
 /**
  * Summary: this class is designed to access a very powerful logging system very
@@ -36,11 +36,14 @@ public class Logger {
 	}
 
 	private Logger() {
-		try {
-			String name = DriverStation.getInstance().getEventName() + DriverStation.getInstance().getMatchType()
-					+ "Match" + DriverStation.getInstance().getMatchNumber() + ".txt";
+	/*	try {
+			String name = DriverStation.getInstance().getEventName() +
+			DriverStation.getInstance().getMatchType()
+			+ "Match" + DriverStation.getInstance().getMatchNumber() + ".txt";
 			writer = new PrintWriter("/home/lvuser/" + name + ".csv");
+
 			// writer = new PrintWriter("/home/lvuser/Log.csv");
+
 			valid = true;
 			writer.println("-----,-----------,-----------,--------------");
 			writer.println("MessageLevel, Title, Timestamp, Message");
@@ -70,7 +73,7 @@ public class Logger {
 				}
 			}
 		});
-		start();
+		start();*/
 	}
 
 	public void stop() {
@@ -92,7 +95,7 @@ public class Logger {
 	}
 
 	public void log(Object message, String sender, MessageLevel messageLevel) {
-		logData(messageLevel.name() + ", " + sender + ", " + Timer.getFPGATimestamp() + ", " + message);
+		/*logData(messageLevel.name() + ", " + sender + ", " + Timer.getFPGATimestamp() + ", " + message);*/
 		// logData(messageLevel.name() + ", " + sender + ", " + ", " + message);
 	}
 

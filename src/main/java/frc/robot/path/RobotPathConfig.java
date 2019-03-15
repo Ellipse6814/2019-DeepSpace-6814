@@ -48,7 +48,7 @@ public class RobotPathConfig {
         robotConfig.maxAngVel = 2; // radians per second
         robotConfig.lookAheadDistance = Units.ft2m(1.8);
         robotConfig.trackWidth = Units.in2m(23);// really 22 inches
-        robotConfig.targetTolerance = Units.in2m(2);
+        robotConfig.targetTolerance = Units.in2m(20);
         robotConfig.physicalMaxVel = Units.ft2m(14);
         robotConfig.kV = 1 / robotConfig.physicalMaxVel;
         robotConfig.kA = 2 / 9;

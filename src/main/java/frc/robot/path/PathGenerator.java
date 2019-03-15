@@ -271,11 +271,12 @@ public class PathGenerator extends LogBase {
 
 	private double getMaxAchieveableVelocity(double timeAccel, double distance, double velocity0) {
 		// System.out.println(i + "]: " + path.waypoints.get(i));
-		System.out.println("dist " + distance);
-		System.out.println("vel0 " + velocity0);
-		System.out.println("accTime " + timeAccel);
-		System.out.println("vel " + Math.sqrt(velocity0 * velocity0 + 2 * timeAccel * distance));
-		System.out.println("_____________________________________________");
+		// System.out.println("dist " + distance);
+		// System.out.println("vel0 " + velocity0);
+		// System.out.println("accTime " + timeAccel);
+		// System.out.println("vel " + Math.sqrt(velocity0 * velocity0 + 2 * timeAccel *
+		// distance));
+		// System.out.println("_____________________________________________");
 		return Math.sqrt(velocity0 * velocity0 + 2 * timeAccel * distance);
 	}
 

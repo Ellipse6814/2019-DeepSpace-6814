@@ -33,10 +33,6 @@ public class Tester extends JFrame {
 	private static final long dt = 50; // interval of this program actually updating
 	Robot robot = new Robot(robotDt);
 
-	public static void main(String[] args) throws HeadlessException {
-		new Tester();
-	}
-
 	public Tester() {
 		Timer timer = new Timer();
 		robot.update();
@@ -138,7 +134,7 @@ class DrawArea extends JPanel {
 	 * to see
 	 */
 	public int scale(double x) {
-		return (int) x * 100 + 300;
+		return (int) x * 50;
 	}
 
 	// rounding!! makes 16 decimal place numbers readable
@@ -156,13 +152,13 @@ class DrawArea extends JPanel {
 
 class Robot {
 	double dt; // stores what the delta time of each update is (this is set by user)
-	public double angle = 0 + 90; // stores what angle the robot is at (deg)
+	public double angle = 180 + 90; // stores what angle the robot is at (deg)
 	public Point pos = new Point();// stores the coordinate of the robot position (init at (0,0))
 	public double leftVel = 0, rightVel = 0; // stores the left and right velocities of the drivetrain motors
 	public double leftEncoder = 0, rightEncoder = 0, prevLeftEncoder = 0, prevRightEncoder = 0; // store encoder values
 																								// and to calculate
 																								// delta encoder values
-	public double maxVel = 1.8288, maxAcc = 1, spacing = 10, maxAngVel = 15; // define maxes, spacing is used for path
+	public double maxVel = 1.8288, maxAcc = 1, spacing = 0.3, maxAngVel = 15; // define maxes, spacing is used for path
 																				// generation
 	public double lookAheadDistance = 0.1524, trackWidth = 0.5842; // used for path following
 	public double targetTolerance = lookAheadDistance;// used to determine when to stop
@@ -192,6 +188,10 @@ class Robot {
 		this.odometer.setY(pos.y);
 	}
 
+	public static void main(String[] args) throws HeadlessException {
+		new Tester();
+	}
+
 	public void generatePath() {
 		PathGenerator p = new PathGenerator();
 
@@ -215,8 +215,52 @@ class Robot {
 		// path = p.calculate(new Path(spacing, maxVel, maxAcc, maxAngVel,
 		// Arrays.asList(new Waypoint(0, 50),
 		// new Waypoint(100, 50), new Waypoint(160, 90), new Waypoint(160, 110))));
-		path = p.calculate(new Path(spacing, maxVel, maxAcc, maxAngVel,
-				Arrays.asList(new Waypoint(0, 0), new Waypoint(0, 2), new Waypoint(-2, 2))));
+		// List<Waypoint> waypoints = Arrays.asList( //
+		// new Waypoint(Field.kStartingLowLeft), //
+		// new Waypoint(Field.kvStartingLowLeft), //
+		// new Waypoint(Field.kvCargoLeftFront), //
+		// new Waypoint(Field.kCargoLeftFront), //
+		// new Waypoint(Field.kCargoLeftFront), //
+		// new Waypoint(Field.kvCargoLeftFront), //
+		// new Waypoint(Field.kvCargoSupplyLeft), //
+		// new Waypoint(Field.kCargoSupplyLeft), //
+		// new Waypoint(Field.kCargoSupplyLeft), //
+		// new Waypoint(Field.kvCargoSupplyLeft), //
+		// new Waypoint(Field.kvCargoLeft2), //
+		// new Waypoint(Field.kCargoLeft2) //
+		// );
+		List<Waypoint> waypoints1 = Arrays.asList( //
+				new Waypoint(Field.kStartingLowLeft), //
+				new Waypoint(Field.kvStartingLowLeft), //
+				new Waypoint(Field.kvRocketLeftFront), //
+				new Waypoint(Field.kRocketLeftFront) //
+		);
+
+		List<Waypoint> waypoints2 = Arrays.asList( //
+				new Waypoint(Field.kCargoSupplyLeft), //
+				new Waypoint(Field.kvCargoSupplyLeft), //
+				new Waypoint(Field.kvCargoLeft1), //
+				new Waypoint(Field.kCargoLeft1) //
+		);
+
+		List<Waypoint> waypoints3 = Arrays.asList( //
+				new Waypoint(Field.kCargoSupplyRight), //
+				new Waypoint(Field.kvCargoSupplyRight), //
+				new Waypoint(Field.kvCargoRight1), //
+				new Waypoint(Field.kCargoRight1) //
+		);
+
+		// System.out.println("_______points______");
+		// waypoints.forEach((Waypoint item) -> {
+		// System.out.println(item.p);
+		// });
+		// System.out.println("_______end points______");
+		path = p.calculate(new Path(spacing, maxVel, maxAcc, maxAngVel, waypoints1));
+		Path path1 = p.calculate(new Path(spacing, maxVel, maxAcc, maxAngVel, waypoints1));
+		Path path2 = p.calculate(new Path(spacing, maxVel, maxAcc, maxAngVel, waypoints2));
+		Path path3 = p.calculate(new Path(spacing, maxVel, maxAcc, maxAngVel, waypoints3));
+		// path = p.calculate(new Path(spacing, maxVel, maxAcc, maxAngVel,
+		// Arrays.asList(new Waypoint(0, 0), new Waypoint(0, 2), new Waypoint(-2, 2))));
 		// path = p.calculate(new Path(spacing, maxVel, maxAcc, maxAngVel,
 
 		// Arrays.asList(new Waypoint(10, 10), new Waypoint(100, 70), new Waypoint(300,
@@ -233,8 +277,14 @@ class Robot {
 		// Arrays.asList(new Waypoint(0, 350), new Waypoint(100, 350), new Waypoint(150,
 		// 300),
 		// new Waypoint(150, 200), new Waypoint(200, 150), new Waypoint(300, 150))));
-		System.out.println("Path: [" + path.waypoints.size() + "]");
-		System.out.println(path);
+		System.out.println("Path: [" + path1.waypoints.size() + "]");
+		System.out.println(path1);
+		System.out.println("__________________________\n\n");
+		System.out.println("Path: [" + path2.waypoints.size() + "]");
+		System.out.println(path2);
+		System.out.println("__________________________\n\n");
+		System.out.println("Path: [" + path3.waypoints.size() + "]");
+		System.out.println(path3);
 		System.out.println("__________________________\n\n");
 	}
 
