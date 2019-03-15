@@ -230,17 +230,17 @@ class Robot {
 		// new Waypoint(Field.kCargoLeft2) //
 		// );
 		List<Waypoint> waypoints1 = Arrays.asList( //
-				new Waypoint(Field.kStartingLowLeft), //
-				new Waypoint(Field.kvStartingLowLeft), //
-				new Waypoint(Field.kvRocketLeftFront), //
-				new Waypoint(Field.kRocketLeftFront) //
+				new Waypoint(Field.kStartingLowMiddle), //
+				new Waypoint(Field.kvStartingLowMiddle), //
+				new Waypoint(Field.kvCargoRightFront), //
+				new Waypoint(Field.kCargoRightFront) //
 		);
 
 		List<Waypoint> waypoints2 = Arrays.asList( //
-				new Waypoint(Field.kCargoSupplyLeft), //
-				new Waypoint(Field.kvCargoSupplyLeft), //
-				new Waypoint(Field.kvCargoLeft1), //
-				new Waypoint(Field.kCargoLeft1) //
+				new Waypoint(Field.kCargoRightFront), //
+				new Waypoint(Field.kvCargoRightFront), //
+				new Waypoint(Field.kvCargoSupplyRight), //
+				new Waypoint(Field.kCargoSupplyRight) //
 		);
 
 		List<Waypoint> waypoints3 = Arrays.asList( //

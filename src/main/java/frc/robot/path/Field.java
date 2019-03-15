@@ -3,9 +3,9 @@ package frc.robot.path;
 public class Field {
         private static final double kVisionTargetLength = 18.5; // inches
         private static final double rampDx = 0.395; // the incline adds this much distance
-        private static final double robotWidth = 22;// inches
+        private static final double robotWidth = 32.5;// inches
         private static final double robotWidthRadius = robotWidth / 2;
-        private static final double robotLength = 30;// inches
+        private static final double robotLength = 40.5;// inches
         private static final double robotLengthRadius = robotLength / 2;
 
         // the corner of the targets

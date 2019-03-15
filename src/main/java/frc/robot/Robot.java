@@ -40,11 +40,17 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
         turnOffMotors();
+        initAutoChooser();
+    }
+
+    private void initAutoChooser() {
         autoChooser.setDefaultOption("Do Nothing", new AutoDoNothing());
         autoChooser.addOption("Left Cargo Cargo", new AutoLeftCargoCargo());
         autoChooser.addOption("Left Rocket Cargo", new AutoLeftRocketCargo());
         autoChooser.addOption("Right Cargo Cargo", new AutoRightCargoCargo());
         autoChooser.addOption("Right Rocket Cargo", new AutoRightRocketCargo());
+        autoChooser.addOption("Middle Left Cargo Cargo", new AutoMiddleLeftCargoCargo());
+        autoChooser.addOption("Middle Right Cargo Cargo", new AutoMiddleRightCargoCargo());
         // autoChooser.addOption("Right Rocket Cargo", new AutoRightRocketCargo());
         SmartDashboard.putData("Auto Mode Chooser", autoChooser);
     }

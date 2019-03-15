@@ -1,5 +1,7 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Util.Evaluate;
 import frc.robot.commands.ArmReset;
@@ -16,12 +18,14 @@ public class Telemetry {
         return instance;
     }
 
+
     private Telemetry() {
         initSmartDashboardControlButtons();
         initRawResetSensors();
         initPIDTest();
         initPIDTuner();
     }
+
 
     public void update() {
         updateEncoders();
