@@ -34,7 +34,6 @@ public class Drive extends Subsystem {
 
     private DriveCalculator driveCalculator = new DriveCalculator();
     private Odometer odometer = Odometer.getInstance();
-    private OI oi = Robot.oi;
 
     private static Drive instance;
 
@@ -156,6 +155,8 @@ public class Drive extends Subsystem {
     public void periodic() {
         super.periodic();
         updateOdometer();
+        OI oi = Robot.oi;
+
         if (state == DriveState.Disabled && (Math.abs(oi.getDrivePower()) >= 0.5 || Math.abs(oi.getDriveTurn()) >= 0.5)) {
             Command driveCommand = new Drive2Joy();
             driveCommand.start();
