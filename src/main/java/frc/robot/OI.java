@@ -72,6 +72,7 @@ public class OI {
 
     private void initControlBoard() {
         JoystickButton frontBallFloorIn = new JoystickButton(controlBoard1, 10);
+        JoystickButton frontBallFloorIn1 = new JoystickButton(doubleJoystick1, 1);
         JoystickButton frontBallOut = new JoystickButton(controlBoard1, 9);
         JoystickButton frontHatchIn = new JoystickButton(controlBoard1, 6);
         JoystickButton frontHatchOut = new JoystickButton(controlBoard1, 5);
@@ -83,6 +84,7 @@ public class OI {
         JoystickButton disableRobot = new JoystickButton(controlBoard2, 3);
 
         frontBallFloorIn.whenPressed(new FrontBallFloorIn());
+        frontBallFloorIn1.whenPressed(new FrontBallFloorIn());
         frontBallOut.whenPressed(new FrontBallCargo());
         frontHatchIn.whenPressed(new FrontHatchIn());
         frontHatchOut.whenPressed(new FrontHatchOut());

@@ -52,6 +52,7 @@ public class Telemetry {
         SmartDashboard.putNumber("Left Encoder", Robot.drive.getLeftEncoder());
         SmartDashboard.putNumber("Right Encoder", Robot.drive.getRightEncoder());
         SmartDashboard.putNumber("Arm Encoder", Robot.arm.getEncoderPosition());
+        SmartDashboard.putNumber("Jaw Encoder", Robot.jaw.getEncoderPosition());
     }
 
     public void initSmartDashboardControlButtons() {

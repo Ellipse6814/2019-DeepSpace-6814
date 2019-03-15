@@ -38,6 +38,11 @@ public class Jaw extends Subsystem {
 
     private void initTalons() {
         jawAngleMotor = TalonHelper.createTalon(Const.kJawAngleMotorPort, Const.kJawAngleMotorInverted);
+        TalonHelper.configLowerSoftLimit(jawAngleMotor,
+                (int) (Const.kJawLowerSoftLimit * Const.kJawGearRatioJaw2Encoder * Const.kDeg2Talon4096Unit));
+        TalonHelper.configUpperSoftLimit(jawAngleMotor,
+                (int) (Const.kJawUpperSoftLimit * Const.kJawGearRatioJaw2Encoder * Const.kDeg2Talon4096Unit));
+
         TalonHelper.configCurrentLimit(jawAngleMotor, Const.kJawMotorMaxAmp);
         TalonHelper.configMagEncoder(jawAngleMotor, Const.kJawEncoderInverted);
         TalonHelper.configPID(jawAngleMotor, 0, Const.kJawkP, Const.kJawkI, Const.kJawkD, Const.kJawkF);

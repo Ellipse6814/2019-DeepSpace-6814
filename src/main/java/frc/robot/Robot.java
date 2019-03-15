@@ -132,15 +132,15 @@ public class Robot extends TimedRobot {
         else
             hatchIntake.closeHatchIntake();
 
-        if (joy1.getRawButton(2))
-            arm.setAngle(5);
-        else if (joy1.getRawButton(3))
-            arm.setAngle(80);
-        else if (joy1.getRawButton(4))
-            arm.setAngle(145);
-        // else
+        // if (joy1.getRawButton(2))
+        // arm.setAngle(5);
+        // else if (joy1.getRawButton(3))
+        // arm.setAngle(80);
+        // else if (joy1.getRawButton(4))
+        // arm.setAngle(145);
+        // // else
         // arm.setOpenLoop(Math.abs(armSpd), md);
-
+        jaw.setOpenLoop(Math.abs(armSpd), md);
         if (joy1.getRawButton(6))
             arm.resetEncoder();
     }

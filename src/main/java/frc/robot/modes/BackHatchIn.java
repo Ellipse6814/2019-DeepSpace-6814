@@ -31,6 +31,7 @@ public class BackHatchIn extends Mode {
         System.out.println("EXEC: BackHatchIn");
         execCmd = new SetRobot(ArmState.BackHatchInOut, JawState.Front, BallState.Stop, HatchState.Grab);
         execCmd.start();
+        finish();
     }
 
     @Override

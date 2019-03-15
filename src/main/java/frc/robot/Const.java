@@ -33,7 +33,7 @@ public class Const {
 
     // motors (inverts)
     public static final int kJawAngleMotorPort = 2;
-    public static final boolean kJawAngleMotorInverted = false;// TODO
+    public static final boolean kJawAngleMotorInverted = true;// TODO
 
     public static final int kIntakeRollerMotorPort = 4;
     public static final boolean kIntakeRollerMotorInverted = false;// TODO
@@ -53,7 +53,7 @@ public class Const {
 
     // Encoder inverts
     public static final boolean kArmEncoderInverted = true;
-    public static final boolean kJawEncoderInverted = false;// TODO
+    public static final boolean kJawEncoderInverted = false;
     public static final boolean kDriveLeftEncoderInverted = true;
     public static final boolean kDriveRightEncoderInverted = true;
 
@@ -118,6 +118,9 @@ public class Const {
 
     public static final double kJawPIDTolerance = 5;// degs
 
+    public static final int kJawLowerSoftLimit = 0;
+    public static final int kJawUpperSoftLimit = 110;
+
     public static double kJawkP = 0.3;// TODO
     public static double kJawkI = 0;// TODO
     public static double kJawkD = 0;// TODO
@@ -132,9 +135,9 @@ public class Const {
         else if (state == JawState.Ball)
             angle = 0;
         else if (state == JawState.BallOut)
-            angle = 147;
+            angle = 110;
         else if (state == JawState.BallHuman)
-            angle = 147;
+            angle = 110;
         else {
             System.out.println("JAW FATAL ERROR: THIS IS NOT HOW TO USE CUSTOM SETPOINT");
             angle = 0;
@@ -143,12 +146,12 @@ public class Const {
     }
 
     // --------------------- BALL INTAKE -------------------------
-    public static final int kBallIntakeNormalAmp = 10;// TODO
-    public static final int kBallIntakeStallAmp = 3;// TODO
+    public static final int kBallIntakeNormalAmp = 10;
+    public static final int kBallIntakeStallAmp = 10;
 
-    public static final double kBallIntakeSpdSlow = 0.5;// TODO
+    public static final double kBallIntakeSpdSlow = 0.3;// TODO
     public static final double kBallIntakeHoldSpd = 0.1;// TODO
-    public static final double kBallIntakeSpd = 1;// TODO
+    public static final double kBallIntakeSpd = 0.3;// TODO
 
     // --------------------- DRIVE -------------------------
     public static final double kDriveJoystickDeadband = 0.05;

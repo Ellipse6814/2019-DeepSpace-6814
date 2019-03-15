@@ -53,7 +53,11 @@ public class BallIntakeSet extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-
+    if (state == BallState.Custom) {
+            MotorDirection md = intake ? MotorDirection.Forward : MotorDirection.Backward;
+            ballIntake.setMotor(md, speed, amp);
+            // Robot.led.set(LEDState.PrepOut);
+        } 
     }
 
     // Make this return true when this Command no longer needs to run execute()
