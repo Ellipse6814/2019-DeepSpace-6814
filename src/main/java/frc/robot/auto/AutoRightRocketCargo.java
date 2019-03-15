@@ -48,7 +48,6 @@ public class AutoRightRocketCargo extends CommandGroup {
                 reset = false;
                 reverse = false;
                 config = RobotPathConfig.getRobotConfig();
-                // config.maxAngVel = 3;
 
                 waypoints = Arrays.asList( //
                                 new Waypoint(Field.kRocketRightFront), //
@@ -84,35 +83,38 @@ public class AutoRightRocketCargo extends CommandGroup {
                                 HatchState.Release);
                 Command backRelease = new SetRobot(ArmState.BackHatchInOut, JawState.Back, BallState.Stop,
                                 HatchState.Release);
-                Command frontIn = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball, BallState.In,
-                                HatchState.Release);
-                Command frontOut = new SetRobot(ArmState.FrontBallCargo, JawState.Ball, BallState.Out,
-                                HatchState.Release);
-                Command backOut = new SetRobot(ArmState.BackBallCargo, JawState.Ball, BallState.Out,
-                                HatchState.Release);
-                Command inHold = new SetRobot(ArmState.FrontBallCargo, JawState.Ball, BallState.Hold,
-                                HatchState.Release);
+                Command frontIn = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball, BallState.In, HatchState.Grab);
                 Command frontHold = new SetRobot(ArmState.FrontBallCargo, JawState.Ball, BallState.Hold,
-                                HatchState.Release);
-                Command backHold = new SetRobot(ArmState.BackBallCargo, JawState.Ball, BallState.Hold,
-                                HatchState.Release);
+                                HatchState.Grab);
+                Command frontOut = new SetRobot(ArmState.FrontBallCargo, JawState.Ball, BallState.Out, HatchState.Grab);
+                Command backOut = new SetRobot(ArmState.BackBallCargo, JawState.Ball, BallState.Out, HatchState.Grab);
+                Command backHold = new SetRobot(ArmState.BackBallCargo, JawState.Ball, BallState.Hold, HatchState.Grab);
+                Command inHold = new SetRobot(ArmState.FrontBallCargo, JawState.Ball, BallState.Hold, HatchState.Grab);
+
                 /// =========================================================
 
-                // Path 1
-                addParallel(new Run(new Wait(1), backGrab)); // parallel: don't wait for this one to finish
+                // // Path 1
+                // addParallel(new Run(new Wait(1), backGrab)); // parallel: don't wait for this
+                // one to finish
+                // addSequential(path1);
+                // addParallel(backRelease);
+                // addSequential(new Wait(0.3));
+                // // Path 2
+                // addParallel(new Run(new Wait(1), frontIn));
+                // addSequential(path2);
+                // addParallel(backGrab);
+                // addSequential(new Wait(0.3));
+                // addParallel(inHold);
+                // // Path 2
+                // addParallel(new Run(new Wait(1), backHold));
+                // addSequential(path3);
+                // addSequential(backOut);
+
+                // TESTING
+                addParallel(frontHold);
                 addSequential(path1);
-                addParallel(backRelease);
-                addSequential(new Wait(0.3));
-                // Path 2
-                addParallel(new Run(new Wait(1), frontIn));
                 addSequential(path2);
-                addParallel(backGrab);
-                addSequential(new Wait(0.3));
-                addParallel(inHold);
-                // Path 2
-                addParallel(new Run(new Wait(1), backHold));
                 addSequential(path3);
-                addSequential(backOut);
         }
 
 }
