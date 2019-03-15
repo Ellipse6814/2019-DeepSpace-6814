@@ -37,6 +37,11 @@ public class BackBallCargo extends Mode {
     protected void execLoop() {
     }
 
+    @Override
+    protected void modeInit() {
+
+    }
+
 }
 
 /*

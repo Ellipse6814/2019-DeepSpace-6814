@@ -37,4 +37,9 @@ public class BackBallRocket extends Mode {
     protected void execLoop() {
     }
 
+    @Override
+    protected void modeInit() {
+
+    }
+
 }

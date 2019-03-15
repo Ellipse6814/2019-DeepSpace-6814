@@ -12,6 +12,8 @@ public abstract class Mode extends Command {
         super();
     }
 
+    abstract protected void modeInit();
+
     abstract protected void prepInit();
 
     abstract protected void prepLoop();

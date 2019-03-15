@@ -37,4 +37,9 @@ public class MiddleIdle extends Mode {
     protected void execLoop() {
     }
 
+    @Override
+    protected void modeInit() {
+
+    }
+
 }

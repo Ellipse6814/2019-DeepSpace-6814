@@ -12,12 +12,19 @@ public class BackHatchIn extends Mode {
     private Command prepCmd;
     private Command execCmd;
 
+    private boolean firstPrep;
+
     public BackHatchIn() {
     }
 
     @Override
     protected void prepInit() {
         System.out.println("PREP: BackHatchIn");
+        if (firstPrep = false) {
+            System.out.println("2nd PREP: BackHatchIn: staying same");
+            return;
+        }
+        firstPrep = false;
         prepCmd = new SetRobot(ArmState.BackHatchInOut, JawState.Front, BallState.Stop, HatchState.Release);
         prepCmd.start();
     }
@@ -31,11 +38,15 @@ public class BackHatchIn extends Mode {
         System.out.println("EXEC: BackHatchIn");
         execCmd = new SetRobot(ArmState.BackHatchInOut, JawState.Front, BallState.Stop, HatchState.Grab);
         execCmd.start();
-        finish();
     }
 
     @Override
     protected void execLoop() {
+    }
+
+    @Override
+    protected void modeInit() {
+        firstPrep = true;
     }
 
 }

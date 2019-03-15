@@ -37,4 +37,9 @@ public class BackBallHumanIn extends Mode {
     protected void execLoop() {
     }
 
+    @Override
+    protected void modeInit() {
+
+    }
+
 }
