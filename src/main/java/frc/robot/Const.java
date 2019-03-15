@@ -118,7 +118,7 @@ public class Const {
 
     public static final double kJawPIDTolerance = 5;// degs
 
-    public static double kJawkP = 0;// TODO
+    public static double kJawkP = 0.3;// TODO
     public static double kJawkI = 0;// TODO
     public static double kJawkD = 0;// TODO
     public static double kJawkF = 0;// TODO
