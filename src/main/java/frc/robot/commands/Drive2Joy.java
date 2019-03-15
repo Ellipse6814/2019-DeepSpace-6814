@@ -3,6 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.Robot;
+import frc.robot.Util.DriveState;
 import frc.robot.subsystems.Drive;
 
 public class Drive2Joy extends Command {
@@ -18,6 +19,7 @@ public class Drive2Joy extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        drive.state = DriveState.Driving;
         System.out.println("Driving with 2 joysticks!");
     }
 

@@ -103,7 +103,7 @@ public class Jaw extends Subsystem {
     }
 
     public void resetPeriodic() {
-        if (!getHallEffect()) {
+        if (getHallEffect()) {
             resetEncoder();
             isReset = true;
         }

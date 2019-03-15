@@ -6,6 +6,7 @@ import java.util.List;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import frc.robot.Util.DriveState;
 import frc.robot.log.CommandBase;
 import frc.robot.path.*;
 import frc.robot.subsystems.Drive;
@@ -38,6 +39,7 @@ public class FollowPath extends CommandBase {
 
     protected void initialize() {
         log("Starting path");
+        drive.state = DriveState.PathFollowing;
         resetRobotForPrep(reset2Angle);
         prevTimestamp = Timer.getFPGATimestamp();
     }
