@@ -48,16 +48,16 @@ public class OI {
     }
 
     private void initJoystickControlBoard() {
-        JoystickButton frontBallFloorIn = new JoystickButton(singleJoystick1, 0);
-        JoystickButton frontBallOut = new JoystickButton(singleJoystick1, 0);
-        JoystickButton frontHatchIn = new JoystickButton(singleJoystick1, 0);
-        JoystickButton frontHatchOut = new JoystickButton(singleJoystick1, 0);
-        JoystickButton backBallOut = new JoystickButton(singleJoystick1, 0);
-        JoystickButton backHatchOut = new JoystickButton(singleJoystick1, 0);
-        JoystickButton backHatchIn = new JoystickButton(singleJoystick1, 0);
-        JoystickButton armReset = new JoystickButton(singleJoystick1, 0);
-        JoystickButton jawReset = new JoystickButton(singleJoystick1, 0);
-        JoystickButton disableRobot = new JoystickButton(singleJoystick1, 0);
+        JoystickButton frontBallFloorIn = new JoystickButton(singleJoystick1, 1);
+        JoystickButton frontBallOut = new JoystickButton(singleJoystick1, 1);
+        JoystickButton frontHatchIn = new JoystickButton(singleJoystick1, 1);
+        JoystickButton frontHatchOut = new JoystickButton(singleJoystick1, 1);
+        JoystickButton backBallOut = new JoystickButton(singleJoystick1, 1);
+        JoystickButton backHatchOut = new JoystickButton(singleJoystick1, 1);
+        JoystickButton backHatchIn = new JoystickButton(singleJoystick1, 1);
+        JoystickButton armReset = new JoystickButton(singleJoystick1, 1);
+        JoystickButton jawReset = new JoystickButton(singleJoystick1, 1);
+        JoystickButton disableRobot = new JoystickButton(singleJoystick1, 1);
 
         frontBallFloorIn.whenPressed(new FrontBallFloorIn());
         frontBallOut.whenPressed(new FrontBallCargo());
@@ -137,7 +137,7 @@ public class OI {
     }
 
     public boolean getExecButton() {
-        return controlBoard2.getRawButton(0) || networkTablesExecButtonDown;
+        return controlBoard2.getRawButton(4) || networkTablesExecButtonDown;
     }
 
     public double getDrivePower() {
