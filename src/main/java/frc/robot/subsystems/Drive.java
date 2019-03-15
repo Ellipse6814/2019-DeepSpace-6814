@@ -18,6 +18,7 @@ import frc.robot.Robot;
 import frc.robot.Util.DriveState;
 import frc.robot.Util.TalonHelper;
 import frc.robot.commands.Drive2Joy;
+import frc.robot.commands.DriveDPad;
 import frc.robot.path.DriveMotorState;
 import frc.robot.path.Odometer;
 
@@ -157,8 +158,12 @@ public class Drive extends Subsystem {
         updateOdometer();
         OI oi = Robot.oi;
 
-        if (state == DriveState.Disabled && (Math.abs(oi.getDrivePower()) >= 0.5 || Math.abs(oi.getDriveTurn()) >= 0.5)) {
+        if (state == DriveState.Disabled
+                && (Math.abs(oi.getDrivePower()) >= 0.5 || Math.abs(oi.getDriveTurn()) >= 0.5)) {
             Command driveCommand = new Drive2Joy();
+            driveCommand.start();
+        } else if (oi.getPOV() != -1) {
+            Command driveCommand = new DriveDPad();
             driveCommand.start();
         }
     }
