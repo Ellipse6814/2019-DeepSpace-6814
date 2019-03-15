@@ -24,7 +24,6 @@ import frc.robot.subsystems.Pneumatic;
 
 public class Robot extends TimedRobot {
     public static NetworkTables networkTables = NetworkTables.getInstance();
-    public static OI oi = OI.getInstance();
     public static Pneumatic pneumatic = Pneumatic.getInstance();
     public static Drive drive = Drive.getInstance();
     public static BallIntake ballIntake = BallIntake.getInstance();
@@ -35,6 +34,7 @@ public class Robot extends TimedRobot {
     public static LED led = LED.getInstance();
     public static Logger logger = Logger.getInstance();
     public static Telemetry telemetry = Telemetry.getInstance();
+    public static OI oi = OI.getInstance();
 
     Command autoCommand;
     SendableChooser<Command> autoChooser = new SendableChooser<>();
