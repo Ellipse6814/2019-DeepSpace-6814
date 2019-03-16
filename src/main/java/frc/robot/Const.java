@@ -23,8 +23,8 @@ public class Const {
     public static final int kIntakeSolenoidPort1 = 0;
     public static final int kIntakeSolenoidPort2 = 1;
 
-    public static final Value kHatchIntakeOpenPos = Value.kForward; // TODO
-    public static final Value kHatchIntakeClosePos = Value.kReverse;// TODO
+    public static final Value kHatchIntakeOpenPos = Value.kForward;
+    public static final Value kHatchIntakeClosePos = Value.kReverse;
 
     // Hall Effect sensors
     public static final int kJawHallEffectSensorPort = 1;
@@ -33,13 +33,13 @@ public class Const {
 
     // motors (inverts)
     public static final int kJawAngleMotorPort = 2;
-    public static final boolean kJawAngleMotorInverted = true;// TODO
+    public static final boolean kJawAngleMotorInverted = true;
 
     public static final int kIntakeRollerMotorPort = 4;
-    public static final boolean kIntakeRollerMotorInverted = false;// TODO
+    public static final boolean kIntakeRollerMotorInverted = false;
 
     public static final int kArmMotorPort = 5;
-    public static final boolean kArmMotorInverted = false; // front 123; back 456; front lowest pt: 0
+    public static final boolean kArmMotorInverted = false; // front 0123; back 456; front lowest pt: 0
     public static final int kArmMotorSlavePort = 3;
 
     public static final int kDriveLeftMasterMotorPort = 3;
@@ -72,15 +72,15 @@ public class Const {
     // const
     public static final double kArmGearRatioArm2Encoder = 1.0 / kArmGearRatioEncoder2Arm;
 
-    public static final double kArmPIDTolerance = 5;// degs //TODO
+    public static final double kArmPIDTolerance = 5;// degs
 
     public static final int kArmLowerSoftLimit = 0;
     public static final int kArmUpperSoftLimit = 175;
 
-    public static double kArmkP = 0.6;// TODO
-    public static double kArmkI = 0;// TODO
-    public static double kArmkD = 0.006;// TODO
-    public static double kArmkF = 0;// TODO
+    public static double kArmkP = 0.6;
+    public static double kArmkI = 0;
+    public static double kArmkD = 0.006;
+    public static double kArmkF = 0;
 
     public static double calcArmAngle(ArmState state) {
         double angle;
@@ -121,10 +121,10 @@ public class Const {
     public static final int kJawLowerSoftLimit = 0;
     public static final int kJawUpperSoftLimit = 110;
 
-    public static double kJawkP = 0.3;// TODO
-    public static double kJawkI = 0;// TODO
-    public static double kJawkD = 0;// TODO
-    public static double kJawkF = 0;// TODO
+    public static double kJawkP = 0.3;
+    public static double kJawkI = 0;
+    public static double kJawkD = 0.1;// TODO:
+    public static double kJawkF = 0;
 
     public static double calcJawAngle(JawState state) {
         double angle;
@@ -135,9 +135,9 @@ public class Const {
         else if (state == JawState.Ball)
             angle = 0;
         else if (state == JawState.BallOut)
-            angle = 110;
+            angle = 105;
         else if (state == JawState.BallHuman)
-            angle = 110;
+            angle = 105;
         else {
             System.out.println("JAW FATAL ERROR: THIS IS NOT HOW TO USE CUSTOM SETPOINT");
             angle = 0;
@@ -149,8 +149,8 @@ public class Const {
     public static final int kBallIntakeNormalAmp = 10;
     public static final int kBallIntakeStallAmp = 10;
 
-    public static final double kBallIntakeSpdSlow = 0.3;// TODO
-    public static final double kBallIntakeHoldSpd = 0.3;// TODO
+    public static final double kBallIntakeSpdSlow = 0.3;
+    public static final double kBallIntakeHoldSpd = 0.3;
     public static final double kBallIntakeSpd = 0.7;// TODO
 
     // --------------------- DRIVE -------------------------

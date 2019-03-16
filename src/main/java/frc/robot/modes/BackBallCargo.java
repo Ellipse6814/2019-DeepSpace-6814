@@ -18,7 +18,7 @@ public class BackBallCargo extends Mode {
     @Override
     protected void prepInit() {
         System.out.println("PREP: BackBallCargo");
-        prepCmd = new SetRobot(ArmState.BackBallCargo, JawState.BallOut, BallState.Hold, HatchState.Release);
+        prepCmd = new SetRobot(ArmState.BackBallCargo, JawState.BallOut, BallState.Hold, HatchState.Grab);
         prepCmd.start();
     }
 
@@ -29,7 +29,7 @@ public class BackBallCargo extends Mode {
     @Override
     protected void execInit() {
         System.out.println("EXEC: BackBallCargo");
-        execCmd = new SetRobot(ArmState.BackBallCargo, JawState.BallOut, BallState.Out, HatchState.Release);
+        execCmd = new SetRobot(ArmState.BackBallCargo, JawState.BallOut, BallState.Out, HatchState.Grab);
         execCmd.start();
     }
 

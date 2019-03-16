@@ -64,7 +64,7 @@ public class Telemetry {
             output += "11 ";
         if (joy2.getRawButton(12))
             output += "12 ";
-
+        System.out.println(output);
     }
 
     public void displayPIDError() {

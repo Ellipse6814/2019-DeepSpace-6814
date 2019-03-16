@@ -3,6 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.Robot;
+import frc.robot.Util.DriveState;
 import frc.robot.subsystems.Drive;
 
 public class DriveDPad extends Command {
@@ -17,6 +18,7 @@ public class DriveDPad extends Command {
     @Override
     protected void initialize() {
         System.out.println("Driving with DPad!");
+        Robot.drive.state = DriveState.DrivingDPad;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -25,17 +27,17 @@ public class DriveDPad extends Command {
         double pov = oi.getPOV();
         double power = 0, turn = 0;
         if (pov == 0) {
-            power = -0.5;
+            power = 0.5;
             turn = 0;
         } else if (pov == 90) {
             power = 0;
-            turn = 0.8;
+            turn = -0.8;
         } else if (pov == 180) {
-            power = 0.5;
+            power = -0.5;
             turn = 0;
         } else if (pov == 270) {
             power = 0;
-            turn = -0.8;
+            turn = 0.8;
         }
         drive.driveJoystick(power, turn);
     }
