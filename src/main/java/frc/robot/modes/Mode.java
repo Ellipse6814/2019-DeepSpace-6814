@@ -24,6 +24,7 @@ public abstract class Mode extends Command {
 
     @Override
     protected void initialize() {
+        modeInit();
         prepInit();
     }
 
