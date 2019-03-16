@@ -10,7 +10,7 @@ import frc.robot.commands.ArmReset;
 import frc.robot.commands.WaitUntil;
 import frc.robot.modes.*;
 
-public class Telemetry {                      
+public class Telemetry {
 
     private static Telemetry instance;
 
@@ -33,7 +33,12 @@ public class Telemetry {
         updateGyro();
         displayPIDError();
         displaySensorResetStatus();
+        displayMotorCurrent();
         // displayButton();
+    }
+
+    public void displayMotorCurrent() {
+        SmartDashboard.putNumber("BIntakeCurrent", Robot.ballIntake.rollerMotor.getOutputCurrent());
     }
 
     Joystick joy2 = new Joystick(2);
@@ -79,9 +84,9 @@ public class Telemetry {
 
     public void updateGyro() {
         SmartDashboard.putNumber("Gyro", Robot.drive.getGyro());
-        SmartDashboard.putNumber("Gyro X", Robot.drive.gyro.getRoll());
-        SmartDashboard.putNumber("Gyro Y", Robot.drive.gyro.getPitch());
-        SmartDashboard.putNumber("Gyro Z", Robot.drive.gyro.getAngle());
+        // SmartDashboard.putNumber("Gyro X", Robot.drive.gyro.getRoll());
+        // SmartDashboard.putNumber("Gyro Y", Robot.drive.gyro.getPitch());
+        // SmartDashboard.putNumber("Gyro Z", Robot.drive.gyro.getAngle());
     }
 
     public void updateEncoders() {

@@ -149,6 +149,9 @@ public class Const {
     public static final int kBallIntakeNormalAmp = 40;
     public static final int kBallIntakeStallAmp = 10;
 
+    public static final int kBallIntakeConsiderBallInAmp = 50;
+    public static final int kBallIntakeConsiderBallInCount = 5;
+
     public static final double kBallIntakeSpdSlow = 0.5;
     public static final double kBallIntakeHoldSpd = 0.0;
     public static final double kBallIntakeSpd = 0.7;// TODO
