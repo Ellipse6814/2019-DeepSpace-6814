@@ -24,7 +24,7 @@ public class LifeCam extends Subsystem {
 
     public void startCamera() {
         camera = CameraServer.getInstance().startAutomaticCapture();
-        camera.setVideoMode(VideoMode.PixelFormat.kMJPEG, 320, 240, 15);
+        camera.setVideoMode(VideoMode.PixelFormat.kMJPEG, 160, 120, 15);
         MjpegServer cameraServer = new MjpegServer("Camera 0", 5810);
         cameraServer.setSource(camera);
     }

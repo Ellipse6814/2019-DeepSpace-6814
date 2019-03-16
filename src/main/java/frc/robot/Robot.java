@@ -30,7 +30,7 @@ public class Robot extends TimedRobot {
     public static HatchIntake hatchIntake = HatchIntake.getInstance();
     public static Arm arm = Arm.getInstance();
     public static Jaw jaw = Jaw.getInstance();
-    // public static LifeCam msLifeCam = LifeCam.getInstance();
+    public static LifeCam msLifeCam = LifeCam.getInstance();
     public static Logger logger = Logger.getInstance();
     public static Telemetry telemetry = Telemetry.getInstance();
     public static OI oi = OI.getInstance();
@@ -51,8 +51,10 @@ public class Robot extends TimedRobot {
         // autoChooser.addOption("Left Rocket Cargo", new AutoLeftRocketCargo());
         // autoChooser.addOption("Right Cargo Cargo", new AutoRightCargoCargo());
         // autoChooser.addOption("Right Rocket Cargo", new AutoRightRocketCargo());
-        // autoChooser.addOption("Middle Left Cargo Cargo", new AutoMiddleLeftCargoCargo());
-        // autoChooser.addOption("Middle Right Cargo Cargo", new AutoMiddleRightCargoCargo());
+        // autoChooser.addOption("Middle Left Cargo Cargo", new
+        // AutoMiddleLeftCargoCargo());
+        // autoChooser.addOption("Middle Right Cargo Cargo", new
+        // AutoMiddleRightCargoCargo());
         // autoChooser.addOption("Right Rocket Cargo", new AutoRightRocketCargo());
         SmartDashboard.putData("Auto Mode Chooser", autoChooser);
     }

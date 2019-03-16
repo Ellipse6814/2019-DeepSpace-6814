@@ -95,9 +95,9 @@ public class Const {
         else if (state == ArmState.BackBallHumanIn)
             angle = 145;
         else if (state == ArmState.BackBallCargo)
-            angle = 135;//150;
+            angle = 135;// 150;
         else if (state == ArmState.BackBallRocket)
-            angle = 135;//150;
+            angle = 135;// 150;
         else if (state == ArmState.FrontHatchInOut)
             angle = 0;
         else if (state == ArmState.BackHatchInOut)
@@ -129,11 +129,11 @@ public class Const {
     public static double calcJawAngle(JawState state) {
         double angle;
         if (state == JawState.Back)
-            angle = 22;
+            angle = 25;
         else if (state == JawState.Front)
             angle = 0;
         else if (state == JawState.Ball)
-            angle = 0;// 0;
+            angle = 50;// 0;
         else if (state == JawState.BallOut)
             angle = 105;
         else if (state == JawState.BallHuman)
@@ -153,8 +153,8 @@ public class Const {
     public static final int kBallIntakeConsiderBallInCount = 10;
 
     public static final double kBallIntakeSpdSlow = 0.5;
-    public static final double kBallIntakeHoldSpd = 0.1;
-    public static final double kBallIntakeSpd = 0.7;// TODO
+    public static final double kBallIntakeHoldSpd = 0.15;
+    public static final double kBallIntakeSpd = 1;// TODO
 
     // --------------------- DRIVE -------------------------
     public static final double kDriveJoystickDeadband = 0.05;
