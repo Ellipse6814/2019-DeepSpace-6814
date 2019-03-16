@@ -19,7 +19,7 @@ public class Drive2Joy extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        drive.state = DriveState.Driving;
+        drive.state = DriveState.DrivingJoystick;
         System.out.println("Driving with 2 joysticks!");
     }
 
