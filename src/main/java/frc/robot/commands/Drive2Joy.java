@@ -26,8 +26,8 @@ public class Drive2Joy extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double power = oi.getDrivePower();
-        double turn = oi.getDriveTurn();
+        double power = -oi.getDrivePower();
+        double turn = -oi.getDriveTurn();
         drive.driveJoystick(power, turn);
     }
 

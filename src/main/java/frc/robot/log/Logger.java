@@ -37,11 +37,12 @@ public class Logger {
 
 	private Logger() {
 		try {
-			String name = DriverStation.getInstance().getEventName() + DriverStation.getInstance().getMatchType()
-					+ "Match" + DriverStation.getInstance().getMatchNumber() + ".txt";
-			writer = new PrintWriter("/home/lvuser/" + name + ".csv");
+			// String name = DriverStation.getInstance().getEventName() +
+			// DriverStation.getInstance().getMatchType()
+			// + "Match" + DriverStation.getInstance().getMatchNumber() + ".txt";
+			// writer = new PrintWriter("/home/lvuser/" + name + ".csv");
 
-			// writer = new PrintWriter("/home/lvuser/Log.csv");
+			writer = new PrintWriter("/home/lvuser/Log.csv");
 
 			valid = true;
 			writer.println("-----,-----------,-----------,--------------");
@@ -59,20 +60,20 @@ public class Logger {
 
 		// notifier.startPeriodic(500);
 
-		writeThread = new Thread(() -> {
-			while (write) {
-				flush();
-				// System.out.println("flushed " + count++);
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-					System.out.println("interrupted");
+		// writeThread = new Thread(() -> {
+		// while (write) {
+		// flush();
+		// // System.out.println("flushed " + count++);
+		// try {
+		// Thread.sleep(500);
+		// } catch (InterruptedException e) {
+		// System.out.println("interrupted");
 
-					e.printStackTrace();
-				}
-			}
-		});
-		start();
+		// e.printStackTrace();
+		// }
+		// }
+		// });
+		// start();
 	}
 
 	public void stop() {
@@ -107,8 +108,9 @@ public class Logger {
 	 */
 	private void logData(String data) {
 		if (valid) {
+			System.out.println(data);
 			writer.println(data);
-			// flush();
+			flush();
 		} else
 			System.out.println(data);
 

@@ -43,9 +43,9 @@ public class Const {
     public static final int kArmMotorSlavePort = 3;
 
     public static final int kDriveLeftMasterMotorPort = 3;
-    public static final boolean kDriveLeftMasterMotorInverted = false;
+    public static final boolean kDriveLeftMasterMotorInverted = true;
     public static final int kDriveRightMasterMotorPort = 1;
-    public static final boolean kDriveRightMasterMotorInverted = true;
+    public static final boolean kDriveRightMasterMotorInverted = false;
     public static final int kDriveLeftSlaveMotorPort = 1;
     public static final int kDriveRightSlaveMotorPort = 2;
 
@@ -54,8 +54,8 @@ public class Const {
     // Encoder inverts
     public static final boolean kArmEncoderInverted = true;
     public static final boolean kJawEncoderInverted = false;
-    public static final boolean kDriveLeftEncoderInverted = true;
-    public static final boolean kDriveRightEncoderInverted = true;
+    public static final boolean kDriveLeftEncoderInverted = false;
+    public static final boolean kDriveRightEncoderInverted = false;
 
     // Current Limits
 

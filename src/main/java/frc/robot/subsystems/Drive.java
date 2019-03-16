@@ -158,8 +158,7 @@ public class Drive extends Subsystem {
         updateOdometer();
         OI oi = Robot.oi;
 
-        if (state == DriveState.Disabled
-                && (Math.abs(oi.getDrivePower()) >= 0.5 || Math.abs(oi.getDriveTurn()) >= 0.5)) {
+        if (Math.abs(oi.getDrivePower()) >= 0.5 || Math.abs(oi.getDriveTurn()) >= 0.5) {
             Command driveCommand = new Drive2Joy();
             driveCommand.start();
         } else if (oi.getPOV() != -1) {
