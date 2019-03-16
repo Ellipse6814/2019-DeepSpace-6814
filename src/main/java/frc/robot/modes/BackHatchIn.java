@@ -18,6 +18,11 @@ public class BackHatchIn extends Mode {
     }
 
     @Override
+    protected void modeInit() {
+        firstPrep = true;
+    }
+
+    @Override
     protected void prepInit() {
         System.out.println("PREP: BackHatchIn");
         if (firstPrep == false) {
@@ -43,10 +48,4 @@ public class BackHatchIn extends Mode {
     @Override
     protected void execLoop() {
     }
-
-    @Override
-    protected void modeInit() {
-        firstPrep = true;
-    }
-
 }
