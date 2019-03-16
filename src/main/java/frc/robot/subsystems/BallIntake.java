@@ -23,7 +23,7 @@ public class BallIntake extends Subsystem {
         return instance;
     }
 
-    private TalonSRX rollerMotor;
+    public TalonSRX rollerMotor;
     public BallState state;
     private int maxAmp = 10;
 

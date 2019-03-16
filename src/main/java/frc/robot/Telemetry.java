@@ -10,7 +10,7 @@ import frc.robot.commands.ArmReset;
 import frc.robot.commands.WaitUntil;
 import frc.robot.modes.*;
 
-public class Telemetry {
+public class Telemetry {                      
 
     private static Telemetry instance;
 
@@ -33,7 +33,7 @@ public class Telemetry {
         updateGyro();
         displayPIDError();
         displaySensorResetStatus();
-        displayButton();
+        // displayButton();
     }
 
     Joystick joy2 = new Joystick(2);

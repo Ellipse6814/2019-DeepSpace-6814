@@ -133,7 +133,7 @@ public class Const {
         else if (state == JawState.Front)
             angle = 0;
         else if (state == JawState.Ball)
-            angle = 0;
+            angle = 50;
         else if (state == JawState.BallOut)
             angle = 105;
         else if (state == JawState.BallHuman)
@@ -146,11 +146,11 @@ public class Const {
     }
 
     // --------------------- BALL INTAKE -------------------------
-    public static final int kBallIntakeNormalAmp = 10;
+    public static final int kBallIntakeNormalAmp = 30;
     public static final int kBallIntakeStallAmp = 10;
 
-    public static final double kBallIntakeSpdSlow = 0.3;
-    public static final double kBallIntakeHoldSpd = 0.3;
+    public static final double kBallIntakeSpdSlow = 0.5;
+    public static final double kBallIntakeHoldSpd = 0.1;
     public static final double kBallIntakeSpd = 0.7;// TODO
 
     // --------------------- DRIVE -------------------------
