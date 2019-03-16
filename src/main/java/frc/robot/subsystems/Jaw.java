@@ -26,7 +26,7 @@ public class Jaw extends Subsystem {
         return instance;
     }
 
-    private TalonSRX jawAngleMotor;
+    public TalonSRX jawAngleMotor;
 
     private DigitalInput jawHallEffect = new DigitalInput(Const.kJawHallEffectSensorPort);
 

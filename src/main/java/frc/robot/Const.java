@@ -33,7 +33,7 @@ public class Const {
 
     // motors (inverts)
     public static final int kJawAngleMotorPort = 2;
-    public static final boolean kJawAngleMotorInverted = true;
+    public static final boolean kJawAngleMotorInverted = false;
 
     public static final int kIntakeRollerMotorPort = 4;
     public static final boolean kIntakeRollerMotorInverted = false;
@@ -53,7 +53,7 @@ public class Const {
 
     // Encoder inverts
     public static final boolean kArmEncoderInverted = true;
-    public static final boolean kJawEncoderInverted = false;
+    public static final boolean kJawEncoderInverted = true;
     public static final boolean kDriveLeftEncoderInverted = false;
     public static final boolean kDriveRightEncoderInverted = false;
 
@@ -133,7 +133,7 @@ public class Const {
         else if (state == JawState.Front)
             angle = 0;
         else if (state == JawState.Ball)
-            angle = 50;// 0;
+            angle = 0;// 0;
         else if (state == JawState.BallOut)
             angle = 105;
         else if (state == JawState.BallHuman)
@@ -149,11 +149,11 @@ public class Const {
     public static final int kBallIntakeNormalAmp = 40;
     public static final int kBallIntakeStallAmp = 10;
 
-    public static final int kBallIntakeConsiderBallInAmp = 50;
-    public static final int kBallIntakeConsiderBallInCount = 5;
+    public static final int kBallIntakeConsiderBallInAmp = 40;
+    public static final int kBallIntakeConsiderBallInCount = 10;
 
     public static final double kBallIntakeSpdSlow = 0.5;
-    public static final double kBallIntakeHoldSpd = 0.0;
+    public static final double kBallIntakeHoldSpd = 0.1;
     public static final double kBallIntakeSpd = 0.7;// TODO
 
     // --------------------- DRIVE -------------------------

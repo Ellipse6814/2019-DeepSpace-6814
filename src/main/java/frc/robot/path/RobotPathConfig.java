@@ -42,12 +42,12 @@ public class RobotPathConfig {
 
     public static RobotPathConfig getRobotConfig() { // TODO: the following config is just a guess
         RobotPathConfig robotConfig = new RobotPathConfig();
-        robotConfig.maxVel = Units.ft2m(9); // 7 before
+        robotConfig.maxVel = Units.ft2m(7); // 7 before
         robotConfig.maxAcc = Units.ft2m(4); // m/sec every sec
         robotConfig.spacing = Units.ft2m(1);
         robotConfig.maxAngVel = 2; // radians per second
         robotConfig.lookAheadDistance = Units.ft2m(1.8);
-        robotConfig.trackWidth = Units.in2m(23);// really 22 inches
+        robotConfig.trackWidth = Units.in2m(22);// really 22 inches
         robotConfig.targetTolerance = Units.in2m(20);
         robotConfig.physicalMaxVel = Units.ft2m(14);
         robotConfig.kV = 1 / robotConfig.physicalMaxVel;

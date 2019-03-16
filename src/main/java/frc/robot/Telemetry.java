@@ -21,7 +21,7 @@ public class Telemetry {
     }
 
     private Telemetry() {
-        initSmartDashboardControlButtons();
+        // initSmartDashboardControlButtons();
         initRawResetSensors();
         initPIDTest();
         initPIDTuner();
@@ -39,6 +39,7 @@ public class Telemetry {
 
     public void displayMotorCurrent() {
         SmartDashboard.putNumber("BIntakeCurrent", Robot.ballIntake.rollerMotor.getOutputCurrent());
+        SmartDashboard.putNumber("JawCurrent", Robot.jaw.jawAngleMotor.getOutputCurrent());
     }
 
     Joystick joy2 = new Joystick(2);
