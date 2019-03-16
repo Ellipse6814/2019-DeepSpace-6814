@@ -150,8 +150,8 @@ public class Const {
     public static final int kBallIntakeStallAmp = 10;
 
     public static final double kBallIntakeSpdSlow = 0.3;// TODO
-    public static final double kBallIntakeHoldSpd = 0.1;// TODO
-    public static final double kBallIntakeSpd = 0.3;// TODO
+    public static final double kBallIntakeHoldSpd = 0.3;// TODO
+    public static final double kBallIntakeSpd = 0.7;// TODO
 
     // --------------------- DRIVE -------------------------
     public static final double kDriveJoystickDeadband = 0.05;

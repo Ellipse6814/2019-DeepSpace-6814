@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.Timer;
@@ -33,6 +34,8 @@ public class BallIntake extends Subsystem {
     private void initTalons() {
         rollerMotor = TalonHelper.createTalon(Const.kIntakeRollerMotorPort, Const.kIntakeRollerMotorInverted);
         TalonHelper.configCurrentLimit(rollerMotor, 10); // this subsystem is special on currents
+        TalonHelper.configNeutralMode(rollerMotor, NeutralMode.Brake);
+
     }
 
     public void setMaxAmp(int maxAmp) {
@@ -75,7 +78,7 @@ public class BallIntake extends Subsystem {
             setMotor(MotorDirection.Backward, Const.kBallIntakeSpdSlow, Const.kBallIntakeNormalAmp);
         } else if (state == BallState.Hold) {
             // if (Timer.getFPGATimestamp() % 1000 < 400)
-                setMotor(MotorDirection.Forward, Const.kBallIntakeHoldSpd, Const.kBallIntakeStallAmp);
+            setMotor(MotorDirection.Forward, Const.kBallIntakeHoldSpd, Const.kBallIntakeStallAmp);
         } else if (state == BallState.Custom) {
             // MotorDirection md = intake ? MotorDirection.Backward :
             // MotorDirection.Forward;

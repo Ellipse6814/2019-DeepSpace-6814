@@ -69,7 +69,8 @@ public class Arm extends Subsystem {
 
     public void setAngle(double angle) {
         // 4096 TalonUnits per rotation
-        // TalonHelper.configPID(armMotor, 0, Const.kArmkP, Const.kArmkI, Const.kArmkD, Const.kArmkF);
+        // TalonHelper.configPID(armMotor, 0, Const.kArmkP, Const.kArmkI, Const.kArmkD,
+        // Const.kArmkF);
         if (!isReset) {
             System.out.println("ARM NOT RESETTED. ROBOT WILL NOT MOVE ARM AS PID WILL DESTROY IT.");
             armMotor.set(ControlMode.PercentOutput, 0);
