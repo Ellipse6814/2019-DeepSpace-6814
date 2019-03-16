@@ -20,7 +20,7 @@ public class BackHatchIn extends Mode {
     @Override
     protected void prepInit() {
         System.out.println("PREP: BackHatchIn");
-        if (firstPrep = false) {
+        if (firstPrep == false) {
             System.out.println("2nd PREP: BackHatchIn: staying same");
             return;
         }

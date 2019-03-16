@@ -18,7 +18,7 @@ public class BackBallHumanIn extends Mode {
     @Override
     protected void prepInit() {
         System.out.println("PREP: BackBallHumanIn");
-        prepCmd = new SetRobot(ArmState.BackBallHumanIn, JawState.BallHuman, BallState.In, HatchState.Release);
+        prepCmd = new SetRobot(ArmState.BackBallHumanIn, JawState.BallHuman, BallState.In, HatchState.Grab);
         prepCmd.start();
     }
 
@@ -29,7 +29,7 @@ public class BackBallHumanIn extends Mode {
     @Override
     protected void execInit() {
         System.out.println("EXEC: BackBallHumanIn");
-        execCmd = new SetRobot(ArmState.BackBallHumanIn, JawState.BallHuman, BallState.Hold, HatchState.Release);
+        execCmd = new SetRobot(ArmState.BackBallHumanIn, JawState.BallHuman, BallState.Hold, HatchState.Grab);
         execCmd.start();
     }
 

@@ -19,7 +19,7 @@ public class FrontHatchIn extends Mode {
 
     @Override
     protected void prepInit() {
-        if (firstPrep = false) {
+        if (firstPrep == false) {
             System.out.println("2nd PREP: FrontHatchIn: staying same");
             return;
         }
