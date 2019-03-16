@@ -89,15 +89,15 @@ public class Const {
         else if (state == ArmState.FrontBallHumanIn)
             angle = 75;
         else if (state == ArmState.FrontBallCargo)
-            angle = 65;
+            angle = 80;// 65;
         else if (state == ArmState.FrontBallRocket)
-            angle = 65;
+            angle = 80;// 65;
         else if (state == ArmState.BackBallHumanIn)
             angle = 145;
         else if (state == ArmState.BackBallCargo)
-            angle = 150;
+            angle = 135;//150;
         else if (state == ArmState.BackBallRocket)
-            angle = 150;
+            angle = 135;//150;
         else if (state == ArmState.FrontHatchInOut)
             angle = 0;
         else if (state == ArmState.BackHatchInOut)

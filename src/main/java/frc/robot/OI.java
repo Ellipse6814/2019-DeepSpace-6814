@@ -49,7 +49,7 @@ public class OI {
     private OI() {
         initGearButtons();
         // initControlBoard();
-        initVirtualControlBoard();
+        // initVirtualControlBoard();
         // initJoystickControlBoard();
     }
 
