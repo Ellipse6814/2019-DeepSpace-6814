@@ -26,7 +26,7 @@ public class Drive extends Subsystem {
     public TalonSRX leftMaster, rightMaster;
     public VictorSPX leftSlave, rightSlave;
 
-    private AHRS gyro;
+    public AHRS gyro;
     private double gyroZero = 0;
 
     private int gear = 2;
@@ -77,6 +77,8 @@ public class Drive extends Subsystem {
         TalonHelper.configCurrentLimit(rightMaster, Const.kDriveMotorMaxAmp);
         TalonHelper.configCurrentLimit(leftMaster, Const.kDriveMotorMaxAmp);
 
+        TalonHelper.configNeutralMode(rightMaster, NeutralMode.Brake);
+        TalonHelper.configNeutralMode(leftMaster, NeutralMode.Brake);
         // TalonHelper.configNeutralMode(Arrays.asList(rightMaster, leftMaster,
         // rightSlave, leftSlave), NeutralMode.Brake);
 
@@ -128,11 +130,11 @@ public class Drive extends Subsystem {
     }
 
     public double getLeftEncoder() {
-        return leftMaster.getSelectedSensorPosition(0) * Const.kTalon4096Unit2Deg;
+        return leftMaster.getSelectedSensorPosition(0) * Const.kTalon4096Unit2Deg / 360 * Math.PI * 6 * 0.0254;
     }
 
     public double getRightEncoder() {
-        return rightMaster.getSelectedSensorPosition(0) * Const.kTalon4096Unit2Deg;
+        return rightMaster.getSelectedSensorPosition(0) * Const.kTalon4096Unit2Deg / 360 * Math.PI * 6 * 0.0254;
     }
 
     public void gearUp() {

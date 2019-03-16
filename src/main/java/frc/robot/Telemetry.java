@@ -79,6 +79,9 @@ public class Telemetry {
 
     public void updateGyro() {
         SmartDashboard.putNumber("Gyro", Robot.drive.getGyro());
+        SmartDashboard.putNumber("Gyro X", Robot.drive.gyro.getQuaternionX());
+        SmartDashboard.putNumber("Gyro Y", Robot.drive.gyro.getQuaternionY());
+        SmartDashboard.putNumber("Gyro Z", Robot.drive.gyro.getQuaternionZ());
     }
 
     public void updateEncoders() {

@@ -95,10 +95,9 @@ public class Logger {
 	}
 
 	public void log(Object message, String sender, MessageLevel messageLevel) {
-		/*
-		 * logData(messageLevel.name() + ", " + sender + ", " + Timer.getFPGATimestamp()
-		 * + ", " + message);
-		 */
+
+		logData(messageLevel.name() + ", " + sender + ", " + Timer.getFPGATimestamp() + ", " + message);
+
 		// logData(messageLevel.name() + ", " + sender + ", " + ", " + message);
 	}
 
