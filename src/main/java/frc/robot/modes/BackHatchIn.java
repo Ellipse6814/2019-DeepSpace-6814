@@ -30,7 +30,7 @@ public class BackHatchIn extends Mode {
             return;
         }
         firstPrep = false;
-        prepCmd = new SetRobot(ArmState.BackHatchInOut, JawState.Front, BallState.Stop, HatchState.Release);
+        prepCmd = new SetRobot(ArmState.BackHatchInOut, JawState.Front, BallState.Stop, HatchState.Grab); // grab and release switched to be safe
         prepCmd.start();
     }
 
@@ -41,7 +41,7 @@ public class BackHatchIn extends Mode {
     @Override
     protected void execInit() {
         System.out.println("EXEC: BackHatchIn");
-        execCmd = new SetRobot(ArmState.BackHatchInOut, JawState.Front, BallState.Stop, HatchState.Grab);
+        execCmd = new SetRobot(ArmState.BackHatchInOut, JawState.Front, BallState.Stop, HatchState.Release);
         execCmd.start();
     }
 

@@ -30,7 +30,10 @@ public class FrontHatchIn extends Mode {
         }
         firstPrep = false;
         System.out.println("PREP: FrontHatchIn");
-        prepCmd = new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop, HatchState.Release);
+        prepCmd = new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop, HatchState.Grab);// grab and
+                                                                                                          // release
+                                                                                                          // switched to
+                                                                                                          // be safe
         prepCmd.start();
     }
 
@@ -41,7 +44,7 @@ public class FrontHatchIn extends Mode {
     @Override
     protected void execInit() {
         System.out.println("EXEC: FrontHatchIn");
-        execCmd = new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop, HatchState.Grab);
+        execCmd = new SetRobot(ArmState.FrontHatchInOut, JawState.Front, BallState.Stop, HatchState.Release);
         execCmd.start();
     }
 
