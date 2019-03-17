@@ -13,6 +13,7 @@ public class FrontBallCargo extends Mode {
     private Command execCmd;
 
     public FrontBallCargo() {
+        super();
     }
 
     @Override

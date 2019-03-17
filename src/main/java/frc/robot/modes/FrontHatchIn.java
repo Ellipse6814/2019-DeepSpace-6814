@@ -15,6 +15,7 @@ public class FrontHatchIn extends Mode {
     private boolean firstPrep;
 
     public FrontHatchIn() {
+        super();
     }
 
     @Override

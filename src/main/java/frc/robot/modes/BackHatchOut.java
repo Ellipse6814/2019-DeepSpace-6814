@@ -13,6 +13,7 @@ public class BackHatchOut extends Mode {
     private Command execCmd;
 
     public BackHatchOut() {
+        super();
     }
 
     @Override

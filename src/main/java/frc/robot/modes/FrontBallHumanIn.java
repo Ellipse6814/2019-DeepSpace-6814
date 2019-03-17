@@ -13,6 +13,7 @@ public class FrontBallHumanIn extends Mode {
     private Command execCmd;
 
     public FrontBallHumanIn() {
+        super();
     }
 
     @Override

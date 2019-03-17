@@ -13,6 +13,7 @@ public class BackBallRocket extends Mode {
     private Command execCmd;
 
     public BackBallRocket() {
+        super();
     }
 
     @Override

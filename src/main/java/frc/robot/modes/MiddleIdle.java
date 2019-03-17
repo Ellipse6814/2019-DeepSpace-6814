@@ -13,6 +13,7 @@ public class MiddleIdle extends Mode {
     private Command execCmd;
 
     public MiddleIdle() {
+        super();
     }
 
     @Override

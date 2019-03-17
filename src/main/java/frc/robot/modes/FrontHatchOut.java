@@ -13,6 +13,7 @@ public class FrontHatchOut extends Mode {
     private Command execCmd;
 
     public FrontHatchOut() {
+        super();
     }
 
     @Override

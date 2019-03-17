@@ -19,6 +19,7 @@ import frc.robot.subsystems.HatchIntake;
 import frc.robot.subsystems.Jaw;
 import frc.robot.subsystems.LED;
 import frc.robot.subsystems.LifeCam;
+import frc.robot.subsystems.ModeSystem;
 import frc.robot.subsystems.NetworkTables;
 import frc.robot.subsystems.Pneumatic;
 
@@ -35,6 +36,7 @@ public class Robot extends TimedRobot {
     public static Telemetry telemetry = Telemetry.getInstance();
     public static OI oi = OI.getInstance();
     public static LED led = LED.getInstance(); // this needs to be inited last
+    public static ModeSystem modeSystem = ModeSystem.getInstance();
 
     Command autoCommand;
     SendableChooser<Command> autoChooser = new SendableChooser<>();

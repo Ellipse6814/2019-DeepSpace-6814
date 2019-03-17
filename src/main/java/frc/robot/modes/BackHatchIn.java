@@ -15,6 +15,7 @@ public class BackHatchIn extends Mode {
     private boolean firstPrep;
 
     public BackHatchIn() {
+        super();
     }
 
     @Override
@@ -30,7 +31,10 @@ public class BackHatchIn extends Mode {
             return;
         }
         firstPrep = false;
-        prepCmd = new SetRobot(ArmState.BackHatchInOut, JawState.Front, BallState.Stop, HatchState.Grab); // grab and release switched to be safe
+        prepCmd = new SetRobot(ArmState.BackHatchInOut, JawState.Front, BallState.Stop, HatchState.Grab); // grab and
+                                                                                                          // release
+                                                                                                          // switched to
+                                                                                                          // be safe
         prepCmd.start();
     }
 

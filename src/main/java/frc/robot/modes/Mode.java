@@ -10,6 +10,7 @@ public abstract class Mode extends Command {
 
     public Mode() {
         super();
+        requires(Robot.modeSystem);
     }
 
     abstract protected void modeInit();

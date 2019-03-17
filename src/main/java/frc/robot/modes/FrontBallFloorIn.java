@@ -20,6 +20,7 @@ public class FrontBallFloorIn extends Mode {
     private int considerBallInCount;
 
     public FrontBallFloorIn() {
+        super();
     }
 
     @Override
@@ -48,7 +49,8 @@ public class FrontBallFloorIn extends Mode {
             System.out.println("considerBallInCount" + considerBallInCount);
         }
         if (considerBallInCount >= Const.kBallIntakeConsiderBallInCount) {
-            // prepCmd = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball, BallState.Hold, HatchState.Grab);
+            // prepCmd = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball,
+            // BallState.Hold, HatchState.Grab);
             // prepCmd.start();
             System.out.println("STOPPING ROLLERS BECAUSE BALL IS IN");
         }
