@@ -29,7 +29,7 @@ public class Drive extends Subsystem {
     public AHRS gyro;
     private double gyroZero = 0;
 
-    private int gear = 2;
+    private int gear = 3;
 
     public DriveState state = DriveState.Disabled;
 

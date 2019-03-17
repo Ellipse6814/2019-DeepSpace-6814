@@ -27,17 +27,21 @@ public class DriveDPad extends Command {
         double pov = oi.getPOV();
         double power = 0, turn = 0;
         if (pov == 0) {
-            power = 0.5;
+            power = 0.8;
             turn = 0;
         } else if (pov == 90) {
             power = 0;
-            turn = -0.8;
+            turn = -0.6;
+            drive.drive(turn, -turn);
+            return;
         } else if (pov == 180) {
-            power = -0.5;
+            power = -0.8;
             turn = 0;
         } else if (pov == 270) {
             power = 0;
-            turn = 0.8;
+            turn = 0.6;
+            drive.drive(turn, -turn);
+            return;
         }
         drive.driveJoystick(power, turn);
     }
