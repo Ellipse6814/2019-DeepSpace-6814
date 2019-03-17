@@ -31,7 +31,7 @@ class LogVisualizer extends JFrame implements KeyListener {
     Draw draw;
 
     // final String fileName = "C:\\Users\\Sean\\Desktop\\LogJ.csv";
-    final String fileName = "C:\\Users\\Sean\\Log5.csv";
+    final String fileName = "C:\\Users\\Sean\\Log14.csv";
     // final String fileName = "C:\\Users\\Sean\\Desktop\\Thursday
     // logs\\LogLeftLast.csv";
     // final String fileName = "C:\\Users\\Sean\\Desktop\\LogLeftTooFast.csv";
@@ -385,11 +385,11 @@ class Draw extends JPanel {
     }
 
     private int x(double x) {
-        return scale(x) + scale(5);
+        return scale(x) + scale(0);
     }
 
     private int y(double y) {
-        return -scale(y) + scale(10);
+        return -scale(y) + scale(11);
     }
 
     protected void drawPath(Graphics g) {

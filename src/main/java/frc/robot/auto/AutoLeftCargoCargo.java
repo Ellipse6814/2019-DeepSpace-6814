@@ -35,11 +35,17 @@ public class AutoLeftCargoCargo extends CommandGroup {
                 reverse = true;
                 config = RobotPathConfig.getRobotConfig();
 
+                // waypoints = Arrays.asList( //
+                // new Waypoint(Field.kStartingLowLeft), //
+                // new Waypoint(Field.kvStartingLowLeft), //
+                // new Waypoint(Field.kvCargoLeftFront), //
+                // new Waypoint(Field.kCargoLeftFront) //
+                // );
                 waypoints = Arrays.asList( //
-                                new Waypoint(Field.kStartingLowLeft), //
-                                new Waypoint(Field.kvStartingLowLeft), //
-                                new Waypoint(Field.kvCargoLeftFront), //
-                                new Waypoint(Field.kCargoLeftFront) //
+                                new Waypoint(new Point(10, 10)), //
+                                new Waypoint(new Point(13, 10)), //
+                                new Waypoint(new Point(13, 7)), //
+                                new Waypoint(new Point(16, 7)) //
                 );
 
                 Command path1 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
