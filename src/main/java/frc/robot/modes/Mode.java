@@ -56,10 +56,12 @@ public abstract class Mode extends Command {
 
     @Override
     protected void end() {
+        System.out.println("A mode has ended");
     }
 
     @Override
     protected void interrupted() {
+        System.out.println("A mode was interrupted");
         end();
     }
 
