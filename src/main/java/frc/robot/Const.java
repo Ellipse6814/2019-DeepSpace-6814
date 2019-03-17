@@ -129,7 +129,7 @@ public class Const {
     public static double calcJawAngle(JawState state) {
         double angle;
         if (state == JawState.Back)
-            angle = 32;
+            angle = 25;
         else if (state == JawState.Front)
             angle = 0;
         else if (state == JawState.Ball)
