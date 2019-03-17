@@ -3,7 +3,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.Util.ArmState;
 import frc.robot.Util.JawState;
-import frc.robot.Util.LEDState;
 
 public class Const {
     // ======================== UNIT CONVERSIONS: ==========================
@@ -123,7 +122,7 @@ public class Const {
 
     public static double kJawkP = 0.3;
     public static double kJawkI = 0;
-    public static double kJawkD = 0.1;// TODO:
+    public static double kJawkD = 0.1;
     public static double kJawkF = 0;
 
     public static double calcJawAngle(JawState state) {
@@ -154,7 +153,7 @@ public class Const {
 
     public static final double kBallIntakeSpdSlow = 0.5;
     public static final double kBallIntakeHoldSpd = 0.15;
-    public static final double kBallIntakeSpd = 1;// TODO
+    public static final double kBallIntakeSpd = 1;
 
     // --------------------- DRIVE -------------------------
     public static final double kDriveJoystickDeadband = 0.05;

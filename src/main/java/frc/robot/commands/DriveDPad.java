@@ -31,17 +31,13 @@ public class DriveDPad extends Command {
             turn = 0;
         } else if (pov == 90) {
             power = 0;
-            turn = -0.6;
-            drive.drive(turn, -turn);
-            return;
+            turn = -1;
         } else if (pov == 180) {
             power = -0.8;
             turn = 0;
         } else if (pov == 270) {
             power = 0;
-            turn = 0.6;
-            drive.drive(turn, -turn);
-            return;
+            turn = 1;
         }
         drive.driveJoystick(power, turn);
     }
