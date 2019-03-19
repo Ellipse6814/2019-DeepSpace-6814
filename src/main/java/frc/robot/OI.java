@@ -101,6 +101,8 @@ public class OI {
 
         gearUpBtn.whenPressed(new DriveSetGear(true));
         gearDownBtn.whenPressed(new DriveSetGear(false));
+
+        System.out.println("OI DriveGearButtons Inited.");
     }
 
     // private void initJoystickControlBoard() {
