@@ -107,8 +107,6 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopPeriodic() {
-        // System.out.println("===========ROBOT MAIN LOOP:" + (count++) +
-        // "=============");
         Scheduler.getInstance().run();
     }
 
