@@ -57,40 +57,40 @@ public class OI {
         Command cmd = new DoNothing();
         if (controlBoard1.getRawButton(1)) {
             cmd = new DoNothing();
-            System.out.println("update button 1");
+            // System.out.println("update button 1");
         } else if (controlBoard1.getRawButton(2)) {
             cmd = new DoNothing();
-            System.out.println("update button 2");
+            // System.out.println("update button 2");
         } else if (controlBoard1.getRawButton(3)) {
             cmd = new DoNothing();
-            System.out.println("update button 3");
+            // System.out.println("update button 3");
         } else if (controlBoard1.getRawButton(4)) {
             cmd = new DoNothing();
-            System.out.println("update button 4");
+            // System.out.println("update button 4");
         } else if (controlBoard1.getRawButton(5)) {
             cmd = new FrontHatchOut();
-            System.out.println("update button 5");
+            // System.out.println("update button 5");
         } else if (controlBoard1.getRawButton(6)) {
             cmd = new FrontHatchIn();
-            System.out.println("update button 6");
+            // System.out.println("update button 6");
         } else if (controlBoard1.getRawButton(7)) {
             cmd = new BackHatchIn();
-            System.out.println("update button 7");
+            // System.out.println("update button 7");
         } else if (controlBoard1.getRawButton(8)) {
             cmd = new BackHatchOut();
-            System.out.println("update button 8");
+            // System.out.println("update button 8");
         } else if (controlBoard1.getRawButton(9)) {
             cmd = new FrontBallCargo();
-            System.out.println("update button 9");
+            // System.out.println("update button 9");
         } else if (controlBoard1.getRawButton(10)) {
             cmd = new FrontBallFloorIn();
-            System.out.println("update button 1");
+            // System.out.println("update button 1");
         } else if (controlBoard1.getRawButton(11)) {
             cmd = new BackBallCargo();
-            System.out.println("update button 1");
+            // System.out.println("update button 1");
         } else if (controlBoard1.getRawButton(12)) {
             cmd = new DoNothing();
-            System.out.println("update button 1");
+            // System.out.println("update button 1");
         }
         cmd.start();
     }

@@ -3,7 +3,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.Util.ArmState;
 import frc.robot.Util.JawState;
-import frc.robot.Util.LEDState;
 
 public class Const {
     // ======================== UNIT CONVERSIONS: ==========================
@@ -123,19 +122,19 @@ public class Const {
 
     public static double kJawkP = 0.3;
     public static double kJawkI = 0;
-    public static double kJawkD = 0.1;// TODO:
+    public static double kJawkD = 0.1;
     public static double kJawkF = 0;
 
     public static double calcJawAngle(JawState state) {
         double angle;
         if (state == JawState.Back)
-            angle = 32;
+            angle = 25;
         else if (state == JawState.Front)
             angle = 0;
         else if (state == JawState.Ball)
-            angle = 50;// 0;
+            angle = 90;// 0;
         else if (state == JawState.BallOut)
-            angle = 105;
+            angle = 87;// 105;
         else if (state == JawState.BallHuman)
             angle = 105;
         else {
@@ -154,13 +153,13 @@ public class Const {
 
     public static final double kBallIntakeSpdSlow = 0.5;
     public static final double kBallIntakeHoldSpd = 0.15;
-    public static final double kBallIntakeSpd = 1;// TODO
+    public static final double kBallIntakeSpd = 1;
 
     // --------------------- DRIVE -------------------------
     public static final double kDriveJoystickDeadband = 0.05;
 
     public static final double[] kDrivePowerGears = { 0.3333, 0.6666, 1 };
-    public static final double[] kDriveTurnGears = { 0.17, 0.25, 0.3 };
+    public static final double[] kDriveTurnGears = { 0.23, 0.23, 0.23 };
 
     public static final double maxAccelMSS = 100;
 

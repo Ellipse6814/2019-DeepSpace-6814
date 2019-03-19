@@ -17,6 +17,7 @@ public class DriveSetGear extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        System.out.println("CMD: setgear: " + gearUp);
         if (gearUp)
             drive.gearUp();
         else

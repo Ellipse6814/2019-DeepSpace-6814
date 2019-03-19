@@ -31,7 +31,7 @@ public class BackHatchIn extends Mode {
             return;
         }
         firstPrep = false;
-        prepCmd = new SetRobot(ArmState.BackHatchInOut, JawState.Front, BallState.Stop, HatchState.Grab); // grab and
+        prepCmd = new SetRobot(ArmState.BackHatchInOut, JawState.Back, BallState.Stop, HatchState.Grab); // grab and
                                                                                                           // release
                                                                                                           // switched to
                                                                                                           // be safe

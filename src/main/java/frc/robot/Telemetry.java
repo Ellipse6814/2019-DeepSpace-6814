@@ -38,6 +38,7 @@ public class Telemetry {
     }
 
     public void displayMotorCurrent() {
+        SmartDashboard.putNumber("ArmCurrent", Robot.arm.armMotor.getOutputCurrent());
         SmartDashboard.putNumber("BIntakeCurrent", Robot.ballIntake.rollerMotor.getOutputCurrent());
         SmartDashboard.putNumber("JawCurrent", Robot.jaw.jawAngleMotor.getOutputCurrent());
     }
