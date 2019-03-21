@@ -31,12 +31,12 @@ class LogVisualizer extends JFrame implements KeyListener {
     Draw draw;
 
     // final String fileName = "C:\\Users\\Sean\\Desktop\\LogJ.csv";
-    final String fileName = "C:\\Users\\Sean\\Log21.csv";
+    // final String fileName = "C:\\Users\\Sean\\Log21.csv";
     // final String fileName = "C:\\Users\\Sean\\Desktop\\Thursday
     // logs\\LogLeftLast.csv";
     // final String fileName = "C:\\Users\\Sean\\Desktop\\LogLeftTooFast.csv";
     // final String fileName = "C:\\Users\\Sean\\Desktop\\LogLeftLast.csv";
-    // final String fileName = "C:\\Users\\Sean\\Desktop\\LogLeft1.csv";
+    final String fileName = "C:\\Users\\Sean\\Desktop\\Log2.csv";
 
     List<String[]> file = new ArrayList<>();
 
