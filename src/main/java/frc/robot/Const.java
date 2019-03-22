@@ -154,6 +154,7 @@ public class Const {
     public static final double kBallIntakeSpdSlow = 0.5;
     public static final double kBallIntakeHoldSpd = 0.15;
     public static final double kBallIntakeSpd = 1;
+    public static final double kBallOuttakeSpd = 0.8;
 
     // --------------------- DRIVE -------------------------
     public static final double kDriveJoystickDeadband = 0.05;

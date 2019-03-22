@@ -73,7 +73,7 @@ public class BallIntake extends Subsystem {
         if (state == BallState.In) {
             setMotor(MotorDirection.Forward, Const.kBallIntakeSpd, Const.kBallIntakeStallAmp);
         } else if (state == BallState.Out) {
-            setMotor(MotorDirection.Backward, Const.kBallIntakeSpd, Const.kBallIntakeNormalAmp);
+            setMotor(MotorDirection.Backward, Const.kBallOuttakeSpd, Const.kBallIntakeNormalAmp);
         } else if (state == BallState.OutSlow) {
             setMotor(MotorDirection.Backward, Const.kBallIntakeSpdSlow, Const.kBallIntakeNormalAmp);
         } else if (state == BallState.Hold) {
