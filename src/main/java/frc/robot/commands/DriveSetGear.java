@@ -4,9 +4,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.subsystems.Drive;
 
-/**
- * An example command. You can replace me with your own command.
- */
 public class DriveSetGear extends Command {
 
     private Drive drive = Robot.drive;
