@@ -29,11 +29,11 @@ public class Telemetry {
 
     public void update() {
         // SmartDashboard.putNumber("Timestamp", Timer.getFPGATimestamp());
-        // updateEncoders();
+        updateEncoders();
         // updateGyro();
         // displayPIDError();
         displaySensorResetStatus();
-        // displayMotorCurrent();
+        displayMotorCurrent();
         // displayButton();
     }
 
