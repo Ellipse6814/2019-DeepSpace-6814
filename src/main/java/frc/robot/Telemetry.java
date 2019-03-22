@@ -34,6 +34,7 @@ public class Telemetry {
         // displayPIDError();
         displaySensorResetStatus();
         displayMotorCurrent();
+        displayMotorPercentage();
         // displayButton();
     }
 
@@ -41,6 +42,14 @@ public class Telemetry {
         SmartDashboard.putNumber("ArmCurrent", Robot.arm.armMotor.getOutputCurrent());
         SmartDashboard.putNumber("BIntakeCurrent", Robot.ballIntake.rollerMotor.getOutputCurrent());
         SmartDashboard.putNumber("JawCurrent", Robot.jaw.jawAngleMotor.getOutputCurrent());
+    }
+
+    public void displayMotorPercentage() {
+        // SmartDashboard.putNumber("ArmCurrent",
+        // Robot.arm.armMotor.getOutputCurrent());
+        // SmartDashboard.putNumber("BIntakeCurrent",
+        // Robot.ballIntake.rollerMotor.getOutputCurrent());
+        SmartDashboard.putNumber("JawPercent", Robot.jaw.jawAngleMotor.getMotorOutputPercent());
     }
 
     Joystick joy2 = new Joystick(2);

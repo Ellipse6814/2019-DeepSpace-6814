@@ -57,7 +57,7 @@ public class OI {
         updateControlBoardButtons();
     }
 
-    public void updateControlBoardButtons(){
+    public void updateControlBoardButtons() {
         Command cmd = new DoNothing();
         if (controlBoard1.getRawButton(1)) {
             cmd = new DoNothing();
@@ -201,7 +201,8 @@ public class OI {
     }
 
     public boolean getExecButton() {
-        return controlBoard2.getRawButton(4) || networkTablesExecButtonDown;
+        // return controlBoard2.getRawButton(4) || networkTablesExecButtonDown;
+        return controlBoard1.getRawButton(4) || networkTablesExecButtonDown;
     }
 
     public double getDrivePower() {

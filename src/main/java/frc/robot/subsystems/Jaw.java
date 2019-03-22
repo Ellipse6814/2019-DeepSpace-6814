@@ -63,6 +63,8 @@ public class Jaw extends Subsystem {
         if (state == wantedState)
             return;
         state = wantedState;
+        if (state == JawState.Ball)
+            return;
         setAngle(Const.calcJawAngle(wantedState));
     }
 
@@ -112,6 +114,14 @@ public class Jaw extends Subsystem {
             resetEncoder();
             isReset = true;
         }
+    }
+
+    @Override
+    public void periodic() {
+        super.periodic();
+        if (state == JawState.Ball && !getHallEffect())
+            jawAngleMotor.set(ControlMode.PercentOutput, -0.2);
+
     }
 
     public boolean isReset() {

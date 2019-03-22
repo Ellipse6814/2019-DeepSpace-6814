@@ -76,7 +76,7 @@ public class Const {
     public static final int kArmLowerSoftLimit = 0;
     public static final int kArmUpperSoftLimit = 175;
 
-    public static double kArmkP = 0.6;
+    public static double kArmkP = 0.6;//
     public static double kArmkI = 0;
     public static double kArmkD = 0.006;
     public static double kArmkF = 0;
@@ -120,7 +120,7 @@ public class Const {
     public static final int kJawLowerSoftLimit = 0;
     public static final int kJawUpperSoftLimit = 110;
 
-    public static double kJawkP = 0.15;// 0.3
+    public static double kJawkP = 0.006;// 0.3
     public static double kJawkI = 0;
     public static double kJawkD = 0.05;// 0.1
     public static double kJawkF = 0;
