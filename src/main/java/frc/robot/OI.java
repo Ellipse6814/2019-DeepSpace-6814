@@ -54,6 +54,10 @@ public class OI {
     }
 
     public void update() {
+        updateControlBoardButtons();
+    }
+
+    public void updateControlBoardButtons(){
         Command cmd = new DoNothing();
         if (controlBoard1.getRawButton(1)) {
             cmd = new DoNothing();

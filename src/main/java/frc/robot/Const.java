@@ -112,7 +112,7 @@ public class Const {
 
     // --------------------- JAW -------------------------
 
-    public static final double kJawGearRatioEncoder2Jaw = 18.0 / 32.0;
+    public static final double kJawGearRatioEncoder2Jaw = 18.0 / 32.0 / 81.0;
     public static final double kJawGearRatioJaw2Encoder = 1 / kJawGearRatioEncoder2Jaw;
 
     public static final double kJawPIDTolerance = 5;// degs
