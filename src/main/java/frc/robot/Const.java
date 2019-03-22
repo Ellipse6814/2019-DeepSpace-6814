@@ -132,7 +132,7 @@ public class Const {
         else if (state == JawState.Front)
             angle = 0;
         else if (state == JawState.Ball)
-            angle = 90;// 0;
+            angle = 0;// 90;
         else if (state == JawState.BallOut)
             angle = 87;// 105;
         else if (state == JawState.BallHuman)
