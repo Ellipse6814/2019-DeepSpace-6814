@@ -21,10 +21,10 @@ public class Logger {
 
 	private static Logger instance;
 	// private Notifier notifier;
-	private Thread writeThread;
-	private boolean write = true;
+	// private Thread writeThread;
+	// private boolean write = true;
 
-	private int count = 0;
+	// private int count = 0;
 
 	PrintWriter writer = null;
 	boolean valid = false;
@@ -76,15 +76,15 @@ public class Logger {
 		// start();
 	}
 
-	public void stop() {
-		write = false;
-	}
+	// public void stop() {
+	// 	write = false;
+	// }
 
-	public void start() {
-		write = true;
-		if (!writeThread.isAlive())
-			writeThread.start();
-	}
+	// public void start() {
+	// 	write = true;
+	// 	if (!writeThread.isAlive())
+	// 		writeThread.start();
+	// }
 
 	public void log(Object message) {
 		log(message, "Default", MessageLevel.Info);
