@@ -40,8 +40,8 @@ public class LED {
     }
 
     public void update() {
-        updateState();
-        updateLEDs();
+        // updateState();
+        // updateLEDs();
     }
 
     private void updateLEDs() {
