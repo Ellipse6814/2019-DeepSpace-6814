@@ -43,9 +43,9 @@ public class AutoLeftCargoCargo extends CommandGroup {
                 // );
                 waypoints = Arrays.asList( //
                                 new Waypoint(new Point(10, 10)), //
-                                new Waypoint(new Point(13, 10)), //
-                                new Waypoint(new Point(13, 7)), //
-                                new Waypoint(new Point(16, 7)) //
+                                new Waypoint(new Point(12, 10)), //
+                                new Waypoint(new Point(12, 12)), //
+                                new Waypoint(new Point(14, 12)) //
                 );
 
                 Command path1 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);

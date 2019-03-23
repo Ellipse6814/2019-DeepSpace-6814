@@ -100,7 +100,7 @@ public class Const {
         else if (state == ArmState.FrontHatchInOut)
             angle = 0;
         else if (state == ArmState.BackHatchInOut)
-            angle = 146;
+            angle = 144;
         else if (state == ArmState.Middle)
             angle = 90;
         else {
@@ -160,7 +160,7 @@ public class Const {
     public static final double kDriveJoystickDeadband = 0.05;
 
     public static final double[] kDrivePowerGears = { 0.3333, 0.6666, 1 };
-    public static final double[] kDriveTurnGears = { 0.23, 0.23, 0.23 };
+    public static final double[] kDriveTurnGears = { 0.27, 0.27, 0.27 };
 
     public static final double maxAccelMSS = 100;
 

@@ -61,11 +61,11 @@ public class Robot extends TimedRobot {
         // printRAM();
         logger = Logger.getInstance();
         // printRAM();
-        telemetry = Telemetry.getInstance();
-        // printRAM();
         modeSystem = ModeSystem.getInstance();
         // printRAM();
         oi = OI.getInstance();
+        // printRAM();
+        telemetry = Telemetry.getInstance();
         // printRAM();
         led = LED.getInstance(); // this needs to be inited last
         // printRAM();
@@ -80,7 +80,8 @@ public class Robot extends TimedRobot {
 
     private void initAutoChooser() {
         autoChooser.setDefaultOption("Do Nothing", new AutoDoNothing());
-        // autoChooser.addOption("Left Cargo Cargo", new AutoLeftCargoCargo());
+        autoChooser.addOption("Grab Hatch", new AutoGrabHatch());
+        autoChooser.addOption("Left Cargo Cargo", new AutoLeftCargoCargo());
         // autoChooser.addOption("Left Rocket Cargo", new AutoLeftRocketCargo());
         // autoChooser.addOption("Right Cargo Cargo", new AutoRightCargoCargo());
         // autoChooser.addOption("Right Rocket Cargo", new AutoRightRocketCargo());
