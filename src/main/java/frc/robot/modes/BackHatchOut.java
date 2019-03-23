@@ -30,7 +30,7 @@ public class BackHatchOut extends Mode {
     @Override
     protected void execInit() {
         System.out.println("EXEC: BackHatchOut");
-        execCmd = new SetRobot(ArmState.BackHatchInOut, JawState.Front, BallState.Stop, HatchState.Release);
+        execCmd = new SetRobot(ArmState.BackHatchInOut, JawState.Back, BallState.Stop, HatchState.Release);
         execCmd.start();
     }
 
