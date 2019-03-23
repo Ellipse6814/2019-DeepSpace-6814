@@ -100,7 +100,7 @@ public class Const {
         else if (state == ArmState.FrontHatchInOut)
             angle = 0;
         else if (state == ArmState.BackHatchInOut)
-            angle = 150;
+            angle = 140;
         else if (state == ArmState.Middle)
             angle = 90;
         else {
@@ -128,7 +128,7 @@ public class Const {
     public static double calcJawAngle(JawState state) {
         double angle;
         if (state == JawState.Back)
-            angle = 25;
+            angle = 19;
         else if (state == JawState.Front)
             angle = 0;
         else if (state == JawState.Ball)

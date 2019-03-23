@@ -24,32 +24,63 @@ import frc.robot.subsystems.NetworkTables;
 import frc.robot.subsystems.Pneumatic;
 
 public class Robot extends TimedRobot {
-    public static NetworkTables networkTables = NetworkTables.getInstance();
-    public static Pneumatic pneumatic = Pneumatic.getInstance();
-    public static Drive drive = Drive.getInstance();
-    public static BallIntake ballIntake = BallIntake.getInstance();
-    public static HatchIntake hatchIntake = HatchIntake.getInstance();
-    public static Arm arm = Arm.getInstance();
-    public static Jaw jaw = Jaw.getInstance();
-    public static LifeCam msLifeCam = LifeCam.getInstance();
-    public static Logger logger = Logger.getInstance();
-    public static Telemetry telemetry = Telemetry.getInstance();
-    public static ModeSystem modeSystem = ModeSystem.getInstance();
-    public static OI oi = OI.getInstance();
-    public static LED led = LED.getInstance(); // this needs to be inited last
+    public static NetworkTables networkTables;
+    public static Pneumatic pneumatic;
+    public static Drive drive;
+    public static BallIntake ballIntake;
+    public static HatchIntake hatchIntake;
+    public static Arm arm;
+    public static Jaw jaw;
+    public static LifeCam msLifeCam;
+    public static Logger logger;
+    public static Telemetry telemetry;
+    public static ModeSystem modeSystem;
+    public static OI oi;
+    public static LED led;
 
     Command autoCommand;
     SendableChooser<Command> autoChooser = new SendableChooser<>();
 
+    private void initSubsystems() {
+        // printRAM();
+        networkTables = NetworkTables.getInstance();
+        // printRAM();
+        pneumatic = Pneumatic.getInstance();
+        // printRAM();
+        drive = Drive.getInstance();
+        // printRAM();
+        ballIntake = BallIntake.getInstance();
+        // printRAM();
+        hatchIntake = HatchIntake.getInstance();
+        // printRAM();
+        arm = Arm.getInstance();
+        // printRAM();
+        jaw = Jaw.getInstance();
+        // printRAM();
+        msLifeCam = LifeCam.getInstance();
+        // printRAM();
+        logger = Logger.getInstance();
+        // printRAM();
+        telemetry = Telemetry.getInstance();
+        // printRAM();
+        modeSystem = ModeSystem.getInstance();
+        // printRAM();
+        oi = OI.getInstance();
+        // printRAM();
+        led = LED.getInstance(); // this needs to be inited last
+        // printRAM();
+    }
+
     @Override
     public void robotInit() {
+        initSubsystems();
         turnOffMotors();
         initAutoChooser();
     }
 
     private void initAutoChooser() {
         autoChooser.setDefaultOption("Do Nothing", new AutoDoNothing());
-        autoChooser.addOption("Left Cargo Cargo", new AutoLeftCargoCargo());
+        // autoChooser.addOption("Left Cargo Cargo", new AutoLeftCargoCargo());
         // autoChooser.addOption("Left Rocket Cargo", new AutoLeftRocketCargo());
         // autoChooser.addOption("Right Cargo Cargo", new AutoRightCargoCargo());
         // autoChooser.addOption("Right Rocket Cargo", new AutoRightRocketCargo());
@@ -116,44 +147,46 @@ public class Robot extends TimedRobot {
         pneumatic.startCompressor();
     }
 
-    Joystick joy1 = oi.getDoubleJoystick1();
+    // Joystick joy1 = oi.getDoubleJoystick1();
 
     @Override
     public void testPeriodic() {
 
-        // // drive
-        // drive.drive(joy1.getRawAxis(1), joy1.getRawAxis(5));
+        // // // drive
+        // // drive.drive(joy1.getRawAxis(1), joy1.getRawAxis(5));
 
-        // // arm
-        double armSpd = joy1.getRawAxis(3) - joy1.getRawAxis(2);
-        // armSpd *= 0.4;
-        armSpd *= 1500;
-        SmartDashboard.putNumber("Arm Spd", armSpd);
-        MotorDirection md = MotorDirection.Forward;
-        if (armSpd < 0)
-            md = MotorDirection.Backward;
-        SmartDashboard.putBoolean("ArmDirection", (md == MotorDirection.Forward) ? true : false);
-        SmartDashboard.putNumber("ArmTalonOuput", arm.armMotor.getMotorOutputPercent());
-        // arm.armMotor.set(ControlMode.PercentOutput, armSpd);
-        if (joy1.getRawButton(1))
-            hatchIntake.openHatchIntake();
-        else
-            hatchIntake.closeHatchIntake();
+        // // // arm
+        // double armSpd = joy1.getRawAxis(3) - joy1.getRawAxis(2);
+        // // armSpd *= 0.4;
+        // armSpd *= 1500;
+        // SmartDashboard.putNumber("Arm Spd", armSpd);
+        // MotorDirection md = MotorDirection.Forward;
+        // if (armSpd < 0)
+        // md = MotorDirection.Backward;
+        // SmartDashboard.putBoolean("ArmDirection", (md == MotorDirection.Forward) ?
+        // true : false);
+        // SmartDashboard.putNumber("ArmTalonOuput",
+        // arm.armMotor.getMotorOutputPercent());
+        // // arm.armMotor.set(ControlMode.PercentOutput, armSpd);
+        // if (joy1.getRawButton(1))
+        // hatchIntake.openHatchIntake();
+        // else
+        // hatchIntake.closeHatchIntake();
 
-        // if (joy1.getRawButton(2))
-        // arm.setAngle(5);
-        // else if (joy1.getRawButton(3))
-        // arm.setAngle(80);
-        // else if (joy1.getRawButton(4))
-        // arm.setAngle(145);
-        // // else
-        // arm.setOpenLoop(Math.abs(armSpd), md);
-        // jaw.setOpenLoop(Math.abs(armSpd), md);
-        if (joy1.getRawButton(6))
-            arm.resetEncoder();
-        // ballIntake.rollerMotor.set(ControlMode.PercentOutput, 0.5);
-        // jaw.jawAngleMotor.set(ControlMode.PercentOutput, armSpd);
-        jaw.jawAngleMotor.set(ControlMode.Position, armSpd);
+        // // if (joy1.getRawButton(2))
+        // // arm.setAngle(5);
+        // // else if (joy1.getRawButton(3))
+        // // arm.setAngle(80);
+        // // else if (joy1.getRawButton(4))
+        // // arm.setAngle(145);
+        // // // else
+        // // arm.setOpenLoop(Math.abs(armSpd), md);
+        // // jaw.setOpenLoop(Math.abs(armSpd), md);
+        // if (joy1.getRawButton(6))
+        // arm.resetEncoder();
+        // ballIntake.rollerMotor.set(ControlMode.PercentOutput, -0.5);
+        // // jaw.jawAngleMotor.set(ControlMode.PercentOutput, armSpd);
+        // // jaw.jawAngleMotor.set(ControlMode.Position, armSpd);
     }
 
     public void tryToResetSensors() {
@@ -171,5 +204,14 @@ public class Robot extends TimedRobot {
         drive.enable();
         jaw.enable();
         arm.enable();
+    }
+
+    public static void printRAM() {
+        final double mb = 1024.0 * 1024.0;
+        Runtime runtime = Runtime.getRuntime();
+        double ramFree = runtime.freeMemory() / mb;
+        double totalRam = runtime.totalMemory() / mb;
+        double usedRam = totalRam - ramFree;
+        System.out.println("Total: " + totalRam + ";  Used: " + usedRam + ";  free: " + ramFree);
     }
 }
