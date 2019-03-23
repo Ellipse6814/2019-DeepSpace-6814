@@ -76,7 +76,7 @@ public class Const {
     public static final int kArmLowerSoftLimit = 0;
     public static final int kArmUpperSoftLimit = 175;
 
-    public static double kArmkP = 0.6;//
+    public static double kArmkP = 0.7;//
     public static double kArmkI = 0;
     public static double kArmkD = 0.006;
     public static double kArmkF = 0;
@@ -100,7 +100,7 @@ public class Const {
         else if (state == ArmState.FrontHatchInOut)
             angle = 0;
         else if (state == ArmState.BackHatchInOut)
-            angle = 140;
+            angle = 146;
         else if (state == ArmState.Middle)
             angle = 90;
         else {
