@@ -17,7 +17,7 @@ import frc.robot.commands.DoNothing;
 public class Jaw extends Subsystem {
 
     private static Jaw instance;
-    public JawState state;
+    public JawState state = JawState.Custom;
 
     public static Jaw getInstance() {
         if (instance == null) {
@@ -57,15 +57,20 @@ public class Jaw extends Subsystem {
         }
         double targetPositionRotations = angle * Const.kDeg2Talon4096Unit * Const.kJawGearRatioJaw2Encoder;
         jawAngleMotor.set(ControlMode.Position, targetPositionRotations);
+        System.out.println("JAW: finished setting setpoint: " + targetPositionRotations);
     }
 
     public void set(JawState wantedState) {
-        if (state == wantedState)
+        System.out.println("JAW: set setpoint: " + Const.calcJawAngle(wantedState));
+        System.out.println("JAW current: " + state);
+        System.out.println("JAW wanted: " + wantedState);
+        if (state == wantedState) {
+            System.out.println("returning...");
             return;
-        state = wantedState;
-        if (state == JawState.Ball)
-            return;
+        }
+        System.out.println("JAW setting...");
         setAngle(Const.calcJawAngle(wantedState));
+        state = wantedState;
     }
 
     public void setOpenLoop(double speed, MotorDirection direction) {
@@ -116,13 +121,13 @@ public class Jaw extends Subsystem {
         }
     }
 
-    @Override
-    public void periodic() {
-        super.periodic();
-        if (state == JawState.Ball && !getHallEffect())
-            jawAngleMotor.set(ControlMode.PercentOutput, -0.2);
+    // @Override
+    // public void periodic() {
+    // super.periodic();
+    // if (state == JawState.Ball && !getHallEffect())
+    // jawAngleMotor.set(ControlMode.PercentOutput, -0.2);
 
-    }
+    // }
 
     public boolean isReset() {
         return isReset;

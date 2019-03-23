@@ -90,13 +90,13 @@ public class Const {
         else if (state == ArmState.FrontBallCargo)
             angle = 80;// 65;
         else if (state == ArmState.FrontBallRocket)
-            angle = 80;// 65;
+            angle = 54.5;// 65;
         else if (state == ArmState.BackBallHumanIn)
             angle = 145;
         else if (state == ArmState.BackBallCargo)
             angle = 135;// 150;
         else if (state == ArmState.BackBallRocket)
-            angle = 135;// 150;
+            angle = 140;// 150;
         else if (state == ArmState.FrontHatchInOut)
             angle = 0;
         else if (state == ArmState.BackHatchInOut)
@@ -112,7 +112,7 @@ public class Const {
 
     // --------------------- JAW -------------------------
 
-    public static final double kJawGearRatioEncoder2Jaw = 18.0 / 32.0 / 81.0;
+    public static final double kJawGearRatioEncoder2Jaw = 18.0 / 32.0;
     public static final double kJawGearRatioJaw2Encoder = 1 / kJawGearRatioEncoder2Jaw;
 
     public static final double kJawPIDTolerance = 5;// degs
@@ -120,9 +120,9 @@ public class Const {
     public static final int kJawLowerSoftLimit = 0;
     public static final int kJawUpperSoftLimit = 110;
 
-    public static double kJawkP = 0.006;// 0.3
+    public static double kJawkP = 0.3;// 0.3
     public static double kJawkI = 0;
-    public static double kJawkD = 0.05;// 0.1
+    public static double kJawkD = 0.1;// 0.1
     public static double kJawkF = 0;
 
     public static double calcJawAngle(JawState state) {

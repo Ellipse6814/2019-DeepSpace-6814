@@ -34,9 +34,9 @@ public class Robot extends TimedRobot {
     public static LifeCam msLifeCam = LifeCam.getInstance();
     public static Logger logger = Logger.getInstance();
     public static Telemetry telemetry = Telemetry.getInstance();
+    public static ModeSystem modeSystem = ModeSystem.getInstance();
     public static OI oi = OI.getInstance();
     public static LED led = LED.getInstance(); // this needs to be inited last
-    public static ModeSystem modeSystem = ModeSystem.getInstance();
 
     Command autoCommand;
     SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -126,7 +126,8 @@ public class Robot extends TimedRobot {
 
         // // arm
         double armSpd = joy1.getRawAxis(3) - joy1.getRawAxis(2);
-        armSpd *= 0.4;
+        // armSpd *= 0.4;
+        armSpd *= 1500;
         SmartDashboard.putNumber("Arm Spd", armSpd);
         MotorDirection md = MotorDirection.Forward;
         if (armSpd < 0)
@@ -147,10 +148,12 @@ public class Robot extends TimedRobot {
         // arm.setAngle(145);
         // // else
         // arm.setOpenLoop(Math.abs(armSpd), md);
-        jaw.setOpenLoop(Math.abs(armSpd), md);
+        // jaw.setOpenLoop(Math.abs(armSpd), md);
         if (joy1.getRawButton(6))
             arm.resetEncoder();
-        ballIntake.rollerMotor.set(ControlMode.PercentOutput, 0.5);
+        // ballIntake.rollerMotor.set(ControlMode.PercentOutput, 0.5);
+        // jaw.jawAngleMotor.set(ControlMode.PercentOutput, armSpd);
+        jaw.jawAngleMotor.set(ControlMode.Position, armSpd);
     }
 
     public void tryToResetSensors() {

@@ -28,9 +28,11 @@ public class JawSetAngle extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        System.out.println("CMD: set JAW");
         if (state == JawState.Custom) {
             jaw.setAngle(angle);
         } else {
+            
             jaw.set(state);
         }
     }
