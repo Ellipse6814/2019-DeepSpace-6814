@@ -23,8 +23,8 @@ public class Telemetry {
     private Telemetry() {
         // initSmartDashboardControlButtons();
         initRawResetSensors();
-        initPIDTest();
-        initPIDTuner();
+        // initPIDTest();
+        // initPIDTuner();
     }
 
     public void update() {
@@ -33,8 +33,8 @@ public class Telemetry {
         // updateGyro();
         // displayPIDError();
         displaySensorResetStatus();
-        displayMotorCurrent();
-        displayMotorPercentage();
+        // displayMotorCurrent();
+        // displayMotorPercentage();
         // displayButton();
     }
 

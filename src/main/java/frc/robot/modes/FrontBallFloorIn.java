@@ -44,16 +44,17 @@ public class FrontBallFloorIn extends Mode {
 
     @Override
     protected void execLoop() {
-        if (intake.rollerMotor.getOutputCurrent() > Const.kBallIntakeConsiderBallInAmp) {
-            considerBallInCount++;
-            System.out.println("considerBallInCount" + considerBallInCount);
-        }
-        if (considerBallInCount >= Const.kBallIntakeConsiderBallInCount) {
-            // prepCmd = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball,
-            // BallState.Hold, HatchState.Grab);
-            // prepCmd.start();
-            System.out.println("STOPPING ROLLERS BECAUSE BALL IS IN");
-        }
+        // if (intake.rollerMotor.getOutputCurrent() >
+        // Const.kBallIntakeConsiderBallInAmp) {
+        // considerBallInCount++;
+        // System.out.println("considerBallInCount" + considerBallInCount);
+        // }
+        // if (considerBallInCount >= Const.kBallIntakeConsiderBallInCount) {
+        // // prepCmd = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball,
+        // // BallState.Hold, HatchState.Grab);
+        // // prepCmd.start();
+        // System.out.println("STOPPING ROLLERS BECAUSE BALL IS IN");
+        // }
     }
 
     @Override

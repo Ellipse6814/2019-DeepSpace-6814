@@ -57,18 +57,18 @@ public class Jaw extends Subsystem {
         }
         double targetPositionRotations = angle * Const.kDeg2Talon4096Unit * Const.kJawGearRatioJaw2Encoder;
         jawAngleMotor.set(ControlMode.Position, targetPositionRotations);
-        System.out.println("JAW: finished setting setpoint: " + targetPositionRotations);
+        // System.out.println("JAW: finished setting setpoint: " + targetPositionRotations);
     }
 
     public void set(JawState wantedState) {
         System.out.println("JAW: set setpoint: " + Const.calcJawAngle(wantedState));
-        System.out.println("JAW current: " + state);
-        System.out.println("JAW wanted: " + wantedState);
+        // System.out.println("JAW current: " + state);
+        // System.out.println("JAW wanted: " + wantedState);
         if (state == wantedState) {
             System.out.println("returning...");
             return;
         }
-        System.out.println("JAW setting...");
+        // System.out.println("JAW setting...");
         setAngle(Const.calcJawAngle(wantedState));
         state = wantedState;
     }
