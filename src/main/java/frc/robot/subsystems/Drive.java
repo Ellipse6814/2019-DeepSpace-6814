@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.StatusFrame;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
@@ -87,6 +88,9 @@ public class Drive extends Subsystem {
 
         TalonHelper.configMagEncoder(rightMaster, Const.kDriveRightEncoderInverted);
         TalonHelper.configMagEncoder(leftMaster, Const.kDriveLeftEncoderInverted);
+
+        TalonHelper.configUpdateRate(leftMaster, StatusFrame.Status_2_Feedback0, 10);
+        TalonHelper.configUpdateRate(rightMaster, StatusFrame.Status_2_Feedback0, 10);
     }
 
     private void initGyro() {

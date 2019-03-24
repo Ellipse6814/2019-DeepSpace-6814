@@ -5,6 +5,7 @@ import java.util.List;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.StatusFrame;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -81,6 +82,14 @@ public class TalonHelper {
 
     public static void configDeadband(VictorSPX victor, double percent) {
         victor.configNeutralDeadband(percent);
+    }
+
+    public static void configUpdateRate(TalonSRX talon, StatusFrame type, int RateMS) {
+        talon.setStatusFramePeriod(type, RateMS, 10);
+    }
+
+    public static void configUpdateRate(VictorSPX victor, StatusFrame type, int RateMS) {
+        victor.setStatusFramePeriod(type, RateMS, 10);
     }
 
     public static void configDeadband(List<Object> motors, double percent) {
