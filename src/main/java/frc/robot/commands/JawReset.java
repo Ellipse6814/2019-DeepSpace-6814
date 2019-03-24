@@ -26,9 +26,9 @@ public class JawReset extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        jaw.setOpenLoop(0.3, MotorDirection.Forward);
+        jaw.setOpenLoop(0.3, MotorDirection.Backward);
         if (jaw.getHallEffect()) {
-            jaw.setOpenLoop(0, MotorDirection.Forward);
+            jaw.setOpenLoop(0, MotorDirection.Backward);
             jaw.resetEncoder();
             isFinished = true;
             System.out.println("ARM RESET hit hall effect sensor: DONE");
