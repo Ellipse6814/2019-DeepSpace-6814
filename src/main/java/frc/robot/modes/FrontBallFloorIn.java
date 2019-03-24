@@ -7,12 +7,15 @@ import frc.robot.Util.ArmState;
 import frc.robot.Util.BallState;
 import frc.robot.Util.HatchState;
 import frc.robot.Util.JawState;
-import frc.robot.commands.SetRobot;
+import frc.robot.commands.*;
 import frc.robot.subsystems.BallIntake;
 
 public class FrontBallFloorIn extends Mode {
 
     private Command prepCmd;
+    private Command PIDCmd;
+    private Command resetCmd;
+
     private Command execCmd;
 
     private BallIntake intake = Robot.ballIntake;
@@ -26,8 +29,11 @@ public class FrontBallFloorIn extends Mode {
     @Override
     protected void prepInit() {
         System.out.println("PREP: FrontBallFloorIn");
-        prepCmd = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball, BallState.Hold, HatchState.Grab);
+        PIDCmd = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball, BallState.Hold, HatchState.Grab);
+        resetCmd = new JawReset();
+        prepCmd = new Run(PIDCmd, new Wait(0.7), resetCmd);
         prepCmd.start();
+
     }
 
     @Override
