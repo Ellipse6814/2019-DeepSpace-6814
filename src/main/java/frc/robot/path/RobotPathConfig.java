@@ -50,9 +50,9 @@ public class RobotPathConfig {
         robotConfig.trackWidth = Units.in2m(22 + 2.5);// really 22 inches
         robotConfig.targetTolerance = Units.in2m(10);
         robotConfig.physicalMaxVel = Units.ft2m(14);
-        robotConfig.kV = 1 / robotConfig.physicalMaxVel;
+        robotConfig.kV = 1.1 / robotConfig.physicalMaxVel;
         robotConfig.kA = 2 / 9;
-        robotConfig.kP = 0.2;
+        robotConfig.kP = 0.3;
         return robotConfig;
     }
 }

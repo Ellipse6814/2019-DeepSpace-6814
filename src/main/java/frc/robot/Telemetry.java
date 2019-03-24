@@ -21,7 +21,7 @@ public class Telemetry {
     }
 
     private Telemetry() {
-        initSmartDashboardControlButtons();
+        // initSmartDashboardControlButtons();
         initRawResetSensors();
         // initPIDTest();
         // initPIDTuner();

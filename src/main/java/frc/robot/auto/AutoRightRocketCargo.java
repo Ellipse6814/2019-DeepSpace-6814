@@ -111,7 +111,7 @@ public class AutoRightRocketCargo extends CommandGroup {
                 // addSequential(backOut);
 
                 // TESTING
-                addParallel(frontHold);
+                // addParallel(frontHold);
                 addSequential(path1);
                 addSequential(path2);
                 addSequential(path3);

@@ -100,7 +100,7 @@ public class Const {
         else if (state == ArmState.FrontHatchInOut)
             angle = 0;
         else if (state == ArmState.BackHatchInOut)
-            angle = 144;
+            angle = 143;
         else if (state == ArmState.Middle)
             angle = 90;
         else {
