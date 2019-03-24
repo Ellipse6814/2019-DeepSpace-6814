@@ -114,7 +114,9 @@ public class FollowPath extends CommandBase {
         // log("lpida", kA * acceleration);
         // log("lpiderror", (velocity - actualVelocity));
         log("encodervelocityl", actualVelocity);
-
+        log("PIDVl", kV * velocity);
+        log("PIDAl", kA * acceleration);
+        log("PIDPl", kP * (velocity - actualVelocity));
         return kV * velocity + kA * acceleration + kP * (velocity - actualVelocity);
     }
 
@@ -124,7 +126,9 @@ public class FollowPath extends CommandBase {
         // log("rpida", kA * acceleration);
         // log("rpiderror", (velocity - actualVelocity));
         log("encodervelocityr", actualVelocity);
-
+        log("PIDVr", kV * velocity);
+        log("PIDAr", kA * acceleration);
+        log("PIDPr", kP * (velocity - actualVelocity));
         return kV * velocity + kA * acceleration + kP * (velocity - actualVelocity);
     }
 

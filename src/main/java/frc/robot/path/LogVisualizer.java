@@ -71,7 +71,7 @@ class LogVisualizer extends JFrame implements KeyListener {
 
     private void printPID() {
         // using right wheel velocity
-        System.out.println("=============== PID setpoint, actual, error ===============");
+        System.out.println("=============== PID setpoint, actual, error, kV, kA, kP ==============="); // TODO:kvkakp
         for (int i = 0; i < data.get(17).size(); i++) {
             System.out.println(getData(7, i) + "; " + getData(17, i) + "; " + (getData(7, i) - getData(17, i)));
         }
