@@ -73,7 +73,9 @@ class LogVisualizer extends JFrame implements KeyListener {
         // using right wheel velocity
         System.out.println("=============== PID setpoint, actual, error, kV, kA, kP ==============="); // TODO:kvkakp
         for (int i = 0; i < data.get(17).size(); i++) {
-            System.out.println(getData(7, i) + "; " + getData(17, i) + "; " + (getData(7, i) - getData(17, i)));
+            String line = getData(7, i) + "; " + getData(17, i) + "; " + (getData(7, i) - getData(17, i));
+            line += "; " + getData(18, i) + "; " + getData(19, i) + "; " + getData(20, i);
+            System.out.println();
         }
     }
 
@@ -110,6 +112,9 @@ class LogVisualizer extends JFrame implements KeyListener {
         data.add(new ArrayList<>()); // idx 15: finished path: 1 if true, 0 if false
         data.add(new ArrayList<>()); // idx 16: on path: 1 if true, 0 if false
         data.add(new ArrayList<>()); // idx 17: encoder velocity
+        data.add(new ArrayList<>()); // idx 18: PID: V
+        data.add(new ArrayList<>()); // idx 19: PID: A
+        data.add(new ArrayList<>()); // idx 20: PID: P
 
         path.add(new ArrayList<>()); // idx 0: x pos
         path.add(new ArrayList<>()); // idx 1: y pos
@@ -185,6 +190,15 @@ class LogVisualizer extends JFrame implements KeyListener {
             } else if (title.equals("encodervelocityr")) {
                 double v = Double.parseDouble(message);
                 data.get(17).add(v);
+            } else if (title.equals("PIDVr")) {
+                double v = Double.parseDouble(message);
+                data.get(18).add(v);
+            } else if (title.equals("PIDAr")) {
+                double v = Double.parseDouble(message);
+                data.get(19).add(v);
+            } else if (title.equals("PIDPr")) {
+                double v = Double.parseDouble(message);
+                data.get(20).add(v);
             }
         }
 
@@ -292,6 +306,10 @@ class Draw extends JPanel {
         // idx 14: dt: the actual refresh rate
         // idx 15: finished path: 1 if true, 0 if false
         // idx 16: on path: 1 if true, 0 if false
+        // idx 17: encoder velocity
+        // idx 18: PID: V
+        // idx 19: PID: A
+        // idx 20: PID: P
 
         // path array
         // idx 0: x pos
