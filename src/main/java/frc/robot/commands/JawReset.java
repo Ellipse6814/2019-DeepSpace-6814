@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.Util.JawState;
 import frc.robot.Util.MotorDirection;
+import frc.robot.Util.TalonHelper;
 import frc.robot.subsystems.Jaw;
 
 public class JawReset extends Command {
@@ -20,6 +21,7 @@ public class JawReset extends Command {
     @Override
     protected void initialize() {
         jaw.state = JawState.Reset;
+        TalonHelper.configLowerSoftLimit(jaw.jawAngleMotor, -25535);
         System.out.println("Starting JAW RESET");
     }
 
@@ -30,6 +32,7 @@ public class JawReset extends Command {
         if (jaw.getHallEffect()) {
             jaw.setOpenLoop(0, MotorDirection.Backward);
             jaw.resetEncoder();
+            TalonHelper.configLowerSoftLimit(jaw.jawAngleMotor, 0);
             isFinished = true;
             System.out.println("ARM RESET hit hall effect sensor: DONE");
         }
