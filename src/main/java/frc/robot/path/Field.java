@@ -1,7 +1,7 @@
 package frc.robot.path;
 
 public class Field {
-        private static final double kVisionTargetLength = 18.5; // inches
+        private static final double kVisionTargetLength = 18.5 + 10; // inches
         private static final double rampDx = 0.395; // the incline adds this much distance
         private static final double robotWidth = 32.5;// inches
         private static final double robotWidthRadius = robotWidth / 2;
@@ -45,8 +45,8 @@ public class Field {
         //
         // vision target location: all 18.5 inches behind target
 
-        public static final Point kvCargoLeftFront = in2m(new Point(201.13 - 30, 171.985));
-        public static final Point kvCargoRightFront = in2m(new Point(201.13 - 30, 150.235));
+        public static final Point kvCargoLeftFront = in2m(new Point(201.13 - 10 - 30, 171.985));
+        public static final Point kvCargoRightFront = in2m(new Point(201.13 - 10 - 30, 150.235));
         public static final Point kvCargoLeft1 = in2m(new Point(259.8, 207.24 + 35 + 30));
         public static final Point kvCargoLeft2 = in2m(new Point(281.55, 207.24 + 35 + 30));
         public static final Point kvCargoLeft3 = in2m(new Point(303.3, 207.24 + 35 + 30));
