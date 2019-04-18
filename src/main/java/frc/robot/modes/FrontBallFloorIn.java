@@ -29,11 +29,12 @@ public class FrontBallFloorIn extends Mode {
     @Override
     protected void prepInit() {
         System.out.println("PREP: FrontBallFloorIn");
-        PIDCmd = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball, BallState.Hold, HatchState.Grab);
+        prepCmd = new SetRobot(ArmState.FrontBallFloorIn, JawState.Ball, BallState.Hold, HatchState.Grab);
         resetCmd = new JawReset();
-        prepCmd = new Run(PIDCmd, new Wait(0.7), resetCmd);
+        // prepCmd = new Run(new Wait(0.7), resetCmd);
         prepCmd.start();
-
+        // PIDCmd.start();
+        // resetCmd.start();
     }
 
     @Override
