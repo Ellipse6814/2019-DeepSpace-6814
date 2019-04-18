@@ -198,12 +198,14 @@ public class PathFollower extends LogBase {
 	 * is at a certain progress
 	 * 
 	 * @return the progress of current path following. Returns a double between 0
-	 *         and 1, 0 meaning 0% done with the path, 1 meaning 10 % done with the
-	 *         path.
+	 *         and 100, 0 meaning 0% done with the path, 10 meaning 10 % done with
+	 *         the path.
 	 */
 	public double getProgress() {
+		if (done)
+			return 100;
 		int currentPathIndex = getClosestWaypointIndex(prevRobotPos);
-		return (currentPathIndex + 0.0) / (path.waypoints.size() + 0.0);
+		return (currentPathIndex + 1.0) / (path.waypoints.size() + 0.0) * 100.0;
 	}
 
 	/**
