@@ -1,16 +1,23 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.JoystickBase;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Util.Listener;
 import frc.robot.commands.ArmReset;
+import frc.robot.commands.ClimbSetBack;
+import frc.robot.commands.ClimbSetFront;
 import frc.robot.commands.DoNothing;
 import frc.robot.commands.DriveSetGear;
 import frc.robot.commands.JawReset;
-import frc.robot.modes.*;
+import frc.robot.modes.BackBallCargo;
+import frc.robot.modes.BackHatchIn;
+import frc.robot.modes.BackHatchOut;
+import frc.robot.modes.FrontBallCargo;
+import frc.robot.modes.FrontBallFloorIn;
+import frc.robot.modes.FrontBallRocket;
+import frc.robot.modes.FrontHatchIn;
+import frc.robot.modes.FrontHatchOut;
 import frc.robot.subsystems.NetworkTables;
 
 public class OI {
@@ -150,14 +157,18 @@ public class OI {
         frontBallFloorIn.whenPressed(new FrontBallFloorIn());
         // frontBallFloorIn1.whenPressed(new FrontBallFloorIn());
         frontBallOut.whenPressed(new FrontBallCargo());
-        frontHatchIn.whenPressed(new FrontHatchIn());
         frontHatchOut.whenPressed(new FrontHatchOut());
         backBallOut.whenPressed(new BackBallCargo());
         backHatchOut.whenPressed(new BackHatchOut());
-        backHatchIn.whenPressed(new BackHatchIn());
         frontBallOutRocket.whenPressed(new FrontBallRocket());
         // armReset.whenPressed(new ArmReset());
         // jawReset.whenPressed(new JawReset());
+
+        // frontHatchIn.whenPressed(new FrontHatchIn());
+        // backHatchIn.whenPressed(new BackHatchIn());
+        frontHatchIn.whileHeld(new ClimbSetFront(true));
+        backHatchIn.whileHeld(new ClimbSetBack(true));
+
     }
 
     private void initVirtualControlBoard() {

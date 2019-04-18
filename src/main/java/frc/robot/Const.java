@@ -25,6 +25,17 @@ public class Const {
     public static final Value kHatchIntakeOpenPos = Value.kForward;
     public static final Value kHatchIntakeClosePos = Value.kReverse;
 
+    public static final int kClimbFrontSolenoidPort1 = 2;
+    public static final int kClimbFrontSolenoidPort2 = 3;
+
+    public static final int kClimbBackSolenoidPort1 = 4;
+    public static final int kClimbBackSolenoidPort2 = 5;
+
+    public static final Value kClimbFrontDownPos = Value.kForward;
+    public static final Value kClimbFrontUpPos = Value.kReverse;
+    public static final Value kClimbBackDownPos = Value.kForward;
+    public static final Value kClimbBackUpPos = Value.kReverse;
+
     // Hall Effect sensors
     public static final int kJawHallEffectSensorPort = 1;
     public static final int kArmHallEffectFrontSensorPort = 0;

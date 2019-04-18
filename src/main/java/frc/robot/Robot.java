@@ -14,6 +14,7 @@ import frc.robot.auto.*;
 import frc.robot.log.Logger;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.BallIntake;
+import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.HatchIntake;
 import frc.robot.subsystems.Jaw;
@@ -26,6 +27,7 @@ import frc.robot.subsystems.Pneumatic;
 public class Robot extends TimedRobot {
     public static NetworkTables networkTables;
     public static Pneumatic pneumatic;
+    public static Climb climb;
     public static Drive drive;
     public static BallIntake ballIntake;
     public static HatchIntake hatchIntake;
@@ -135,7 +137,7 @@ public class Robot extends TimedRobot {
 
     }
 
-    private int count = 0;
+    // private int count = 0;
 
     @Override
     public void teleopPeriodic() {
