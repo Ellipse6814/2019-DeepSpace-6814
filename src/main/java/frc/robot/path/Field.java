@@ -9,8 +9,8 @@ public class Field {
         private static final double robotLengthRadius = robotLength / 2;
 
         // the corner of the targets
-        public static final Point kCargoLeftFront = in2m(new Point(219.13, 171.985)); // real field at 220
-        public static final Point kCargoRightFront = in2m(new Point(219.13, 150.235));
+        public static final Point kCargoLeftFront = in2m(new Point(219.13-30, 171.985)); // real field at 220
+        public static final Point kCargoRightFront = in2m(new Point(219.13-30, 150.235));
         public static final Point kCargoLeft1 = in2m(new Point(259.8, 183.86)); // real field at 260
         public static final Point kCargoLeft2 = in2m(new Point(281.55, 183.86));
         public static final Point kCargoLeft3 = in2m(new Point(303.3, 183.86));

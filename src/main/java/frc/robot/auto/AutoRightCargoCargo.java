@@ -116,7 +116,7 @@ public class AutoRightCargoCargo extends CommandGroup { // todo
                 // addParallel(frontHold);
                 addSequential(path1);
                 addSequential(path2);
-                // addSequential(path3);
+                addSequential(path3);
         }
 
 }
