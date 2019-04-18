@@ -34,7 +34,7 @@ public class JawReset extends Command {
             jaw.resetEncoder();
             TalonHelper.configLowerSoftLimit(jaw.jawAngleMotor, 0);
             isFinished = true;
-            System.out.println("ARM RESET hit hall effect sensor: DONE");
+            System.out.println("JAW RESET hit hall effect sensor: DONE");
         }
     }
 

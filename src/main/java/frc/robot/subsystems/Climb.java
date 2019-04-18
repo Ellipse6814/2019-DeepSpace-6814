@@ -22,8 +22,11 @@ public class Climb extends Subsystem {
     private DoubleSolenoid backSolenoid;
 
     private Climb() {
-        frontSolenoid = new DoubleSolenoid(Const.kIntakeSolenoidPort1, Const.kIntakeSolenoidPort2);
-        backSolenoid = new DoubleSolenoid(Const.kIntakeSolenoidPort1, Const.kIntakeSolenoidPort2);
+        frontSolenoid = new DoubleSolenoid(Const.kClimbFrontSolenoidPort1, Const.kClimbFrontSolenoidPort2);
+        backSolenoid = new DoubleSolenoid(Const.kClimbBackSolenoidPort1, Const.kClimbBackSolenoidPort2);
+
+        setFront(false);
+        setBack(false);
     }
 
     public void setFront(boolean down) {
@@ -42,6 +45,6 @@ public class Climb extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-        setDefaultCommand(new ClimbSet(false, false));
+        // setDefaultCommand(new ClimbSet(false, false));
     }
 }

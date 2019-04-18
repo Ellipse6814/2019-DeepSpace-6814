@@ -49,6 +49,8 @@ public class Robot extends TimedRobot {
         // printRAM();
         pneumatic = Pneumatic.getInstance();
         // printRAM();
+        climb = Climb.getInstance();
+        // printRAM();
         drive = Drive.getInstance();
         // printRAM();
         ballIntake = BallIntake.getInstance();

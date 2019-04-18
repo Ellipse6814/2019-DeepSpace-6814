@@ -15,6 +15,7 @@ public class ClimbSet extends Command {
     private boolean back;
 
     public ClimbSet(boolean front, boolean back) {
+        // requires(climb);
         this.front = front;
         this.back = back;
     }
@@ -40,6 +41,8 @@ public class ClimbSet extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
+        climb.setBack(!back);
+        climb.setFront(!front);
     }
 
     // Called when another command which requires one or more of the same

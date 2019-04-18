@@ -31,10 +31,10 @@ public class Const {
     public static final int kClimbBackSolenoidPort1 = 4;
     public static final int kClimbBackSolenoidPort2 = 5;
 
-    public static final Value kClimbFrontDownPos = Value.kForward;
-    public static final Value kClimbFrontUpPos = Value.kReverse;
-    public static final Value kClimbBackDownPos = Value.kForward;
-    public static final Value kClimbBackUpPos = Value.kReverse;
+    public static final Value kClimbFrontDownPos = Value.kReverse;
+    public static final Value kClimbFrontUpPos = Value.kForward;
+    public static final Value kClimbBackDownPos = Value.kReverse;
+    public static final Value kClimbBackUpPos = Value.kForward;
 
     // Hall Effect sensors
     public static final int kJawHallEffectSensorPort = 1;

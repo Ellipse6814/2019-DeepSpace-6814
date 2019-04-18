@@ -2,9 +2,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.Util.BallState;
-import frc.robot.Util.MotorDirection;
-import frc.robot.subsystems.BallIntake;
 import frc.robot.subsystems.Climb;
 
 public class ClimbSetFront extends Command {
@@ -14,6 +11,7 @@ public class ClimbSetFront extends Command {
     private boolean front;
 
     public ClimbSetFront(boolean front) {
+        // requires(climb);
         this.front = front;
     }
 
@@ -37,6 +35,7 @@ public class ClimbSetFront extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
+        climb.setFront(!front);
     }
 
     // Called when another command which requires one or more of the same

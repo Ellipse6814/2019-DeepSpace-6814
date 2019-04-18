@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Util.Listener;
 import frc.robot.commands.ArmReset;
 import frc.robot.commands.ClimbSetBack;
@@ -57,6 +58,7 @@ public class OI {
     private OI() {
         initGearButtons();
         initControlBoard();
+        SmartDashboard.putData("Reset Jaw", new JawReset());
         // initVirtualControlBoard();
         // initJoystickControlBoard();
     }
