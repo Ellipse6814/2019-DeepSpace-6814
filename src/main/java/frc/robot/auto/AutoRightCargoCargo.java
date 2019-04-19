@@ -9,9 +9,11 @@ import frc.robot.Util.ArmState;
 import frc.robot.Util.BallState;
 import frc.robot.Util.HatchState;
 import frc.robot.Util.JawState;
+import frc.robot.Util.Trigger;
 import frc.robot.commands.FollowPath;
 import frc.robot.commands.Run;
 import frc.robot.commands.SetRobot;
+import frc.robot.commands.TriggerListener;
 import frc.robot.commands.Wait;
 import frc.robot.path.Field;
 import frc.robot.path.Point;
@@ -95,6 +97,19 @@ public class AutoRightCargoCargo extends CommandGroup { // todo
 
                 /// =========================================================
 
+                addParallel(new TriggerListener(Arrays.asList(//
+                                new Trigger(path1, 30, backGrab), //
+                                new Trigger(path1, 95, backRelease), //
+                                new Trigger(path2, 30, frontIn), //
+                                new Trigger(path3, 5, inHold), //
+                                new Trigger(path3, 30, backHold), //
+                                new Trigger(path3, 30, backOut) //
+                )));
+
+                addSequential(path1);
+                addSequential(path2);
+                addSequential(path3);
+
                 // // Path 1
                 // addParallel(new Run(new Wait(1), backGrab)); // parallel: don't wait for this
                 // one to finish
@@ -107,16 +122,10 @@ public class AutoRightCargoCargo extends CommandGroup { // todo
                 // addParallel(backGrab);
                 // addSequential(new Wait(0.3));
                 // addParallel(inHold);
-                // // Path 2
+                // // Path 3
                 // addParallel(new Run(new Wait(1), backHold));
                 // addSequential(path3);
                 // addSequential(backOut);
-
-                // TESTING
-                // addParallel(frontHold);
-                addSequential(path1);
-                addSequential(path2);
-                addSequential(path3);
         }
 
 }

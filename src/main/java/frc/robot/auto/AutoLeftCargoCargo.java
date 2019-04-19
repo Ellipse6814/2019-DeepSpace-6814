@@ -1,60 +1,3 @@
-// package frc.robot.auto;
-
-// import java.util.Arrays;
-// import java.util.List;
-
-// import edu.wpi.first.wpilibj.command.Command;
-// import edu.wpi.first.wpilibj.command.CommandGroup;
-// import frc.robot.Util.ArmState;
-// import frc.robot.Util.BallState;
-// import frc.robot.Util.HatchState;
-// import frc.robot.Util.JawState;
-// import frc.robot.commands.FollowPath;
-// import frc.robot.commands.Run;
-// import frc.robot.commands.SetRobot;
-// import frc.robot.commands.Wait;
-// import frc.robot.path.Field;
-// import frc.robot.path.Point;
-// import frc.robot.path.RobotPathConfig;
-// import frc.robot.path.Waypoint;
-
-// public class AutoLeftCargoCargo extends CommandGroup {
-
-//         public AutoLeftCargoCargo() {
-
-//                 // ============================ Pure Pursuit Config ==========================
-//                 boolean reset;
-//                 boolean reverse;
-//                 double startingAngle = 180; // only take affect if reset = true
-//                 List<Waypoint> waypoints;
-//                 RobotPathConfig config;
-
-//                 // ___________ Path 1____________
-
-//                 reset = true;
-//                 reverse = true;
-//                 config = RobotPathConfig.getRobotConfig();
-
-//                 // waypoints = Arrays.asList( //
-//                 // new Waypoint(Field.kStartingLowLeft), //
-//                 // new Waypoint(Field.kvStartingLowLeft), //
-//                 // new Waypoint(Field.kvCargoLeftFront), //
-//                 // new Waypoint(Field.kCargoLeftFront) //
-//                 // );
-//                 waypoints = Arrays.asList( //
-//                                 new Waypoint(new Point(10, 10)), //
-//                                 new Waypoint(new Point(12, 10)), //
-//                                 new Waypoint(new Point(12, 12)), //
-//                                 new Waypoint(new Point(14, 12)) //
-//                 );
-
-//                 Command path1 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
-
-//                 addSequential(path1);
-//         }
-
-// }
-
 package frc.robot.auto;
 
 import java.util.Arrays;
@@ -67,12 +10,11 @@ import frc.robot.Util.BallState;
 import frc.robot.Util.HatchState;
 import frc.robot.Util.JawState;
 import frc.robot.commands.FollowPath;
-import frc.robot.commands.Run;
 import frc.robot.commands.SetRobot;
-import frc.robot.commands.Wait;
 import frc.robot.path.Field;
-import frc.robot.path.Point;
 import frc.robot.path.RobotPathConfig;
+import frc.robot.Util.Trigger;
+import frc.robot.commands.TriggerListener;
 import frc.robot.path.Waypoint;
 
 public class AutoLeftCargoCargo extends CommandGroup {
@@ -157,6 +99,19 @@ public class AutoLeftCargoCargo extends CommandGroup {
 
                 /// =========================================================
 
+                addParallel(new TriggerListener(Arrays.asList(//
+                                new Trigger(path1, 30, backGrab), //
+                                new Trigger(path1, 95, backRelease), //
+                                new Trigger(path2, 30, frontIn), //
+                                new Trigger(path3, 5, inHold), //
+                                new Trigger(path3, 30, backHold), //
+                                new Trigger(path3, 30, backOut) //
+                )));
+
+                addSequential(path1);
+                addSequential(path2);
+                addSequential(path3);
+
                 // // // Path 1 // addParallel(new Run(new Wait(1), backGrab)); // parallel:
                 // don't wait for this // one to finish // addSequential(path1); //
                 // addParallel(backRelease); // addSequential(new Wait(0.3)); // // Path 2 //
@@ -165,11 +120,6 @@ public class AutoLeftCargoCargo extends CommandGroup {
                 // addParallel(inHold); // // Path 2 // addParallel(new Run(new Wait(1),
                 // backHold)); // addSequential(path3); // addSequential(backOut);
 
-                // TESTING
-                // addParallel(frontHold);
-                addSequential(path1);
-                addSequential(path2);
-                addSequential(path3);
         }
 
 }

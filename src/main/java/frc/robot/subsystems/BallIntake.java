@@ -27,6 +27,8 @@ public class BallIntake extends Subsystem {
     public BallState state;
     private int maxAmp = 10;
 
+    private double lastSafeTimestamp = 0;
+
     private BallIntake() {
         initTalons();
     }
@@ -86,6 +88,17 @@ public class BallIntake extends Subsystem {
             System.out.println("BALL INTAKE CUSTOM NOT IMPLEMENTED");
         } else { // if (state == BallState.Stop) {
             setMotor(MotorDirection.Forward, 0, 10);
+        }
+        checkSafety();
+    }
+
+    private void checkSafety() {
+        if (Timer.getFPGATimestamp() - lastSafeTimestamp > 4) {// unsafe -> stop motor
+            set(BallState.Hold);
+        }
+
+        if (rollerMotor.getOutputCurrent() < 60.0) {
+            lastSafeTimestamp = Timer.getFPGATimestamp();
         }
     }
 

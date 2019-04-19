@@ -9,9 +9,13 @@ public class Trigger {
     public double triggerPercent;
     public boolean fired = false;
 
-    public Trigger(FollowPath pathCommand, Command triggerCommand, double triggerPercent) {
-        this.pathCommand = pathCommand;
+    public Trigger(Command pathCommand, double triggerPercent, Command triggerCommand) {
+        this.pathCommand = (FollowPath) pathCommand;
         this.triggerCommand = triggerCommand;
         this.triggerPercent = triggerPercent;
+    }
+
+    public Trigger(Command pathCommand, int triggerPercent, Command triggerCommand) {
+        this(pathCommand, triggerPercent + 0.0, triggerCommand);
     }
 }
