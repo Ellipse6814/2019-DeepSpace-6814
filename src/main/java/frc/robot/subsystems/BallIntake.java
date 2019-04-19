@@ -95,6 +95,8 @@ public class BallIntake extends Subsystem {
     private void checkSafety() {
         if (Timer.getFPGATimestamp() - lastSafeTimestamp > 4) {// unsafe -> stop motor
             set(BallState.Hold);
+            System.out.println("!!!SAFETY!!!");
+            lastSafeTimestamp = Timer.getFPGATimestamp();
         }
 
         if (rollerMotor.getOutputCurrent() < 60.0) {

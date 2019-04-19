@@ -4,15 +4,18 @@ import java.util.Arrays;
 import java.util.List;
 
 import frc.robot.Util.Trigger;
+import frc.robot.log.CommandBase;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class TriggerListener extends Command {
+public class TriggerListener extends CommandBase {
 
     private List<Trigger> triggers;
 
     public TriggerListener(List<Trigger> triggers) {
+        setLogSenderName("TriggerListener");
         this.triggers = triggers;
+        log("Inited", "TriggerListener inited with " + triggers.size() + " triggers.");
     }
 
     @Override
