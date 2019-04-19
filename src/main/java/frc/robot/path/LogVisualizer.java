@@ -36,7 +36,7 @@ class LogVisualizer extends JFrame implements KeyListener {
     // logs\\LogLeftLast.csv";
     // final String fileName = "C:\\Users\\Sean\\Desktop\\LogLeftTooFast.csv";
     // final String fileName = "C:\\Users\\Sean\\Desktop\\LogLeftLast.csv";
-    final String fileName = "C:\\Users\\Sean\\Desktop\\Log51.csv";
+    final String fileName = "C:\\Users\\Sean\\Desktop\\Log71.csv";
 
     List<String[]> file = new ArrayList<>();
 
@@ -115,6 +115,7 @@ class LogVisualizer extends JFrame implements KeyListener {
         data.add(new ArrayList<>()); // idx 18: PID: V
         data.add(new ArrayList<>()); // idx 19: PID: A
         data.add(new ArrayList<>()); // idx 20: PID: P
+        data.add(new ArrayList<>()); // idx 21: Percentage
 
         path.add(new ArrayList<>()); // idx 0: x pos
         path.add(new ArrayList<>()); // idx 1: y pos
@@ -199,6 +200,9 @@ class LogVisualizer extends JFrame implements KeyListener {
             } else if (title.equals("PIDPr")) {
                 double v = Double.parseDouble(message);
                 data.get(20).add(v);
+            } else if (title.equals("progress")) {
+                double p = Double.parseDouble(message);
+                data.get(21).add(p);
             }
         }
 
@@ -383,6 +387,7 @@ class Draw extends JPanel {
         g.drawString("Actual Motors Left Right: (" + getString(12) + ", " + getString(13) + ")", xPos, spacing * i++);
         g.drawString("On Path: " + (delta(getData(16), 1) < 0.1 ? "TRUE" : "FALSE") + ";  Finished Path: "
                 + (delta(getData(15), 1) < 0.1 ? "TRUE" : "FALSE"), xPos, spacing * i++);
+        g.drawString("Progress: " + getString(21), xPos, spacing * i++);
 
     }
 

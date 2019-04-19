@@ -73,7 +73,7 @@ public class BallIntake extends Subsystem {
     public void periodic() {
         // System.out.println(state);
         if (state == BallState.In) {
-            setMotor(MotorDirection.Forward, Const.kBallIntakeSpd, Const.kBallIntakeStallAmp);
+            setMotor(MotorDirection.Forward, Const.kBallIntakeSpd, Const.kBallIntakeNormalAmp);
         } else if (state == BallState.Out) {
             setMotor(MotorDirection.Backward, Const.kBallOuttakeSpd, Const.kBallIntakeNormalAmp);
         } else if (state == BallState.OutSlow) {

@@ -23,6 +23,8 @@ public class PathFollower extends LogBase {
 	double prevDist2Target = Double.MAX_VALUE;
 	public Point prevRobotPos = new Point();
 
+	int progress = 0;
+
 	double prevGeneralVel = 0;
 	boolean reversed;
 
@@ -145,6 +147,8 @@ public class PathFollower extends LogBase {
 		calculateFinishedPath(robotPos);
 		log("finishedpath", done ? 1 : 0);
 
+		calcProgress();
+
 		log("pathfollowcalctime", execTimer.time());
 
 		if (done) {
@@ -168,7 +172,6 @@ public class PathFollower extends LogBase {
 			// done = false;
 			return;
 		}
-		log("progress", (currentPathIndex + 0.0) / (path.waypoints.size() + 0.0));
 		log("currentIndex", currentPathIndex);
 		log("totalIndex", path.waypoints.size());
 		double distance = distanceBetween(robotPos, path.waypoints.get(path.waypoints.size() - 1).p);
@@ -201,11 +204,20 @@ public class PathFollower extends LogBase {
 	 *         and 100, 0 meaning 0% done with the path, 10 meaning 10 % done with
 	 *         the path.
 	 */
-	public double getProgress() {
+
+	// it's the index of the closest waypoint
+	private void calcProgress() {
 		if (done)
-			return 100;
-		int currentPathIndex = getClosestWaypointIndex(prevRobotPos);
-		return (currentPathIndex + 1.0) / (path.waypoints.size() + 0.0) * 100.0;
+			progress = 100;
+		// int currentPathIndex
+		progress = getClosestWaypointIndex(prevRobotPos);
+		log("progress", progress);
+
+		// progress = (currentPathIndex + 1.0) / (path.waypoints.size() + 0.0) * 100.0;
+	}
+
+	public int getProgress() {
+		return progress;
 	}
 
 	/**

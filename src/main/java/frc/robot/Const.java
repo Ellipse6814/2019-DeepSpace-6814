@@ -131,7 +131,7 @@ public class Const {
     public static final int kJawLowerSoftLimit = 0;
     public static final int kJawUpperSoftLimit = 110;
 
-    public static double kJawkP = 0.3;// 0.3
+    public static double kJawkP = 0.5;// 0.3
     public static double kJawkI = 0;
     public static double kJawkD = 0.1;// 0.1
     public static double kJawkF = 0;

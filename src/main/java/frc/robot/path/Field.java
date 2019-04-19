@@ -47,12 +47,12 @@ public class Field {
 
         public static final Point kvCargoLeftFront = in2m(new Point(201.13 - 10 - 30, 171.985));
         public static final Point kvCargoRightFront = in2m(new Point(201.13 - 10 - 30, 150.235));
-        public static final Point kvCargoLeft1 = in2m(new Point(259.8, 207.24 + 35 + 30));
-        public static final Point kvCargoLeft2 = in2m(new Point(281.55, 207.24 + 35 + 30));
-        public static final Point kvCargoLeft3 = in2m(new Point(303.3, 207.24 + 35 + 30));
-        public static final Point kvCargoRight1 = in2m(new Point(259.8, 114.98 - 35 - 30));
-        public static final Point kvCargoRight2 = in2m(new Point(281.55, 114.98 - 35 - 30));
-        public static final Point kvCargoRight3 = in2m(new Point(303.3, 114.98 - 35 - 30));
+        public static final Point kvCargoLeft1 = in2m(new Point(259.8 + 10, 207.24 + 20 + 30));
+        public static final Point kvCargoLeft2 = in2m(new Point(281.55 + 10, 207.24 + 20 + 30));
+        public static final Point kvCargoLeft3 = in2m(new Point(303.3 + 10, 207.24 + 20 + 30));
+        public static final Point kvCargoRight1 = in2m(new Point(259.8 + 10, 114.98 - 20 - 30));
+        public static final Point kvCargoRight2 = in2m(new Point(281.55 + 10, 114.98 - 20 - 30));
+        public static final Point kvCargoRight3 = in2m(new Point(303.3 + 10, 114.98 - 20 - 30));
         public static final Point kvRocketLeftFront = in2m(new Point(199.13, 296.5));
         public static final Point kvRocketLeftMiddle = in2m(new Point(228.18, 276.78));
         public static final Point kvRocketLeftBack = in2m(new Point(258.83, 296.5));

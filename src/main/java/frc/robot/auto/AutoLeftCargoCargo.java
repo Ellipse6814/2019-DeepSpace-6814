@@ -99,14 +99,14 @@ public class AutoLeftCargoCargo extends CommandGroup {
 
                 /// =========================================================
 
-                addParallel(new TriggerListener(Arrays.asList(//
-                                new Trigger(path1, 30, backGrab), //
-                                new Trigger(path1, 95, backRelease), //
-                                new Trigger(path2, 30, frontIn), //
-                                new Trigger(path3, 5, inHold), //
-                                new Trigger(path3, 30, backHold), //
-                                new Trigger(path3, 30, backOut) //
-                )));
+                // addParallel(new TriggerListener(Arrays.asList(//
+                //                 new Trigger(path1, 30, backGrab), //
+                //                 new Trigger(path1, 95, backRelease), //
+                //                 new Trigger(path2, 30, frontIn), //
+                //                 new Trigger(path3, 5, inHold), //
+                //                 new Trigger(path3, 30, backHold), //
+                //                 new Trigger(path3, 30, backOut) //
+                // )));
 
                 addSequential(path1);
                 addSequential(path2);
