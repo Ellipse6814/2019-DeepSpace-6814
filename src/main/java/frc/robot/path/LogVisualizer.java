@@ -412,7 +412,7 @@ class Draw extends JPanel {
     }
 
     private int y(double y) {
-        return -scale(y) + scale(10);
+        return -scale(y) + scale(13);
     }
 
     protected void drawPath(Graphics g) {

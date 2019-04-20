@@ -105,8 +105,8 @@ public class FollowPath extends CommandBase {
         double right = calculatePIDVAR(driveMotorState.rightVel, rightAcc, actualRightVel, config.kP, config.kV,
                 config.kA);
 
-        left = applyFeedforward(left);
-        right = applyFeedforward(right);
+        left = applyFeedforward(left, config.kFF);
+        right = applyFeedforward(right, config.kFF);
 
         log("actualmotoroutput", left + "; " + right);
         log("endloop", "_____________________________________\n");
@@ -137,11 +137,11 @@ public class FollowPath extends CommandBase {
         return kV * velocity + kA * acceleration + kP * (velocity - actualVelocity);
     }
 
-    private double applyFeedforward(double power) {
+    private double applyFeedforward(double power, double feedForward) {
         if (power > 0.05) {
-            power += 0.1;
+            power += feedForward;
         } else if (power < -0.05) {
-            power -= 0.1;
+            power -= feedForward;
         }
         return power;
     }

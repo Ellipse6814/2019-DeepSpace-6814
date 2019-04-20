@@ -19,6 +19,7 @@ public class RobotPathConfig {
     public double kP; // porportional constant for PIDVA motor output
     public double kV; // velocity constant for PIDVA motor output
     public double kA; // acceleration constant for PIDVA motor output
+    public double kFF; // feedforward term (constant output to counter friction)
 
     // private static RobotPathConfig practiceRobotConfig;
 
@@ -37,6 +38,7 @@ public class RobotPathConfig {
         practiceRobotConfig.kV = 1 / practiceRobotConfig.physicalMaxVel;
         practiceRobotConfig.kA = 2 / 9;
         practiceRobotConfig.kP = 0.2;
+        practiceRobotConfig.kFF = 0.0;
         return practiceRobotConfig;
     }
 
@@ -53,6 +55,7 @@ public class RobotPathConfig {
         robotConfig.kV = 1 / robotConfig.physicalMaxVel;
         robotConfig.kA = 2 / 9;
         robotConfig.kP = 0;
+        robotConfig.kFF = 0.1;
         return robotConfig;
     }
 }
