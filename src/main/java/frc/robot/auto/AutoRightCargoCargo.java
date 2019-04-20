@@ -97,14 +97,14 @@ public class AutoRightCargoCargo extends CommandGroup { // todo
 
                 /// =========================================================
 
-                // addParallel(new TriggerListener(Arrays.asList(//
-                // new Trigger(path1, 30, backGrab), //
-                // new Trigger(path1, 95, backRelease), //
-                // new Trigger(path2, 30, frontIn), //
-                // new Trigger(path3, 5, inHold), //
-                // new Trigger(path3, 30, backHold), //
-                // new Trigger(path3, 30, backOut) //
-                // )));
+                addParallel(new TriggerListener(Arrays.asList(//
+                                new Trigger(path1, 16, backGrab), //
+                                new Trigger(path1, 40, backRelease), //
+                                new Trigger(path2, 20, frontIn), //
+                                new Trigger(path3, 15, inHold), //
+                                new Trigger(path3, 22, backHold), //
+                                new Trigger(path3, 45, backOut) //
+                )));
 
                 addSequential(path1);
                 addSequential(path2);

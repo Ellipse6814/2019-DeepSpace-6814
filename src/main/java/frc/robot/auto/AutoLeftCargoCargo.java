@@ -42,10 +42,8 @@ public class AutoLeftCargoCargo extends CommandGroup {
                                 new Waypoint(Field.kCargoLeftFront) //
                 );
 
-                Command path1 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints); // startingAngle
-                                                                                                       // - 90 because
-                                                                                                       // the field map
-                                                                                                       // is sideways
+                Command path1 = new FollowPath(reverse, reset, startingAngle - 90, config, waypoints);
+                // startingAngle - 90 because the field map is sideways
 
                 // ___________ Path 2____________
 
@@ -99,14 +97,14 @@ public class AutoLeftCargoCargo extends CommandGroup {
 
                 /// =========================================================
 
-                // addParallel(new TriggerListener(Arrays.asList(//
-                //                 new Trigger(path1, 30, backGrab), //
-                //                 new Trigger(path1, 95, backRelease), //
-                //                 new Trigger(path2, 30, frontIn), //
-                //                 new Trigger(path3, 5, inHold), //
-                //                 new Trigger(path3, 30, backHold), //
-                //                 new Trigger(path3, 30, backOut) //
-                // )));
+                addParallel(new TriggerListener(Arrays.asList(//
+                                new Trigger(path1, 16, backGrab), //
+                                new Trigger(path1, 40, backRelease), //
+                                new Trigger(path2, 20, frontIn), //
+                                new Trigger(path3, 15, inHold), //
+                                new Trigger(path3, 22, backHold), //
+                                new Trigger(path3, 45, backOut) //
+                )));
 
                 addSequential(path1);
                 addSequential(path2);
