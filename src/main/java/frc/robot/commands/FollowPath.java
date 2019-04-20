@@ -93,8 +93,10 @@ public class FollowPath extends CommandBase {
         prevRightVel = driveMotorState.rightVel;
 
         // get actual velocity from encoders
-        double actualLeftVel = (drive.getLeftEncoder() - prevLeftEncoder) / dt;
-        double actualRightVel = (drive.getRightEncoder() - prevRightEncoder) / dt;
+        double actualLeftVel = drive.getLeftEncoderVelocity();
+        double actualRightVel = drive.getRightEncoderVelocity();
+        // double actualLeftVel = (drive.getLeftEncoder() - prevLeftEncoder) / dt;
+        // double actualRightVel = (drive.getRightEncoder() - prevRightEncoder) / dt;
 
         prevLeftEncoder = drive.getLeftEncoder();
         prevRightEncoder = drive.getRightEncoder();
@@ -102,6 +104,9 @@ public class FollowPath extends CommandBase {
         double left = calculatePIDVAL(driveMotorState.leftVel, leftAcc, actualLeftVel, config.kP, config.kV, config.kA);
         double right = calculatePIDVAR(driveMotorState.rightVel, rightAcc, actualRightVel, config.kP, config.kV,
                 config.kA);
+
+        left = applyFeedforward(left);
+        right = applyFeedforward(right);
 
         log("actualmotoroutput", left + "; " + right);
         log("endloop", "_____________________________________\n");
@@ -130,6 +135,15 @@ public class FollowPath extends CommandBase {
         log("PIDAr", kA * acceleration);
         log("PIDPr", kP * (velocity - actualVelocity));
         return kV * velocity + kA * acceleration + kP * (velocity - actualVelocity);
+    }
+
+    private double applyFeedforward(double power) {
+        if (power > 0.05) {
+            power += 0.1;
+        } else if (power < -0.05) {
+            power -= 0.1;
+        }
+        return power;
     }
 
     public static double round(double value) {

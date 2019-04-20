@@ -141,6 +141,14 @@ public class Drive extends Subsystem {
         return rightMaster.getSelectedSensorPosition(0) * Const.kTalon4096Unit2Deg / 360 * Math.PI * 6 * 0.0254;
     }
 
+    public double getRightEncoderVelocity() {
+        return rightMaster.getSelectedSensorVelocity(0) * Const.kTalon4096Unit2Deg / 360 * Math.PI * 6 * 0.0254 / 10;
+    }
+
+    public double getLeftEncoderVelocity() {
+        return leftMaster.getSelectedSensorVelocity(0) * Const.kTalon4096Unit2Deg / 360 * Math.PI * 6 * 0.0254 / 10;
+    }
+
     public void gearUp() {
         if (gear < Const.kDrivePowerGears.length - 1)
             gear++;

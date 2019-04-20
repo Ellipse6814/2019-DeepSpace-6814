@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - Calculations",
+      "request": "launch",
+      "mainClass": "frc.robot.path.Calculations",
+      "projectName": "2019-DeepSpace-6814"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - Robot",
       "request": "launch",
       "mainClass": "frc.robot.path.Robot",
