@@ -36,7 +36,8 @@ class LogVisualizer extends JFrame implements KeyListener {
     // logs\\LogLeftLast.csv";
     // final String fileName = "C:\\Users\\Sean\\Desktop\\LogLeftTooFast.csv";
     // final String fileName = "C:\\Users\\Sean\\Desktop\\LogLeftLast.csv";
-    final String fileName = "C:\\Users\\Sean\\Desktop\\Log72.csv";
+    // final String fileName = "C:\\Users\\Sean\\Desktop\\Log72.csv";
+    final String fileName = "C:\\Users\\Sean\\Desktop\\FRC\\with Pavel\\LogWorking.csv";
 
     List<String[]> file = new ArrayList<>();
 
@@ -88,7 +89,7 @@ class LogVisualizer extends JFrame implements KeyListener {
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
-        this.setTitle("Pure Pursuit Log Visualizer");
+        this.setTitle("Pure Pursuit Log Visualizer" + getTitle());
         setVisible(true);
     }
 
@@ -219,6 +220,7 @@ class LogVisualizer extends JFrame implements KeyListener {
             br.close();
         } catch (IOException e) {
             e.printStackTrace();
+            this.setTitle(this.getTitle() + " - Error loading file");
         } finally {
         }
     }
