@@ -154,16 +154,16 @@ public class Robot extends TimedRobot {
         pneumatic.startCompressor();
     }
 
-    // Joystick joy1 = oi.getDoubleJoystick1();
+    Joystick joy1 = new Joystick(0);
 
     @Override
     public void testPeriodic() {
 
-        TalonSRX motor = ballIntake.rollerMotor;
+        TalonSRX motor = ballIntake.rollerMotor;// jaw.jawAngleMotor;//
 
-        TalonHelper.configCurrentLimit(motor, 40); // this subsystem is special on currents
-        motor.set(ControlMode.PercentOutput, 1.0);
-
+        TalonHelper.configCurrentLimit(motor, 40);
+        motor.set(ControlMode.PercentOutput, -joy1.getRawAxis(4));
+        // ____________________________________________________
         // // // drive
         // // drive.drive(joy1.getRawAxis(1), joy1.getRawAxis(5));
 
