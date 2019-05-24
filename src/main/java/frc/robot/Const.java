@@ -164,14 +164,16 @@ public class Const {
 
     public static final double kBallIntakeSpdSlow = 0.5;
     public static final double kBallIntakeHoldSpd = 0.15;
-    public static final double kBallIntakeSpd = 1;
+    public static final double kBallIntakeSpd = 1.0;
     public static final double kBallOuttakeSpd = 0.9;
 
     // --------------------- DRIVE -------------------------
     public static final double kDriveJoystickDeadband = 0.05;
 
-    public static final double[] kDrivePowerGears = { 0.3333, 0.6666, 1 };
-    public static final double[] kDriveTurnGears = { 0.3, 0.3, 0.3 };
+    // public static final double[] kDrivePowerGears = { 0.3333, 0.6666, 1 };
+    // public static final double[] kDriveTurnGears = { 0.3, 0.3, 0.3 };
+    public static final double[] kDrivePowerGears = { 0.2, 0.5, 0.7 };
+    public static final double[] kDriveTurnGears = { 0.2, 0.2, 0.2 };
 
     public static final double maxAccelMSS = 100;
 

@@ -1,6 +1,7 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
@@ -10,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Util.MotorDirection;
+import frc.robot.Util.TalonHelper;
 import frc.robot.auto.*;
 import frc.robot.log.Logger;
 import frc.robot.subsystems.Arm;
@@ -156,6 +158,11 @@ public class Robot extends TimedRobot {
 
     @Override
     public void testPeriodic() {
+
+        TalonSRX motor = ballIntake.rollerMotor;
+
+        TalonHelper.configCurrentLimit(motor, 40); // this subsystem is special on currents
+        motor.set(ControlMode.PercentOutput, 1.0);
 
         // // // drive
         // // drive.drive(joy1.getRawAxis(1), joy1.getRawAxis(5));

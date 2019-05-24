@@ -35,7 +35,7 @@ public class BallIntake extends Subsystem {
 
     private void initTalons() {
         rollerMotor = TalonHelper.createTalon(Const.kIntakeRollerMotorPort, Const.kIntakeRollerMotorInverted);
-        TalonHelper.configCurrentLimit(rollerMotor, 10); // this subsystem is special on currents
+        TalonHelper.configCurrentLimit(rollerMotor, 40); // this subsystem is special on currents
         TalonHelper.configNeutralMode(rollerMotor, NeutralMode.Brake);
 
     }
@@ -89,7 +89,7 @@ public class BallIntake extends Subsystem {
         } else { // if (state == BallState.Stop) {
             setMotor(MotorDirection.Forward, 0, 10);
         }
-        checkSafety();
+        // checkSafety();
     }
 
     private void checkSafety() {
@@ -101,6 +101,7 @@ public class BallIntake extends Subsystem {
 
         if (rollerMotor.getOutputCurrent() < 60.0) {
             lastSafeTimestamp = Timer.getFPGATimestamp();
+            System.out.println("SAFE!!!!");
         }
     }
 
