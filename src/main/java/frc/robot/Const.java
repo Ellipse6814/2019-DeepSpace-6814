@@ -170,10 +170,10 @@ public class Const {
     // --------------------- DRIVE -------------------------
     public static final double kDriveJoystickDeadband = 0.05;
 
-    // public static final double[] kDrivePowerGears = { 0.3333, 0.6666, 1 };
-    // public static final double[] kDriveTurnGears = { 0.3, 0.3, 0.3 };
-    public static final double[] kDrivePowerGears = { 0.2, 0.5, 0.7 };
-    public static final double[] kDriveTurnGears = { 0.2, 0.2, 0.2 };
+    public static final double[] kDrivePowerGears = { 0.3333, 0.6666, 1 };
+    public static final double[] kDriveTurnGears = { 0.25, 0.25, 0.25 };
+    // public static final double[] kDrivePowerGears = { 0.2, 0.5, 0.7 };
+    // public static final double[] kDriveTurnGears = { 0.2, 0.2, 0.2 };
 
     public static final double maxAccelMSS = 100;
 

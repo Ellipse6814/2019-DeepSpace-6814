@@ -91,8 +91,10 @@ public class AutoLeftCargoCargo extends CommandGroup {
                 Command frontHold = new SetRobot(ArmState.FrontBallCargo, JawState.Ball, BallState.Hold,
                                 HatchState.Grab);
                 Command frontOut = new SetRobot(ArmState.FrontBallCargo, JawState.Ball, BallState.Out, HatchState.Grab);
-                Command backOut = new SetRobot(ArmState.BackBallCargo, JawState.Ball, BallState.Out, HatchState.Grab);
-                Command backHold = new SetRobot(ArmState.BackBallCargo, JawState.Ball, BallState.Hold, HatchState.Grab);
+                Command backOut = new SetRobot(ArmState.BackBallCargo, JawState.BallOut, BallState.Out,
+                                HatchState.Grab);
+                Command backHold = new SetRobot(ArmState.BackBallCargo, JawState.BallOut, BallState.Hold,
+                                HatchState.Grab);
                 Command inHold = new SetRobot(ArmState.FrontBallCargo, JawState.Ball, BallState.Hold, HatchState.Grab);
 
                 /// =========================================================
