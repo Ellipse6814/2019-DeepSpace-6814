@@ -42,7 +42,41 @@ public class RobotPathConfig {
         return practiceRobotConfig;
     }
 
+    public static RobotPathConfig getRobotCharConfig() {
+        RobotPathConfig robotConfig = new RobotPathConfig();
+        robotConfig.maxVel = Units.ft2m(8); // 7 before
+        robotConfig.maxAcc = Units.ft2m(6); // m/sec every sec
+        robotConfig.spacing = Units.ft2m(1);
+        robotConfig.maxAngVel = 2; // radians per second
+        robotConfig.lookAheadDistance = Units.ft2m(1.7);
+        robotConfig.trackWidth = Units.in2m(22);// really 22 inches
+        robotConfig.targetTolerance = Units.in2m(40);
+        robotConfig.physicalMaxVel = Units.ft2m(12);
+        robotConfig.kV = 0.0604;
+        robotConfig.kA = 0.00115;
+        robotConfig.kP = 0.000109;
+        robotConfig.kFF = 0.03;
+        return robotConfig;
+    }
+
     public static RobotPathConfig getRobotConfig() {
+        RobotPathConfig robotConfig = new RobotPathConfig();
+        robotConfig.maxVel = Units.ft2m(8); // 7 before
+        robotConfig.maxAcc = Units.ft2m(6); // m/sec every sec
+        robotConfig.spacing = Units.ft2m(1);
+        robotConfig.maxAngVel = 2; // radians per second
+        robotConfig.lookAheadDistance = Units.ft2m(1.7);
+        robotConfig.trackWidth = Units.in2m(22);// really 22 inches
+        robotConfig.targetTolerance = Units.in2m(40);
+        robotConfig.physicalMaxVel = Units.ft2m(12);
+        robotConfig.kV = 0.198;
+        robotConfig.kA = 0.00377;
+        robotConfig.kP = 0;
+        robotConfig.kFF = 0.11167;
+        return robotConfig;
+    }
+
+    public static RobotPathConfig getOldRobotConfig() {
         RobotPathConfig robotConfig = new RobotPathConfig();
         robotConfig.maxVel = Units.ft2m(8); // 7 before
         robotConfig.maxAcc = Units.ft2m(3); // m/sec every sec

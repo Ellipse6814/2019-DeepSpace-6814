@@ -36,7 +36,7 @@ class LogVisualizer extends JFrame implements KeyListener {
     // logs\\LogLeftLast.csv";
     // final String fileName = "C:\\Users\\Sean\\Desktop\\LogLeftTooFast.csv";
     // final String fileName = "C:\\Users\\Sean\\Desktop\\LogLeftLast.csv";
-    final String fileName = "C:\\Users\\Sean\\Desktop\\Logc3.csv";
+    final String fileName = "C:\\Users\\Sean\\Desktop\\Logn6.csv";
     // final String fileName = "C:\\Users\\Sean\\Desktop\\FRC\\with
     // Pavel\\LogWorking.csv";
 
@@ -77,7 +77,7 @@ class LogVisualizer extends JFrame implements KeyListener {
         for (int i = 0; i < data.get(17).size(); i++) {
             String line = getData(7, i) + "; " + getData(17, i) + "; " + (getData(7, i) - getData(17, i));
             line += "; " + getData(18, i) + "; " + getData(19, i) + "; " + getData(20, i);
-            System.out.println();
+            System.out.println(line);
         }
     }
 
@@ -226,6 +226,8 @@ class LogVisualizer extends JFrame implements KeyListener {
         }
     }
 
+    int slowForwardCount = 0;
+
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT)
             draw.update(1);
@@ -235,9 +237,12 @@ class LogVisualizer extends JFrame implements KeyListener {
             draw.update(-10);
         else if (e.getKeyCode() == KeyEvent.VK_UP)
             draw.update(10);
-        else if (e.getKeyCode() == KeyEvent.VK_SHIFT)
-            draw.update(-3);
-        else if (e.getKeyCode() == KeyEvent.VK_SPACE)
+        else if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+            if (slowForwardCount++ > 3) {
+                slowForwardCount = 0;
+                draw.update(1);
+            }
+        } else if (e.getKeyCode() == KeyEvent.VK_SPACE)
             draw.update(3);
     }
 

@@ -208,7 +208,7 @@ public class PathFollower extends LogBase {
 	// it's the index of the closest waypoint
 	private void calcProgress() {
 		if (done)
-			progress = 100;
+			progress = 100; //TODO: wait, is this correct?
 		// int currentPathIndex
 		progress = getClosestWaypointIndex(prevRobotPos);
 		log("progress", progress);

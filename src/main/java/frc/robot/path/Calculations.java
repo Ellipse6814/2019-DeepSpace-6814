@@ -22,5 +22,6 @@ public class Calculations {
     public static void main(String[] args) {
         System.out.println("maxVel: " + maxVelocityTheory);
         System.out.println("maxAcc: " + maxAccelerationTheory);
+        RobotPathConfig a = RobotPathConfig.getRobotConfig();
     }
 }
