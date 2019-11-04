@@ -298,6 +298,7 @@ class Draw extends JPanel {
         drawPath(g);
         drawClosestPoint(g);
         drawLookaheadPoint(g);
+        drawCurvature(g);
         drawRobot(g);
         drawStats(g);
 
@@ -365,15 +366,27 @@ class Draw extends JPanel {
         double robotX = getData(0);
         double robotY = getData(1);
         double robotHeading = getData(2);
-        double radiusTranslateAngle = 90 - robotHeading;
-        double centerX = robotX + radius * Math.sin(Math.toRadians(radiusTranslateAngle));
-        double centerY = robotY + radius * Math.cos(Math.toRadians(radiusTranslateAngle));
+        double radiusTranslateAngle = robotHeading;
+        double centerX;
+        double centerY;
 
-        System.out.println(centerX + "," + centerY);
+        if ((getData(12) + getData(13)) / 2 < 0)// backwards
+            radius *= -1;
+
+        if (radius > 0) {
+            centerX = robotX + radius * Math.sin(Math.toRadians(radiusTranslateAngle));
+            centerY = robotY - radius * Math.cos(Math.toRadians(radiusTranslateAngle));
+        } else {
+            centerX = robotX + radius * Math.sin(Math.toRadians(radiusTranslateAngle));
+            centerY = robotY - radius * Math.cos(Math.toRadians(radiusTranslateAngle));
+            radius *= -1;
+        }
+
+        // System.out.println(centerX + "," + centerY + ", " + radius);
         ((Graphics2D) g).setStroke(new BasicStroke(3));
         // lookahead point
         g.setColor(Color.black);
-        g.drawArc(x(centerX - radius), y(centerY - radius), x(radius), y(radius), 0, 360);
+        g.drawArc(x(centerX - radius), y(centerY + radius), scale(radius * 2), scale(radius * 2), 0, 360);
     }
 
     private void drawStats(Graphics g) {
@@ -430,24 +443,16 @@ class Draw extends JPanel {
 
         // connects the path in red
         for (int i = 0; i < path.get(0).size() - 1; i++) {
-            g.drawLine(x(path.get(0).get(i)), y(path.get(1).get(i)), x(path.get(0).get(i + 1)),
-                    y(path.get(1).get(i + 1)));
-            // System.out.println(path.get(0).get(0));
+            g.drawLine(x(path.get(0).get(i)) - 0, y(path.get(1).get(i)) - 0, x(path.get(0).get(i + 1)) - 0,
+                    y(path.get(1).get(i + 1)) - 0);
         }
-        // log out the points to debug:
-        // for (int i = 0; i < path.get(0).size() - 1; i++) {
-        // System.out.println(x(path.get(0).get(i)) + "," + y(path.get(1).get(i)) + ", "
-        // + x(path.get(0).get(i + 1))
-        // + "," + y(path.get(1).get(i + 1)));
-        // // System.out.println(path.get(0).get(0));
-        // }
 
         ((Graphics2D) g).setStroke(new BasicStroke(2));
 
         // draw the single waypoints in black to debug path generation.
         g.setColor(Color.black);
-        for (int i = 0; i < path.get(0).size() - 1; i++) {
-            g.drawArc(x(path.get(0).get(i)) - 2, y(path.get(1).get(i + 1)) - 2, 5, 5, 0, 360);
+        for (int i = 0; i < path.get(0).size(); i++) {
+            g.drawArc(x(path.get(0).get(i)) - 2, y(path.get(1).get(i)) - 2, 4, 4, 0, 360);
         }
     }
 
