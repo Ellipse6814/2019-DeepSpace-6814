@@ -57,7 +57,7 @@ public class Logger {
 				flush();
 				// System.out.println("flushed " + count++);
 				try {
-					Thread.sleep(200);
+					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					System.out.println("interrupted");
 
